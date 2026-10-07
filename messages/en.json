@@ -1,0 +1,949 @@
+{
+  "meta": {
+    "siteName": "Tecnolambro Microwave Components",
+    "home": {
+      "title": "Waveguide & microwave components | Tecnolambro",
+      "description": "Rigid and flexible waveguide, antenna feed horns, transitions and flanges. Designed and built in Italy since 1986. Quotes within 24 hours."
+    },
+    "products": {
+      "title": "Waveguide products | Tecnolambro",
+      "description": "Six families of microwave components: rigid, flexible and twistable waveguide, feed horns, transitions, flanges and kits, build-to-print parts."
+    },
+    "family": {
+      "title": "{name} | Tecnolambro Microwave Components"
+    },
+    "custom": {
+      "title": "Custom microwave components | Tecnolambro",
+      "description": "Send your drawing as PDF, DWG, DXF or STEP: in-house engineering, machining, surface treatments and lab testing. Reply within 24 hours."
+    },
+    "about": {
+      "title": "Since 1986 in Italy | Tecnolambro",
+      "description": "Founded in 1986 alongside Siemens Telecomunicazioni. Independent production, surface treatments and an in-house test lab in Miradolo Terme, Italy."
+    },
+    "quality": {
+      "title": "Quality & certifications | Tecnolambro",
+      "description": "Electrical and dimensional checks in our in-house lab, treatments with selected partners. Certifications and quality procedures."
+    },
+    "ham": {
+      "title": "10 GHz & QO-100 parts | Tecnolambro",
+      "description": "Waveguide, feed horns and transitions for radio amateurs: the 10 GHz band and the QO-100 satellite. Standard parts available in the online shop."
+    },
+    "contact": {
+      "title": "Contact & quotes | Tecnolambro",
+      "description": "Request a quote for waveguide and microwave components. Factory in Miradolo Terme, Italy. info@tecnolambro.it, +39 0382 75385."
+    },
+    "faq": {
+      "title": "FAQ | Tecnolambro",
+      "description": "Available sizes, build-to-print parts, file formats, lead times, shipping in the EU and worldwide, EU VAT invoicing, testing."
+    },
+    "privacy": {
+      "title": "Privacy policy | Tecnolambro",
+      "description": "How Tecnolambro S.a.s. processes personal data collected by the website and the quote request form, under Regulation (EU) 2016/679."
+    },
+    "terms": {
+      "title": "Terms of use | Tecnolambro",
+      "description": "Terms of use of the Tecnolambro Microwave Components website and rules for drawings uploaded with a quote request."
+    },
+    "cookie": {
+      "title": "Cookie policy | Tecnolambro",
+      "description": "The Tecnolambro website uses only technical storage and cookie-free analytics. No profiling cookies."
+    },
+    "notFound": {
+      "title": "Signal lost | Tecnolambro",
+      "description": "The page you are looking for does not exist or has moved."
+    },
+    "shop": {
+      "title": "Waveguide & component shop | Tecnolambro",
+      "description": "Flexible waveguide, bends, twists, transitions, flanges and kits from stock. Volume pricing, 48-hour dispatch, Italian, EU and export invoicing."
+    },
+    "product": {
+      "title": "{name} {wr} | Tecnolambro Shop",
+      "titleNoWr": "{name} | Tecnolambro Shop"
+    },
+    "checkout": {
+      "title": "Order | Tecnolambro Shop",
+      "description": "Order request summary and submission."
+    },
+    "orderSent": {
+      "title": "Request sent | Tecnolambro Shop",
+      "description": "Order request confirmation."
+    }
+  },
+  "nav": {
+    "label": "Main navigation",
+    "products": "Products",
+    "custom": "Custom",
+    "about": "Company",
+    "quality": "Quality",
+    "ham": "Ham radio",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "quote": "Request a quote",
+    "quoteShort": "Quote",
+    "shop": "Shop standard parts",
+    "menu": "Open menu",
+    "close": "Close menu",
+    "skip": "Skip to content",
+    "language": "Language",
+    "switchTo": "Italiano",
+    "switchToLabel": "Passa alla versione italiana",
+    "theme": "Change theme",
+    "themeDark": "Dark theme",
+    "themeLight": "Light theme",
+    "home": "Tecnolambro, home",
+    "homeShort": "home",
+    "menuLabel": "Menu",
+    "shopShort": "Shop"
+  },
+  "common": {
+    "demoBadge": "Demo version",
+    "demoData": "Demo data",
+    "demoDataNote": "Sample values, to be replaced with Tecnolambro’s technical data.",
+    "todo": "TO BE COMPLETED",
+    "breadcrumb": "Breadcrumb",
+    "home": "Home",
+    "opensNewTab": "(opens in a new tab)",
+    "photoPlaceholder": "Real photo from the workshop",
+    "draftNote": "Draft to be reviewed before launch.",
+    "updated": "Last updated: {date}",
+    "readMore": "Read more",
+    "allQuestions": "All questions",
+    "pauseMotion": "Pause animation",
+    "playMotion": "Play animation"
+  },
+  "intro": {
+    "skip": "Skip",
+    "tagline": "MICROWAVE COMPONENTS · SINCE 1986",
+    "label": "Intro animation"
+  },
+  "hero": {
+    "titleA": "Guiding microwaves",
+    "titleB": "since 1986.",
+    "sub": "Rigid and flexible waveguide, feed horns and transitions. Designed and built in Italy, tested in our own lab.",
+    "legendTitle": "Field legend",
+    "legendMode": "Mode",
+    "legendGuide": "Guide",
+    "legendBand": "Band",
+    "fieldLabel": "Animation of the TE10 electric field in a WR-90 waveguide"
+  },
+  "marquee": {
+    "label": "Standard waveguide sizes and operating bands"
+  },
+  "company": {
+    "title": "From drawing to tested part, in one workshop.",
+    "body": "Tecnolambro was founded in 1986 working with Siemens Telecomunicazioni. Engineering, production, surface treatments and the test lab are all in-house.",
+    "factFounded": "Year founded",
+    "factYears": "Years building microwave parts",
+    "factFlexValue": "In-house",
+    "factFlex": "Flexible and twistable waveguide made by us",
+    "factReplyValue": "24 h",
+    "factReply": "Quote response time",
+    "cta": "About the company"
+  },
+  "productsSection": {
+    "title": "Every section of the signal path.",
+    "body": "Six families, from flange to feed horn. Standard from stock or built to your drawing.",
+    "cta": "See all products",
+    "open": "Open {name}"
+  },
+  "products": {
+    "items": {
+      "rigid": {
+        "name": "Rigid waveguide",
+        "short": "Straight sections, E-plane and H-plane bends, twists.",
+        "description": "Rigid rectangular waveguide for microwave links, radar, satellite and test benches. Straight sections, E-plane and H-plane bends, twists and assemblies to specification, with flanges fitted and checked.",
+        "applications": [
+          "Point-to-point microwave links",
+          "Radar and satellite systems",
+          "Test benches and laboratories"
+        ]
+      },
+      "flexible": {
+        "name": "Flexible & twistable waveguide",
+        "short": "Made in-house. Absorbs vibration and misalignment.",
+        "description": "Flexible and flexible-twistable waveguide built entirely by Tecnolambro. Connects radio and antenna when flanges are not aligned, absorbs vibration and thermal expansion, and makes installation easier.",
+        "applications": [
+          "Radio-to-antenna connection in microwave links",
+          "Installations exposed to vibration",
+          "Correcting offsets and rotation between flanges"
+        ]
+      },
+      "feeds": {
+        "name": "Antenna feed horns",
+        "short": "Where the signal leaves the waveguide and meets the dish.",
+        "description": "Feeds and horns for parabolic antennas. They transfer energy from the waveguide to the reflector, and collect it on receive, with a pattern matched to the antenna optics.",
+        "applications": [
+          "Microwave link antennas",
+          "Satellite ground stations",
+          "Radio astronomy and amateur radio"
+        ]
+      },
+      "transitions": {
+        "name": "Waveguide transitions",
+        "short": "From one size to another, from waveguide to coax.",
+        "description": "Transitions between waveguide sizes, between flange types and from waveguide to coaxial connector. The profile is designed to keep VSWR low across the common band.",
+        "applications": [
+          "Matching equipment of different generations",
+          "Test benches with coaxial instruments",
+          "Prototypes and laboratories"
+        ]
+      },
+      "flanges": {
+        "name": "Flanges & installation kits",
+        "short": "Flanges, covers, gaskets and hardware for microwave links.",
+        "description": "Everything needed to install and seal a waveguide run: flanges, covers, gaskets and hardware. Available individually or in kits by size.",
+        "applications": [
+          "Installation and maintenance of microwave links",
+          "Spares for existing runs",
+          "Sealing and protecting unused ports"
+        ]
+      },
+      "custom": {
+        "name": "Build-to-print",
+        "short": "Special parts and nickel electroforms to your specification.",
+        "description": "When the part is not in the catalogue, we build it. Our in-house engineering office starts from your drawing or specification, the workshop makes the part and the lab tests it. We also produce nickel electroforms.",
+        "applications": [
+          "Non-standard components",
+          "Nickel electroforms",
+          "Small batches and prototypes"
+        ]
+      }
+    },
+    "columns": {
+      "size": "Size",
+      "band": "Band (GHz)",
+      "flange": "Flange",
+      "parts": "Parts",
+      "vswr": "Max VSWR",
+      "type": "Type",
+      "length": "Lengths",
+      "polarization": "Polarization",
+      "from": "From",
+      "to": "To",
+      "kit": "Kit contents",
+      "step": "Step",
+      "detail": "Detail"
+    },
+    "cells": {
+      "rigidParts": "Straights, E/H bends, twists",
+      "flexTwist": "Flexible and twistable",
+      "flexOnly": "Flexible",
+      "feedPrime": "Prime-focus feed",
+      "feedHorn": "Horn",
+      "linear": "Linear",
+      "coax": "Coaxial",
+      "kitFull": "Flanges, covers, gaskets, hardware",
+      "cStepFiles": "Accepted formats",
+      "cStepOffice": "Engineering office",
+      "cStepOfficeD": "Drawing review and detailed design in-house",
+      "cStepNickel": "Electroforming",
+      "cStepNickelD": "Nickel electroforms",
+      "cStepFinish": "In-house treatments",
+      "cStepFinishD": "Bright dipping and painting",
+      "cStepPartners": "Selected partners",
+      "cStepPartnersD": "Heat treatment and plating",
+      "cStepLab": "Laboratory",
+      "cStepLabD": "Electrical and dimensional inspection"
+    },
+    "page": {
+      "title": "Waveguide products",
+      "intro": "Six families of mechanical microwave components. Standard parts shipped from stock, special parts built to your drawing.",
+      "familyEyebrow": "Family",
+      "drawingLabel": "Exploded drawing: {name}",
+      "drawingCaption": "Scroll to separate the parts.",
+      "partFlange": "Flange",
+      "partBody": "Body",
+      "partGasket": "Gasket",
+      "partScrews": "Hardware",
+      "partCover": "Cover",
+      "partHorn": "Horn",
+      "partTaper": "Taper",
+      "partCoax": "Connector",
+      "tableTitle": "Available sizes",
+      "tableCaption": "Sizes and specifications: {name}",
+      "processTitle": "How we build it",
+      "applicationsTitle": "Applications",
+      "quoteTitle": "Need a different size or version?",
+      "quoteBody": "Tell us the size, flanges and quantity. We reply with price and lead time within 24 business hours.",
+      "shopTitle": "Standard parts",
+      "shopBody": "The most common sizes can be ordered in the online shop.",
+      "askSize": "Ask for {size}",
+      "others": "Other families"
+    }
+  },
+  "bandFinder": {
+    "title": "Tell us the frequency. We’ll tell you the size.",
+    "body": "Move the slider to your operating frequency: we highlight the standard waveguide that covers it.",
+    "label": "Operating frequency",
+    "unit": "GHz",
+    "result": "At {freq} GHz the standard size is",
+    "resultMany": "At {freq} GHz you can use",
+    "or": "or",
+    "none": "No standard size covers this frequency: we can build it to your drawing.",
+    "cutoff": "TE10 cutoff",
+    "inside": "Inside",
+    "tableCaption": "Operating bands of standard rectangular waveguides",
+    "colSize": "Size",
+    "colIec": "IEC",
+    "colBand": "Band",
+    "colInside": "Inside a × b (mm)",
+    "cta": "Request this size",
+    "ctaCustom": "Request a build-to-print part",
+    "decrease": "Decrease frequency",
+    "increase": "Increase frequency",
+    "standardNote": "Bands and dimensions are EIA/IEC standard values."
+  },
+  "process": {
+    "title": "Four steps, one point of contact.",
+    "steps": [
+      {
+        "title": "Engineering",
+        "body": "From your drawing or a specification to the detailed design of the part."
+      },
+      {
+        "title": "Machining",
+        "body": "Rigid, flexible and twistable waveguide, flanges and covers, from our own raw material stock."
+      },
+      {
+        "title": "Treatments",
+        "body": "Bright dipping and painting in our own plant. Heat treatment and plating with selected partners."
+      },
+      {
+        "title": "Testing",
+        "body": "Electrical and dimensional inspection in our in-house lab before shipping."
+      }
+    ]
+  },
+  "history": {
+    "title": "Since 1986, always waveguide.",
+    "titleShort": "History",
+    "items": [
+      {
+        "label": "1986",
+        "body": "Tecnolambro is founded in close collaboration with Siemens Telecomunicazioni S.p.A. of Cassina de’ Pecchi, near Milan."
+      },
+      {
+        "label": "Production",
+        "body": "An independent production system, with its own stock of raw materials and finished parts."
+      },
+      {
+        "label": "Treatments",
+        "body": "In-house plants for bright dipping and painting. Heat treatment and plating with selected partners."
+      },
+      {
+        "label": "Laboratory",
+        "body": "In-house laboratory with electrical and dimensional inspection instruments."
+      },
+      {
+        "label": "Today",
+        "body": "Standard and build-to-print components for customers in Italy, Europe and worldwide."
+      }
+    ]
+  },
+  "qualitySection": {
+    "title": "Quality checked part by part.",
+    "body": "Every component goes through our in-house lab before it ships.",
+    "certTitle": "Certifications",
+    "certTodo": "[TO BE COMPLETED: ISO 9001 and other certifications]",
+    "controlsTitle": "Inspection",
+    "controls": [
+      "Electrical inspection",
+      "Dimensional inspection",
+      "Treatments with selected partners"
+    ],
+    "cta": "Quality and inspection"
+  },
+  "shopSection": {
+    "title": "Standard parts? Order them online.",
+    "body": "Flexible waveguide, bends, twists, flanges and kits in the most requested sizes. Volume discounts and 48-hour dispatch.",
+    "points": [
+      "Volume discounts",
+      "Dispatched within 48 hours",
+      "Standard sizes ready in stock"
+    ],
+    "cta": "Shop standard parts"
+  },
+  "faqSection": {
+    "title": "Frequently asked questions",
+    "body": "Answers to the questions engineering and purchasing teams ask us most."
+  },
+  "faq": {
+    "items": {
+      "sizes": {
+        "q": "Which waveguide sizes do you make?",
+        "a": "We work across the standard rectangular sizes from WR-229 (3.3-4.9 GHz) to WR-28 (26.5-40 GHz). To match an exact frequency, use the band finder on the home page or state the frequency in your quote request."
+      },
+      "custom": {
+        "q": "Do you build parts to customer drawings?",
+        "a": "Yes. Our in-house engineering office starts from your drawing or specification, checks feasibility and prepares the detailed design. We make single parts, small batches and nickel electroforms."
+      },
+      "files": {
+        "q": "Which file formats can I send?",
+        "a": "PDF, DWG, DXF or STEP, up to 20 MB per file, straight from the quote form. A dimensioned PDF with tolerances and finish is enough for a first offer; a STEP model helps with complex geometry."
+      },
+      "leadTime": {
+        "q": "What are your lead times?",
+        "a": "Standard parts from the shop ship within 48 hours. For build-to-print parts the lead time depends on geometry, treatments and quantity, and we state it in the quote. [TO BE COMPLETED: typical lead times by family]"
+      },
+      "moq": {
+        "q": "Is there a minimum order quantity?",
+        "a": "[TO BE COMPLETED: minimum order quantities, if any] In the shop, unit price drops with quantity."
+      },
+      "shippingEu": {
+        "q": "Do you ship across the European Union?",
+        "a": "Yes, we ship from our stock in Miradolo Terme, Italy. [TO BE COMPLETED: carriers, indicative EU lead times and costs]"
+      },
+      "shippingWorld": {
+        "q": "Do you ship outside the European Union?",
+        "a": "Yes, we work with customers worldwide. Exports are zero-rated for Italian VAT. [TO BE COMPLETED: countries served, Incoterms, customs documents]"
+      },
+      "invoicing": {
+        "q": "How do you invoice an EU company with a VAT number?",
+        "a": "With a valid EU VAT number (checked in VIES) we invoice without Italian VAT: the customer accounts for the tax under the reverse-charge mechanism. Enter your VAT number in the quote form."
+      },
+      "materials": {
+        "q": "Which materials and finishes do you use?",
+        "a": "Bright dipping and painting are done in our own plant; heat treatment and plating with selected partners. [TO BE COMPLETED: available materials and finishes]"
+      },
+      "testing": {
+        "q": "Are parts tested?",
+        "a": "Yes. Our in-house lab performs electrical and dimensional inspection before shipping. [TO BE COMPLETED: parameters measured and documents supplied with the part]"
+      },
+      "flexTwist": {
+        "q": "What is the difference between flexible and flexible-twistable waveguide?",
+        "a": "Flexible waveguide bends in the E and H planes to connect flanges that are not aligned. Flexible-twistable waveguide also allows torsion around its own axis, useful when the two flanges are rotated relative to each other. We make both."
+      },
+      "shopVsQuote": {
+        "q": "When should I use the shop and when should I ask for a quote?",
+        "a": "The shop is for standard parts in the most common sizes, with immediate price and dispatch. For other sizes, flanges or lengths, large quantities or build-to-print parts, request a quote."
+      }
+    }
+  },
+  "quote": {
+    "title": "Send us your drawing.",
+    "body": "Price and lead time within 24 business hours. The more detail you give us, the more precise the offer.",
+    "formLabel": "Quote request",
+    "required": "required",
+    "optional": "optional",
+    "name": "Full name",
+    "company": "Company",
+    "email": "Work email",
+    "phone": "Phone",
+    "country": "Country",
+    "vat": "VAT number",
+    "vatHint": "For EU customers: needed for reverse-charge invoicing.",
+    "family": "Component type",
+    "familyPlaceholder": "Choose a family",
+    "size": "Waveguide size",
+    "sizeUnknown": "I don’t know",
+    "sizeOther": "Other / non-standard",
+    "frequency": "Operating frequency (GHz)",
+    "quantity": "Quantity",
+    "message": "Description",
+    "messageHint": "Part type, flanges, lengths, finish, required delivery.",
+    "file": "Drawing",
+    "fileHint": "PDF, DWG, DXF or STEP, max 20 MB.",
+    "fileSelected": "Selected file: {name} ({size})",
+    "privacy": "I have read the <link>privacy policy</link> and agree to the processing of my data to receive the quote.",
+    "submit": "Send request",
+    "sending": "Sending…",
+    "successTitle": "Request received.",
+    "successBody": "We will reply within 24 business hours to the address you entered.",
+    "successDemo": "Demo version: the request was not sent. The email service will be connected at launch.",
+    "again": "Send another request",
+    "errorSend": "Sending failed. Please try again or email info@tecnolambro.it.",
+    "errors": {
+      "name": "Enter your full name.",
+      "company": "Enter your company name.",
+      "email": "Enter a valid email, for example name@company.com.",
+      "country": "Enter the delivery country.",
+      "family": "Choose the component type.",
+      "quantity": "Enter a quantity of at least 1 part.",
+      "frequency": "Enter a frequency between 1 and 110 GHz.",
+      "message": "Describe the part in at least 10 characters.",
+      "fileType": "Format not accepted. Use PDF, DWG, DXF or STEP.",
+      "fileSize": "The file is larger than 20 MB. Compress it or send it by email.",
+      "privacy": "We need your consent to reply to the request."
+    },
+    "prefilled": "Size {size} selected from the band finder.",
+    "contactTitle": "Direct contact",
+    "email_label": "Email",
+    "phone_label": "Phone",
+    "operational": "Factory",
+    "legal": "Registered office",
+    "errorSummaryOne": "Please check the highlighted fields: 1 field to fix.",
+    "errorSummaryOther": "Please check the highlighted fields: {count} fields to fix.",
+    "variantOf": "Variant of code {code}: "
+  },
+  "finalCta": {
+    "title": "Got a drawing or a frequency?",
+    "body": "That’s all we need to start.",
+    "quote": "Request a quote",
+    "shop": "Shop standard parts"
+  },
+  "footer": {
+    "tagline": "Mechanical microwave components and waveguide devices, since 1986.",
+    "navTitle": "Site",
+    "legalTitle": "Legal",
+    "contactTitle": "Contact",
+    "privacy": "Privacy",
+    "terms": "Terms of use",
+    "cookie": "Cookies",
+    "vat": "VAT",
+    "credit": "Built and managed by",
+    "distinct": "Tecnolambro Microwave Components, Miradolo Terme (PV), Italy. Not affiliated with other companies with a similar name.",
+    "rights": "© {year} Tecnolambro S.a.s. di Marco Pasquini & C.",
+    "logoAlt": "Tecnolambro logo: manufacturer of twistable flexible and seamless flexible waveguide, components for microwave applications"
+  },
+  "customPage": {
+    "title": "Custom microwave components",
+    "intro": "When the part is not in the catalogue, we build it. Engineering, workshop, treatments and lab work under one roof.",
+    "sendTitle": "What to send us",
+    "send": [
+      {
+        "title": "The drawing",
+        "body": "Dimensioned, with tolerances and finish. PDF, DWG, DXF or STEP, up to 20 MB."
+      },
+      {
+        "title": "The frequency",
+        "body": "Operating band in GHz and, if relevant, the maximum acceptable VSWR."
+      },
+      {
+        "title": "The interfaces",
+        "body": "Waveguide size and flange type at both ends, or the coaxial connector."
+      },
+      {
+        "title": "Quantity and timing",
+        "body": "Single part, small batch or repeat supply. Required delivery date."
+      }
+    ],
+    "formatsTitle": "Accepted formats",
+    "formatsBody": "PDF for dimensioned drawings, DWG and DXF for 2D, STEP for 3D models.",
+    "timeTitle": "Timing",
+    "timeBody": "Price and lead time within 24 business hours. Production time depends on geometry, treatments and quantity. [TO BE COMPLETED: typical lead times]",
+    "testTitle": "Testing",
+    "testBody": "Every part goes through our in-house lab for electrical and dimensional inspection before shipping.",
+    "stepsTitle": "From drawing to part",
+    "formTitle": "Send your drawing"
+  },
+  "aboutPage": {
+    "title": "Since 1986, waveguide built in-house.",
+    "intro": "Tecnolambro designs and builds mechanical microwave components and waveguide devices. It was founded in 1986 in close collaboration with Siemens Telecomunicazioni S.p.A. of Cassina de’ Pecchi.",
+    "productionTitle": "Production",
+    "productionBody": "An independent production system with its own stock of raw materials and finished parts. Rigid, flexible and flexible-twistable waveguide are made by us.",
+    "treatmentsTitle": "Surface treatments",
+    "treatmentsBody": "In-house plants for bright dipping and painting. For heat treatment and plating we work with selected partners.",
+    "labTitle": "Laboratory",
+    "labBody": "Electrical and dimensional inspection instruments to test every part before it leaves.",
+    "officeTitle": "Engineering office",
+    "officeBody": "Designs components to customer drawings and follows each part through to testing.",
+    "sitesTitle": "Locations",
+    "operational": "Factory and production",
+    "legal": "Registered office",
+    "mapLink": "Open in Google Maps",
+    "photoTodo": "[TO BE COMPLETED: real photos from the workshop]",
+    "historyTitle": "History"
+  },
+  "qualityPage": {
+    "title": "Quality & certifications",
+    "intro": "A part ships only after lab inspection. This page collects certifications, inspection and procedures.",
+    "certTitle": "Certifications",
+    "certTodo": "[TO BE COMPLETED: ISO 9001 and other certifications]",
+    "certNote": "Certificates will be published here as PDF, with issuing body, number and expiry.",
+    "controlsTitle": "Lab inspection",
+    "controlsBody": "Our in-house laboratory has electrical and dimensional inspection instruments.",
+    "controlsTodo": "[TO BE COMPLETED: instruments and parameters checked]",
+    "chainTitle": "Controlled supply chain",
+    "chainBody": "Raw materials in stock, machining, bright dipping and painting in-house, heat treatment and plating with selected partners."
+  },
+  "hamPage": {
+    "title": "Parts for 10 GHz and QO-100",
+    "intro": "Waveguide, feed horns and transitions for operators working in X band and on the geostationary QO-100 satellite.",
+    "bandsTitle": "Bands of interest",
+    "band10": "The 10 GHz amateur band (10.0-10.5 GHz): standard size WR-90 or WR-75.",
+    "bandQo": "QO-100, downlink at 10.489 GHz: standard size WR-90 or WR-75.",
+    "productsTitle": "Products",
+    "productsTodo": "[TO BE COMPLETED: 10 GHz and QO-100 products confirmed by the owner]",
+    "shopTitle": "Order in the shop",
+    "shopBody": "Standard parts for radio amateurs will be available online, dispatched within 48 hours."
+  },
+  "contactPage": {
+    "title": "Contact & quotes",
+    "intro": "Email us, call us or send your drawing directly. We reply within 24 business hours.",
+    "hoursTitle": "Opening hours",
+    "hoursTodo": "[TO BE COMPLETED: factory opening hours]",
+    "company": "Company details"
+  },
+  "faqPage": {
+    "title": "Frequently asked questions",
+    "intro": "Sizes, files, lead times, shipping and invoicing. If your question is not here, write to us.",
+    "notFound": "Can’t find the answer?",
+    "notFoundBody": "Send us your question with your quote request."
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Signal lost.",
+    "body": "The page you are looking for does not exist or has moved. The wave stopped here.",
+    "home": "Back to home",
+    "products": "See products",
+    "quote": "Request a quote"
+  },
+  "legal": {
+    "privacy": {
+      "title": "Privacy policy",
+      "updated": "6 October 2026",
+      "sections": [
+        {
+          "h": "1. Data controller",
+          "p": [
+            "The data controller is Tecnolambro S.a.s. di Marco Pasquini & C., VAT IT08639310153, registered office at Via delle Betulle 1, 20078 San Colombano al Lambro (MI), Italy, factory at Via degli Spinedi 20, 27010 Miradolo Terme (PV), Italy.",
+            "For any privacy request: info@tecnolambro.it, phone +39 0382 75385."
+          ]
+        },
+        {
+          "h": "2. Data we collect",
+          "p": [
+            "Data entered in the quote request form: full name, company, email, phone (optional), country, VAT number (optional), description of the request, sizes and quantities.",
+            "Files uploaded with the request (drawings in PDF, DWG, DXF or STEP). Drawings may contain personal data, for example the designer’s name in the title block.",
+            "Browsing data: IP address and technical information logged by the server for security and operation. Aggregate, anonymous visit statistics without cookies (see section 7)."
+          ]
+        },
+        {
+          "h": "3. Purposes and legal basis",
+          "p": [
+            "To answer the quote request and handle pre-contractual negotiations: legal basis Art. 6(1)(b) GDPR (steps taken at the request of the data subject).",
+            "To comply with legal obligations, for example tax and accounting, if the request becomes an order: Art. 6(1)(c) GDPR.",
+            "To keep the website secure and measure its use in aggregate form: legitimate interest of the controller, Art. 6(1)(f) GDPR.",
+            "We do not use data for marketing without separate consent and we do not sell it to third parties."
+          ]
+        },
+        {
+          "h": "4. Retention",
+          "p": [
+            "Quote requests and attached files: for as long as needed to handle the request and up to 24 months after the last contact, unless they become an order.",
+            "Documents relating to orders and invoices: 10 years, as required by tax law.",
+            "Server technical logs: up to 12 months.",
+            "[TO BE COMPLETED: confirm retention periods with the owner]"
+          ]
+        },
+        {
+          "h": "5. Who receives the data",
+          "p": [
+            "Data is processed by authorised Tecnolambro staff and, only where necessary, by suppliers acting as processors: website hosting, form and email delivery service, tax advisers, couriers for shipping.",
+            "[TO BE COMPLETED: names of the hosting and form providers, any transfers outside the EU and the related safeguards]"
+          ]
+        },
+        {
+          "h": "6. Your rights",
+          "p": [
+            "You may at any time request access, rectification, erasure, restriction of processing and data portability, and object to processing based on legitimate interest (Articles 15-22 GDPR).",
+            "To exercise them, write to info@tecnolambro.it. We reply within 30 days.",
+            "You have the right to lodge a complaint with the Italian Data Protection Authority, Garante per la protezione dei dati personali (www.garanteprivacy.it), or with the authority of your EU country."
+          ]
+        },
+        {
+          "h": "7. Analytics and cookies",
+          "p": [
+            "If enabled, we use Plausible Analytics, a cookie-free analytics service that collects no personal data and does not track users across sites. Data is aggregate and anonymous.",
+            "The website uses only technical browser storage (chosen theme, intro animation already seen). Details in the cookie policy."
+          ]
+        },
+        {
+          "h": "8. Changes",
+          "p": [
+            "We may update this notice. The date of the last update is shown at the top of the page."
+          ]
+        }
+      ]
+    },
+    "terms": {
+      "title": "Terms of use",
+      "updated": "6 October 2026",
+      "sections": [
+        {
+          "h": "1. Use of the website",
+          "p": [
+            "This website presents the products and services of Tecnolambro S.a.s. di Marco Pasquini & C. (VAT IT08639310153). Technical information is indicative: the binding characteristics, sizes and performance are those confirmed in the written offer.",
+            "Tables marked \"Demo data\" contain sample values."
+          ]
+        },
+        {
+          "h": "2. Uploaded drawings and files",
+          "p": [
+            "Drawings, models and specifications you send remain your property, with all intellectual property rights.",
+            "We use them only to assess feasibility and prepare the quote and, if you order, to build the part. We do not share them with third parties, except with partners carrying out a manufacturing step on your behalf, bound by confidentiality.",
+            "On request we delete files not linked to an order. If you need a non-disclosure agreement (NDA), we sign it before you send the drawings."
+          ]
+        },
+        {
+          "h": "3. Ownership of website content",
+          "p": [
+            "Texts, technical drawings, graphics and the Tecnolambro brand are protected. They may not be copied or reused without written permission, except quoting with a link."
+          ]
+        },
+        {
+          "h": "4. Liability",
+          "p": [
+            "We take care that the content is accurate but cannot guarantee it is always complete or up to date. Before a purchase, the offer and order confirmation prevail.",
+            "The website may link to external sites, including the online shop, which have their own terms."
+          ]
+        },
+        {
+          "h": "5. Changes",
+          "p": [
+            "We may change these terms. The valid version is the one published on this page, with its update date."
+          ]
+        },
+        {
+          "h": "6. Governing law and contact",
+          "p": [
+            "Italian law applies. For questions: info@tecnolambro.it, +39 0382 75385.",
+            "[TO BE COMPLETED: competent court and reference to general terms of sale, if any]"
+          ]
+        }
+      ]
+    },
+    "cookie": {
+      "title": "Cookie policy",
+      "updated": "6 October 2026",
+      "sections": [
+        {
+          "h": "No profiling cookies",
+          "p": [
+            "The website does not use profiling cookies or third-party advertising cookies. That is why we do not show a consent banner."
+          ]
+        },
+        {
+          "h": "Technical storage",
+          "p": [
+            "We store two technical preferences in your browser: the light or dark theme you chose (localStorage) and whether you have already seen the intro animation in this session (sessionStorage). They contain no personal data and you can clear them in your browser settings."
+          ]
+        },
+        {
+          "h": "Cookie-free analytics",
+          "p": [
+            "If enabled, Plausible Analytics counts visits in aggregate form without cookies and without persistent identifiers."
+          ]
+        },
+        {
+          "h": "Online shop",
+          "p": [
+            "The online shop is a separate website with its own cookie policy."
+          ]
+        }
+      ]
+    }
+  },
+  "shop": {
+    "title": "Waveguide & component shop",
+    "intro": "Standard parts from stock: flexible waveguide, bends, twists, transitions, flanges and kits. Volume pricing and 48-hour dispatch.",
+    "demoNotice": "Demo prices and products",
+    "demoNoticeBody": "Sample codes, prices and specifications: the real ones will come from Tecnolambro. Orders are requests, no online payment.",
+    "filtersLabel": "Catalogue filters",
+    "search": "Search by code or name",
+    "searchPlaceholder": "e.g. WR-90, twist, TL-FT75",
+    "family": "Family",
+    "allFamilies": "All families",
+    "size": "Size",
+    "allSizes": "All sizes",
+    "line": "Line",
+    "allLines": "All",
+    "lines": {
+      "pro": "Professional",
+      "ham": "Ham radio"
+    },
+    "families": {
+      "rigid": "Rigid waveguide",
+      "flexible": "Flexible",
+      "bends": "Bends",
+      "twist": "Twists",
+      "transitions": "Transitions",
+      "flanges": "Flanges & kits",
+      "ham": "Ham radio"
+    },
+    "results": "{count} products",
+    "resultsOne": "1 product",
+    "empty": "No products match these filters.",
+    "reset": "Clear filters",
+    "priceFrom": "from {price} + VAT",
+    "vatExcluded": "VAT excluded",
+    "availability": {
+      "in_stock": "In stock",
+      "low_stock": "Low stock",
+      "on_order": "Made to order"
+    },
+    "availabilityHint": {
+      "in_stock": "Dispatched within 48 hours",
+      "low_stock": "Dispatched within 48 hours, limited stock",
+      "on_order": "Dispatched in about 10 working days (demo)"
+    },
+    "code": "Code",
+    "band": "Band",
+    "breadcrumb": "Shop",
+    "specsTitle": "Specifications",
+    "specs": {
+      "size": "Size",
+      "band": "Band",
+      "length": "Length",
+      "flanges": "Flanges",
+      "material": "Material",
+      "vswr": "Max VSWR",
+      "code": "Code"
+    },
+    "tiersTitle": "Volume pricing",
+    "tierRange": {
+      "t1": "1-4 pieces",
+      "t2": "5-9 pieces",
+      "t3": "10 pieces or more"
+    },
+    "tierList": "list",
+    "unitPrice": "Unit price",
+    "quantity": "Quantity",
+    "decrease": "Decrease quantity",
+    "increase": "Increase quantity",
+    "addToCart": "Add to cart",
+    "added": "Added to cart",
+    "lineTotal": "Line total",
+    "youSave": "You save {amount} with the volume discount",
+    "customVariant": "I need a custom variant",
+    "customVariantHint": "Different length, flanges or size: we will send you a quote.",
+    "related": "More parts",
+    "backToShop": "Back to the shop",
+    "shipping48": "Dispatched within 48 hours from Miradolo Terme, Italy",
+    "invoice": "Invoice with Italian, EU or export VAT treatment",
+    "quoteFallback": "Can’t find the part? Request a quote."
+  },
+  "cart": {
+    "title": "Cart",
+    "open": "Open cart",
+    "openWithCount": "Open cart, {count} items",
+    "close": "Close cart",
+    "empty": "Your cart is empty.",
+    "emptyCta": "Shop standard parts",
+    "quantityFor": "Quantity of {code}",
+    "decrease": "Decrease quantity of {code}",
+    "increase": "Increase quantity of {code}",
+    "remove": "Remove {code}",
+    "subtotal": "Subtotal",
+    "vatExcluded": "VAT excluded, shipping calculated at the next step",
+    "tiers": "5-9 pieces −8% · 10+ pieces −15% per item",
+    "discountApplied": "Volume discount −{percent}%",
+    "checkout": "Proceed to order",
+    "continue": "Continue shopping",
+    "loading": "Loading cart…",
+    "error": "The cart did not update. Please try again."
+  },
+  "checkout": {
+    "title": "Order",
+    "stepsLabel": "Order steps",
+    "step": "Step {n} of 3",
+    "step1": "Customer type",
+    "step2": "Details",
+    "step3": "Summary",
+    "customerType": "Who is ordering?",
+    "types": {
+      "business_it": "Company in Italy",
+      "private_it": "Individual in Italy",
+      "business_eu": "Company in the European Union",
+      "private_eu": "Individual in the European Union",
+      "extra_eu": "Customer outside the EU"
+    },
+    "typesHint": {
+      "business_it": "Electronic invoice with SDI code or PEC",
+      "private_it": "22% VAT included in the total",
+      "business_eu": "EU VAT number: reverse charge, 0% VAT",
+      "private_eu": "Italian VAT 22%",
+      "extra_eu": "Export: 0% VAT"
+    },
+    "next": "Continue",
+    "back": "Back",
+    "company": "Company name",
+    "name": "Full name",
+    "contactName": "Contact person",
+    "email": "Email",
+    "phone": "Phone",
+    "vat": "VAT number",
+    "vatHintIt": "11 digits, with or without the IT prefix.",
+    "vatHintEu": "With the country prefix, e.g. DE123456789. We check it on VIES.",
+    "sdi": "SDI code",
+    "pec": "PEC",
+    "sdiOrPec": "Enter the SDI code or the PEC address for the electronic invoice.",
+    "address": "Address",
+    "city": "City",
+    "postalCode": "Postal code",
+    "province": "Province",
+    "country": "Country",
+    "countryPlaceholder": "Choose the country",
+    "notes": "Notes for the order office",
+    "optional": "optional",
+    "required": "required",
+    "errors": {
+      "company": "Enter the company name.",
+      "name": "Enter your full name.",
+      "email": "Enter a valid email.",
+      "vatIt": "An Italian VAT number has 11 digits.",
+      "vatEu": "Use the format with the country prefix, e.g. DE123456789.",
+      "sdiOrPec": "An SDI code (7 characters) or a valid PEC is required.",
+      "address": "Enter the address.",
+      "city": "Enter the city.",
+      "postalCode": "Enter the postal code.",
+      "country": "Choose the country.",
+      "privacy": "We need your consent to handle the order."
+    },
+    "errorSummaryOne": "Please check the highlighted field.",
+    "errorSummaryOther": "Please check the {count} highlighted fields.",
+    "summary": "Items",
+    "subtotal": "Subtotal",
+    "shipping": "Shipping",
+    "shippingZone": {
+      "it": "Italy",
+      "eu": "European Union",
+      "world": "Rest of the world"
+    },
+    "shippingDemo": "demo rate",
+    "total": "Total",
+    "rule": {
+      "it_standard": "22% VAT: sale within Italy.",
+      "eu_private": "Italian VAT 22%: sale to an individual in another EU country (within the OSS threshold).",
+      "eu_reverse_charge": "0% VAT: intra-EU B2B supply, reverse charge (Art. 41 Italian DL 331/1993). The VAT number is checked on VIES.",
+      "export": "0% VAT: zero-rated export (Art. 8 Italian DPR 633/1972). Duties and local taxes are paid by the recipient."
+    },
+    "customer": "Customer",
+    "privacy": "I have read the <link>privacy policy</link> and agree to the processing of my data to handle the order.",
+    "submitLocal": "Send order request",
+    "submitShopify": "Go to payment",
+    "sending": "Sending…",
+    "noPayment": "No payment now: the order office confirms availability and total within 2 business hours.",
+    "sendError": "Sending failed. Please try again or email info@tecnolambro.it.",
+    "emptyCart": "Your cart is empty: add at least one item.",
+    "edit": "Edit",
+    "vatTotal": "VAT"
+  },
+  "orderSent": {
+    "title": "Order request sent",
+    "number": "Request number",
+    "body": "Thank you. We have received your request: nothing has been charged.",
+    "demo": "Demo version: the request was not actually sent. The connection to the order office goes live at launch.",
+    "nextTitle": "What happens next",
+    "next": [
+      {
+        "title": "Confirmation within 2 hours",
+        "body": "The order office checks availability and total and writes to you within 2 business hours, with payment instructions."
+      },
+      {
+        "title": "Shipping",
+        "body": "After payment, stock items leave Miradolo Terme within 48 hours."
+      },
+      {
+        "title": "Tracking",
+        "body": "You receive the tracking number by email as soon as the courier collects the parcel."
+      },
+      {
+        "title": "Invoice",
+        "body": "The invoice is sent by email (electronic invoice via SDI for Italian companies)."
+      }
+    ],
+    "backToShop": "Back to the shop",
+    "missing": "No recent request in this session."
+  }
+}
