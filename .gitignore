@@ -47,3 +47,13 @@ next-env.d.ts
 /screenshots
 /.claude
 !.env.example
+
+# spot video: file pesanti (si rigenerano con gli script)
+/video-tiktok/*/riprese/
+/video-tiktok/*/stock/*.mp4
+/video-tiktok/*/stock/frames/
+/video-tiktok/*/render/
+/video-tiktok/*/overlays/
+/video-tiktok/*/out/
+/video-tiktok/*/node_modules/
+/video-tiktok/*/3d/assets/*.hdr
