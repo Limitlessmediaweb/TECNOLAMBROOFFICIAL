@@ -34,7 +34,8 @@ export const SHOTS = {
     const p = smooth(t / dur);
     const f = opts.focus ?? [-8.5, 13.6, -3.0];
     return {
-      cam: { pos: lerp3([f[0] - 12, f[1] + 2.5, f[2] + 20], [f[0] - 6, f[1] + 1.8, f[2] + 21], p), target: f, fov: 34, aperture: 0.28, focus: f },
+      // il punto a fuoco sta nella metà bassa del fotogramma: sopra il bordo del coperchio resta il buio per il testo
+      cam: { pos: lerp3([f[0] - 16, f[1] + 3, f[2] + 32], [f[0] - 8, f[1] + 2.4, f[2] + 33], p), target: [f[0] + 1, f[1] + (opts.lift ?? 8), f[2] - 2], fov: 34, aperture: 0.3, focus: f },
       open: 108,
       screen: { gain: 2.3, grid: 0.55, sheen: 0.1 },
       screenLight: 1.0, key: keyLeft(1), rim: rimRight(1.2), dust: 0.25, env: 0.1, fog: 0.002,
