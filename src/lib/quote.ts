@@ -1,74 +1,73 @@
 /**
- * Invio della richiesta di preventivo.
- *
- * TODO(lancio): collegare un servizio di invio. Opzioni consigliate:
- *  1. Formspree: creare un form, mettere l'ID in NEXT_PUBLIC_FORMSPREE_ID e fare
- *     fetch(`https://formspree.io/f/${id}`, { method: "POST", body: formData,
- *     headers: { Accept: "application/json" } }). Supporta gli allegati nei piani a pagamento.
- *  2. Resend: aggiungere una Route Handler (src/app/api/quote/route.ts) che riceve il FormData,
- *     valida di nuovo lato server e invia a info@tecnolambro.it con l'allegato.
- *  3. Email semplice: mailto non supporta allegati, quindi è sconsigliato.
- * Finché non è collegato, la funzione simula l'invio e restituisce { demo: true }.
+ * Invio della richiesta di preventivo dal browser a /api/quote (vedi app/api/quote/route.ts).
+ * Se i file del cliente superano in totale MAX_DIRECT_BYTES (limite delle funzioni Vercel),
+ * vengono caricati prima su Vercel Blob tramite /api/quote/upload e nella mail arriva il link.
  */
+import { MAX_DIRECT_BYTES, isAcceptedFile as acceptedName, type BlobRef, type QuotePayload, type QuoteResponse } from "./quote-schema";
 
-export const ACCEPTED_EXTENSIONS = [".pdf", ".dwg", ".dxf", ".step", ".stp"] as const;
-export const ACCEPTED_MIME = [
-  "application/pdf",
-  "application/acad",
-  "application/x-acad",
-  "application/dwg",
-  "image/vnd.dwg",
-  "application/dxf",
-  "image/vnd.dxf",
-  "application/step",
-  "model/step",
-] as const;
-export const MAX_FILE_BYTES = 20 * 1024 * 1024;
+export { ACCEPTED_EXTENSIONS, MAX_FILE_BYTES, formatBytes } from "./quote-schema";
 
-export type QuoteData = {
-  name: string;
-  company: string;
-  email: string;
-  phone?: string;
-  country: string;
-  vat?: string;
-  family: string;
-  size?: string;
-  frequency?: string;
-  quantity: number;
-  message: string;
-  file?: File | null;
-  locale: string;
-};
+export type SubmitReason = "network" | "tooLarge" | "notConfigured" | "rateLimited" | "invalid" | "server";
+export type SubmitResult = { ok: true; number: string } | { ok: false; reason: SubmitReason };
 
-export type QuoteResult = { ok: true; demo: boolean } | { ok: false; error: string };
-
-/** Il tipo MIME di DWG/DXF/STEP è poco affidabile nei browser: decide l'estensione. */
 export function isAcceptedFile(file: File): boolean {
-  const name = file.name.toLowerCase();
-  return ACCEPTED_EXTENSIONS.some((ext) => name.endsWith(ext));
+  return acceptedName(file.name);
 }
 
-export function formatBytes(bytes: number, locale: string): string {
-  const mb = bytes / (1024 * 1024);
-  const fmt = new Intl.NumberFormat(locale === "it" ? "it-IT" : "en-GB", { maximumFractionDigits: 1 });
-  return mb >= 1 ? `${fmt.format(mb)} MB` : `${fmt.format(bytes / 1024)} KB`;
-}
-
-export async function submitQuote(data: QuoteData): Promise<QuoteResult> {
-  const body = new FormData();
-  for (const [key, value] of Object.entries(data)) {
-    if (value === undefined || value === null || value === "") continue;
-    body.append(key, value instanceof File ? value : String(value));
+async function uploadToBlob(files: File[], onProgress?: (state: "uploading") => void): Promise<BlobRef[] | null> {
+  onProgress?.("uploading");
+  try {
+    const { upload } = await import("@vercel/blob/client");
+    const refs: BlobRef[] = [];
+    for (const f of files) {
+      const res = await upload(`richieste/${f.name}`, f, { access: "public", handleUploadUrl: "/api/quote/upload" });
+      refs.push({ name: f.name, url: res.url, size: f.size });
+    }
+    return refs;
+  } catch {
+    return null;
   }
+}
 
-  // TODO(lancio): sostituire la simulazione con la chiamata reale, per esempio:
-  // const res = await fetch(`https://formspree.io/f/${process.env.NEXT_PUBLIC_FORMSPREE_ID}`, {
-  //   method: "POST", body, headers: { Accept: "application/json" },
-  // });
-  // if (!res.ok) return { ok: false, error: `HTTP ${res.status}` };
-  // return { ok: true, demo: false };
-  void body;
-  await new Promise((resolve) => setTimeout(resolve, 900));
-  return { ok: true, demo: true };
+export async function submitQuote(
+  payload: QuotePayload,
+  files: File[],
+  drawings: File[] = [],
+  onProgress?: (state: "uploading" | "sending") => void,
+): Promise<SubmitResult> {
+  const drawingBytes = drawings.reduce((s, f) => s + f.size, 0);
+  const fileBytes = files.reduce((s, f) => s + f.size, 0);
+  let direct = files;
+  let blobs: BlobRef[] = [];
+  let directDrawings = drawings;
+  if (fileBytes + drawingBytes > MAX_DIRECT_BYTES) {
+    // prima i file del cliente; se non basta, anche i disegni generati
+    const toUpload = drawingBytes > MAX_DIRECT_BYTES || fileBytes === 0 ? [...files, ...drawings] : files;
+    const refs = await uploadToBlob(toUpload, onProgress);
+    if (!refs) return { ok: false, reason: "tooLarge" };
+    blobs = refs;
+    direct = [];
+    if (toUpload.length > files.length) directDrawings = [];
+  }
+  onProgress?.("sending");
+  const body = new FormData();
+  body.append("payload", JSON.stringify({ ...payload, blobs }));
+  for (const f of direct) body.append("files", f, f.name);
+  for (const f of directDrawings) body.append("drawings", f, f.name);
+  let res: Response;
+  try {
+    res = await fetch("/api/quote", { method: "POST", body });
+  } catch {
+    return { ok: false, reason: "network" };
+  }
+  let data: QuoteResponse | null = null;
+  try {
+    data = (await res.json()) as QuoteResponse;
+  } catch {
+    data = null;
+  }
+  if (res.ok && data?.ok) return { ok: true, number: data.number };
+  if (res.status === 413) return { ok: false, reason: "tooLarge" };
+  const error = data && !data.ok ? data.error : "server";
+  return { ok: false, reason: error };
 }

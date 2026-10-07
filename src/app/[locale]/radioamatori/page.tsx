@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { Radio, Satellite } from "lucide-react";
+import { Radio, SlidersHorizontal } from "lucide-react";
 import type { Locale } from "@/i18n/routing";
 import { pageMetadata, breadcrumbsFor } from "@/lib/page";
-import { Breadcrumbs, PageHeader, WithTodo } from "@/components/ui/Bits";
+import { Breadcrumbs, PageHeader } from "@/components/ui/Bits";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { ShopLink } from "@/components/ui/TrackedLink";
 import { SplitReveal } from "@/components/motion/SplitReveal";
@@ -16,6 +16,7 @@ export async function generateMetadata({ params }: PageProps<"/[locale]/radioama
   return pageMetadata(locale, "ham", "/radioamatori");
 }
 
+/** Guide d'onda per i 10 GHz: porta al configuratore con WR-90 o WR-75 già scelte. */
 export default async function HamPage({ params }: PageProps<"/[locale]/radioamatori">) {
   const { locale } = await params;
   setRequestLocale(locale);
@@ -35,8 +36,8 @@ export default async function HamPage({ params }: PageProps<"/[locale]/radioamat
         intro={<p>{t("intro")}</p>}
       >
         <MagneticButton>
-          <ShopLink source="ham_header" query={{ linea: "ham" }} className="btn btn-primary">
-            {nav("shop")}
+          <ShopLink source="ham_header" query={{ tipo: "twistable", misura: "WR-90" }} hash="configura" className="btn btn-primary">
+            {t("configureWr90")}
           </ShopLink>
         </MagneticButton>
       </PageHeader>
@@ -52,29 +53,28 @@ export default async function HamPage({ params }: PageProps<"/[locale]/radioamat
               <p className="text-lead">{t("band10")}</p>
             </li>
             <li className="flex flex-col gap-4 border border-line bg-surface p-7">
-              <Satellite aria-hidden="true" className="size-7 text-accent" strokeWidth={1.5} />
-              <p className="text-lead">{t("bandQo")}</p>
+              <SlidersHorizontal aria-hidden="true" className="size-7 text-accent" strokeWidth={1.5} />
+              <p className="text-lead">{t("bandCustom")}</p>
             </li>
           </Stagger>
         </div>
       </section>
 
-      <section className="border-t border-line" aria-labelledby="ham-products">
-        <div className="container-site grid gap-4 py-16 md:grid-cols-2">
-          <div className="flex flex-col gap-4 border border-dashed border-line-strong p-7">
-            <h2 id="ham-products" className="text-display-m font-bold">
-              {t("productsTitle")}
-            </h2>
-            <p>
-              <WithTodo text={t("productsTodo")} />
-            </p>
-          </div>
+      <section className="border-t border-line" aria-labelledby="ham-configure">
+        <div className="container-site py-16">
           <div className="flex flex-col gap-4 border border-accent/50 bg-[color-mix(in_srgb,var(--c-accent)_9%,var(--c-bg))] p-7">
-            <h2 className="text-display-m font-bold">{t("shopTitle")}</h2>
-            <p className="text-muted">{t("shopBody")}</p>
-            <ShopLink source="ham_bottom" query={{ linea: "ham" }} className="btn btn-primary mt-auto self-start">
-              {nav("shop")}
-            </ShopLink>
+            <h2 id="ham-configure" className="text-display-m font-bold">
+              {t("shopTitle")}
+            </h2>
+            <p className="max-w-[60ch] text-muted">{t("shopBody")}</p>
+            <div className="mt-2 flex flex-wrap gap-3">
+              <ShopLink source="ham_wr90" query={{ tipo: "twistable", misura: "WR-90" }} hash="configura" className="btn btn-primary">
+                {t("configureWr90")}
+              </ShopLink>
+              <ShopLink source="ham_wr75" query={{ tipo: "twistable", misura: "WR-75" }} hash="configura" className="btn btn-ghost">
+                {t("configureWr75")}
+              </ShopLink>
+            </div>
           </div>
         </div>
       </section>

@@ -37,22 +37,25 @@ export async function QuoteLink({
   );
 }
 
-/** Link allo shop interno (/shop, /en/shop), con evento cta_shop_click. */
+/** Link al configuratore (/shop, /en/shop), con evento cta_shop_click. */
 export async function ShopLink({
   source,
   className,
   children,
   showIcon = true,
   query,
+  hash,
 }: {
   source: string;
   className?: string;
   children: ReactNode;
   showIcon?: boolean;
-  /** filtri iniziali del catalogo, es. { linea: "ham" } */
+  /** precompilazione del configuratore, es. { tipo: "twistable", misura: "WR-90" } */
   query?: Record<string, string>;
+  /** ancora nella pagina, es. "configura" */
+  hash?: string;
 }) {
-  const path = await localizedHref(query ? { pathname: "/shop", query } : "/shop");
+  const path = await localizedHref(query || hash ? { pathname: "/shop", query, hash } : "/shop");
   return (
     <NextLink href={path} className={cn(className)} data-track="cta_shop_click" data-source={source}>
       {children}

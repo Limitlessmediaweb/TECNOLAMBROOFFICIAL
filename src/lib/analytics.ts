@@ -9,10 +9,14 @@ export type AnalyticsEvent =
   | "quote_submit"
   | "band_finder_use"
   | "language_switch"
-  | "view_product"
-  | "add_to_cart"
-  | "begin_checkout"
-  | "order_request_submit";
+  | "configurator_step"
+  | "add_to_request"
+  | "view_3d"
+  | "download_drawing_pdf"
+  | "download_stl"
+  | "download_glb"
+  | "download_datasheet"
+  | "request_submit";
 
 type Props = Record<string, string | number | boolean>;
 

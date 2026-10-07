@@ -18,13 +18,12 @@ Script utili:
 | Script | Cosa fa |
 |---|---|
 | `npm run lint` | ESLint (config Next) |
-| `npm run build` | build di produzione (70 pagine statiche IT/EN, shop compreso) |
+| `npm run build` | build di produzione (44 pagine statiche IT/EN più le rotte `/api/quote`) |
 | `npm run check:alt` | fallisce se trova `<img>`/`<Image>` senza `alt` nei sorgenti o nell'HTML generato |
-| `npm run verify` | lint + test commerce + build + check:alt |
-| `npm run test:commerce` | test del provider Shopify con dati finti (`node --test`) |
-| `BASE_URL=http://localhost:3000 npm run test:shop` | Playwright: catalogo → filtro → scheda → 5 pezzi → checkout "azienda UE" → conferma, IT/EN × 390/1440, screenshot in `screenshots/shop/` |
+| `npm run verify` | lint + build + check:alt |
+| `BASE_URL=http://localhost:3000 npm run test:request` | Playwright: tabelle → "Configura" → configuratore → lunghezza e flange → 3D → PDF e STL → richiesta con 2 pezzi, note e 2 file → invio simulato → conferma (più invio fallito: dati conservati), IT/EN × 390/1440, screenshot in `screenshots/v2/` |
 | `BASE_URL=http://localhost:3000 npm run check:links` | segue tutti i link interni da `/` e `/en` e fallisce se uno porta a una 404 |
-| `BASE_URL=http://localhost:3000 npm run check:a11y` | axe-core (WCAG 2.1 AA) in tema chiaro e scuro, con carrello aperto e checkout |
+| `BASE_URL=http://localhost:3000 npm run check:a11y` | axe-core (WCAG 2.1 AA) in tema chiaro e scuro: pagine, tabelle con filtro, configuratore, vista 3D, richiesta con errori |
 | `npm run colors:logo` | estrae i colori reali da `public/brand/logo.png` |
 | `BASE_URL=http://localhost:3000 npm run screenshots` | screenshot Playwright di tutte le pagine, 390×844 e 1440×900, IT ed EN, in `screenshots/` |
 | `BASE_URL=http://localhost:3000 node scripts/lighthouse.mjs /` | Lighthouse mobile, report in `lighthouse/` |
@@ -39,9 +38,13 @@ Script utili:
 | `NEXT_PUBLIC_ALLOW_INDEXING` | `false` | `false` = `noindex` globale + robots.txt `Disallow: /`. **Mettere a `true` solo al lancio.** |
 | `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` | vuota | se vuota non viene caricato nessuno script di analytics |
 | `NEXT_PUBLIC_LIMITLESS_URL` | `https://www.limitlessmedia.it` | credito nel footer |
-| `NEXT_PUBLIC_DEMO` | `true` | badge "Versione demo", segnaposto `[DA COMPLETARE]` in giallo e avviso "Prezzi e prodotti dimostrativi" nello shop |
-| `SHOPIFY_STORE_DOMAIN` | vuota | con il token sotto attiva il provider Shopify (solo server) |
-| `SHOPIFY_STOREFRONT_TOKEN` | vuota | token della Storefront API (solo server, mai `NEXT_PUBLIC_`) |
+| `NEXT_PUBLIC_DEMO` | `true` | badge "Versione demo" e segnaposto `[DA COMPLETARE]` in giallo |
+| `QUOTE_TO_EMAIL` | `riccardo.pasquini2k8@gmail.com` | casella che riceve le richieste di preventivo |
+| `QUOTE_FROM_EMAIL` | `onboarding@resend.dev` (Resend) / `SMTP_USER` | mittente; con Resend un indirizzo del dominio verificato |
+| `RESEND_API_KEY` | vuota | invio con Resend (consigliato). Solo server |
+| `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS` | vuote, porta 587 | invio SMTP con nodemailer, usato solo se manca `RESEND_API_KEY` |
+| `QUOTE_WEBHOOK_URL` | vuota | facoltativa: la stessa richiesta in JSON al futuro gestionale |
+| `BLOB_READ_WRITE_TOKEN` | vuota | facoltativa: file oltre 4 MB in totale caricati su Vercel Blob (link nella mail) |
 
 ## Colori del logo
 
@@ -72,50 +75,117 @@ Token derivati (in [globals.css](src/app/globals.css), copia per i contesti senz
 
 I neutri sono tutti tinti sulla tonalità 207-210 del blu del logo. L'**ottone è stato eliminato**: con il blu e grigio del logo non si accordava. Il campo TE10 disegna E > 0 nel blu del logo ed E < 0 nel grigio del logo.
 
-## Shop (`/shop`, `/en/shop`)
+## Modifiche v2 (riunione del 7 ottobre 2026)
 
-- **Catalogo** con filtri per famiglia (guida rigida, flessibile, curve, twist, transizioni, flange e kit, radioamatori), misura WR e linea (professionale / radioamatori), più ricerca per codice o nome. I filtri stanno nell'URL (`?famiglia=&misura=&linea=&q=`): dalla pagina Radioamatori lo shop si apre già filtrato.
-- **Scheda** `/shop/[handle]`: disegno SVG del pezzo con la sua misura, tabella tecnica, prezzi per quantità (1-4 listino, 5-9 −8%, 10+ −15%), quantità con etichette, "Aggiungi al carrello", "Mi serve una variante su misura" (apre il preventivo con misura, famiglia e codice già compilati). JSON-LD `Product` + `Offer`.
-- **Carrello** in un `<dialog>` laterale (focus intrappolato, Esc, sfondo inerte), aperto dal pulsante con il contatore nell'header, salvato nel `localStorage`.
-- **Ordine** in 3 passi (`/shop/ordine`, `/en/shop/order`):
-  1. tipo di cliente;
-  2. dati, con P.IVA per le aziende e SDI o PEC solo per le aziende italiane, ed errori accanto al campo;
-  3. riepilogo con spedizione per zona (12 / 25 / 45 €, dimostrativi) e IVA con la regola applicata spiegata:
+Principio del titolare: **niente acquisto diretto**, ogni ordine è una richiesta di preventivo. Il piano è in [PLAN.md](PLAN.md) (fase 3).
 
-  | Cliente | IVA |
-  |---|---|
-  | Azienda e privato Italia | 22% |
-  | Privato UE | 22% |
-  | Azienda UE | 0%, inversione contabile |
-  | Fuori UE | 0%, export |
+### Testi e dati
+- Slogan "Guidiamo le microonde" senza anno; **fondazione 1987** ovunque: intro, hero, storia, JSON-LD `foundingDate`.
+- Tolti Siemens, "in casa", "sotto lo stesso tetto". Al loro posto: "In collaborazione con le più grandi aziende di telecomunicazioni" e "Progettiamo, costruiamo e collaudiamo i nostri componenti".
+- Contatti: cellulare **+39 375 577 1084** per primo, fisso +39 0382 75385, PEC **tecnolambrosnc@pec.it** (contatti, footer, JSON-LD).
+- Altre formule:
+  - "Preventivo entro 24 ore" ovunque.
+  - "Prezzi su richiesta: ogni preventivo è personalizzato".
+  - "Materiale disponibile a magazzino: spedizione in 48 ore".
+  - "Spedizione in tutto il mondo: modalità e costi indicati nel preventivo".
+- Come lavoriamo: progettazione → produzione → **Trattamenti** (un solo blocco) → **Collaudo finale al 100%**.
 
-  Con il provider locale non si incassa: parte una **richiesta d'ordine** ([lib/order.ts](src/lib/order.ts), da collegare) e si arriva alla pagina di conferma con i prossimi passi.
-- **Analytics**: `view_product`, `add_to_cart`, `begin_checkout`, `order_request_submit` (nessun dato personale).
-- **SEO**: title `Shop guide d’onda e componenti | Tecnolambro` e `[Nome] [WR] | Tecnolambro Shop`; catalogo e schede in sitemap; ordine e conferma `noindex`.
+### Famiglie e redirect
+- Le famiglie stanno in [src/data/families.ts](src/data/families.ts):
+  - guida d'onda flessibile **twistabile**;
+  - guida d'onda flessibile **seamless**;
+  - **curve, twist e disassati** (su richiesta, senza tabella);
+  - una quarta famiglia nascosta (`hidden: true`), `[FAMIGLIA DA DEFINIRE]`.
 
-### Architettura commerce
+  Per aggiungerne una basta una voce lì e i testi in `products.items`.
+- Tolti illuminatori, il prodotto QO-100, elettroformati e la parola "rigida". Tolte anche transizioni e flange/kit: erano famiglie con dati dimostrativi, non pezzi "su richiesta".
+- Redirect 308 in [next.config.ts](next.config.ts), dalle famiglie vecchie, dalle 12 schede del vecchio shop e da `/shop/ordine`.
+- Radioamatori: la pagina resta, senza illuminatore e QO-100. Porta al configuratore con WR-90 o WR-75 già scelte.
 
-```
-src/lib/commerce/
-  types.ts      Product, Variant, Cart, CartLine, CheckoutResult
-  provider.ts   interfaccia: listProducts, getProduct, createCart, getCart, addLine, updateLine, removeLine, checkout
-  local.ts      dati di src/data/products.ts + carrello nel localStorage
-  shopify.ts    Storefront API (prodotti, carrello, checkoutUrl) — pronto, con TODO
-  index.ts      UNICO punto di scelta: Shopify se ci sono SHOPIFY_STORE_DOMAIN e SHOPIFY_STOREFRONT_TOKEN
-  pricing.ts    scaglioni di prezzo · tax.ts  zone di spedizione e regole IVA
-src/app/actions/cart.ts   server action del carrello per Shopify (il token resta sul server)
-```
+### Tabelle tecniche (`/prodotti/tabelle`, `/en/products/tables`, e dentro ogni famiglia)
+- Dati tipizzati in [src/data/waveguides.ts](src/data/waveguides.ts): twistabile, seamless, dimensioni TLFX.
+- **Da verificare con l'ufficio tecnico Tecnolambro:** i valori sono trascritti a mano da un'immagine a bassa risoluzione. In `public/brand/` non c'è l'originale da confrontare.
+- Struttura delle tabelle:
+  - tab accessibili;
+  - colonna della misura fissa (WR in evidenza, sotto IEC R e WG);
+  - intestazioni raggruppate con le unità;
+  - numeri a destra in `tabular-nums`, virgola in IT e punto in EN;
+  - "—" per i valori mancanti, "Su richiesta" per seamless WR-34 e WR-159.
+- Funzioni:
+  - filtro in GHz che evidenzia le misure;
+  - "Configura" su ogni riga;
+  - scheda tecnica PDF generata dai dati;
+  - disegno quotato SVG nel tab Dimensioni.
+- Su telefono la tabella scorre dentro il suo contenitore: la pagina non scorre mai di lato (verificato dal test).
 
-Le pagine dipendono solo da `CommerceProvider`: per passare a Shopify non si tocca nessuna pagina.
+### Configura il tuo pezzo (`/shop`) e La tua richiesta (`/shop/richiesta`)
+- **Prodotti pronti**: le 14 misure × twistabile e seamless, con filtri tipo, misura e frequenza. Il badge "Disponibile a magazzino" si attiva in `STOCK` (`families.ts`); di default non c'è su nessuna misura.
+- **Componi il pezzo**, a passi:
+  1. tipo;
+  2. misura dall'elenco o "dimmi la frequenza";
+  3. lunghezza con scorciatoie 300/600/1000, avviso oltre il limite della tabella;
+  4. flange A e B da [src/data/flanges.ts](src/data/flanges.ts) `[DA CONFERMARE]`;
+  5. opzioni `[DA CONFERMARE]`, nascoste finché non vengono confermate.
+- **Riepilogo** sempre visibile (a destra su desktop, sotto su telefono): codice leggibile `TLFX-100 · TWIST · L600 · UBR100/PBR100` e dati elettrici della misura.
+- **Disegno 2D**:
+  - si genera in [src/lib/drawing.ts](src/lib/drawing.ts), con quote reali dalla tabella e la scritta "Disegno indicativo – il disegno definitivo arriva con il preventivo";
+  - cartiglio con logo, codice, materiale e data.
+- **Vista 3D** ([src/lib/waveguide3d.ts](src/lib/waveguide3d.ts)): guida corrugata in ottone con flange, ruotabile con mouse e dita. Three.js arriva solo con l'**import dinamico** al clic su "Vedi in 3D" (verificato: non è tra i JS iniziali di `/shop`).
+- **Download** del disegno in PDF (pdf-lib) e del modello 3D in STL e GLB (exporter di Three.js). Si generano nel browser, con il codice nel nome del file. Ogni download ha il suo evento analytics.
+- **La tua richiesta**:
+  - lista nel `localStorage`, con quantità e note per pezzo e la voce "pezzo su disegno";
+  - file STEP/STP, IGES/IGS, STL, PDF, DWG, DXF, più di uno, fino a 20 MB ciascuno;
+  - dati del cliente, salvati come bozza: non si perdono se l'invio fallisce;
+  - all'invio si allega anche il PDF del disegno di ogni pezzo configurato.
+- **Conferma**: "Richiesta ricevuta. Ti rispondiamo con il preventivo entro 24 ore.", con il numero `TL-AAAA-NNNNNN`. Senza database il numero si ricava da data e ora, non è progressivo.
+- Tolti prezzi, sconti, IVA, costi di spedizione, pagamento, carrello e il layer `lib/commerce` con Shopify.
 
-### Collegare Shopify
+## Invio delle richieste di preventivo (email)
 
-1. Creare lo store e un'app con accesso alla **Storefront API**; impostare `SHOPIFY_STORE_DOMAIN` (es. `tecnolambro.myshopify.com`) e `SHOPIFY_STOREFRONT_TOKEN` sul server.
-2. Creare i metafield prodotto `tecnolambro.*`: `code`, `family`, `line`, `drawing`, `wr`, `band_min`, `band_max`, `length`, `flanges`, `material`, `vswr`, `demo`. Poi importare i prodotti con gli stessi `handle` di `src/data/products.ts`.
-3. Traduzioni EN con Translate & Adapt (il provider usa `@inContext(language:)`).
-4. Sconti per quantità con "volume pricing" (Shopify B2B) o con uno sconto automatico (5-9 pz −8%, 10+ −15%).
-5. IVA, inversione contabile per aziende UE (app di validazione P.IVA), export e spedizioni si configurano in Shopify: il checkout ospitato li applica e il pulsante finale porta al `checkoutUrl`.
-6. Verificare `API_VERSION` in `shopify.ts` e lanciare `npm run test:commerce`.
+La rotta [src/app/api/quote/route.ts](src/app/api/quote/route.ts) riceve configuratore, "La tua richiesta" e modulo contatti (stessa rotta). Cosa fa:
+
+- valida di nuovo tutto sul server, con trappola anti-spam (campo `website`) e un limite di 5 richieste ogni 10 minuti per IP (in memoria, per singola istanza);
+- manda all'ufficio un'email HTML leggibile con pezzi, codici, quantità, note, dati del cliente e allegati (file del cliente e PDF dei disegni);
+- manda al cliente la conferma nella sua lingua;
+- se è impostata `QUOTE_WEBHOOK_URL`, manda la stessa richiesta in JSON.
+
+**Risposte della rotta** (verificate):
+
+| Caso | Risposta |
+|---|---|
+| Richiesta valida | 200 con il numero |
+| Dati non validi | 400 con i campi errati |
+| Tipo di file non accettato | 400 |
+| Corpo oltre 4,5 MB | 413 |
+| Troppe richieste | 429 |
+| Nessun servizio email configurato | 503 `notConfigured` |
+
+In tutti i casi di errore il sito mostra il motivo e **non perde i dati inseriti**.
+
+**Sicurezza (dopo la revisione del codice):**
+- La conferma al cliente contiene solo codici e quantità, mai le note: il modulo non serve per mandare testi a indirizzi di terzi.
+- Nella mail all'ufficio finiscono solo i link del proprio store Blob, nella cartella `richieste/`.
+- Il token di caricamento si concede solo alle pagine del sito (controllo dell'Origin), con un massimo di 20 file per IP ogni ora.
+- Il limite di frequenza è in memoria, quindi vale per singola istanza Vercel. Se arrivasse spam, aggiungere un limite condiviso (es. Upstash Redis dal Marketplace di Vercel) o Cloudflare Turnstile.
+- Se `QUOTE_TO_EMAIL` non è impostata, le richieste vanno all'indirizzo indicato nel brief (`riccardo.pasquini2k8@gmail.com`). Al lancio impostarla esplicitamente (es. info@tecnolambro.it).
+
+### Attivare Resend (consigliato)
+1. Creare un account su [resend.com](https://resend.com).
+2. **Domains → Add Domain**: aggiungere `tecnolambro.com` (o un sottodominio, es. `mail.tecnolambro.com`) e inserire nel DNS i record SPF, DKIM e MX indicati da Resend. Attendere lo stato "Verified".
+3. **API Keys → Create API Key**, permesso "Sending access", limitata al dominio. Copiare la chiave (`re_…`): si vede una volta sola.
+4. Su Vercel: **Project → Settings → Environment Variables**, ambiente *Production* (e *Preview* per provarla). Aggiungere:
+   - `RESEND_API_KEY` = la chiave;
+   - `QUOTE_TO_EMAIL` = `riccardo.pasquini2k8@gmail.com`;
+   - `QUOTE_FROM_EMAIL` = `Tecnolambro <preventivi@tecnolambro.com>` (un indirizzo del dominio verificato).
+5. **Deployments → Redeploy** (le variabili valgono dal deploy successivo). Provare una richiesta: in **Resend → Emails** si vede l'invio.
+
+Senza dominio verificato Resend manda solo dall'indirizzo di prova `onboarding@resend.dev` e solo alla casella del proprietario dell'account: va bene per un test, non per il lancio.
+
+### In alternativa: SMTP
+Impostare `SMTP_HOST`, `SMTP_PORT` (587 STARTTLS, 465 SSL), `SMTP_USER` e `SMTP_PASS` (es. la casella aziendale o il provider della PEC) e lasciare vuota `RESEND_API_KEY`.
+
+### File grandi
+Le funzioni Vercel accettano al massimo **4,5 MB** per richiesta. Fino a 4 MB complessivi i file viaggiano come allegati. Oltre, il browser li carica su **Vercel Blob** e nella mail arriva il link. Per attivarlo: Vercel → **Storage → Create → Blob** e collegarlo al progetto, che imposta `BLOB_READ_WRITE_TOKEN`. Senza Blob il sito spiega di mandare i file per email citando la richiesta.
 
 ## Struttura
 
@@ -132,10 +202,13 @@ src/
                             FaqAccordion, SignalLost
   components/sections/      sezioni della home e blocchi riusati
   components/ui/            Header, Footer, LanguageSwitcher, ThemeToggle, MotionToggle, JsonLd, Bits…
-  data/                     bands.ts (WR standard), products.ts, faq.ts, todo.ts, site.ts
-  lib/                      analytics.ts (track), quote.ts (invio form), order.ts (richiesta d'ordine), seo.ts, motion.ts, gsap-core.ts
-  lib/commerce/             livello commerce (vedi "Shop")
-  components/shop/          catalogo, scheda, carrello, checkout
+  app/api/quote/            invio delle richieste (route.ts) e token per Vercel Blob (upload/route.ts)
+  data/                     waveguides.ts (tabelle), families.ts, flanges.ts, faq.ts, todo.ts, site.ts, brand.ts
+  lib/                      analytics.ts, quote*.ts (invio, validazione, email), request.ts (La tua richiesta),
+                            part.ts (codice del pezzo), drawing.ts (disegno SVG), pdf.ts, waveguide3d.ts, seo.ts, motion.ts
+  components/configurator/  Configurator, ReadyCatalog, TechDrawing, Viewer3D
+  components/request/       RequestForm, RequestButton, RequestNumber, AddCustomButton
+  components/tables/        SpecTables
 messages/{it,en}.json       tutti i testi
 public/brand/logo.png       logo originale
 ```
@@ -147,36 +220,23 @@ L'elenco completo e aggiornato è in [src/data/todo.ts](src/data/todo.ts). Ogni 
 1. **Certificazioni**: ISO 9001 e altre (ente, numero, scadenza, PDF), pagina `/qualita` e home.
 2. **Controlli di laboratorio**: strumenti e parametri misurati.
 3. **Foto reali** dall'officina di Miradolo Terme (home, `/azienda`).
-4. **Dati tecnici reali** delle tabelle prodotto (ora "Dati dimostrativi"): misure, flange, VSWR, lunghezze.
+4. **Tabelle tecniche**: verifica dei valori trascritti ([src/data/waveguides.ts](src/data/waveguides.ts)); **flange** reali per misura e **opzioni** del configuratore ([src/data/flanges.ts](src/data/flanges.ts)); misure **a magazzino** (`STOCK`); la **quarta famiglia**.
 5. **FAQ**: tempi di consegna, quantità minime, spedizioni UE ed extra UE (Incoterms, dogana), materiali e finiture, documentazione di collaudo.
-6. **Radioamatori**: prodotti 10 GHz / QO-100 confermati dal titolare.
-7. **Storia**: eventuali date successive al 1986 da pubblicare.
-8. **Legale**: revisione di privacy, termini e cookie (sono bozze), tempi di conservazione, nomi dei fornitori (hosting, invio form), foro competente.
-9. **Form**: servizio di invio e casella di destinazione (vedi sotto).
-10. **Shop**: codici, prezzi, dati tecnici e disponibilità reali dei 12 pezzi; tariffe di spedizione reali; canale per le richieste d'ordine (`lib/order.ts`); eventuale store Shopify.
-11. **Orari** della sede operativa (pagina contatti e JSON-LD `LocalBusiness`).
-
-## Collegare il form preventivo
-
-Il form ([QuoteForm.tsx](src/components/domain/QuoteForm.tsx)) valida tutto lato client (campi obbligatori, email, quantità, frequenza 1-110 GHz, file PDF/DWG/DXF/STEP ≤ 20 MB, consenso privacy), mostra gli errori accanto al campo e chiama `submitQuote()` in [src/lib/quote.ts](src/lib/quote.ts). Oggi l'invio è **simulato** (in demo compare un avviso). Per attivarlo:
-
-- **Formspree** (più rapido): creare il form, aggiungere `NEXT_PUBLIC_FORMSPREE_ID` e scommentare la `fetch` nel `TODO` di `quote.ts`. Gli allegati richiedono un piano a pagamento.
-- **Resend** (consigliato per gli allegati): creare `src/app/api/quote/route.ts`, rifare la validazione lato server (tipo e dimensione del file), inviare a info@tecnolambro.it con l'allegato. Serve `RESEND_API_KEY` (variabile **non** pubblica).
-- Contiene già un campo trappola anti-spam (`website`). Al lancio valutare anche un limite di richieste lato server.
-
-L'evento analytics `quote_submit` parte solo dopo un invio riuscito, con proprietà non personali (famiglia, misura, presenza di un file).
+6. **Spedizioni**: corriere, Incoterms, documenti doganali.
+7. **Storia**: eventuali date successive al 1987 da pubblicare.
+8. **Legale**: revisione di privacy, termini e cookie (sono bozze), tempi di conservazione, nomi dei fornitori (Vercel, Resend), foro competente.
+9. **Email**: chiave Resend (o SMTP) e dominio verificato su Vercel (vedi "Invio delle richieste").
+10. **Orari** della sede operativa (pagina contatti e JSON-LD `LocalBusiness`).
 
 ## Decisioni
 
 - **Cartella nuova, design da zero.** Su richiesta del cliente non sono state usate come riferimento né le versioni precedenti del sito né l'anteprima "Tecnolambro Premium". Dai materiali esistenti è stato preso solo il logo.
 - **Palette dal logo (fase 2).** Colori estratti con uno script e non scelti a occhio (vedi "Colori del logo"). Primario il blu `#0070bd`, secondario il grigio `#a1adb7`, un solo accento per le CTA (`#0066cc`, il blu del logo più saturo, AA). Ottone eliminato. **Tema chiaro predefinito**; lo scuro usa gli stessi colori schiariti. Il rosso e verde del tricolore restano solo nel logo, per non avere due accenti.
 - **Nessun colore scritto a mano.** Componenti, intro, canvas TE10, SVG e immagine Open Graph usano i token. I contesti senza CSS (`theme-color`, OG image, fallback del canvas) leggono [src/data/brand.ts](src/data/brand.ts), allineato a `globals.css`. Verifica: nessun esadecimale né classe della palette Tailwind fuori da `globals.css` e `brand.ts`.
-- **Shop dentro il sito.** Rimossi `shop.tecnolambro.com` e `NEXT_PUBLIC_SHOP_URL`; tutte le CTA "Vai allo shop" portano a `/shop`. Il codice del carrello si carica solo al primo uso: all'avvio l'header legge solo il numero di pezzi salvato, per non pesare sulle prestazioni.
-- **Prezzi a scaglioni ricalcolati dal catalogo.** Nel carrello si salvano solo variante e quantità; prezzi e nomi si ricalcolano sempre dai dati, così un listino aggiornato vale anche per i carrelli aperti.
-- **IVA privati UE al 22%** come da brief (vendita a distanza sotto la soglia OSS di 10.000 €/anno). Oltre la soglia va applicata l'aliquota del paese del cliente: da verificare con il commercialista.
+- **Shop → richiesta di preventivo (v2).** Fase 2 aveva uno shop con prezzi, carrello e checkout; dopo la riunione del 7 ottobre ogni ordine è una richiesta di preventivo: `/shop` è il configuratore, la lista "La tua richiesta" si salva nel browser e il codice 3D/PDF si carica solo quando serve.
 - **`frontend-design` non installata**: al suo posto si usano `design-taste-frontend`, `design:design-system` (audit dei token) e `design:accessibility-review` (axe-core su chiaro e scuro).
 - **Logo nel footer**: il PNG ha lo sfondo bianco, quindi sta su una targhetta chiara (`--c-plate`) leggibile in entrambi i temi.
-- **Tipografia.** Archivo variabile con asse `wdth` (122-125% per i titoli, 62% per l'accento "dal 1986."), IBM Plex Sans per il testo, IBM Plex Mono con cifre tabulari per i dati. Scala fluida con `clamp()` in `@theme`.
+- **Tipografia.** Archivo variabile con asse `wdth` (122-125% per i titoli, 62% per gli accenti), IBM Plex Sans per il testo, IBM Plex Mono con cifre tabulari per i dati. Scala fluida con `clamp()` in `@theme`.
 - **Raggi.** Tutto squadrato (2 px, stile disegno tecnico), solo i bottoni a pillola.
 - **i18n.** next-intl con `localePrefix: "as-needed"` (italiano su `/`, inglese su `/en`), slug tradotti (`/prodotti/rigida` ↔ `/en/products/rigid`), nessun redirect automatico in base alla lingua del browser (URL stabili per SEO). Gli `hreflang` li generiamo noi da `NEXT_PUBLIC_SITE_URL` (`alternateLinks: false` nel proxy).
 - **`cacheComponents` disattivato.** Next 16 lo propone di default; per un sito vetrina statico il rendering statico classico con `setRequestLocale` + `generateStaticParams` è più semplice e robusto con next-intl.

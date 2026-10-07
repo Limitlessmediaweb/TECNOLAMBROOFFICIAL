@@ -32,7 +32,7 @@ export default async function OgImage({ params }: { params: Promise<{ locale: st
         <div style={{ display: "flex", fontSize: 30, letterSpacing: 10, color: LOGO.blue, textTransform: "uppercase" }}>Tecnolambro · Microwave Components</div>
         <div style={{ display: "flex", flexDirection: "column", marginTop: 40, fontSize: 92, fontWeight: 800, lineHeight: 1, textTransform: "uppercase" }}>
           <span>{t("titleA")}</span>
-          <span style={{ color: THEME.light.accent, fontWeight: 300, textTransform: "none", marginTop: 12 }}>{t("titleB")}</span>
+          <span style={{ color: THEME.light.accent, fontWeight: 300, textTransform: "none", marginTop: 12 }}>{t("since")}</span>
         </div>
       </div>
     ),

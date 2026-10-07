@@ -4,12 +4,14 @@ import { useId, useMemo, useRef, useState } from "react";
 import NextLink from "next/link";
 import { useClientLocale, useT } from "@/lib/client-i18n";
 import { Minus, Plus, ArrowRight } from "lucide-react";
-import { BANDS, BAND_RANGE, bandsFor, cutoffGHz, formatGHz } from "@/data/bands";
+import { FREQ_RANGE, SIZES, cutoffGHz, num, sizesFor } from "@/data/waveguides";
+
+const formatGHz = (value: number, locale: string, digits = 2) => num(value, locale, 0, digits);
 import { track } from "@/lib/analytics";
 import { cn } from "@/lib/cn";
 
-const LN_MIN = Math.log(BAND_RANGE.min);
-const LN_MAX = Math.log(BAND_RANGE.max);
+const LN_MIN = Math.log(FREQ_RANGE.min);
+const LN_MAX = Math.log(FREQ_RANGE.max);
 const STEPS = 1000;
 
 const toPos = (ghz: number) => (Math.log(ghz) - LN_MIN) / (LN_MAX - LN_MIN);
@@ -28,7 +30,7 @@ export type PrefillDetail = { size?: string; frequency?: string };
  * contactPath: percorso localizzato della pagina contatti (calcolato sul server),
  * usato quando il form non è nella stessa pagina.
  */
-export function BandFinder({ formOnPage = false, contactPath }: { formOnPage?: boolean; contactPath: string }) {
+export function BandFinder({ formOnPage = false, contactPath, configurePath }: { formOnPage?: boolean; contactPath: string; configurePath: string }) {
   const t = useT("bandFinder");
   const locale = useClientLocale();
   const [freq, setFreq] = useState(10.5);
@@ -36,12 +38,12 @@ export function BandFinder({ formOnPage = false, contactPath }: { formOnPage?: b
   const sliderId = useId();
   const resultId = useId();
 
-  const matches = useMemo(() => bandsFor(freq), [freq]);
+  const matches = useMemo(() => sizesFor(freq), [freq]);
   const primary = matches[0];
   const f = formatGHz(freq, locale, 1);
 
   const update = (next: number) => {
-    const clamped = Math.min(BAND_RANGE.max, Math.max(BAND_RANGE.min, Math.round(next * 10) / 10));
+    const clamped = Math.min(FREQ_RANGE.max, Math.max(FREQ_RANGE.min, Math.round(next * 10) / 10));
     setFreq(clamped);
     if (!used.current) {
       used.current = true;
@@ -138,8 +140,12 @@ export function BandFinder({ formOnPage = false, contactPath }: { formOnPage?: b
           </div>
 
           <NextLink
-            href={`${contactPath}?${new URLSearchParams(primary ? { misura: primary.wr, ghz: String(freq) } : { ghz: String(freq) })}#preventivo`}
-            onClick={onAsk}
+            href={
+              primary
+                ? `${configurePath}?${new URLSearchParams({ tipo: "twistable", misura: primary.wr })}#configura`
+                : `${contactPath}?${new URLSearchParams({ ghz: String(freq) })}#preventivo`
+            }
+            onClick={primary ? () => track("cta_shop_click", { source: "band_finder", size: primary.wr }) : onAsk}
             className="btn btn-primary mt-6 w-full sm:w-auto"
           >
             {primary ? t("cta") : t("ctaCustom")}
@@ -164,12 +170,14 @@ export function BandFinder({ formOnPage = false, contactPath }: { formOnPage?: b
               </tr>
             </thead>
             <tbody>
-              {BANDS.map((band) => {
+              {SIZES.map((band) => {
                 const on = matches.includes(band);
                 return (
                   <tr key={band.wr} aria-current={on ? "true" : undefined} className={cn("transition-colors", on && "bg-surface-2")}>
                     <td className={cn("pl-3 transition-colors", on ? "text-accent" : "text-fg")}>{band.wr}</td>
-                    <td className="annot text-muted">{band.iec}</td>
+                    <td className="annot whitespace-nowrap text-muted">
+                      {band.iec} · {band.wg}
+                    </td>
                     <td className={cn("tabular whitespace-nowrap transition-colors", on ? "text-fg" : "text-muted")}>
                       {formatGHz(band.min, locale)}-{formatGHz(band.max, locale)}
                     </td>

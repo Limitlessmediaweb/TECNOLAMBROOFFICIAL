@@ -5,7 +5,7 @@ import { LanguageSwitcher } from "./LanguageSwitcher";
 import { ThemeToggle } from "./ThemeToggle";
 import { QuoteLink, ShopLink, localizedHref } from "./TrackedLink";
 import { MobileMenu, NavList } from "./HeaderClient";
-import { CartButton } from "@/components/shop/CartDrawer";
+import { RequestButton } from "@/components/request/RequestButton";
 import { MagneticButton } from "@/components/motion/MagneticButton";
 import { cn } from "@/lib/cn";
 
@@ -19,6 +19,7 @@ const PRIMARY: { href: StaticPathname; key: string }[] = [
 ];
 
 const SECONDARY: { href: StaticPathname; key: string }[] = [
+  { href: "/prodotti/tabelle", key: "tables" },
   { href: "/radioamatori", key: "ham" },
   { href: "/faq", key: "faq" },
 ];
@@ -26,10 +27,10 @@ const SECONDARY: { href: StaticPathname; key: string }[] = [
 export function Wordmark({ className }: { className?: string }) {
   return (
     <span className={cn("flex flex-col leading-none", className)}>
-      <span className="font-display text-[1.05rem] font-extrabold uppercase tracking-[0.06em] wdth-xwide sm:text-[1.15rem]">
+      <span className="font-display text-[0.92rem] font-extrabold uppercase tracking-[0.04em] wdth-wide max-[380px]:text-[0.84rem] sm:text-[1.15rem] sm:tracking-[0.06em] sm:wdth-xwide">
         Tecnolambro
       </span>
-      <span className="annot mt-1 text-[0.625rem] uppercase tracking-[0.26em] text-primary-ink">Microwave Components</span>
+      <span className="annot mt-1 text-[0.5625rem] uppercase tracking-[0.2em] text-primary-ink sm:text-[0.625rem] sm:tracking-[0.26em]">Microwave Components</span>
     </span>
   );
 }
@@ -40,15 +41,17 @@ export function Wordmark({ className }: { className?: string }) {
  */
 export async function Header() {
   const t = await getTranslations("nav");
+  const r = await getTranslations("request");
   const toItems = async (list: typeof PRIMARY) =>
     Promise.all(list.map(async (item) => ({ href: await localizedHref(item.href), label: t(item.key) })));
   const primary = await toItems(PRIMARY);
   const all = await toItems([...PRIMARY, ...SECONDARY]);
   const home = await localizedHref("/");
+  const requestPath = await localizedHref("/shop/richiesta");
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-line/70 bg-scrim backdrop-blur-md">
-      <div className="container-site flex h-16 items-center gap-4 lg:h-[4.5rem]">
+      <div className="container-site flex h-16 items-center gap-3 sm:gap-4 lg:h-[4.5rem]">
         <NextLink href={home} className="mr-auto rounded-sm">
           <Wordmark />
           <span className="sr-only">, {t("homeShort")}</span>
@@ -58,14 +61,14 @@ export async function Header() {
           <NavList items={primary} variant="desktop" />
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1.5 sm:gap-2">
           <div className="hidden items-center gap-2 sm:flex">
             <LanguageSwitcher />
             <ThemeToggle />
           </div>
-          <CartButton />
+          <RequestButton href={requestPath} />
           <MagneticButton>
-            <QuoteLink source="header" className="btn btn-primary btn-sm">
+            <QuoteLink source="header" className="btn btn-primary btn-sm max-sm:px-3 max-[380px]:px-2.5 max-[380px]:text-[0.8125rem]">
               <span className="sm:hidden">{t("quoteShort")}</span>
               <span className="hidden sm:inline">{t("quote")}</span>
             </QuoteLink>
@@ -80,6 +83,9 @@ export async function Header() {
                 <ShopLink source="mobile_menu" className="btn btn-ghost w-full">
                   {t("shop")}
                 </ShopLink>
+                <NextLink href={requestPath} className="btn btn-ghost w-full">
+                  {r("title")}
+                </NextLink>
               </div>
               <div className="mt-8 flex items-center gap-3">
                 <LanguageSwitcher />

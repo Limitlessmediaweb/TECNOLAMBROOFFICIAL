@@ -1,14 +1,16 @@
 import { getTranslations } from "next-intl/server";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin, Smartphone, ShieldCheck } from "lucide-react";
 import { QuoteForm, type FamilyOption } from "@/components/domain/QuoteForm";
 import { SplitReveal } from "@/components/motion/SplitReveal";
-import { FAMILIES, type FamilyKey } from "@/data/products";
+import { VISIBLE_FAMILIES, type FamilyKey } from "@/data/families";
 import { COMPANY } from "@/data/site";
 import { localizedHref } from "@/components/ui/TrackedLink";
 
 export async function familyOptions(): Promise<FamilyOption[]> {
   const t = await getTranslations("products.items");
-  return FAMILIES.map((f) => ({ value: f.key, label: t(`${f.key}.name`) }));
+  const page = await getTranslations("products.page");
+  // Più "su richiesta o su disegno" per tutto quello che non sta nelle famiglie
+  return [...VISIBLE_FAMILIES.map((f) => ({ value: f.key, label: t(`${f.key}.name`) })), { value: "other", label: page("onRequestTitle") }];
 }
 
 /** Blocco preventivo: contatti diretti + form completo. Ancora #preventivo. */
@@ -20,7 +22,7 @@ export async function QuoteSection({
 }: {
   title?: string;
   body?: string;
-  defaultFamily?: FamilyKey;
+  defaultFamily?: FamilyKey | "other";
   headingLevel?: 1 | 2;
 }) {
   const t = await getTranslations("quote");
@@ -53,12 +55,34 @@ export async function QuoteSection({
               </div>
             </li>
             <li className="flex gap-3">
-              <Phone aria-hidden="true" className="mt-1 size-5 shrink-0 text-accent" strokeWidth={1.5} />
+              <Smartphone aria-hidden="true" className="mt-1 size-5 shrink-0 text-accent" strokeWidth={1.5} />
               <div>
                 <p className="text-sm text-muted">{t("phone_label")}</p>
                 <p>
                   <a href={COMPANY.phoneHref} className="tabular text-lg hover:text-accent">
                     {COMPANY.phone}
+                  </a>
+                </p>
+              </div>
+            </li>
+            <li className="flex gap-3">
+              <Phone aria-hidden="true" className="mt-1 size-5 shrink-0 text-accent" strokeWidth={1.5} />
+              <div>
+                <p className="text-sm text-muted">{t("phone2_label")}</p>
+                <p>
+                  <a href={COMPANY.phone2Href} className="tabular text-lg hover:text-accent">
+                    {COMPANY.phone2}
+                  </a>
+                </p>
+              </div>
+            </li>
+            <li className="flex gap-3">
+              <ShieldCheck aria-hidden="true" className="mt-1 size-5 shrink-0 text-accent" strokeWidth={1.5} />
+              <div>
+                <p className="text-sm text-muted">{t("pec_label")}</p>
+                <p>
+                  <a href={`mailto:${COMPANY.pec}`} className="break-all hover:text-accent">
+                    {COMPANY.pec}
                   </a>
                 </p>
               </div>

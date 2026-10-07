@@ -73,8 +73,8 @@ export function organizationJsonLd(locale: Locale) {
   const lg = COMPANY.legalAddress;
   const description =
     locale === "it"
-      ? "Progettazione e costruzione di componenti meccanici a microonde e dispositivi in guida d’onda dal 1986."
-      : "Design and manufacture of mechanical microwave components and waveguide devices since 1986.";
+      ? `Progettiamo, costruiamo e collaudiamo guida d’onda flessibile twistabile e seamless, curve, twist e disassati dal ${COMPANY.founded}.`
+      : `We design, build and test twistable and seamless flexible waveguide, bends, twists and offsets since ${COMPANY.founded}.`;
 
   return [
     {
@@ -99,14 +99,14 @@ export function organizationJsonLd(locale: Locale) {
         addressRegion: lg.province,
         addressCountry: lg.country,
       },
-      contactPoint: {
+      contactPoint: [COMPANY.phone, COMPANY.phone2].map((telephone) => ({
         "@type": "ContactPoint",
         contactType: "sales",
         email: COMPANY.email,
-        telephone: COMPANY.phone,
+        telephone,
         availableLanguage: ["Italian", "English"],
         areaServed: "Worldwide",
-      },
+      })),
     },
     {
       "@context": "https://schema.org",

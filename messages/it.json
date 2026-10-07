@@ -2,39 +2,39 @@
   "meta": {
     "siteName": "Tecnolambro Microwave Components",
     "home": {
-      "title": "Guide d’onda e componenti a microonde | Tecnolambro",
-      "description": "Guide d’onda rigide e flessibili, illuminatori d’antenna, transizioni e flange. Progettate e costruite in Italia dal 1986. Preventivo in 24 ore."
+      "title": "Guide d’onda flessibili e componenti | Tecnolambro",
+      "description": "Guida d’onda flessibile twistabile e seamless, curve, twist e disassati. Progettiamo, costruiamo e collaudiamo dal 1987. Preventivo entro 24 ore."
     },
     "products": {
-      "title": "Prodotti in guida d’onda | Tecnolambro",
-      "description": "Sei famiglie di componenti a microonde: guida rigida, flessibile e twistabile, illuminatori, transizioni, flange e kit, costruzione su disegno."
+      "title": "Prodotti in guida d’onda flessibile | Tecnolambro",
+      "description": "Guida d’onda flessibile twistabile e seamless da WR-22 a WR-284, curve, twist e disassati su richiesta. Tabelle tecniche e preventivo entro 24 ore."
     },
     "family": {
       "title": "{name} | Tecnolambro Microwave Components"
     },
     "custom": {
       "title": "Componenti a microonde su disegno | Tecnolambro",
-      "description": "Inviate il disegno in PDF, DWG, DXF o STEP: ufficio tecnico interno, lavorazione, trattamenti e collaudo in laboratorio. Risposta in 24 ore."
+      "description": "Inviate il disegno in PDF, DWG, DXF, STEP, IGES o STL: progettiamo, costruiamo e collaudiamo il pezzo. Preventivo entro 24 ore."
     },
     "about": {
-      "title": "Dal 1986 a Miradolo Terme | Tecnolambro",
-      "description": "Nata nel 1986 con Siemens Telecomunicazioni. Produzione autonoma, trattamenti superficiali e laboratorio di controllo a Miradolo Terme (PV)."
+      "title": "Dal 1987 a Miradolo Terme | Tecnolambro",
+      "description": "Progettiamo, costruiamo e collaudiamo guide d’onda dal 1987, in collaborazione con le più grandi aziende di telecomunicazioni. Miradolo Terme (PV)."
     },
     "quality": {
       "title": "Qualità e certificazioni | Tecnolambro",
-      "description": "Controlli elettrici e dimensionali nel laboratorio interno, trattamenti con partner selezionati. Certificazioni e procedure di qualità."
+      "description": "Collaudo finale del 100% dei pezzi prima della spedizione, trattamenti con fornitori storici e selezionati. Certificazioni e procedure di qualità."
     },
     "ham": {
-      "title": "Componenti 10 GHz e QO-100 | Tecnolambro",
-      "description": "Guide d’onda, illuminatori e transizioni per radioamatori: banda 10 GHz e satellite QO-100. Pezzi standard ordinabili nello shop online."
+      "title": "Guide d’onda per i 10 GHz | Tecnolambro",
+      "description": "Guida d’onda flessibile WR-90 e WR-75 per la banda radioamatoriale dei 10 GHz. Configurate il pezzo e ricevete il preventivo entro 24 ore."
     },
     "contact": {
       "title": "Contatti e preventivi | Tecnolambro",
-      "description": "Chiedi un preventivo per guide d’onda e componenti a microonde. Sede operativa a Miradolo Terme (PV). info@tecnolambro.it, +39 0382 75385."
+      "description": "Richiedi un preventivo per guide d’onda e componenti a microonde: risposta entro 24 ore. +39 375 577 1084, info@tecnolambro.it, Miradolo Terme (PV)."
     },
     "faq": {
       "title": "Domande frequenti | Tecnolambro",
-      "description": "Misure disponibili, costruzione su disegno, formati dei file, tempi, spedizioni in UE e nel mondo, fatturazione con P.IVA UE, collaudo."
+      "description": "Misure disponibili, costruzione su disegno, formati dei file, tempi, spedizioni nel mondo, fatturazione con P.IVA UE, collaudo."
     },
     "privacy": {
       "title": "Privacy policy | Tecnolambro",
@@ -53,20 +53,20 @@
       "description": "La pagina cercata non esiste o è stata spostata."
     },
     "shop": {
-      "title": "Shop guide d’onda e componenti | Tecnolambro",
-      "description": "Guide flessibili, curve, twist, transizioni, flange e kit a magazzino. Prezzi per quantità, spedizione in 48 ore, fattura Italia, UE ed export."
+      "title": "Configura il tuo pezzo in guida d’onda | Tecnolambro",
+      "description": "Componi la guida d’onda flessibile: misura, lunghezza e flange, con disegno quotato e modello 3D. Prezzi su richiesta, preventivo entro 24 ore."
     },
-    "product": {
-      "title": "{name} {wr} | Tecnolambro Shop",
-      "titleNoWr": "{name} | Tecnolambro Shop"
+    "tables": {
+      "title": "Tabelle tecniche guida d’onda flessibile | Tecnolambro",
+      "description": "Return loss, VSWR, attenuazione, potenza e dimensioni della guida d’onda flessibile twistabile e seamless, da WR-22 a WR-284."
     },
-    "checkout": {
-      "title": "Ordine | Tecnolambro Shop",
-      "description": "Riepilogo e invio della richiesta d’ordine."
+    "request": {
+      "title": "La tua richiesta di preventivo | Tecnolambro",
+      "description": "Pezzi, quantità, note e file della richiesta di preventivo."
     },
-    "orderSent": {
-      "title": "Richiesta inviata | Tecnolambro Shop",
-      "description": "Conferma della richiesta d’ordine."
+    "requestSent": {
+      "title": "Richiesta inviata | Tecnolambro",
+      "description": "Conferma della richiesta di preventivo."
     }
   },
   "nav": {
@@ -78,9 +78,9 @@
     "ham": "Radioamatori",
     "faq": "FAQ",
     "contact": "Contatti",
-    "quote": "Chiedi un preventivo",
+    "quote": "Richiedi un preventivo",
     "quoteShort": "Preventivo",
-    "shop": "Vai allo shop",
+    "shop": "Configura il tuo pezzo",
     "menu": "Apri il menu",
     "close": "Chiudi il menu",
     "skip": "Vai al contenuto",
@@ -93,7 +93,8 @@
     "home": "Tecnolambro, home",
     "homeShort": "home",
     "menuLabel": "Menu",
-    "shopShort": "Shop"
+    "shopShort": "Configura",
+    "tables": "Tabelle tecniche"
   },
   "common": {
     "demoBadge": "Versione demo",
@@ -113,170 +114,104 @@
   },
   "intro": {
     "skip": "Salta",
-    "tagline": "MICROWAVE COMPONENTS · DAL 1986",
+    "tagline": "MICROWAVE COMPONENTS · DAL 1987",
     "label": "Animazione introduttiva"
   },
   "hero": {
     "titleA": "Guidiamo le microonde",
-    "titleB": "dal 1986.",
-    "sub": "Guide d’onda rigide e flessibili, illuminatori e transizioni. Progettati e costruiti in Lombardia, collaudati nel nostro laboratorio.",
+    "sub": "Progettiamo, costruiamo e collaudiamo guida d’onda flessibile twistabile e seamless, curve, twist e disassati.",
     "legendTitle": "Legenda del campo",
     "legendMode": "Modo",
     "legendGuide": "Guida",
     "legendBand": "Banda",
-    "fieldLabel": "Animazione del campo elettrico TE10 in una guida WR-90"
+    "fieldLabel": "Animazione del campo elettrico TE10 in una guida WR-90",
+    "since": "Dal 1987"
   },
   "marquee": {
     "label": "Misure standard di guida d’onda e bande di lavoro"
   },
   "company": {
-    "title": "Dal disegno al pezzo collaudato, nella stessa officina.",
-    "body": "Tecnolambro nasce nel 1986 lavorando con Siemens Telecomunicazioni. Ufficio tecnico, produzione, trattamenti superficiali e laboratorio di controllo sono interni.",
+    "title": "Dal disegno al pezzo collaudato.",
+    "body": "Tecnolambro nasce nel 1987. Progettiamo, costruiamo e collaudiamo i nostri componenti, in collaborazione con le più grandi aziende di telecomunicazioni.",
     "factFounded": "Anno di fondazione",
     "factYears": "Anni di lavoro sulle microonde",
-    "factFlexValue": "In casa",
-    "factFlex": "Guida flessibile e twistabile di produzione propria",
+    "factFlexValue": "100%",
+    "factFlex": "Pezzi collaudati prima della spedizione",
     "factReplyValue": "24 h",
-    "factReply": "Tempo di risposta ai preventivi",
+    "factReply": "Preventivo entro 24 ore",
     "cta": "Scopri l’azienda"
   },
   "productsSection": {
     "title": "Ogni tratto del percorso del segnale.",
-    "body": "Sei famiglie, dalla flangia all’illuminatore. Standard a catalogo o costruite sul vostro disegno.",
+    "body": "Guida d’onda flessibile twistabile e seamless da WR-22 a WR-284. Curve, twist e disassati su richiesta o su disegno.",
     "cta": "Vedi tutti i prodotti",
     "open": "Apri {name}"
   },
   "products": {
     "items": {
-      "rigid": {
-        "name": "Guida d’onda rigida",
-        "short": "Tratti dritti, curve piano E e piano H, twist.",
-        "description": "Guida rettangolare rigida per ponti radio, radar, satellite e banchi di misura. Tratti dritti, curve in piano E e in piano H, twist e assiemi su specifica, con flange montate e controllate.",
-        "applications": [
-          "Ponti radio punto-punto",
-          "Radar e sistemi satellitari",
-          "Banchi di misura e laboratori"
-        ]
-      },
-      "flexible": {
-        "name": "Guida flessibile e twistabile",
-        "short": "Di produzione propria. Assorbe vibrazioni e disallineamenti.",
-        "description": "Guida flessibile e flessibile-twistabile costruita interamente da Tecnolambro. Collega radio e antenna quando le flange non sono allineate, assorbe vibrazioni e dilatazioni termiche, semplifica l’installazione.",
+      "twistable": {
+        "name": "Guida d’onda flessibile twistabile",
+        "short": "Si piega e si torce: collega flange non allineate o ruotate. Da WR-22 a WR-284.",
+        "description": "Guida d’onda flessibile e twistabile di produzione propria, in ottone. Si piega nei piani E e H e si torce attorno al proprio asse: collega radio e antenna quando le flange non sono allineate o sono ruotate, e assorbe vibrazioni e dilatazioni termiche.",
         "applications": [
           "Collegamento radio-antenna nei ponti radio",
           "Installazioni soggette a vibrazioni",
           "Correzione di disallineamenti e rotazioni tra flange"
         ]
       },
-      "feeds": {
-        "name": "Illuminatori d’antenna",
-        "short": "Il punto in cui il segnale lascia la guida ed entra nella parabola.",
-        "description": "Illuminatori e trombe per antenne paraboliche. Trasferiscono l’energia dalla guida d’onda al riflettore e la raccolgono in ricezione, con il diagramma adatto all’ottica dell’antenna.",
+      "seamless": {
+        "name": "Guida d’onda flessibile seamless",
+        "short": "Senza saldature, con potenze CW fino a 10 kW. Da WR-22 a WR-284.",
+        "description": "Guida d’onda flessibile seamless, cioè senza saldature lungo il corpo, di produzione propria. Per ogni misura trovate nella tabella VSWR, attenuazione e potenza, da WR-22 a WR-284.",
         "applications": [
-          "Antenne per ponti radio",
-          "Stazioni satellitari",
-          "Radioastronomia e radioamatori"
+          "Ponti radio e collegamenti satellitari",
+          "Linee ad alta potenza",
+          "Banchi di misura e laboratori"
         ]
       },
-      "transitions": {
-        "name": "Transizioni in guida",
-        "short": "Da una misura all’altra, da guida a coassiale.",
-        "description": "Transizioni tra misure di guida diverse, tra tipi di flangia e da guida d’onda a connettore coassiale. Profilo progettato per mantenere basso il VSWR nella banda comune.",
+      "bends": {
+        "name": "Curve, twist e disassati",
+        "short": "Progettati, costruiti e collaudati nel nostro laboratorio, su richiesta o su disegno.",
+        "description": "Curve, twist e disassati progettati, costruiti e collaudati nel nostro laboratorio. Li realizziamo su richiesta o sul vostro disegno, nella misura e con le flange che vi servono.",
         "applications": [
-          "Adattamento tra apparati di generazioni diverse",
-          "Banchi di misura con strumenti coassiali",
-          "Prototipi e laboratori"
+          "Curve in piano E e in piano H",
+          "Twist per ruotare la polarizzazione",
+          "Disassati per collegare flange sfalsate"
         ]
       },
-      "flanges": {
-        "name": "Flange e kit di installazione",
-        "short": "Flange, coperture, guarnizioni e viteria per i ponti radio.",
-        "description": "Tutto quello che serve per installare e chiudere una linea in guida: flange, coperture, guarnizioni e viteria. Disponibili singolarmente o in kit per misura.",
-        "applications": [
-          "Installazione e manutenzione di ponti radio",
-          "Ricambi per linee esistenti",
-          "Chiusura e protezione delle porte inutilizzate"
-        ]
-      },
-      "custom": {
-        "name": "Costruzione su disegno",
-        "short": "Componenti speciali ed elettroformati in nichel sulle vostre specifiche.",
-        "description": "Quando il pezzo non esiste a catalogo lo costruiamo. L’ufficio tecnico interno parte dal vostro disegno o da una specifica, l’officina realizza il pezzo, il laboratorio lo collauda. Realizziamo anche elettroformati in nichel.",
-        "applications": [
-          "Componenti fuori standard",
-          "Elettroformati in nichel",
-          "Piccole serie e prototipi"
-        ]
+      "pending": {
+        "name": "[FAMIGLIA DA DEFINIRE]",
+        "short": "[DA COMPLETARE]",
+        "description": "[DA COMPLETARE: testi e dati della famiglia forniti dal titolare]",
+        "applications": []
       }
-    },
-    "columns": {
-      "size": "Misura",
-      "band": "Banda (GHz)",
-      "flange": "Flangia",
-      "parts": "Componenti",
-      "vswr": "VSWR max",
-      "type": "Tipo",
-      "length": "Lunghezze",
-      "polarization": "Polarizzazione",
-      "from": "Da",
-      "to": "A",
-      "kit": "Contenuto kit",
-      "step": "Fase",
-      "detail": "Dettaglio"
-    },
-    "cells": {
-      "rigidParts": "Dritti, curve E/H, twist",
-      "flexTwist": "Flessibile e twistabile",
-      "flexOnly": "Flessibile",
-      "feedPrime": "Illuminatore a fuoco primario",
-      "feedHorn": "Tromba",
-      "linear": "Lineare",
-      "coax": "Coassiale",
-      "kitFull": "Flange, coperture, guarnizioni, viteria",
-      "cStepFiles": "Formati accettati",
-      "cStepOffice": "Ufficio tecnico",
-      "cStepOfficeD": "Revisione del disegno e progetto esecutivo interni",
-      "cStepNickel": "Elettroformatura",
-      "cStepNickelD": "Elettroformati in nichel",
-      "cStepFinish": "Trattamenti interni",
-      "cStepFinishD": "Brillantatura e verniciatura",
-      "cStepPartners": "Partner selezionati",
-      "cStepPartnersD": "Trattamenti termici e galvanici",
-      "cStepLab": "Laboratorio",
-      "cStepLabD": "Controllo elettrico e dimensionale"
     },
     "page": {
       "title": "Prodotti in guida d’onda",
-      "intro": "Sei famiglie di componenti meccanici a microonde. Pezzi standard spediti dal magazzino, pezzi speciali costruiti su disegno.",
-      "familyEyebrow": "Famiglia",
+      "intro": "Guida d’onda flessibile twistabile e seamless, curve, twist e disassati. Misure standard dalle nostre tabelle o pezzi costruiti sul vostro disegno.",
       "drawingLabel": "Disegno esploso: {name}",
       "drawingCaption": "Scorri per separare le parti.",
       "partFlange": "Flangia",
       "partBody": "Corpo",
       "partGasket": "Guarnizione",
-      "partScrews": "Viteria",
-      "partCover": "Copertura",
-      "partHorn": "Tromba",
-      "partTaper": "Raccordo",
-      "partCoax": "Connettore",
-      "tableTitle": "Misure disponibili",
-      "tableCaption": "Misure e caratteristiche: {name}",
-      "processTitle": "Come lo costruiamo",
+      "tableTitle": "Caratteristiche tecniche",
+      "tablesLink": "Tutte le tabelle tecniche",
+      "onRequestTitle": "Su richiesta o su disegno",
+      "onRequestBody": "Indicate tipo di pezzo, misura, angolo o disassamento e flange, oppure caricate il disegno: vi mandiamo il preventivo entro 24 ore.",
       "applicationsTitle": "Dove si usa",
       "quoteTitle": "Serve una misura o una versione diversa?",
-      "quoteBody": "Indicate misura, flange e quantità. Rispondiamo con prezzo e tempi entro 24 ore lavorative.",
-      "shopTitle": "Pezzi standard",
-      "shopBody": "Le misure più comuni sono ordinabili nello shop online.",
-      "askSize": "Chiedi {size}",
+      "quoteBody": "Indicate misura, lunghezza, flange e quantità: preventivo entro 24 ore. Prezzi su richiesta: ogni preventivo è personalizzato.",
+      "shopTitle": "Configura il tuo pezzo",
+      "shopBody": "Misura, lunghezza e flange: disegno quotato e modello 3D subito, preventivo entro 24 ore.",
       "others": "Altre famiglie"
     }
   },
   "bandFinder": {
-    "title": "Diteci la frequenza. Vi diciamo la misura.",
-    "body": "Spostate il cursore sulla frequenza di lavoro: evidenziamo la guida standard che la copre.",
+    "title": "Diteci la frequenza, vi diciamo la guida corrispondente.",
+    "body": "Spostate il cursore sulla frequenza di lavoro: evidenziamo la guida d’onda che la copre.",
     "label": "Frequenza di lavoro",
     "unit": "GHz",
-    "result": "A {freq} GHz la misura standard è",
+    "result": "A {freq} GHz la guida corrispondente è",
     "resultMany": "A {freq} GHz lavorano bene",
     "or": "oppure",
     "none": "Nessuna misura standard copre questa frequenza: possiamo costruirla su disegno.",
@@ -287,40 +222,41 @@
     "colIec": "IEC",
     "colBand": "Banda",
     "colInside": "Interno a × b (mm)",
-    "cta": "Chiedi questa misura",
-    "ctaCustom": "Chiedi un pezzo su disegno",
+    "cta": "Configura questa misura",
+    "ctaCustom": "Richiedi un pezzo su disegno",
     "decrease": "Diminuisci frequenza",
     "increase": "Aumenta frequenza",
-    "standardNote": "Bande e dimensioni sono valori standard EIA/IEC."
+    "standardNote": "Bande dalle tabelle Tecnolambro; dimensioni interne a × b standard EIA.",
+    "colWg": "WG"
   },
   "process": {
-    "title": "Quattro passaggi, un solo interlocutore.",
+    "title": "Come lavoriamo.",
     "steps": [
       {
-        "title": "Ufficio tecnico",
+        "title": "Progettazione",
         "body": "Dal vostro disegno o da una specifica al progetto esecutivo del componente."
       },
       {
-        "title": "Lavorazione",
-        "body": "Guida rigida, flessibile e twistabile, flange e coperture, dal nostro magazzino di materie prime."
+        "title": "Produzione",
+        "body": "Progettiamo, costruiamo e collaudiamo i nostri componenti: guida flessibile twistabile e seamless, curve, twist e disassati."
       },
       {
         "title": "Trattamenti",
-        "body": "Brillantatura e verniciatura con impianti interni. Trattamenti termici e galvanici con partner selezionati."
+        "body": "Brillantatura, verniciatura, trattamenti termici e galvanici, con fornitori storici e selezionati, noti per la loro affidabilità e professionalità."
       },
       {
-        "title": "Collaudo",
-        "body": "Controllo elettrico e dimensionale nel laboratorio interno prima della spedizione."
+        "title": "Collaudo finale al 100%",
+        "body": "Collaudiamo il 100% dei pezzi prima della spedizione."
       }
     ]
   },
   "history": {
-    "title": "Dal 1986, sempre guide d’onda.",
+    "title": "Dal 1987, sempre guide d’onda.",
     "titleShort": "Storia",
     "items": [
       {
-        "label": "1986",
-        "body": "Nasce Tecnolambro, in stretta collaborazione con Siemens Telecomunicazioni S.p.A. di Cassina de’ Pecchi."
+        "label": "1987",
+        "body": "Nasce Tecnolambro, in collaborazione con le più grandi aziende di telecomunicazioni."
       },
       {
         "label": "Produzione",
@@ -328,11 +264,11 @@
       },
       {
         "label": "Trattamenti",
-        "body": "Impianti interni per brillantatura e verniciatura. Trattamenti termici e galvanici con partner selezionati."
+        "body": "Brillantatura, verniciatura, trattamenti termici e galvanici con fornitori storici e selezionati."
       },
       {
-        "label": "Laboratorio",
-        "body": "Laboratorio interno con strumenti di controllo elettrico e dimensionale."
+        "label": "Collaudo",
+        "body": "Collaudo finale del 100% dei pezzi prima della spedizione."
       },
       {
         "label": "Oggi",
@@ -342,26 +278,26 @@
   },
   "qualitySection": {
     "title": "Qualità verificata pezzo per pezzo.",
-    "body": "Ogni componente passa dal laboratorio interno prima di uscire.",
+    "body": "Collaudiamo il 100% dei pezzi prima della spedizione.",
     "certTitle": "Certificazioni",
     "certTodo": "[DA COMPLETARE: ISO 9001 e altre certificazioni]",
     "controlsTitle": "Controlli",
     "controls": [
-      "Controllo elettrico",
-      "Controllo dimensionale",
-      "Trattamenti con partner selezionati"
+      "Collaudo finale al 100%",
+      "Controllo elettrico e dimensionale",
+      "Trattamenti con fornitori storici e selezionati"
     ],
     "cta": "Qualità e controlli"
   },
   "shopSection": {
-    "title": "Pezzi standard? Ordinateli online.",
-    "body": "Guide flessibili, curve, twist, flange e kit nelle misure più richieste. Sconto per quantità e spedizione in 48 ore.",
+    "title": "Configura il pezzo, richiedi il preventivo.",
+    "body": "Scegli tipo, misura, lunghezza e flange: vedi subito il disegno quotato e il modello 3D. Prezzi su richiesta: ogni preventivo è personalizzato.",
     "points": [
-      "Sconto per quantità",
-      "Spedizione in 48 ore",
-      "Misure standard pronte a magazzino"
+      "Preventivo entro 24 ore",
+      "Materiale disponibile a magazzino: spedizione in 48 ore",
+      "Disegno PDF e modello 3D da scaricare"
     ],
-    "cta": "Vai allo shop"
+    "cta": "Configura il tuo pezzo"
   },
   "faqSection": {
     "title": "Domande frequenti",
@@ -371,31 +307,31 @@
     "items": {
       "sizes": {
         "q": "Quali misure di guida d’onda producete?",
-        "a": "Lavoriamo sulle misure rettangolari standard da WR-229 (3,3-4,9 GHz) a WR-28 (26,5-40 GHz). Per la frequenza esatta usate la ricerca per banda nella home o indicateci la frequenza nel preventivo."
+        "a": "Produciamo guida d’onda flessibile twistabile e seamless in 14 misure, da WR-22 (33,0–50,1 GHz) a WR-284 (2,6–3,95 GHz): i dati sono nelle tabelle tecniche. Per la frequenza esatta usate la ricerca per frequenza."
       },
       "custom": {
         "q": "Costruite componenti su disegno?",
-        "a": "Sì. L’ufficio tecnico interno parte dal vostro disegno o da una specifica, valuta la fattibilità e prepara il progetto esecutivo. Produciamo pezzi singoli, piccole serie ed elettroformati in nichel."
+        "a": "Sì. Progettiamo, costruiamo e collaudiamo pezzi singoli e piccole serie partendo dal vostro disegno o da una specifica."
       },
       "files": {
         "q": "In che formato posso inviare il disegno?",
-        "a": "PDF, DWG, DXF o STEP, fino a 20 MB per file, direttamente dal form di preventivo. Un PDF quotato con tolleranze e finitura basta per una prima offerta; il modello STEP aiuta per le geometrie complesse."
+        "a": "PDF, DWG, DXF, STEP, IGES o STL, fino a 20 MB per file, direttamente dalla richiesta di preventivo. Un PDF quotato con tolleranze e finitura basta per una prima offerta; il modello 3D aiuta per le geometrie complesse."
       },
       "leadTime": {
         "q": "Quali sono i tempi di consegna?",
-        "a": "I pezzi standard dello shop partono in 48 ore. Per i pezzi su disegno il tempo dipende da geometria, trattamenti e quantità e lo indichiamo nel preventivo. [DA COMPLETARE: tempi tipici per famiglia]"
+        "a": "Il materiale disponibile a magazzino parte in 48 ore. Per i pezzi su disegno il tempo dipende da geometria, trattamenti e quantità e lo indichiamo nel preventivo. [DA COMPLETARE: tempi tipici per famiglia]"
       },
       "moq": {
         "q": "C’è una quantità minima d’ordine?",
-        "a": "[DA COMPLETARE: quantità minime d’ordine, se presenti] Nello shop il prezzo scende con la quantità."
+        "a": "[DA COMPLETARE: quantità minime d’ordine, se presenti] Indicate la quantità nella richiesta: ogni preventivo è personalizzato."
       },
       "shippingEu": {
         "q": "Spedite in tutta l’Unione Europea?",
-        "a": "Sì, spediamo dal magazzino di Miradolo Terme. [DA COMPLETARE: corrieri, tempi e costi indicativi in UE]"
+        "a": "Sì. Spediamo in tutto il mondo: modalità e costi sono indicati nel preventivo. [DA COMPLETARE: corriere]"
       },
       "shippingWorld": {
         "q": "Spedite anche fuori dall’Unione Europea?",
-        "a": "Sì, lavoriamo con clienti in tutto il mondo. Le cessioni all’export sono non imponibili IVA. [DA COMPLETARE: paesi serviti, Incoterms, documenti doganali]"
+        "a": "Sì, lavoriamo con clienti in tutto il mondo: modalità e costi di spedizione sono indicati nel preventivo. Le cessioni all’export sono non imponibili IVA. [DA COMPLETARE: Incoterms, documenti doganali]"
       },
       "invoicing": {
         "q": "Come fatturate a un’azienda UE con partita IVA?",
@@ -403,25 +339,25 @@
       },
       "materials": {
         "q": "Quali materiali e finiture usate?",
-        "a": "Brillantatura e verniciatura sono fatte con impianti interni; trattamenti termici e galvanici con partner selezionati. [DA COMPLETARE: materiali e finiture disponibili]"
+        "a": "La guida flessibile è in ottone OT 80 UNI 4897. Brillantatura, verniciatura, trattamenti termici e galvanici sono fatti con fornitori storici e selezionati. [DA COMPLETARE: altre finiture disponibili]"
       },
       "testing": {
         "q": "I pezzi vengono collaudati?",
-        "a": "Sì. Il laboratorio interno esegue controlli elettrici e dimensionali prima della spedizione. [DA COMPLETARE: parametri misurati e documentazione fornita con il pezzo]"
+        "a": "Sì: collaudiamo il 100% dei pezzi prima della spedizione. [DA COMPLETARE: parametri misurati e documentazione fornita con il pezzo]"
       },
       "flexTwist": {
-        "q": "Che differenza c’è tra guida flessibile e flessibile-twistabile?",
-        "a": "La guida flessibile si piega nei piani E e H per collegare flange non allineate. La flessibile-twistabile ammette anche una torsione attorno al proprio asse, utile quando le due flange sono anche ruotate tra loro. Entrambe sono di nostra produzione."
+        "q": "Che differenza c’è tra guida flessibile twistabile e seamless?",
+        "a": "La twistabile si piega nei piani E e H e si torce attorno al proprio asse: serve quando le due flange sono anche ruotate tra loro. La seamless è senza saldature lungo il corpo. VSWR, attenuazione e potenza delle due versioni sono nelle tabelle tecniche. Entrambe sono di nostra produzione."
       },
       "shopVsQuote": {
-        "q": "Quando uso lo shop e quando chiedo un preventivo?",
-        "a": "Lo shop è per i pezzi standard nelle misure più comuni, con prezzo e spedizione immediati. Per misure, flange o lunghezze diverse, per quantità importanti o per pezzi su disegno, chiedete un preventivo."
+        "q": "Posso acquistare online?",
+        "a": "No: ogni ordine parte da una richiesta di preventivo, perché i prezzi sono personalizzati. Configurate il pezzo o sceglietelo tra i prodotti pronti, aggiungete quantità e note e inviate la richiesta: rispondiamo entro 24 ore."
       }
     }
   },
   "quote": {
     "title": "Mandateci il disegno.",
-    "body": "Prezzo e tempi entro 24 ore lavorative. Più dettagli ci date, più l’offerta è precisa.",
+    "body": "Preventivo entro 24 ore. Prezzi su richiesta: ogni preventivo è personalizzato.",
     "formLabel": "Richiesta di preventivo",
     "required": "obbligatorio",
     "optional": "facoltativo",
@@ -442,16 +378,15 @@
     "message": "Descrizione",
     "messageHint": "Tipo di pezzo, flange, lunghezze, finitura, tempi richiesti.",
     "file": "Disegno",
-    "fileHint": "PDF, DWG, DXF o STEP, massimo 20 MB.",
+    "fileHint": "PDF, DWG, DXF, STEP, IGES o STL, massimo 20 MB.",
     "fileSelected": "File selezionato: {name} ({size})",
     "privacy": "Ho letto la <link>privacy policy</link> e acconsento al trattamento dei dati per ricevere il preventivo.",
     "submit": "Invia la richiesta",
     "sending": "Invio in corso…",
     "successTitle": "Richiesta ricevuta.",
-    "successBody": "Vi rispondiamo entro 24 ore lavorative all’indirizzo indicato.",
-    "successDemo": "Versione demo: la richiesta non è stata inviata. Il collegamento al servizio email si attiva al lancio.",
+    "successBody": "Vi rispondiamo con il preventivo entro 24 ore all’indirizzo indicato.",
     "again": "Invia un’altra richiesta",
-    "errorSend": "Invio non riuscito. Riprovate oppure scriveteci a info@tecnolambro.it.",
+    "errorSend": "Invio non riuscito ({reason}). I dati restano nel modulo: riprovate oppure scriveteci a info@tecnolambro.it.",
     "errors": {
       "name": "Inserite nome e cognome.",
       "company": "Inserite il nome dell’azienda.",
@@ -461,28 +396,31 @@
       "quantity": "Inserite una quantità di almeno 1 pezzo.",
       "frequency": "Inserite una frequenza tra 1 e 110 GHz.",
       "message": "Descrivete il pezzo in almeno 10 caratteri.",
-      "fileType": "Formato non accettato. Usate PDF, DWG, DXF o STEP.",
+      "fileType": "Formato non accettato. Usate PDF, DWG, DXF, STEP, IGES o STL.",
       "fileSize": "Il file supera 20 MB. Comprimetelo o inviatelo per email.",
       "privacy": "Serve il consenso per poter rispondere alla richiesta."
     },
     "prefilled": "Misura {size} selezionata dalla ricerca per frequenza.",
     "contactTitle": "Contatti diretti",
     "email_label": "Email",
-    "phone_label": "Telefono",
+    "phone_label": "Cellulare",
     "operational": "Sede operativa",
     "legal": "Sede legale",
     "errorSummaryOne": "Controllate i campi segnalati: 1 campo da correggere.",
     "errorSummaryOther": "Controllate i campi segnalati: {count} campi da correggere.",
-    "variantOf": "Variante del codice {code}: "
+    "variantOf": "Variante del codice {code}: ",
+    "successNumber": "Numero richiesta: {number}",
+    "phone2_label": "Telefono fisso",
+    "pec_label": "PEC"
   },
   "finalCta": {
-    "title": "Avete un disegno o una frequenza?",
-    "body": "Ci bastano per partire.",
-    "quote": "Chiedi un preventivo",
-    "shop": "Vai allo shop"
+    "title": "Preventivo entro 24 ore.",
+    "body": "Prezzi su richiesta: ogni preventivo è personalizzato.",
+    "quote": "Richiedi un preventivo",
+    "shop": "Configura il tuo pezzo"
   },
   "footer": {
-    "tagline": "Componenti meccanici a microonde e dispositivi in guida d’onda, dal 1986.",
+    "tagline": "Componenti meccanici a microonde e dispositivi in guida d’onda, dal 1987.",
     "navTitle": "Sito",
     "legalTitle": "Note legali",
     "contactTitle": "Contatti",
@@ -493,16 +431,17 @@
     "credit": "Realizzato e gestito da",
     "distinct": "Tecnolambro Microwave Components, Miradolo Terme (PV). Nessun legame con altre aziende con nome simile.",
     "rights": "© {year} Tecnolambro S.a.s. di Marco Pasquini & C.",
-    "logoAlt": "Logo Tecnolambro: produttore di guida d’onda flessibile twistabile e senza saldature, componenti per applicazioni a microonde"
+    "logoAlt": "Logo Tecnolambro: produttore di guida d’onda flessibile twistabile e senza saldature, componenti per applicazioni a microonde",
+    "pec": "PEC"
   },
   "customPage": {
     "title": "Componenti a microonde su disegno",
-    "intro": "Quando il pezzo non è a catalogo, lo costruiamo. Ufficio tecnico, officina, trattamenti e laboratorio lavorano sotto lo stesso tetto.",
+    "intro": "Quando il pezzo non è a catalogo, lo costruiamo: progettiamo, costruiamo e collaudiamo i nostri componenti.",
     "sendTitle": "Cosa mandarci",
     "send": [
       {
         "title": "Il disegno",
-        "body": "Quotato, con tolleranze e finitura. PDF, DWG, DXF o STEP, fino a 20 MB."
+        "body": "Quotato, con tolleranze e finitura. PDF, DWG, DXF, STEP, IGES o STL, fino a 20 MB."
       },
       {
         "title": "La frequenza",
@@ -518,25 +457,25 @@
       }
     ],
     "formatsTitle": "Formati accettati",
-    "formatsBody": "PDF per disegni quotati, DWG e DXF per il 2D, STEP per i modelli 3D.",
+    "formatsBody": "PDF per disegni quotati, DWG e DXF per il 2D, STEP, IGES e STL per i modelli 3D.",
     "timeTitle": "Tempi",
-    "timeBody": "Risposta con prezzo e tempi entro 24 ore lavorative. Il tempo di produzione dipende da geometria, trattamenti e quantità. [DA COMPLETARE: tempi tipici]",
+    "timeBody": "Preventivo entro 24 ore. Il tempo di produzione dipende da geometria, trattamenti e quantità. [DA COMPLETARE: tempi tipici]",
     "testTitle": "Collaudo",
-    "testBody": "Ogni pezzo passa dal laboratorio interno con controllo elettrico e dimensionale prima della spedizione.",
+    "testBody": "Collaudiamo il 100% dei pezzi prima della spedizione.",
     "stepsTitle": "Dal disegno al pezzo",
     "formTitle": "Inviate il disegno"
   },
   "aboutPage": {
-    "title": "Dal 1986, guide d’onda costruite in casa.",
-    "intro": "Tecnolambro progetta e costruisce componenti meccanici a microonde e dispositivi in guida d’onda. È nata nel 1986 in stretta collaborazione con Siemens Telecomunicazioni S.p.A. di Cassina de’ Pecchi.",
+    "title": "Dal 1987, guide d’onda di produzione propria.",
+    "intro": "Tecnolambro progetta, costruisce e collauda componenti meccanici a microonde e dispositivi in guida d’onda. È nata nel 1987 e lavora in collaborazione con le più grandi aziende di telecomunicazioni.",
     "productionTitle": "Produzione",
-    "productionBody": "Un sistema produttivo autonomo, con magazzino di materie prime e di manufatti. Guida rigida, flessibile e flessibile-twistabile sono di nostra produzione.",
-    "treatmentsTitle": "Trattamenti superficiali",
-    "treatmentsBody": "Impianti interni per brillantatura e verniciatura. Per trattamenti termici e galvanici lavoriamo con partner selezionati.",
-    "labTitle": "Laboratorio",
-    "labBody": "Strumenti di controllo elettrico e dimensionale per collaudare ogni pezzo prima che esca.",
-    "officeTitle": "Ufficio tecnico",
-    "officeBody": "Progetta i componenti su disegno del cliente e segue il pezzo fino al collaudo.",
+    "productionBody": "Un sistema produttivo autonomo, con magazzino di materie prime e di manufatti. La guida d’onda flessibile twistabile e seamless è di nostra produzione.",
+    "treatmentsTitle": "Trattamenti",
+    "treatmentsBody": "Brillantatura, verniciatura, trattamenti termici e galvanici, con fornitori storici e selezionati, noti per la loro affidabilità e professionalità.",
+    "labTitle": "Collaudo finale al 100%",
+    "labBody": "Collaudiamo il 100% dei pezzi prima della spedizione.",
+    "officeTitle": "Progettazione",
+    "officeBody": "Progettiamo i componenti sul disegno del cliente e seguiamo il pezzo fino al collaudo.",
     "sitesTitle": "Sedi",
     "operational": "Sede operativa e produzione",
     "legal": "Sede legale",
@@ -546,30 +485,30 @@
   },
   "qualityPage": {
     "title": "Qualità e certificazioni",
-    "intro": "Un pezzo esce solo dopo il controllo in laboratorio. Qui raccogliamo certificazioni, controlli e procedure.",
+    "intro": "Collaudiamo il 100% dei pezzi prima della spedizione. Qui raccogliamo certificazioni, controlli e procedure.",
     "certTitle": "Certificazioni",
     "certTodo": "[DA COMPLETARE: ISO 9001 e altre certificazioni]",
     "certNote": "I certificati verranno pubblicati qui in PDF, con ente, numero e scadenza.",
-    "controlsTitle": "Controlli in laboratorio",
-    "controlsBody": "Il laboratorio interno dispone di strumenti di controllo elettrico e dimensionale.",
+    "controlsTitle": "Collaudo finale al 100%",
+    "controlsBody": "Collaudiamo il 100% dei pezzi prima della spedizione, con controllo elettrico e dimensionale.",
     "controlsTodo": "[DA COMPLETARE: strumenti e parametri controllati]",
-    "chainTitle": "Filiera controllata",
-    "chainBody": "Materie prime a magazzino, lavorazione e trattamenti di brillantatura e verniciatura interni, trattamenti termici e galvanici con partner selezionati."
+    "chainTitle": "Fornitori storici e selezionati",
+    "chainBody": "Materie prime a magazzino e produzione propria. Brillantatura, verniciatura, trattamenti termici e galvanici con fornitori storici e selezionati, noti per la loro affidabilità e professionalità."
   },
   "hamPage": {
-    "title": "Componenti per 10 GHz e QO-100",
-    "intro": "Guide d’onda, illuminatori e transizioni per chi lavora in banda X e sul satellite geostazionario QO-100.",
-    "bandsTitle": "Bande di interesse",
-    "band10": "Banda radioamatoriale dei 10 GHz (10,0-10,5 GHz): misura standard WR-90 o WR-75.",
-    "bandQo": "QO-100, downlink a 10,489 GHz: misura standard WR-90 o WR-75.",
-    "productsTitle": "Prodotti",
-    "productsTodo": "[DA COMPLETARE: prodotti per 10 GHz e QO-100 confermati dal titolare]",
-    "shopTitle": "Ordinate nello shop",
-    "shopBody": "I pezzi standard per radioamatori saranno ordinabili online, con spedizione in 48 ore."
+    "title": "Guide d’onda per i 10 GHz",
+    "intro": "Guida d’onda flessibile twistabile e seamless WR-90 e WR-75 per chi lavora sulla banda radioamatoriale dei 10 GHz.",
+    "bandsTitle": "Quale misura",
+    "band10": "Banda radioamatoriale dei 10 GHz (10,0–10,5 GHz): guida WR-90 (8,20–12,5 GHz) o WR-75 (9,84–15,0 GHz).",
+    "bandCustom": "Lunghezza, flange e versione twistabile o seamless si scelgono nel configuratore, con disegno quotato e modello 3D.",
+    "shopTitle": "Configura il tuo pezzo",
+    "shopBody": "Misura WR-90 o WR-75, lunghezza e flange: preventivo entro 24 ore. Prezzi su richiesta: ogni preventivo è personalizzato.",
+    "configureWr90": "Configura una WR-90",
+    "configureWr75": "Configura una WR-75"
   },
   "contactPage": {
     "title": "Contatti e preventivi",
-    "intro": "Scriveteci, chiamateci o inviate direttamente il disegno. Rispondiamo entro 24 ore lavorative.",
+    "intro": "Scriveteci, chiamateci o inviate direttamente il disegno. Preventivo entro 24 ore.",
     "hoursTitle": "Orari",
     "hoursTodo": "[DA COMPLETARE: orari della sede operativa]",
     "company": "Dati societari"
@@ -591,20 +530,20 @@
   "legal": {
     "privacy": {
       "title": "Privacy policy",
-      "updated": "6 ottobre 2026",
+      "updated": "8 ottobre 2026",
       "sections": [
         {
           "h": "1. Titolare del trattamento",
           "p": [
             "Il titolare del trattamento è Tecnolambro S.a.s. di Marco Pasquini & C., P.IVA 08639310153, sede legale in Via delle Betulle 1, 20078 San Colombano al Lambro (MI), sede operativa in Via degli Spinedi 20, 27010 Miradolo Terme (PV).",
-            "Per qualsiasi richiesta sulla privacy: info@tecnolambro.it, telefono +39 0382 75385."
+            "Per qualsiasi richiesta sulla privacy: info@tecnolambro.it, PEC tecnolambrosnc@pec.it, telefono +39 375 577 1084."
           ]
         },
         {
           "h": "2. Dati che raccogliamo",
           "p": [
-            "Dati inseriti nel form di richiesta preventivo: nome e cognome, azienda, email, telefono (facoltativo), paese, partita IVA (facoltativa), descrizione della richiesta, misure e quantità.",
-            "File caricati con la richiesta (disegni in PDF, DWG, DXF o STEP). I disegni possono contenere dati personali, per esempio il nome del progettista nel cartiglio.",
+            "Dati inseriti nella richiesta di preventivo: azienda, nome e cognome, email, telefono (facoltativo), paese, partita IVA (facoltativa), pezzi richiesti con quantità e note.",
+            "File caricati con la richiesta (disegni e modelli in PDF, DWG, DXF, STEP, IGES o STL). I disegni possono contenere dati personali, per esempio il nome del progettista nel cartiglio.",
             "Dati di navigazione: indirizzo IP e informazioni tecniche registrati dal server per sicurezza e funzionamento. Statistiche aggregate e anonime sulle visite, senza cookie (vedi punto 7)."
           ]
         },
@@ -630,7 +569,7 @@
           "h": "5. A chi comunichiamo i dati",
           "p": [
             "I dati sono trattati dal personale autorizzato di Tecnolambro e, solo se necessario, da fornitori che agiscono come responsabili del trattamento: hosting del sito, servizio di invio del form ed email, consulenti fiscali, corrieri per le spedizioni.",
-            "[DA COMPLETARE: nomi dei fornitori di hosting e invio form, con eventuali trasferimenti fuori UE e relative garanzie]"
+            "[DA COMPLETARE: nomi dei fornitori di hosting (es. Vercel) e di invio email (Resend o server SMTP aziendale), con eventuali trasferimenti fuori UE e relative garanzie]"
           ]
         },
         {
@@ -658,7 +597,7 @@
     },
     "terms": {
       "title": "Termini d’uso",
-      "updated": "6 ottobre 2026",
+      "updated": "8 ottobre 2026",
       "sections": [
         {
           "h": "1. Uso del sito",
@@ -684,8 +623,8 @@
         {
           "h": "4. Responsabilità",
           "p": [
-            "Curiamo l’esattezza dei contenuti ma non garantiamo che siano sempre completi o aggiornati. Prima di un acquisto fanno fede l’offerta e la conferma d’ordine.",
-            "Il sito può contenere link a siti esterni, compreso lo shop online, che hanno condizioni proprie."
+            "Curiamo l’esattezza dei contenuti ma non garantiamo che siano sempre completi o aggiornati. Prima di un ordine fanno fede il preventivo e la conferma d’ordine.",
+            "Disegni e modelli 3D generati dal configuratore sono indicativi: il disegno definitivo arriva con il preventivo."
           ]
         },
         {
@@ -697,7 +636,7 @@
         {
           "h": "6. Legge applicabile e contatti",
           "p": [
-            "Si applica la legge italiana. Per domande: info@tecnolambro.it, +39 0382 75385.",
+            "Si applica la legge italiana. Per domande: info@tecnolambro.it, +39 375 577 1084.",
             "[DA COMPLETARE: foro competente e rinvio alle condizioni generali di vendita, se esistenti]"
           ]
         }
@@ -705,7 +644,7 @@
     },
     "cookie": {
       "title": "Cookie policy",
-      "updated": "6 ottobre 2026",
+      "updated": "8 ottobre 2026",
       "sections": [
         {
           "h": "Nessun cookie di profilazione",
@@ -716,7 +655,7 @@
         {
           "h": "Memorizzazione tecnica",
           "p": [
-            "Salviamo nel vostro browser due preferenze tecniche: il tema chiaro o scuro scelto (localStorage) e il fatto che l’animazione iniziale sia già stata vista in questa sessione (sessionStorage). Non contengono dati personali e potete cancellarle dalle impostazioni del browser."
+            "Salviamo nel vostro browser alcune informazioni tecniche: il tema chiaro o scuro scelto e la lista “La tua richiesta” con i pezzi, le quantità e le note (localStorage), e il fatto che l’animazione iniziale sia già stata vista in questa sessione (sessionStorage). Restano sul vostro dispositivo finché non inviate la richiesta o non le cancellate dalle impostazioni del browser."
           ]
         },
         {
@@ -726,224 +665,270 @@
           ]
         },
         {
-          "h": "Shop online",
+          "h": "Richiesta di preventivo",
           "p": [
-            "Lo shop online è un sito separato con una propria cookie policy."
+            "La lista dei pezzi si svuota dopo l’invio. I dati inseriti nel modulo arrivano a Tecnolambro solo quando premete “Invia richiesta di preventivo”."
           ]
         }
       ]
     }
   },
   "shop": {
-    "title": "Shop guide d’onda e componenti",
-    "intro": "Pezzi standard a magazzino: guide flessibili, curve, twist, transizioni, flange e kit. Prezzo per quantità e spedizione in 48 ore.",
-    "demoNotice": "Prezzi e prodotti dimostrativi",
-    "demoNoticeBody": "Codici, prezzi e dati tecnici di esempio: quelli reali arriveranno da Tecnolambro. Gli ordini sono richieste, nessun pagamento online.",
-    "filtersLabel": "Filtri del catalogo",
-    "search": "Cerca per codice o nome",
-    "searchPlaceholder": "Es. WR-90, twist, TL-FT75",
-    "family": "Famiglia",
-    "allFamilies": "Tutte le famiglie",
+    "title": "Configura il tuo pezzo",
+    "intro": "Scegli un pezzo pronto o componilo misura per misura. Prezzi su richiesta: ogni preventivo è personalizzato e arriva entro 24 ore.",
+    "breadcrumb": "Configura",
+    "howTitle": "Come funziona",
+    "how": [
+      "Scegli o componi il pezzo",
+      "Quantità e note",
+      "Invia: preventivo entro 24 ore"
+    ],
+    "readyTitle": "Prodotti pronti",
+    "readyBody": "Le misure standard delle nostre tabelle tecniche.",
+    "composeTitle": "Componi il pezzo",
+    "composeBody": "Tipo, misura, lunghezza e flange. Il disegno e il modello 3D si aggiornano mentre scegli.",
+    "filtersLabel": "Filtri dei prodotti pronti",
+    "family": "Tipo",
+    "allFamilies": "Tutti",
     "size": "Misura",
     "allSizes": "Tutte le misure",
-    "line": "Linea",
-    "allLines": "Tutte",
-    "lines": {
-      "pro": "Professionale",
-      "ham": "Radioamatori"
-    },
-    "families": {
-      "rigid": "Guida rigida",
-      "flexible": "Flessibile",
-      "bends": "Curve",
-      "twist": "Twist",
-      "transitions": "Transizioni",
-      "flanges": "Flange e kit",
-      "ham": "Radioamatori"
-    },
-    "results": "{count} prodotti",
-    "resultsOne": "1 prodotto",
-    "empty": "Nessun prodotto con questi filtri.",
+    "freq": "Frequenza (GHz)",
+    "freqPlaceholder": "Es. 10,5",
+    "results": "{count} pezzi",
+    "resultsOne": "1 pezzo",
+    "empty": "Nessun pezzo con questi filtri.",
     "reset": "Azzera i filtri",
-    "priceFrom": "da {price} + IVA",
-    "vatExcluded": "IVA esclusa",
-    "availability": {
-      "in_stock": "Disponibile",
-      "low_stock": "Pochi pezzi",
-      "on_order": "Su ordinazione"
-    },
-    "availabilityHint": {
-      "in_stock": "Spedizione in 48 ore",
-      "low_stock": "Spedizione in 48 ore, scorte limitate",
-      "on_order": "Spedizione in circa 10 giorni lavorativi (dimostrativo)"
-    },
-    "code": "Codice",
+    "stock": "Disponibile a magazzino · spedizione in 48 ore",
     "band": "Banda",
-    "breadcrumb": "Shop",
-    "specsTitle": "Dati tecnici",
-    "specs": {
+    "configure": "Configura",
+    "configureLabel": "Configura {name} {size}",
+    "add": "Aggiungi alla richiesta",
+    "added": "Aggiunto",
+    "shipping": "Spedizione in tutto il mondo: modalità e costi indicati nel preventivo.",
+    "priceNote": "Prezzi su richiesta: ogni preventivo è personalizzato.",
+    "bendsTitle": "Curve, twist e disassati",
+    "bendsBody": "Su richiesta o su disegno: aggiungi la voce alla richiesta, descrivi il pezzo nelle note e carica il disegno.",
+    "bendsCta": "Aggiungi un pezzo su disegno",
+    "showMore": "Mostra tutte le misure ({count})"
+  },
+  "tables": {
+    "title": "Tabelle tecniche",
+    "intro": "Caratteristiche elettriche e dimensioni della guida d’onda flessibile Tecnolambro, misura per misura.",
+    "tabsLabel": "Tabelle tecniche",
+    "tabTwist": "Twistabile",
+    "tabSeamless": "Seamless",
+    "tabDims": "Dimensioni",
+    "captionTwist": "Guida d’onda flessibile twistabile: caratteristiche elettriche",
+    "captionSeamless": "Guida d’onda flessibile seamless: caratteristiche elettriche",
+    "captionDims": "Dimensioni della guida d’onda flessibile, codici TLFX",
+    "size": "Misura",
+    "freq": "Frequenza (GHz)",
+    "rl": "Return loss (dB)",
+    "att": "Attenuazione (dB/m)",
+    "power": "Potenza",
+    "cw": "CW (W)",
+    "peak": "Picco (kW)",
+    "vswr600": "VSWR (600 mm)",
+    "code": "Codice",
+    "dimsGroup": "Dimensioni (mm)",
+    "tol": "Tolleranza (mm)",
+    "vswrMax": "VSWR max",
+    "onRequest": "Su richiesta",
+    "filterLabel": "Evidenzia le misure per una frequenza (GHz)",
+    "filterPlaceholder": "Es. 10,5",
+    "filterNone": "Nessuna misura copre {freq} GHz.",
+    "filterOne": "1 misura copre {freq} GHz.",
+    "filterMany": "{count} misure coprono {freq} GHz.",
+    "covers": "copre la frequenza",
+    "configure": "Configura",
+    "configureLabel": "Configura {type} {size}",
+    "download": "Scarica scheda tecnica (PDF)",
+    "downloading": "Preparazione del PDF…",
+    "material": "Materiale: ottone {material}",
+    "notes": [
+      "** Perdita di inserzione in dB per 1 piede, con argentatura.",
+      "*** VSWR per una sezione di 2 piedi.",
+      "Lunghezza L: da 1100 a 1300 mm.",
+      "* TLFX-400: lunghezza L massima 3 piedi."
+    ],
+    "verify": "Valori da verificare con l’ufficio tecnico Tecnolambro.",
+    "scrollHint": "La tabella scorre di lato.",
+    "drawingTitle": "Guida d’onda flessibile: quote",
+    "legend": {
+      "AB": "A × B ingombro dell’ondulazione",
+      "CD": "C × D fondo dell’ondulazione",
+      "P": "P passo dell’ondulazione",
+      "rR": "r, R raggi degli spigoli",
+      "L": "L lunghezza"
+    },
+    "sheetTitle": "Scheda tecnica",
+    "sheetFooter": "Dati da verificare con l’ufficio tecnico. Preventivo entro 24 ore: info@tecnolambro.it · +39 375 577 1084"
+  },
+  "configurator": {
+    "title": "Componi il pezzo",
+    "progress": "Passo {n} di {total}",
+    "stepsLabel": "Passi del configuratore",
+    "steps": {
+      "type": "Tipo",
       "size": "Misura",
-      "band": "Banda",
       "length": "Lunghezza",
       "flanges": "Flange",
-      "material": "Materiale",
-      "vswr": "VSWR max",
-      "code": "Codice"
+      "options": "Opzioni"
     },
-    "tiersTitle": "Prezzi per quantità",
-    "tierRange": {
-      "t1": "1-4 pezzi",
-      "t2": "5-9 pezzi",
-      "t3": "10 pezzi e oltre"
+    "typeTitle": "Che guida ti serve?",
+    "sizeTitle": "Scegli la misura",
+    "sizeByList": "Dall’elenco",
+    "sizeByFreq": "Dimmi la frequenza",
+    "freqLabel": "Frequenza di lavoro (GHz)",
+    "freqSuggest": "A {freq} GHz ti consigliamo {size}.",
+    "freqAlso": "Va bene anche: {list}.",
+    "freqNone": "Nessuna misura standard copre {freq} GHz: scrivilo nelle note, la costruiamo su disegno.",
+    "useSize": "Usa {size}",
+    "lengthTitle": "Lunghezza",
+    "lengthLabel": "Lunghezza L (mm)",
+    "lengthHint": "Fino a {max} mm per questa misura.",
+    "lengthOut": "Possibile su richiesta, scrivilo nelle note.",
+    "lengthInvalid": "Inserisci una lunghezza in millimetri.",
+    "flangesTitle": "Flange",
+    "flangeA": "Flangia lato A",
+    "flangeB": "Flangia lato B",
+    "flangeOther": "Altra (specifica nelle note)",
+    "flangeNote": "Elenco da confermare con l’ufficio tecnico.",
+    "optionsTitle": "Opzioni",
+    "optionsNone": "Nessuna opzione aggiuntiva per ora: scrivi nelle note se ti serve un rivestimento o una finitura particolare.",
+    "options": {
+      "jacket": "Rivestimento esterno",
+      "pressurized": "Versione pressurizzabile"
     },
-    "tierList": "listino",
-    "unitPrice": "Prezzo unitario",
-    "quantity": "Quantità",
-    "decrease": "Diminuisci quantità",
-    "increase": "Aumenta quantità",
-    "addToCart": "Aggiungi al carrello",
-    "added": "Aggiunto al carrello",
-    "lineTotal": "Totale riga",
-    "youSave": "Risparmi {amount} con lo sconto quantità",
-    "customVariant": "Mi serve una variante su misura",
-    "customVariantHint": "Lunghezza, flange o misura diverse: ti mandiamo un preventivo.",
-    "related": "Altri pezzi",
-    "backToShop": "Torna allo shop",
-    "shipping48": "Spedizione in 48 ore dal magazzino di Miradolo Terme",
-    "invoice": "Fattura con P.IVA italiana, UE o export",
-    "quoteFallback": "Non trovi il pezzo? Chiedi un preventivo."
-  },
-  "cart": {
-    "title": "Carrello",
-    "open": "Apri il carrello",
-    "openWithCount": "Apri il carrello, {count} articoli",
-    "close": "Chiudi il carrello",
-    "empty": "Il carrello è vuoto.",
-    "emptyCta": "Vai allo shop",
-    "quantityFor": "Quantità di {code}",
-    "decrease": "Diminuisci quantità di {code}",
-    "increase": "Aumenta quantità di {code}",
-    "remove": "Rimuovi {code}",
-    "subtotal": "Subtotale",
-    "vatExcluded": "IVA esclusa, spedizione calcolata al passo successivo",
-    "tiers": "5-9 pezzi −8% · 10+ pezzi −15% per articolo",
-    "discountApplied": "Sconto quantità −{percent}%",
-    "checkout": "Procedi all’ordine",
-    "continue": "Continua gli acquisti",
-    "loading": "Caricamento del carrello…",
-    "error": "Il carrello non si è aggiornato. Riprova."
-  },
-  "checkout": {
-    "title": "Ordine",
-    "stepsLabel": "Passi dell’ordine",
-    "step": "Passo {n} di 3",
-    "step1": "Tipo di cliente",
-    "step2": "Dati",
-    "step3": "Riepilogo",
-    "customerType": "Chi sta ordinando?",
-    "types": {
-      "business_it": "Azienda in Italia",
-      "private_it": "Privato in Italia",
-      "business_eu": "Azienda nell’Unione Europea",
-      "private_eu": "Privato nell’Unione Europea",
-      "extra_eu": "Cliente fuori dall’UE"
-    },
-    "typesHint": {
-      "business_it": "Fattura elettronica con codice SDI o PEC",
-      "private_it": "IVA 22% inclusa nel totale",
-      "business_eu": "P.IVA comunitaria: inversione contabile, IVA 0%",
-      "private_eu": "IVA italiana 22%",
-      "extra_eu": "Esportazione: IVA 0%"
-    },
-    "next": "Continua",
+    "next": "Avanti",
     "back": "Indietro",
-    "company": "Ragione sociale",
+    "summary": "Riepilogo",
+    "code": "Codice",
+    "type": "Tipo",
+    "size": "Misura",
+    "band": "Banda",
+    "length": "Lunghezza",
+    "flanges": "Flange",
+    "electrical": "Dati elettrici",
+    "rl": "Return loss {len} mm",
+    "vswr600": "VSWR 600 mm",
+    "att": "Attenuazione",
+    "cw": "Potenza CW",
+    "peak": "Potenza di picco",
+    "onRequest": "Dati elettrici su richiesta",
+    "add": "Aggiungi alla richiesta",
+    "added": "Aggiunto alla tua richiesta.",
+    "goToRequest": "Vai alla tua richiesta",
+    "drawing": "Disegno tecnico",
+    "view3d": "Vedi in 3D",
+    "view2d": "Vedi il disegno",
+    "downloadPdf": "Scarica disegno (PDF)",
+    "downloadStl": "Scarica modello 3D (STL)",
+    "downloadGlb": "Scarica modello 3D (GLB)",
+    "preparing": "Preparazione…",
+    "loading3d": "Caricamento del modello 3D…",
+    "viewerLabel": "Modello 3D di {code}. Trascina per ruotare, rotella o due dita per lo zoom.",
+    "viewerHint": "Trascina per ruotare · rotella o due dita per lo zoom",
+    "error3d": "Il modello 3D non si è caricato. Il disegno resta disponibile.",
+    "drawingNote": "Disegno indicativo – il disegno definitivo arriva con il preventivo",
+    "drawingDate": "Data",
+    "drawingScale": "Non in scala",
+    "drawingMaterial": "Materiale",
+    "drawingTitleBlock": "Tecnolambro Microwave Components",
+    "drawingAlt": "Disegno tecnico indicativo di {code}: vista laterale con lunghezza e flange, sezione con le quote A, B, C e D.",
+    "sideView": "Vista laterale",
+    "section": "Sezione",
+    "dimsUnknown": "Quote su richiesta",
+    "downloadError": "Il file non si è generato. Riprova; il disegno e i dati restano qui."
+  },
+  "request": {
+    "title": "La tua richiesta",
+    "intro": "Controlla i pezzi, aggiungi quantità e note, carica i tuoi file e invia: ti rispondiamo con il preventivo entro 24 ore.",
+    "open": "La tua richiesta",
+    "openWithCount": "La tua richiesta, {count} pezzi",
+    "openWithOne": "La tua richiesta, 1 pezzo",
+    "empty": "La tua richiesta è vuota.",
+    "emptyBody": "Configura un pezzo o sceglilo tra i prodotti pronti.",
+    "emptyCta": "Configura il tuo pezzo",
+    "itemsTitle": "Pezzi",
+    "quantity": "Quantità",
+    "quantityFor": "Quantità di {code}",
+    "decrease": "Diminuisci la quantità di {code}",
+    "increase": "Aumenta la quantità di {code}",
+    "notes": "Note",
+    "notesFor": "Note per {code}",
+    "notesPlaceholder": "Scrivi cosa ti serve",
+    "remove": "Togli {code}",
+    "customItem": "Pezzo su disegno",
+    "customItemCode": "SU DISEGNO",
+    "addCustom": "Aggiungi un pezzo su disegno",
+    "addMore": "Aggiungi un altro pezzo",
+    "filesTitle": "Carica il 3D o il disegno",
+    "filesHint": "STEP/STP, IGES/IGS, STL, PDF, DWG, DXF. Anche più file, massimo 20 MB ciascuno.",
+    "filesButton": "Scegli i file",
+    "filesDrop": "oppure trascinali qui",
+    "fileRemove": "Togli {name}",
+    "fileType": "{name}: formato non accettato.",
+    "fileSize": "{name}: supera 20 MB.",
+    "generatedNote": "Alla richiesta alleghiamo il disegno PDF di ogni pezzo configurato.",
+    "customerTitle": "I tuoi dati",
+    "company": "Azienda",
     "name": "Nome e cognome",
-    "contactName": "Referente",
     "email": "Email",
     "phone": "Telefono",
-    "vat": "Partita IVA",
-    "vatHintIt": "11 cifre, con o senza il prefisso IT.",
-    "vatHintEu": "Con il prefisso del paese, es. DE123456789. La verifichiamo su VIES.",
-    "sdi": "Codice SDI",
-    "pec": "PEC",
-    "sdiOrPec": "Indicate il codice SDI oppure la PEC per la fattura elettronica.",
-    "address": "Indirizzo",
-    "city": "Città",
-    "postalCode": "CAP",
-    "province": "Provincia",
     "country": "Paese",
-    "countryPlaceholder": "Scegliete il paese",
-    "notes": "Note per l’ufficio ordini",
+    "vat": "Partita IVA",
     "optional": "facoltativo",
     "required": "obbligatorio",
-    "errors": {
-      "company": "Inserite la ragione sociale.",
-      "name": "Inserite nome e cognome.",
-      "email": "Inserite un’email valida.",
-      "vatIt": "La partita IVA italiana ha 11 cifre.",
-      "vatEu": "Usate il formato con il prefisso del paese, es. DE123456789.",
-      "sdiOrPec": "Serve il codice SDI (7 caratteri) oppure una PEC valida.",
-      "address": "Inserite l’indirizzo.",
-      "city": "Inserite la città.",
-      "postalCode": "Inserite il CAP.",
-      "country": "Scegliete il paese.",
-      "privacy": "Serve il consenso per gestire l’ordine."
-    },
-    "errorSummaryOne": "Controllate il campo segnalato.",
-    "errorSummaryOther": "Controllate i {count} campi segnalati.",
-    "summary": "Articoli",
-    "subtotal": "Subtotale",
-    "shipping": "Spedizione",
-    "shippingZone": {
-      "it": "Italia",
-      "eu": "Unione Europea",
-      "world": "Resto del mondo"
-    },
-    "shippingDemo": "tariffa dimostrativa",
-    "total": "Totale",
-    "rule": {
-      "it_standard": "IVA 22%: vendita in Italia.",
-      "eu_private": "IVA italiana 22%: vendita a privato in un altro paese UE (entro la soglia OSS).",
-      "eu_reverse_charge": "IVA 0%: cessione non imponibile verso azienda UE, inversione contabile (art. 41 DL 331/1993). La P.IVA viene verificata su VIES.",
-      "export": "IVA 0%: cessione all’esportazione non imponibile (art. 8 DPR 633/1972). Dazi e imposte locali a carico del destinatario."
-    },
-    "customer": "Cliente",
-    "privacy": "Ho letto la <link>privacy policy</link> e acconsento al trattamento dei dati per gestire l’ordine.",
-    "submitLocal": "Invia la richiesta d’ordine",
-    "submitShopify": "Vai al pagamento",
+    "privacy": "Ho letto la <link>privacy policy</link> e acconsento al trattamento dei dati per ricevere il preventivo.",
+    "submit": "Invia richiesta di preventivo",
     "sending": "Invio in corso…",
-    "noPayment": "Nessun pagamento ora: l’ufficio ordini conferma disponibilità e totale entro 2 ore lavorative.",
-    "sendError": "Invio non riuscito. Riprovate oppure scriveteci a info@tecnolambro.it.",
-    "emptyCart": "Il carrello è vuoto: aggiungete almeno un articolo.",
-    "edit": "Modifica",
-    "vatTotal": "IVA"
+    "uploading": "Caricamento dei file…",
+    "errors": {
+      "items": "Aggiungi almeno un pezzo alla richiesta.",
+      "quantity": "Quantità di almeno 1 pezzo per {code}.",
+      "customNotes": "Descrivi il pezzo su disegno nelle note.",
+      "company": "Inserisci il nome dell’azienda.",
+      "name": "Inserisci nome e cognome.",
+      "email": "Inserisci un’email valida, per esempio nome@azienda.it.",
+      "country": "Indica il paese.",
+      "privacy": "Serve il consenso per poterti rispondere."
+    },
+    "errorSummaryOne": "Controlla il campo segnalato.",
+    "errorSummaryOther": "Controlla i {count} campi segnalati.",
+    "sendError": "La richiesta non è partita: {reason}. I dati inseriti restano qui: riprova tra poco oppure scrivici a info@tecnolambro.it.",
+    "reasons": {
+      "network": "connessione assente",
+      "tooLarge": "i file sono troppo grandi per l’invio dal sito (oltre 4 MB in totale): mandali a info@tecnolambro.it citando la richiesta",
+      "notConfigured": "il servizio di invio email non è ancora configurato",
+      "rateLimited": "troppe richieste in poco tempo",
+      "invalid": "alcuni dati non sono validi",
+      "server": "errore del server"
+    },
+    "shipping": "Spedizione in tutto il mondo: modalità e costi indicati nel preventivo.",
+    "priceNote": "Prezzi su richiesta: ogni preventivo è personalizzato."
   },
-  "orderSent": {
-    "title": "Richiesta d’ordine inviata",
-    "number": "Numero richiesta",
-    "body": "Grazie. Abbiamo ricevuto la richiesta: nessun importo è stato addebitato.",
-    "demo": "Versione demo: la richiesta non è stata inviata davvero. Il collegamento all’ufficio ordini si attiva al lancio.",
+  "requestSent": {
+    "title": "Richiesta ricevuta.",
+    "body": "Ti rispondiamo con il preventivo entro 24 ore.",
+    "number": "Numero di richiesta",
+    "copy": "Ti abbiamo mandato una conferma per email con il riepilogo.",
     "nextTitle": "Cosa succede adesso",
     "next": [
       {
-        "title": "Conferma entro 2 ore",
-        "body": "L’ufficio ordini verifica disponibilità e totale e vi scrive entro 2 ore lavorative, con le istruzioni di pagamento."
+        "title": "Preventivo entro 24 ore",
+        "body": "L’ufficio tecnico controlla i pezzi e i file e ti manda il preventivo personalizzato, con tempi e modalità di spedizione."
       },
       {
-        "title": "Spedizione",
-        "body": "Dopo il pagamento i pezzi a magazzino partono in 48 ore da Miradolo Terme."
+        "title": "Disegno definitivo",
+        "body": "Con il preventivo arriva il disegno definitivo dei pezzi configurati."
       },
       {
-        "title": "Tracking",
-        "body": "Ricevete il numero di spedizione per email appena il corriere ritira il pacco."
-      },
-      {
-        "title": "Fattura",
-        "body": "La fattura arriva per email (fattura elettronica via SDI per le aziende italiane)."
+        "title": "Conferma d’ordine",
+        "body": "Se il preventivo va bene, rispondi alla mail: partiamo con la produzione."
       }
     ],
-    "backToShop": "Torna allo shop",
+    "back": "Torna al configuratore",
     "missing": "Nessuna richiesta recente in questa sessione."
   }
 }

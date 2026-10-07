@@ -5,14 +5,14 @@ import { SplitReveal } from "@/components/motion/SplitReveal";
 import { ScrambleText } from "@/components/motion/ScrambleText";
 import { MagneticButton } from "@/components/motion/MagneticButton";
 import { QuoteLink, ShopLink } from "@/components/ui/TrackedLink";
-import { BANDS, formatRange } from "@/data/bands";
+import { SIZE_BY_WR, range } from "@/data/waveguides";
 import { MotionToggle } from "@/components/ui/MotionToggle";
 
 export async function Hero() {
   const t = await getTranslations("hero");
   const nav = await getTranslations("nav");
   const locale = await getLocale();
-  const wr90 = BANDS.find((b) => b.wr === "WR-90")!;
+  const wr90 = SIZE_BY_WR.get("WR-90")!;
 
   return (
     <section data-motion-host className="relative isolate flex min-h-[100dvh] flex-col overflow-hidden pt-16 lg:pt-[4.5rem]">
@@ -29,11 +29,12 @@ export async function Hero() {
           delay={0.1}
           className="max-w-[13ch] font-display text-display-xl font-extrabold uppercase tracking-[-0.02em] wdth-wide"
         >
-          <span className="block">{t("titleA")}</span>{" "}
-          <span className="block font-light normal-case text-accent wdth-narrow">{t("titleB")}</span>
+          {t("titleA")}
         </SplitReveal>
 
-        <p className="mt-6 max-w-[44ch] text-lead text-muted">{t("sub")}</p>
+        <p className="mt-6 max-w-[44ch] text-lead text-muted">
+          <span className="font-display font-bold text-accent wdth-wide">{t("since")}.</span> {t("sub")}
+        </p>
 
         <div className="mt-8 flex flex-wrap items-center gap-3">
           <MagneticButton>
@@ -66,7 +67,7 @@ export async function Hero() {
           </dd>
           <dt>{t("legendBand")}</dt>
           <dd className="text-fg">
-            <ScrambleText text={formatRange(wr90, locale)} />
+            <ScrambleText text={`${range(wr90.min, wr90.max, locale)} GHz`} />
           </dd>
         </dl>
         </div>

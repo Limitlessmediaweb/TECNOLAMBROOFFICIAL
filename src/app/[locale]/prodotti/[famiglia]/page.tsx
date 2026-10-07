@@ -1,25 +1,29 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight, Check, FilePlus2 } from "lucide-react";
 import { routing, type Locale } from "@/i18n/routing";
-import { FAMILIES, familyBySlug, type Cell } from "@/data/products";
-import { formatGHz } from "@/data/bands";
+import { VISIBLE_FAMILIES, familyBySlug } from "@/data/families";
 import { buildMetadata } from "@/lib/seo";
 import { breadcrumbsFor } from "@/lib/page";
-import { Breadcrumbs, DemoDataTag, PageHeader, WithTodo } from "@/components/ui/Bits";
+import { familyTexts } from "@/lib/families-text";
+import { Breadcrumbs, PageHeader, WithTodo } from "@/components/ui/Bits";
 import { JsonLd } from "@/components/ui/JsonLd";
-import { QuoteLink, ShopLink } from "@/components/ui/TrackedLink";
+import { PageMessages } from "@/components/ui/PageMessages";
+import { LocalLink as Link } from "@/components/ui/LocalLink";
+import { QuoteLink, ShopLink, localizedHref } from "@/components/ui/TrackedLink";
 import { SplitReveal } from "@/components/motion/SplitReveal";
 import { Stagger } from "@/components/motion/Stagger";
 import { MagneticButton } from "@/components/motion/MagneticButton";
 import { ExplodedPart } from "@/components/domain/ExplodedPart";
 import { ProductGrid } from "@/components/sections/ProductsSection";
+import { SpecTables } from "@/components/tables/SpecTables";
+import { AddCustomButton } from "@/components/request/AddCustomButton";
 
 type Props = PageProps<"/[locale]/prodotti/[famiglia]">;
 
 export function generateStaticParams() {
-  return routing.locales.flatMap((locale) => FAMILIES.map((f) => ({ locale, famiglia: f.slug[locale] })));
+  return routing.locales.flatMap((locale) => VISIBLE_FAMILIES.map((f) => ({ locale, famiglia: f.slug[locale] })));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -36,7 +40,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       it: { pathname: "/prodotti/[famiglia]", params: { famiglia: family.slug.it } },
       en: { pathname: "/prodotti/[famiglia]", params: { famiglia: family.slug.en } },
     },
-    // Formato del brief "[Famiglia] | Tecnolambro Microwave Components"; se supera 60 caratteri si accorcia.
     title: fitTitle(m("title", { name }), name),
     description: fitDescription(description),
   });
@@ -55,13 +58,6 @@ function fitDescription(text: string): string {
   return `${cut.slice(0, cut.lastIndexOf(" ")).replace(/[,;:]$/, "")}…`;
 }
 
-function renderCell(cell: Cell, locale: string, tc: (k: string) => string) {
-  if (typeof cell === "string") return cell;
-  if ("k" in cell) return tc(cell.k);
-  if ("r" in cell) return `${formatGHz(cell.r[0], locale)}-${formatGHz(cell.r[1], locale)}`;
-  return `${cell.prefix ?? ""}${formatGHz(cell.n, locale)}${cell.suffix ?? ""}`;
-}
-
 export default async function FamilyPage({ params }: Props) {
   const { locale, famiglia } = await params;
   setRequestLocale(locale);
@@ -74,9 +70,11 @@ export default async function FamilyPage({ params }: Props) {
   const name = t(`items.${family.key}.name`);
   const applications = t.raw(`items.${family.key}.applications`) as string[];
   const href = { pathname: "/prodotti/[famiglia]" as const, params: { famiglia: family.slug[locale as Locale] } };
+  const { names } = await familyTexts();
+  const shopPath = await localizedHref("/shop");
 
   return (
-    <>
+    <PageMessages namespaces={["tables", "configurator"]}>
       <JsonLd
         data={await breadcrumbsFor(locale as Locale, [
           { name: page("title"), href: "/prodotti" },
@@ -93,116 +91,72 @@ export default async function FamilyPage({ params }: Props) {
         intro={<p>{t(`items.${family.key}.description`)}</p>}
       >
         <div className="flex flex-wrap gap-3">
-          <MagneticButton>
-            <QuoteLink source={`family_${family.key}`} href={{ pathname: "/contatti", query: { famiglia: family.key }, hash: "preventivo" }} className="btn btn-primary">
-              {nav("quote")}
-              <ArrowRight aria-hidden="true" className="size-4" strokeWidth={1.75} />
-            </QuoteLink>
-          </MagneticButton>
-          {family.key !== "custom" ? (
-            <ShopLink source={`family_${family.key}`} className="btn btn-ghost">
-              {nav("shop")}
-            </ShopLink>
+          {family.configurable ? (
+            <MagneticButton>
+              <ShopLink source={`family_${family.key}`} query={{ tipo: family.key }} hash="configura" className="btn btn-primary">
+                {nav("shop")}
+              </ShopLink>
+            </MagneticButton>
           ) : null}
+          <QuoteLink source={`family_${family.key}`} href={{ pathname: "/contatti", query: { famiglia: family.key }, hash: "preventivo" }} className={family.configurable ? "btn btn-ghost" : "btn btn-primary"}>
+            {nav("quote")}
+            <ArrowRight aria-hidden="true" className="size-4" strokeWidth={1.75} />
+          </QuoteLink>
         </div>
       </PageHeader>
 
       <ExplodedPart
-        family={family.key}
+        family={family.drawing}
+        twist={family.key === "twistable"}
         locale={locale}
         title={page("drawingLabel", { name })}
         caption={page("drawingCaption")}
-        labels={{
-          flange: page("partFlange"),
-          body: page("partBody"),
-          gasket: page("partGasket"),
-          screws: page("partScrews"),
-          cover: page("partCover"),
-          horn: page("partHorn"),
-          taper: page("partTaper"),
-        }}
+        labels={{ flange: page("partFlange"), body: page("partBody"), gasket: page("partGasket") }}
       />
 
       <section className="section-y border-t border-line" aria-labelledby="sizes-title">
-        <div className="container-site grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-8">
-          <div className="lg:col-span-4">
+        <div className="container-site">
+          <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
             <h2 id="sizes-title" className="text-display-m font-bold">
-              {family.key === "custom" ? page("processTitle") : page("tableTitle")}
+              {family.table ? page("tableTitle") : page("onRequestTitle")}
             </h2>
-            {family.table.demo ? (
-              <div className="mt-5">
-                <DemoDataTag />
-              </div>
+            {family.table ? (
+              <Link href="/prodotti/tabelle" className="inline-flex items-center gap-2 font-medium underline decoration-accent underline-offset-4 hover:text-accent">
+                {page("tablesLink")}
+                <ArrowRight aria-hidden="true" className="size-4" strokeWidth={1.75} />
+              </Link>
             ) : null}
           </div>
-          <div className="min-w-0 lg:col-span-8">
-            <div className="relative overflow-x-auto" data-lenis-prevent tabIndex={0} role="region" aria-labelledby="sizes-title">
-              <table className="spec-table min-w-[36rem]">
-                <caption className="sr-only">{page("tableCaption", { name })}</caption>
-                <thead>
-                  <tr>
-                    {family.table.columns.map((c) => (
-                      <th key={c} scope="col">
-                        {t(`columns.${c}`)}
-                      </th>
-                    ))}
-                    {family.sizes.length ? (
-                      <th scope="col">
-                        <span className="sr-only">{nav("quote")}</span>
-                      </th>
-                    ) : null}
-                  </tr>
-                </thead>
-                <tbody>
-                  {family.table.rows.map((row, i) => {
-                    const size = typeof row[0] === "string" && row[0].startsWith("WR-") ? row[0] : null;
-                    return (
-                      <tr key={i}>
-                        {row.map((cell, j) => (
-                          <td key={j} className={j > 0 ? "text-muted" : undefined}>
-                            {renderCell(cell, locale, (k) => t(`cells.${k}`))}
-                          </td>
-                        ))}
-                        {family.sizes.length ? (
-                          <td className="text-right">
-                            {size ? (
-                              <QuoteLink
-                                source={`table_${family.key}`}
-                                href={{ pathname: "/contatti", query: { misura: size, famiglia: family.key }, hash: "preventivo" }}
-                                className="annot whitespace-nowrap text-accent underline underline-offset-4 hover:text-fg"
-                              >
-                                {page("askSize", { size })}
-                              </QuoteLink>
-                            ) : null}
-                          </td>
-                        ) : null}
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+          {family.table ? (
+            <SpecTables defaultTab={family.table} configurePath={shopPath} familyNames={names} headingLevel={3} />
+          ) : (
+            <div className="grid gap-6 border border-accent/50 bg-[color-mix(in_srgb,var(--c-accent)_8%,var(--c-bg))] p-7 md:grid-cols-[1fr_auto] md:items-center">
+              <p className="max-w-[60ch] text-lead">{page("onRequestBody")}</p>
+              <AddCustomButton href={await localizedHref("/shop/richiesta")} label={nav("quote")} icon={<FilePlus2 aria-hidden="true" className="size-4" strokeWidth={1.75} />} />
             </div>
-          </div>
+          )}
         </div>
       </section>
 
-      <section className="section-y border-t border-line" aria-labelledby="apps-title">
-        <div className="container-site grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-8">
-          <h2 id="apps-title" className="text-display-m font-bold lg:col-span-4">
-            {page("applicationsTitle")}
-          </h2>
-          <Stagger as="ul" className="grid gap-px border border-line bg-line sm:grid-cols-3 lg:col-span-8">
-            {applications.map((a) => (
-              <li key={a} className="flex flex-col gap-4 bg-bg p-6">
-                <Check aria-hidden="true" className="size-5 text-accent" strokeWidth={2} />
-                <span className="font-medium">
-                  <WithTodo text={a} />
-                </span>
-              </li>
-            ))}
-          </Stagger>
-        </div>
-      </section>
+      {applications.length ? (
+        <section className="section-y border-t border-line" aria-labelledby="apps-title">
+          <div className="container-site grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-8">
+            <h2 id="apps-title" className="text-display-m font-bold lg:col-span-4">
+              {page("applicationsTitle")}
+            </h2>
+            <Stagger as="ul" className="grid gap-px border border-line bg-line sm:grid-cols-3 lg:col-span-8">
+              {applications.map((a) => (
+                <li key={a} className="flex flex-col gap-4 bg-bg p-6">
+                  <Check aria-hidden="true" className="size-5 text-accent" strokeWidth={2} />
+                  <span className="font-medium">
+                    <WithTodo text={a} />
+                  </span>
+                </li>
+              ))}
+            </Stagger>
+          </div>
+        </section>
+      ) : null}
 
       <section className="border-t border-line" aria-label={page("quoteTitle")}>
         <div className="container-site grid gap-4 py-16 md:grid-cols-2">
@@ -218,15 +172,13 @@ export default async function FamilyPage({ params }: Props) {
               <ArrowRight aria-hidden="true" className="size-4" strokeWidth={1.75} />
             </QuoteLink>
           </div>
-          {family.key !== "custom" ? (
-            <div className="flex flex-col gap-4 border border-line bg-surface p-7">
-              <h2 className="text-display-s font-bold">{page("shopTitle")}</h2>
-              <p className="text-muted">{page("shopBody")}</p>
-              <ShopLink source={`family_bottom_${family.key}`} className="btn btn-ghost mt-auto self-start">
-                {nav("shop")}
-              </ShopLink>
-            </div>
-          ) : null}
+          <div className="flex flex-col gap-4 border border-line bg-surface p-7">
+            <h2 className="text-display-s font-bold">{page("shopTitle")}</h2>
+            <p className="text-muted">{page("shopBody")}</p>
+            <ShopLink source={`family_bottom_${family.key}`} query={family.configurable ? { tipo: family.key } : undefined} hash="configura" className="btn btn-ghost mt-auto self-start">
+              {nav("shop")}
+            </ShopLink>
+          </div>
         </div>
       </section>
 
@@ -238,6 +190,6 @@ export default async function FamilyPage({ params }: Props) {
           <ProductGrid exclude={family.key} />
         </div>
       </section>
-    </>
+    </PageMessages>
   );
 }

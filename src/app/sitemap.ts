@@ -1,11 +1,12 @@
 import type { MetadataRoute } from "next";
 import { routing, type StaticPathname } from "@/i18n/routing";
 import { absoluteUrl } from "@/lib/seo";
-import { FAMILIES, SHOP_PRODUCTS } from "@/data/products";
+import { VISIBLE_FAMILIES } from "@/data/families";
 
 const STATIC: { href: StaticPathname; priority: number; changeFrequency: "monthly" | "yearly" }[] = [
   { href: "/", priority: 1, changeFrequency: "monthly" },
   { href: "/prodotti", priority: 0.9, changeFrequency: "monthly" },
+  { href: "/prodotti/tabelle", priority: 0.8, changeFrequency: "monthly" },
   { href: "/su-misura", priority: 0.9, changeFrequency: "monthly" },
   { href: "/contatti", priority: 0.8, changeFrequency: "yearly" },
   { href: "/azienda", priority: 0.7, changeFrequency: "yearly" },
@@ -30,7 +31,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
-  for (const family of FAMILIES) {
+  for (const family of VISIBLE_FAMILIES) {
     const hrefFor = (l: (typeof routing.locales)[number]) => ({ pathname: "/prodotti/[famiglia]" as const, params: { famiglia: family.slug[l] } });
     const languages = Object.fromEntries(routing.locales.map((l) => [l, absoluteUrl(hrefFor(l), l)]));
     for (const locale of routing.locales) {
@@ -38,14 +39,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
-  // Schede dello shop (stesso handle nelle due lingue). Ordine e conferma sono pagine noindex: escluse.
-  for (const product of SHOP_PRODUCTS) {
-    const href = { pathname: "/shop/[handle]" as const, params: { handle: product.handle } };
-    const languages = Object.fromEntries(routing.locales.map((l) => [l, absoluteUrl(href, l)]));
-    for (const locale of routing.locales) {
-      entries.push({ url: absoluteUrl(href, locale), lastModified, changeFrequency: "monthly", priority: 0.7, alternates: { languages } });
-    }
-  }
-
+  // La tua richiesta e la conferma sono pagine noindex: escluse.
   return entries;
 }

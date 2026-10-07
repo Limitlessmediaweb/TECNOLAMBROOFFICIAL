@@ -11,7 +11,7 @@ type Props = {
   duration?: number;
 };
 
-/** Contatore per numeri veri (1986, anni di attività). SSR e no-JS mostrano già il valore finale. */
+/** Contatore per numeri veri (anno di fondazione, anni di attività). SSR e no-JS mostrano già il valore finale. */
 export function Counter({ value, from = 0, className, duration = 1.6 }: Props) {
   const ref = useRef<HTMLSpanElement>(null);
 

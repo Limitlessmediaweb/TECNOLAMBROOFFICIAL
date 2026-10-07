@@ -87,7 +87,7 @@ export function MobileMenu({
       <button
         type="button"
         onClick={open}
-        className="grid size-11 place-items-center rounded-full border border-line-strong lg:hidden"
+        className="grid size-10 place-items-center rounded-full border border-line-strong sm:size-11 lg:hidden"
         aria-label={openLabel}
         aria-haspopup="dialog"
       >

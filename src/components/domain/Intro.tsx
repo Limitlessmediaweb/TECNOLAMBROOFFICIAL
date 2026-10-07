@@ -63,7 +63,7 @@ type Props = { tagline: string; skipLabel: string; label: string };
 /**
  * Micro-storia iniziale (~4 s, una volta per sessione):
  * 1. la guida si disegna a linee  2. un'onda ottone la percorre
- * 3. all'uscita si apre a ventaglio come da un illuminatore
+ * 3. all'uscita, dalla flangia finale, le onde si aprono a ventaglio
  * 4. il wordmark si allarga (asse wdth di Archivo)  5. tendina verso l'alto.
  * L'hero è già renderizzato sotto (LCP non bloccato). Lo script inline nel <head>
  * attiva l'overlay prima del primo paint; senza JS l'overlay non compare mai.
@@ -140,7 +140,7 @@ export function Intro({ tagline, skipLabel, label }: Props) {
 
       if (reduce) {
         // Composizione finale ferma, poi dissolvenza di 300 ms.
-        gsap.set(q("[data-wall], [data-horn], [data-fan] path"), { drawSVG: "100%" });
+        gsap.set(q("[data-wall], [data-end-flange], [data-fan] path"), { drawSVG: "100%" });
         gsap.set(q("[data-word], [data-tagline], [data-flange], [data-fan]"), { opacity: 1 });
         const tl = gsap.timeline({ onComplete: () => finish() });
         tl.to(el, { opacity: 0, duration: 0.3, ease: "none", delay: 0.15 });
@@ -165,8 +165,8 @@ export function Intro({ tagline, skipLabel, label }: Props) {
           .to(wave, { drawSVG: "0% 22%", duration: 0.35, ease: "power1.in" }, 1.0)
           .to(wave, { drawSVG: "78% 100%", duration: 0.85, ease: "none" }, 1.35)
           .to(wave, { drawSVG: "100% 100%", duration: 0.25, ease: "power1.out" }, 2.2)
-          // 3. ventaglio dall'illuminatore
-          .to(q("[data-horn]"), { drawSVG: "100%", duration: 0.35 }, 1.95)
+          // 3. flangia finale e ventaglio di onde
+          .to(q("[data-end-flange]"), { drawSVG: "100%", duration: 0.35 }, 1.95)
           .set(q("[data-fan]"), { opacity: 1 }, 2.15)
           .to(q("[data-fan] path"), { drawSVG: "100%", duration: 0.55, stagger: 0.07, ease: "power2.out" }, 2.15)
           .to(q("[data-fan]"), { scale: 1.12, transformOrigin: "0% 50%", opacity: 0.35, duration: 0.9, ease: "power1.out" }, 2.3)
@@ -239,8 +239,8 @@ export function Intro({ tagline, skipLabel, label }: Props) {
           {/* flange */}
           <rect data-flange x="46" y="290" width="14" height="80" className="draw-accent" opacity="0" />
           <rect data-flange x="360" y="296" width="10" height="68" className="draw-dim" opacity="0" />
-          {/* illuminatore (tromba) */}
-          <path data-horn d="M760 208 L812 176 M760 252 L812 284" className="draw-line" strokeDasharray="0 4000" />
+          {/* flangia finale */}
+          <path data-end-flange d="M760 190 V270 M772 190 V270 M760 190 H772 M760 270 H772" className="draw-accent" strokeDasharray="0 4000" />
           {/* onda nella guida */}
           {/* scia luminosa: tratto largo e trasparente (più leggero di un filtro blur a ogni frame) */}
           <path data-wave d={WAVE_PATH} fill="none" stroke="var(--c-accent)" strokeWidth="9" strokeLinecap="round" opacity="0.22" strokeDasharray="0 4000" />
@@ -252,7 +252,7 @@ export function Intro({ tagline, skipLabel, label }: Props) {
               return (
                 <path
                   key={i}
-                  d={`M${790 + r * 0.25} ${230 - r} Q ${790 + r * 1.05} 230 ${790 + r * 0.25} ${230 + r}`}
+                  d={`M${786 + r * 0.25} ${230 - r} Q ${786 + r * 1.05} 230 ${786 + r * 0.25} ${230 + r}`}
                   fill="none"
                   stroke="var(--c-accent)"
                   strokeWidth={2 - i * 0.25}

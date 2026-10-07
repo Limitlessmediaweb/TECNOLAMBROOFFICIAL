@@ -1,9 +1,9 @@
 import { routing, type Locale, type StaticPathname } from "./routing";
-import { familyByAnySlug } from "@/data/products";
+import { FAMILIES } from "@/data/families";
 
 /**
- * Converte un percorso reale ("/en/products/rigid") nel percorso equivalente dell'altra lingua
- * ("/prodotti/rigida"). Funzione pura, usata dal selettore lingua lato client senza next-intl.
+ * Converte un percorso reale ("/en/products/seamless-flexible-waveguide") nel percorso equivalente
+ * dell'altra lingua ("/prodotti/guida-flessibile-seamless"). Funzione pura, usata dal selettore lingua lato client senza next-intl.
  */
 type Templates = Record<string, string | Record<Locale, string>>;
 
@@ -25,7 +25,7 @@ export function switchLocalePath(pathname: string, from: Locale, target: Locale)
   const bare = stripLocale(pathname);
   const pathnames = routing.pathnames as Templates;
 
-  // Prima i percorsi fissi, poi quelli con parametri (/shop/ordine prima di /shop/[handle])
+  // Prima i percorsi fissi, poi quelli con parametri (/prodotti/tabelle prima di /prodotti/[famiglia])
   const entries = Object.values(pathnames).sort((a, b) => Number(templateFor(a, from).includes("[")) - Number(templateFor(b, from).includes("[")));
   for (const entry of entries) {
     const source = templateFor(entry, from);
@@ -35,7 +35,7 @@ export function switchLocalePath(pathname: string, from: Locale, target: Locale)
     let out = templateFor(entry, target);
     for (const [key, value] of Object.entries(match.groups ?? {})) {
       // Le famiglie hanno slug tradotti
-      const translated = key === "famiglia" ? (familyByAnySlug(value)?.slug[target] ?? value) : value;
+      const translated = key === "famiglia" ? (FAMILIES.find((f) => f.slug[from] === value)?.slug[target] ?? value) : value;
       out = out.replace(`[${key}]`, translated);
     }
     return withPrefix(out, target);
@@ -55,8 +55,7 @@ export function isActivePath(pathname: string, href: string): boolean {
 export type LocalHref =
   | StaticPathname
   | { pathname: StaticPathname; query?: Record<string, string>; hash?: string }
-  | { pathname: "/prodotti/[famiglia]"; params: { famiglia: string }; query?: Record<string, string>; hash?: string }
-  | { pathname: "/shop/[handle]"; params: { handle: string }; query?: Record<string, string>; hash?: string };
+  | { pathname: "/prodotti/[famiglia]"; params: { famiglia: string }; query?: Record<string, string>; hash?: string };
 
 /**
  * Percorso pubblico localizzato di un href interno ("/prodotti" → "/en/products").

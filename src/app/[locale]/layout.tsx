@@ -4,10 +4,6 @@ import { notFound } from "next/navigation";
 import { hasLocale } from "next-intl";
 import { ClientI18nProvider } from "@/lib/client-i18n";
 import { ClickTracker } from "@/components/ui/ClickTracker";
-import { CartProvider } from "@/components/shop/CartProvider";
-import { CartDrawer } from "@/components/shop/CartDrawer";
-import { commerceMode } from "@/lib/commerce";
-import { localizedHref } from "@/components/ui/TrackedLink";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { routing, type Locale } from "@/i18n/routing";
 import { fontVariables } from "../fonts";
@@ -56,7 +52,7 @@ export async function generateMetadata({ params }: LayoutProps<"/[locale]">): Pr
 }
 
 /** Solo i namespace usati dai componenti client: il resto dei testi resta sul server. */
-const CLIENT_NAMESPACES = ["nav", "common", "bandFinder", "quote", "intro", "cart"] as const;
+const CLIENT_NAMESPACES = ["nav", "common", "bandFinder", "quote", "intro", "request"] as const;
 
 export default async function LocaleLayout({ children, params }: LayoutProps<"/[locale]">) {
   const { locale } = await params;
@@ -75,7 +71,6 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
       </head>
       <body>
         <ClientI18nProvider locale={locale} messages={clientMessages}>
-          <CartProvider mode={commerceMode()}>
           <a
             href="#main"
             className="sr-only z-[110] rounded-full bg-accent px-4 py-2 font-semibold text-on-accent focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
@@ -96,8 +91,6 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
             <Footer />
           </Suspense>
           <DemoBadge />
-          <CartDrawer shopPath={await localizedHref("/shop")} checkoutPath={await localizedHref("/shop/ordine")} />
-          </CartProvider>
         </ClientI18nProvider>
         <ClickTracker />
         <JsonLd data={organizationJsonLd(locale as Locale)} />

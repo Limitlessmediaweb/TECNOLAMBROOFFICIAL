@@ -2,39 +2,39 @@
   "meta": {
     "siteName": "Tecnolambro Microwave Components",
     "home": {
-      "title": "Waveguide & microwave components | Tecnolambro",
-      "description": "Rigid and flexible waveguide, antenna feed horns, transitions and flanges. Designed and built in Italy since 1986. Quotes within 24 hours."
+      "title": "Flexible waveguides and microwave parts | Tecnolambro",
+      "description": "Twistable and seamless flexible waveguide, bends, twists and offsets. Designed, built and tested by us since 1987. Quote within 24 hours."
     },
     "products": {
-      "title": "Waveguide products | Tecnolambro",
-      "description": "Six families of microwave components: rigid, flexible and twistable waveguide, feed horns, transitions, flanges and kits, build-to-print parts."
+      "title": "Flexible waveguide products | Tecnolambro",
+      "description": "Twistable and seamless flexible waveguide from WR-22 to WR-284, bends, twists and offsets on request. Technical tables and a quote within 24 hours."
     },
     "family": {
       "title": "{name} | Tecnolambro Microwave Components"
     },
     "custom": {
       "title": "Custom microwave components | Tecnolambro",
-      "description": "Send your drawing as PDF, DWG, DXF or STEP: in-house engineering, machining, surface treatments and lab testing. Reply within 24 hours."
+      "description": "Send your drawing as PDF, DWG, DXF, STEP, IGES or STL: we design, build and test the part. Quote within 24 hours."
     },
     "about": {
-      "title": "Since 1986 in Italy | Tecnolambro",
-      "description": "Founded in 1986 alongside Siemens Telecomunicazioni. Independent production, surface treatments and an in-house test lab in Miradolo Terme, Italy."
+      "title": "Since 1987 in Miradolo Terme | Tecnolambro",
+      "description": "We have designed, built and tested waveguides since 1987, working with the largest telecommunications companies. Miradolo Terme, Italy."
     },
     "quality": {
       "title": "Quality & certifications | Tecnolambro",
-      "description": "Electrical and dimensional checks in our in-house lab, treatments with selected partners. Certifications and quality procedures."
+      "description": "Final test on 100% of parts before shipping, finishing by long-standing, selected suppliers. Certifications and quality procedures."
     },
     "ham": {
-      "title": "10 GHz & QO-100 parts | Tecnolambro",
-      "description": "Waveguide, feed horns and transitions for radio amateurs: the 10 GHz band and the QO-100 satellite. Standard parts available in the online shop."
+      "title": "Waveguides for 10 GHz | Tecnolambro",
+      "description": "WR-90 and WR-75 flexible waveguide for the 10 GHz amateur band. Configure the part and get a quote within 24 hours."
     },
     "contact": {
       "title": "Contact & quotes | Tecnolambro",
-      "description": "Request a quote for waveguide and microwave components. Factory in Miradolo Terme, Italy. info@tecnolambro.it, +39 0382 75385."
+      "description": "Request a quote for waveguides and microwave components: reply within 24 hours. +39 375 577 1084, info@tecnolambro.it, Miradolo Terme, Italy."
     },
     "faq": {
       "title": "FAQ | Tecnolambro",
-      "description": "Available sizes, build-to-print parts, file formats, lead times, shipping in the EU and worldwide, EU VAT invoicing, testing."
+      "description": "Available sizes, build-to-print, file formats, lead times, worldwide shipping, invoicing with an EU VAT number, testing."
     },
     "privacy": {
       "title": "Privacy policy | Tecnolambro",
@@ -53,20 +53,20 @@
       "description": "The page you are looking for does not exist or has moved."
     },
     "shop": {
-      "title": "Waveguide & component shop | Tecnolambro",
-      "description": "Flexible waveguide, bends, twists, transitions, flanges and kits from stock. Volume pricing, 48-hour dispatch, Italian, EU and export invoicing."
+      "title": "Configure your waveguide part | Tecnolambro",
+      "description": "Build your flexible waveguide: size, length and flanges, with a dimensioned drawing and 3D model. Prices on request, quote within 24 hours."
     },
-    "product": {
-      "title": "{name} {wr} | Tecnolambro Shop",
-      "titleNoWr": "{name} | Tecnolambro Shop"
+    "tables": {
+      "title": "Flexible waveguide technical tables | Tecnolambro",
+      "description": "Return loss, VSWR, attenuation, power and dimensions of twistable and seamless flexible waveguide, from WR-22 to WR-284."
     },
-    "checkout": {
-      "title": "Order | Tecnolambro Shop",
-      "description": "Order request summary and submission."
+    "request": {
+      "title": "Your quote request | Tecnolambro",
+      "description": "Parts, quantities, notes and files of your quote request."
     },
-    "orderSent": {
-      "title": "Request sent | Tecnolambro Shop",
-      "description": "Order request confirmation."
+    "requestSent": {
+      "title": "Request sent | Tecnolambro",
+      "description": "Quote request confirmation."
     }
   },
   "nav": {
@@ -80,7 +80,7 @@
     "contact": "Contact",
     "quote": "Request a quote",
     "quoteShort": "Quote",
-    "shop": "Shop standard parts",
+    "shop": "Configure your part",
     "menu": "Open menu",
     "close": "Close menu",
     "skip": "Skip to content",
@@ -93,7 +93,8 @@
     "home": "Tecnolambro, home",
     "homeShort": "home",
     "menuLabel": "Menu",
-    "shopShort": "Shop"
+    "shopShort": "Configure",
+    "tables": "Technical tables"
   },
   "common": {
     "demoBadge": "Demo version",
@@ -113,170 +114,104 @@
   },
   "intro": {
     "skip": "Skip",
-    "tagline": "MICROWAVE COMPONENTS · SINCE 1986",
+    "tagline": "MICROWAVE COMPONENTS · SINCE 1987",
     "label": "Intro animation"
   },
   "hero": {
-    "titleA": "Guiding microwaves",
-    "titleB": "since 1986.",
-    "sub": "Rigid and flexible waveguide, feed horns and transitions. Designed and built in Italy, tested in our own lab.",
+    "titleA": "We guide microwaves",
+    "sub": "We design, build and test twistable and seamless flexible waveguide, bends, twists and offsets.",
     "legendTitle": "Field legend",
     "legendMode": "Mode",
     "legendGuide": "Guide",
     "legendBand": "Band",
-    "fieldLabel": "Animation of the TE10 electric field in a WR-90 waveguide"
+    "fieldLabel": "Animation of the TE10 electric field in a WR-90 waveguide",
+    "since": "Since 1987"
   },
   "marquee": {
     "label": "Standard waveguide sizes and operating bands"
   },
   "company": {
-    "title": "From drawing to tested part, in one workshop.",
-    "body": "Tecnolambro was founded in 1986 working with Siemens Telecomunicazioni. Engineering, production, surface treatments and the test lab are all in-house.",
+    "title": "From drawing to tested part.",
+    "body": "Tecnolambro was founded in 1987. We design, build and test our own components, working with the largest telecommunications companies.",
     "factFounded": "Year founded",
     "factYears": "Years building microwave parts",
-    "factFlexValue": "In-house",
-    "factFlex": "Flexible and twistable waveguide made by us",
+    "factFlexValue": "100%",
+    "factFlex": "Parts tested before shipping",
     "factReplyValue": "24 h",
-    "factReply": "Quote response time",
+    "factReply": "Quote within 24 hours",
     "cta": "About the company"
   },
   "productsSection": {
     "title": "Every section of the signal path.",
-    "body": "Six families, from flange to feed horn. Standard from stock or built to your drawing.",
+    "body": "Twistable and seamless flexible waveguide from WR-22 to WR-284. Bends, twists and offsets on request or to your drawing.",
     "cta": "See all products",
     "open": "Open {name}"
   },
   "products": {
     "items": {
-      "rigid": {
-        "name": "Rigid waveguide",
-        "short": "Straight sections, E-plane and H-plane bends, twists.",
-        "description": "Rigid rectangular waveguide for microwave links, radar, satellite and test benches. Straight sections, E-plane and H-plane bends, twists and assemblies to specification, with flanges fitted and checked.",
+      "twistable": {
+        "name": "Twistable flexible waveguide",
+        "short": "Bends and twists: connects misaligned or rotated flanges. WR-22 to WR-284.",
+        "description": "Flexible, twistable brass waveguide made by Tecnolambro. It bends in the E and H planes and twists around its own axis: it connects radio and antenna when the flanges are misaligned or rotated, and absorbs vibration and thermal expansion.",
         "applications": [
-          "Point-to-point microwave links",
-          "Radar and satellite systems",
+          "Radio-to-antenna runs in microwave links",
+          "Installations exposed to vibration",
+          "Correcting misalignment and rotation between flanges"
+        ]
+      },
+      "seamless": {
+        "name": "Seamless flexible waveguide",
+        "short": "No seams, CW power up to 10 kW. WR-22 to WR-284.",
+        "description": "Seamless flexible waveguide, with no seams along the body, made by Tecnolambro. The table gives VSWR, attenuation and power for every size from WR-22 to WR-284.",
+        "applications": [
+          "Microwave and satellite links",
+          "High-power runs",
           "Test benches and laboratories"
         ]
       },
-      "flexible": {
-        "name": "Flexible & twistable waveguide",
-        "short": "Made in-house. Absorbs vibration and misalignment.",
-        "description": "Flexible and flexible-twistable waveguide built entirely by Tecnolambro. Connects radio and antenna when flanges are not aligned, absorbs vibration and thermal expansion, and makes installation easier.",
+      "bends": {
+        "name": "Bends, twists and offsets",
+        "short": "Designed, built and tested in our laboratory, on request or to your drawing.",
+        "description": "Bends, twists and offsets designed, built and tested in our laboratory. We make them on request or to your drawing, in the size and with the flanges you need.",
         "applications": [
-          "Radio-to-antenna connection in microwave links",
-          "Installations exposed to vibration",
-          "Correcting offsets and rotation between flanges"
+          "E-plane and H-plane bends",
+          "Twists to rotate polarization",
+          "Offsets to join staggered flanges"
         ]
       },
-      "feeds": {
-        "name": "Antenna feed horns",
-        "short": "Where the signal leaves the waveguide and meets the dish.",
-        "description": "Feeds and horns for parabolic antennas. They transfer energy from the waveguide to the reflector, and collect it on receive, with a pattern matched to the antenna optics.",
-        "applications": [
-          "Microwave link antennas",
-          "Satellite ground stations",
-          "Radio astronomy and amateur radio"
-        ]
-      },
-      "transitions": {
-        "name": "Waveguide transitions",
-        "short": "From one size to another, from waveguide to coax.",
-        "description": "Transitions between waveguide sizes, between flange types and from waveguide to coaxial connector. The profile is designed to keep VSWR low across the common band.",
-        "applications": [
-          "Matching equipment of different generations",
-          "Test benches with coaxial instruments",
-          "Prototypes and laboratories"
-        ]
-      },
-      "flanges": {
-        "name": "Flanges & installation kits",
-        "short": "Flanges, covers, gaskets and hardware for microwave links.",
-        "description": "Everything needed to install and seal a waveguide run: flanges, covers, gaskets and hardware. Available individually or in kits by size.",
-        "applications": [
-          "Installation and maintenance of microwave links",
-          "Spares for existing runs",
-          "Sealing and protecting unused ports"
-        ]
-      },
-      "custom": {
-        "name": "Build-to-print",
-        "short": "Special parts and nickel electroforms to your specification.",
-        "description": "When the part is not in the catalogue, we build it. Our in-house engineering office starts from your drawing or specification, the workshop makes the part and the lab tests it. We also produce nickel electroforms.",
-        "applications": [
-          "Non-standard components",
-          "Nickel electroforms",
-          "Small batches and prototypes"
-        ]
+      "pending": {
+        "name": "[FAMILY TO BE DEFINED]",
+        "short": "[TO BE COMPLETED]",
+        "description": "[TO BE COMPLETED: family texts and data from the owner]",
+        "applications": []
       }
-    },
-    "columns": {
-      "size": "Size",
-      "band": "Band (GHz)",
-      "flange": "Flange",
-      "parts": "Parts",
-      "vswr": "Max VSWR",
-      "type": "Type",
-      "length": "Lengths",
-      "polarization": "Polarization",
-      "from": "From",
-      "to": "To",
-      "kit": "Kit contents",
-      "step": "Step",
-      "detail": "Detail"
-    },
-    "cells": {
-      "rigidParts": "Straights, E/H bends, twists",
-      "flexTwist": "Flexible and twistable",
-      "flexOnly": "Flexible",
-      "feedPrime": "Prime-focus feed",
-      "feedHorn": "Horn",
-      "linear": "Linear",
-      "coax": "Coaxial",
-      "kitFull": "Flanges, covers, gaskets, hardware",
-      "cStepFiles": "Accepted formats",
-      "cStepOffice": "Engineering office",
-      "cStepOfficeD": "Drawing review and detailed design in-house",
-      "cStepNickel": "Electroforming",
-      "cStepNickelD": "Nickel electroforms",
-      "cStepFinish": "In-house treatments",
-      "cStepFinishD": "Bright dipping and painting",
-      "cStepPartners": "Selected partners",
-      "cStepPartnersD": "Heat treatment and plating",
-      "cStepLab": "Laboratory",
-      "cStepLabD": "Electrical and dimensional inspection"
     },
     "page": {
       "title": "Waveguide products",
-      "intro": "Six families of mechanical microwave components. Standard parts shipped from stock, special parts built to your drawing.",
-      "familyEyebrow": "Family",
+      "intro": "Twistable and seamless flexible waveguide, bends, twists and offsets. Standard sizes from our tables or parts built to your drawing.",
       "drawingLabel": "Exploded drawing: {name}",
       "drawingCaption": "Scroll to separate the parts.",
       "partFlange": "Flange",
       "partBody": "Body",
       "partGasket": "Gasket",
-      "partScrews": "Hardware",
-      "partCover": "Cover",
-      "partHorn": "Horn",
-      "partTaper": "Taper",
-      "partCoax": "Connector",
-      "tableTitle": "Available sizes",
-      "tableCaption": "Sizes and specifications: {name}",
-      "processTitle": "How we build it",
-      "applicationsTitle": "Applications",
+      "tableTitle": "Technical data",
+      "tablesLink": "All technical tables",
+      "onRequestTitle": "On request or to your drawing",
+      "onRequestBody": "Tell us the type of part, size, angle or offset and flanges, or upload your drawing: we send a quote within 24 hours.",
+      "applicationsTitle": "Where it is used",
       "quoteTitle": "Need a different size or version?",
-      "quoteBody": "Tell us the size, flanges and quantity. We reply with price and lead time within 24 business hours.",
-      "shopTitle": "Standard parts",
-      "shopBody": "The most common sizes can be ordered in the online shop.",
-      "askSize": "Ask for {size}",
+      "quoteBody": "Tell us size, length, flanges and quantity: quote within 24 hours. Prices on request: every quote is tailored.",
+      "shopTitle": "Configure your part",
+      "shopBody": "Size, length and flanges: dimensioned drawing and 3D model straight away, quote within 24 hours.",
       "others": "Other families"
     }
   },
   "bandFinder": {
-    "title": "Tell us the frequency. We’ll tell you the size.",
-    "body": "Move the slider to your operating frequency: we highlight the standard waveguide that covers it.",
+    "title": "Tell us the frequency, we tell you the matching waveguide.",
+    "body": "Move the slider to your operating frequency: we highlight the waveguide that covers it.",
     "label": "Operating frequency",
     "unit": "GHz",
-    "result": "At {freq} GHz the standard size is",
+    "result": "At {freq} GHz the matching waveguide is",
     "resultMany": "At {freq} GHz you can use",
     "or": "or",
     "none": "No standard size covers this frequency: we can build it to your drawing.",
@@ -287,52 +222,53 @@
     "colIec": "IEC",
     "colBand": "Band",
     "colInside": "Inside a × b (mm)",
-    "cta": "Request this size",
-    "ctaCustom": "Request a build-to-print part",
+    "cta": "Configure this size",
+    "ctaCustom": "Request a part to your drawing",
     "decrease": "Decrease frequency",
     "increase": "Increase frequency",
-    "standardNote": "Bands and dimensions are EIA/IEC standard values."
+    "standardNote": "Bands from the Tecnolambro tables; inner a × b dimensions are EIA standard values.",
+    "colWg": "WG"
   },
   "process": {
-    "title": "Four steps, one point of contact.",
+    "title": "How we work.",
     "steps": [
       {
-        "title": "Engineering",
-        "body": "From your drawing or a specification to the detailed design of the part."
+        "title": "Design",
+        "body": "From your drawing or a specification to the detailed design of the component."
       },
       {
-        "title": "Machining",
-        "body": "Rigid, flexible and twistable waveguide, flanges and covers, from our own raw material stock."
+        "title": "Production",
+        "body": "We design, build and test our own components: twistable and seamless flexible waveguide, bends, twists and offsets."
       },
       {
-        "title": "Treatments",
-        "body": "Bright dipping and painting in our own plant. Heat treatment and plating with selected partners."
+        "title": "Finishing",
+        "body": "Bright dipping, painting, heat and galvanic treatments, with long-standing, selected suppliers known for their reliability and professionalism."
       },
       {
-        "title": "Testing",
-        "body": "Electrical and dimensional inspection in our in-house lab before shipping."
+        "title": "100% final test",
+        "body": "We test 100% of parts before shipping."
       }
     ]
   },
   "history": {
-    "title": "Since 1986, always waveguide.",
+    "title": "Waveguides since 1987.",
     "titleShort": "History",
     "items": [
       {
-        "label": "1986",
-        "body": "Tecnolambro is founded in close collaboration with Siemens Telecomunicazioni S.p.A. of Cassina de’ Pecchi, near Milan."
+        "label": "1987",
+        "body": "Tecnolambro is founded, working with the largest telecommunications companies."
       },
       {
         "label": "Production",
-        "body": "An independent production system, with its own stock of raw materials and finished parts."
+        "body": "Independent production, with stocks of raw materials and finished parts."
       },
       {
-        "label": "Treatments",
-        "body": "In-house plants for bright dipping and painting. Heat treatment and plating with selected partners."
+        "label": "Finishing",
+        "body": "Bright dipping, painting, heat and galvanic treatments with long-standing, selected suppliers."
       },
       {
-        "label": "Laboratory",
-        "body": "In-house laboratory with electrical and dimensional inspection instruments."
+        "label": "Testing",
+        "body": "Final test on 100% of parts before shipping."
       },
       {
         "label": "Today",
@@ -342,26 +278,26 @@
   },
   "qualitySection": {
     "title": "Quality checked part by part.",
-    "body": "Every component goes through our in-house lab before it ships.",
+    "body": "We test 100% of parts before shipping.",
     "certTitle": "Certifications",
     "certTodo": "[TO BE COMPLETED: ISO 9001 and other certifications]",
     "controlsTitle": "Inspection",
     "controls": [
-      "Electrical inspection",
-      "Dimensional inspection",
-      "Treatments with selected partners"
+      "100% final test",
+      "Electrical and dimensional checks",
+      "Finishing by long-standing, selected suppliers"
     ],
     "cta": "Quality and inspection"
   },
   "shopSection": {
-    "title": "Standard parts? Order them online.",
-    "body": "Flexible waveguide, bends, twists, flanges and kits in the most requested sizes. Volume discounts and 48-hour dispatch.",
+    "title": "Configure the part, request a quote.",
+    "body": "Choose type, size, length and flanges: see the dimensioned drawing and the 3D model straight away. Prices on request: every quote is tailored.",
     "points": [
-      "Volume discounts",
-      "Dispatched within 48 hours",
-      "Standard sizes ready in stock"
+      "Quote within 24 hours",
+      "Material in stock: shipped within 48 hours",
+      "PDF drawing and 3D model to download"
     ],
-    "cta": "Shop standard parts"
+    "cta": "Configure your part"
   },
   "faqSection": {
     "title": "Frequently asked questions",
@@ -371,31 +307,31 @@
     "items": {
       "sizes": {
         "q": "Which waveguide sizes do you make?",
-        "a": "We work across the standard rectangular sizes from WR-229 (3.3-4.9 GHz) to WR-28 (26.5-40 GHz). To match an exact frequency, use the band finder on the home page or state the frequency in your quote request."
+        "a": "We make twistable and seamless flexible waveguide in 14 sizes, from WR-22 (33.0–50.1 GHz) to WR-284 (2.6–3.95 GHz): the data is in the technical tables. For your exact frequency use the frequency finder."
       },
       "custom": {
         "q": "Do you build parts to customer drawings?",
-        "a": "Yes. Our in-house engineering office starts from your drawing or specification, checks feasibility and prepares the detailed design. We make single parts, small batches and nickel electroforms."
+        "a": "Yes. We design, build and test single parts and small batches from your drawing or a specification."
       },
       "files": {
         "q": "Which file formats can I send?",
-        "a": "PDF, DWG, DXF or STEP, up to 20 MB per file, straight from the quote form. A dimensioned PDF with tolerances and finish is enough for a first offer; a STEP model helps with complex geometry."
+        "a": "PDF, DWG, DXF, STEP, IGES or STL, up to 20 MB per file, straight from the quote request. A dimensioned PDF with tolerances and finish is enough for a first offer; a 3D model helps with complex shapes."
       },
       "leadTime": {
         "q": "What are your lead times?",
-        "a": "Standard parts from the shop ship within 48 hours. For build-to-print parts the lead time depends on geometry, treatments and quantity, and we state it in the quote. [TO BE COMPLETED: typical lead times by family]"
+        "a": "Material in stock ships within 48 hours. For build-to-print parts the lead time depends on geometry, finishing and quantity, and we state it in the quote. [TO BE COMPLETED: typical lead times per family]"
       },
       "moq": {
         "q": "Is there a minimum order quantity?",
-        "a": "[TO BE COMPLETED: minimum order quantities, if any] In the shop, unit price drops with quantity."
+        "a": "[TO BE COMPLETED: minimum order quantities, if any] Give the quantity in your request: every quote is tailored."
       },
       "shippingEu": {
         "q": "Do you ship across the European Union?",
-        "a": "Yes, we ship from our stock in Miradolo Terme, Italy. [TO BE COMPLETED: carriers, indicative EU lead times and costs]"
+        "a": "Yes. We ship worldwide: method and cost are stated in the quote. [TO BE COMPLETED: courier]"
       },
       "shippingWorld": {
         "q": "Do you ship outside the European Union?",
-        "a": "Yes, we work with customers worldwide. Exports are zero-rated for Italian VAT. [TO BE COMPLETED: countries served, Incoterms, customs documents]"
+        "a": "Yes, we work with customers worldwide: shipping method and cost are stated in the quote. Exports are zero-rated for Italian VAT. [TO BE COMPLETED: Incoterms, customs documents]"
       },
       "invoicing": {
         "q": "How do you invoice an EU company with a VAT number?",
@@ -403,25 +339,25 @@
       },
       "materials": {
         "q": "Which materials and finishes do you use?",
-        "a": "Bright dipping and painting are done in our own plant; heat treatment and plating with selected partners. [TO BE COMPLETED: available materials and finishes]"
+        "a": "The flexible waveguide is made of OT 80 UNI 4897 brass. Bright dipping, painting, heat and galvanic treatments are done with long-standing, selected suppliers. [TO BE COMPLETED: other finishes available]"
       },
       "testing": {
         "q": "Are parts tested?",
-        "a": "Yes. Our in-house lab performs electrical and dimensional inspection before shipping. [TO BE COMPLETED: parameters measured and documents supplied with the part]"
+        "a": "Yes: we test 100% of parts before shipping. [TO BE COMPLETED: parameters measured and documents supplied with the part]"
       },
       "flexTwist": {
-        "q": "What is the difference between flexible and flexible-twistable waveguide?",
-        "a": "Flexible waveguide bends in the E and H planes to connect flanges that are not aligned. Flexible-twistable waveguide also allows torsion around its own axis, useful when the two flanges are rotated relative to each other. We make both."
+        "q": "What is the difference between twistable and seamless flexible waveguide?",
+        "a": "Twistable waveguide bends in the E and H planes and twists around its own axis: use it when the two flanges are also rotated. Seamless waveguide has no seams along the body. VSWR, attenuation and power of both versions are in the technical tables. We make both."
       },
       "shopVsQuote": {
-        "q": "When should I use the shop and when should I ask for a quote?",
-        "a": "The shop is for standard parts in the most common sizes, with immediate price and dispatch. For other sizes, flanges or lengths, large quantities or build-to-print parts, request a quote."
+        "q": "Can I buy online?",
+        "a": "No: every order starts from a quote request, because prices are tailored. Configure the part or pick a ready-made one, add quantity and notes and send the request: we reply within 24 hours."
       }
     }
   },
   "quote": {
     "title": "Send us your drawing.",
-    "body": "Price and lead time within 24 business hours. The more detail you give us, the more precise the offer.",
+    "body": "Quote within 24 hours. Prices on request: every quote is tailored.",
     "formLabel": "Quote request",
     "required": "required",
     "optional": "optional",
@@ -442,16 +378,15 @@
     "message": "Description",
     "messageHint": "Part type, flanges, lengths, finish, required delivery.",
     "file": "Drawing",
-    "fileHint": "PDF, DWG, DXF or STEP, max 20 MB.",
+    "fileHint": "PDF, DWG, DXF, STEP, IGES or STL, up to 20 MB.",
     "fileSelected": "Selected file: {name} ({size})",
     "privacy": "I have read the <link>privacy policy</link> and agree to the processing of my data to receive the quote.",
     "submit": "Send request",
     "sending": "Sending…",
     "successTitle": "Request received.",
-    "successBody": "We will reply within 24 business hours to the address you entered.",
-    "successDemo": "Demo version: the request was not sent. The email service will be connected at launch.",
+    "successBody": "We will reply with a quote within 24 hours at the address you gave.",
     "again": "Send another request",
-    "errorSend": "Sending failed. Please try again or email info@tecnolambro.it.",
+    "errorSend": "Sending failed ({reason}). Your data is still in the form: try again or write to info@tecnolambro.it.",
     "errors": {
       "name": "Enter your full name.",
       "company": "Enter your company name.",
@@ -461,28 +396,31 @@
       "quantity": "Enter a quantity of at least 1 part.",
       "frequency": "Enter a frequency between 1 and 110 GHz.",
       "message": "Describe the part in at least 10 characters.",
-      "fileType": "Format not accepted. Use PDF, DWG, DXF or STEP.",
+      "fileType": "File type not accepted. Use PDF, DWG, DXF, STEP, IGES or STL.",
       "fileSize": "The file is larger than 20 MB. Compress it or send it by email.",
       "privacy": "We need your consent to reply to the request."
     },
     "prefilled": "Size {size} selected from the band finder.",
     "contactTitle": "Direct contact",
     "email_label": "Email",
-    "phone_label": "Phone",
+    "phone_label": "Mobile",
     "operational": "Factory",
     "legal": "Registered office",
     "errorSummaryOne": "Please check the highlighted fields: 1 field to fix.",
     "errorSummaryOther": "Please check the highlighted fields: {count} fields to fix.",
-    "variantOf": "Variant of code {code}: "
+    "variantOf": "Variant of code {code}: ",
+    "successNumber": "Request number: {number}",
+    "phone2_label": "Landline",
+    "pec_label": "Certified email (PEC)"
   },
   "finalCta": {
-    "title": "Got a drawing or a frequency?",
-    "body": "That’s all we need to start.",
+    "title": "Quote within 24 hours.",
+    "body": "Prices on request: every quote is tailored.",
     "quote": "Request a quote",
-    "shop": "Shop standard parts"
+    "shop": "Configure your part"
   },
   "footer": {
-    "tagline": "Mechanical microwave components and waveguide devices, since 1986.",
+    "tagline": "Mechanical microwave components and waveguide devices, since 1987.",
     "navTitle": "Site",
     "legalTitle": "Legal",
     "contactTitle": "Contact",
@@ -493,16 +431,17 @@
     "credit": "Built and managed by",
     "distinct": "Tecnolambro Microwave Components, Miradolo Terme (PV), Italy. Not affiliated with other companies with a similar name.",
     "rights": "© {year} Tecnolambro S.a.s. di Marco Pasquini & C.",
-    "logoAlt": "Tecnolambro logo: manufacturer of twistable flexible and seamless flexible waveguide, components for microwave applications"
+    "logoAlt": "Tecnolambro logo: manufacturer of twistable flexible and seamless flexible waveguide, components for microwave applications",
+    "pec": "PEC"
   },
   "customPage": {
     "title": "Custom microwave components",
-    "intro": "When the part is not in the catalogue, we build it. Engineering, workshop, treatments and lab work under one roof.",
+    "intro": "When the part is not in the catalogue, we build it: we design, build and test our own components.",
     "sendTitle": "What to send us",
     "send": [
       {
         "title": "The drawing",
-        "body": "Dimensioned, with tolerances and finish. PDF, DWG, DXF or STEP, up to 20 MB."
+        "body": "Dimensioned, with tolerances and finish. PDF, DWG, DXF, STEP, IGES or STL, up to 20 MB."
       },
       {
         "title": "The frequency",
@@ -518,25 +457,25 @@
       }
     ],
     "formatsTitle": "Accepted formats",
-    "formatsBody": "PDF for dimensioned drawings, DWG and DXF for 2D, STEP for 3D models.",
+    "formatsBody": "PDF for dimensioned drawings, DWG and DXF for 2D, STEP, IGES and STL for 3D models.",
     "timeTitle": "Timing",
-    "timeBody": "Price and lead time within 24 business hours. Production time depends on geometry, treatments and quantity. [TO BE COMPLETED: typical lead times]",
+    "timeBody": "Quote within 24 hours. Production time depends on geometry, finishing and quantity. [TO BE COMPLETED: typical lead times]",
     "testTitle": "Testing",
-    "testBody": "Every part goes through our in-house lab for electrical and dimensional inspection before shipping.",
+    "testBody": "We test 100% of parts before shipping.",
     "stepsTitle": "From drawing to part",
     "formTitle": "Send your drawing"
   },
   "aboutPage": {
-    "title": "Since 1986, waveguide built in-house.",
-    "intro": "Tecnolambro designs and builds mechanical microwave components and waveguide devices. It was founded in 1986 in close collaboration with Siemens Telecomunicazioni S.p.A. of Cassina de’ Pecchi.",
+    "title": "Our own waveguides, since 1987.",
+    "intro": "Tecnolambro designs, builds and tests mechanical microwave components and waveguide devices. Founded in 1987, it works with the largest telecommunications companies.",
     "productionTitle": "Production",
-    "productionBody": "An independent production system with its own stock of raw materials and finished parts. Rigid, flexible and flexible-twistable waveguide are made by us.",
-    "treatmentsTitle": "Surface treatments",
-    "treatmentsBody": "In-house plants for bright dipping and painting. For heat treatment and plating we work with selected partners.",
-    "labTitle": "Laboratory",
-    "labBody": "Electrical and dimensional inspection instruments to test every part before it leaves.",
-    "officeTitle": "Engineering office",
-    "officeBody": "Designs components to customer drawings and follows each part through to testing.",
+    "productionBody": "Independent production, with stocks of raw materials and finished parts. Our twistable and seamless flexible waveguide is made by us.",
+    "treatmentsTitle": "Finishing",
+    "treatmentsBody": "Bright dipping, painting, heat and galvanic treatments, with long-standing, selected suppliers known for their reliability and professionalism.",
+    "labTitle": "100% final test",
+    "labBody": "We test 100% of parts before shipping.",
+    "officeTitle": "Design",
+    "officeBody": "We design components to the customer’s drawing and follow each part through to testing.",
     "sitesTitle": "Locations",
     "operational": "Factory and production",
     "legal": "Registered office",
@@ -546,30 +485,30 @@
   },
   "qualityPage": {
     "title": "Quality & certifications",
-    "intro": "A part ships only after lab inspection. This page collects certifications, inspection and procedures.",
+    "intro": "We test 100% of parts before shipping. Here you find certifications, checks and procedures.",
     "certTitle": "Certifications",
     "certTodo": "[TO BE COMPLETED: ISO 9001 and other certifications]",
     "certNote": "Certificates will be published here as PDF, with issuing body, number and expiry.",
-    "controlsTitle": "Lab inspection",
-    "controlsBody": "Our in-house laboratory has electrical and dimensional inspection instruments.",
+    "controlsTitle": "100% final test",
+    "controlsBody": "We test 100% of parts before shipping, with electrical and dimensional checks.",
     "controlsTodo": "[TO BE COMPLETED: instruments and parameters checked]",
-    "chainTitle": "Controlled supply chain",
-    "chainBody": "Raw materials in stock, machining, bright dipping and painting in-house, heat treatment and plating with selected partners."
+    "chainTitle": "Long-standing, selected suppliers",
+    "chainBody": "Raw materials in stock and our own production. Bright dipping, painting, heat and galvanic treatments with long-standing, selected suppliers known for their reliability and professionalism."
   },
   "hamPage": {
-    "title": "Parts for 10 GHz and QO-100",
-    "intro": "Waveguide, feed horns and transitions for operators working in X band and on the geostationary QO-100 satellite.",
-    "bandsTitle": "Bands of interest",
-    "band10": "The 10 GHz amateur band (10.0-10.5 GHz): standard size WR-90 or WR-75.",
-    "bandQo": "QO-100, downlink at 10.489 GHz: standard size WR-90 or WR-75.",
-    "productsTitle": "Products",
-    "productsTodo": "[TO BE COMPLETED: 10 GHz and QO-100 products confirmed by the owner]",
-    "shopTitle": "Order in the shop",
-    "shopBody": "Standard parts for radio amateurs will be available online, dispatched within 48 hours."
+    "title": "Waveguides for 10 GHz",
+    "intro": "WR-90 and WR-75 twistable and seamless flexible waveguide for radio amateurs working on the 10 GHz band.",
+    "bandsTitle": "Which size",
+    "band10": "10 GHz amateur band (10.0–10.5 GHz): WR-90 (8.20–12.5 GHz) or WR-75 (9.84–15.0 GHz) waveguide.",
+    "bandCustom": "Choose length, flanges and the twistable or seamless version in the configurator, with a dimensioned drawing and 3D model.",
+    "shopTitle": "Configure your part",
+    "shopBody": "WR-90 or WR-75, length and flanges: quote within 24 hours. Prices on request: every quote is tailored.",
+    "configureWr90": "Configure a WR-90",
+    "configureWr75": "Configure a WR-75"
   },
   "contactPage": {
     "title": "Contact & quotes",
-    "intro": "Email us, call us or send your drawing directly. We reply within 24 business hours.",
+    "intro": "Write, call or send your drawing straight away. Quote within 24 hours.",
     "hoursTitle": "Opening hours",
     "hoursTodo": "[TO BE COMPLETED: factory opening hours]",
     "company": "Company details"
@@ -591,20 +530,20 @@
   "legal": {
     "privacy": {
       "title": "Privacy policy",
-      "updated": "6 October 2026",
+      "updated": "8 October 2026",
       "sections": [
         {
           "h": "1. Data controller",
           "p": [
             "The data controller is Tecnolambro S.a.s. di Marco Pasquini & C., VAT IT08639310153, registered office at Via delle Betulle 1, 20078 San Colombano al Lambro (MI), Italy, factory at Via degli Spinedi 20, 27010 Miradolo Terme (PV), Italy.",
-            "For any privacy request: info@tecnolambro.it, phone +39 0382 75385."
+            "For any privacy request: info@tecnolambro.it, certified email tecnolambrosnc@pec.it, phone +39 375 577 1084."
           ]
         },
         {
           "h": "2. Data we collect",
           "p": [
-            "Data entered in the quote request form: full name, company, email, phone (optional), country, VAT number (optional), description of the request, sizes and quantities.",
-            "Files uploaded with the request (drawings in PDF, DWG, DXF or STEP). Drawings may contain personal data, for example the designer’s name in the title block.",
+            "Data entered in the quote request: company, first and last name, email, phone (optional), country, VAT number (optional), requested parts with quantities and notes.",
+            "Files uploaded with the request (drawings and models in PDF, DWG, DXF, STEP, IGES or STL). Drawings may contain personal data, for example the designer’s name in the title block.",
             "Browsing data: IP address and technical information logged by the server for security and operation. Aggregate, anonymous visit statistics without cookies (see section 7)."
           ]
         },
@@ -630,7 +569,7 @@
           "h": "5. Who receives the data",
           "p": [
             "Data is processed by authorised Tecnolambro staff and, only where necessary, by suppliers acting as processors: website hosting, form and email delivery service, tax advisers, couriers for shipping.",
-            "[TO BE COMPLETED: names of the hosting and form providers, any transfers outside the EU and the related safeguards]"
+            "[TO BE COMPLETED: names of the hosting provider (e.g. Vercel) and email service (Resend or company SMTP server), with any transfers outside the EU and the related safeguards]"
           ]
         },
         {
@@ -658,7 +597,7 @@
     },
     "terms": {
       "title": "Terms of use",
-      "updated": "6 October 2026",
+      "updated": "8 October 2026",
       "sections": [
         {
           "h": "1. Use of the website",
@@ -684,8 +623,8 @@
         {
           "h": "4. Liability",
           "p": [
-            "We take care that the content is accurate but cannot guarantee it is always complete or up to date. Before a purchase, the offer and order confirmation prevail.",
-            "The website may link to external sites, including the online shop, which have their own terms."
+            "We take care that the content is accurate but cannot guarantee it is always complete or up to date. Before an order, the quote and the order confirmation prevail.",
+            "Drawings and 3D models generated by the configurator are indicative: the final drawing comes with the quote."
           ]
         },
         {
@@ -697,7 +636,7 @@
         {
           "h": "6. Governing law and contact",
           "p": [
-            "Italian law applies. For questions: info@tecnolambro.it, +39 0382 75385.",
+            "Italian law applies. Questions: info@tecnolambro.it, +39 375 577 1084.",
             "[TO BE COMPLETED: competent court and reference to general terms of sale, if any]"
           ]
         }
@@ -705,7 +644,7 @@
     },
     "cookie": {
       "title": "Cookie policy",
-      "updated": "6 October 2026",
+      "updated": "8 October 2026",
       "sections": [
         {
           "h": "No profiling cookies",
@@ -716,7 +655,7 @@
         {
           "h": "Technical storage",
           "p": [
-            "We store two technical preferences in your browser: the light or dark theme you chose (localStorage) and whether you have already seen the intro animation in this session (sessionStorage). They contain no personal data and you can clear them in your browser settings."
+            "We store some technical information in your browser: the light or dark theme you chose and the “Your request” list with parts, quantities and notes (localStorage), and whether the intro animation has already played in this session (sessionStorage). It stays on your device until you send the request or clear it in your browser settings."
           ]
         },
         {
@@ -726,224 +665,270 @@
           ]
         },
         {
-          "h": "Online shop",
+          "h": "Quote request",
           "p": [
-            "The online shop is a separate website with its own cookie policy."
+            "The parts list is cleared after sending. Data entered in the form reaches Tecnolambro only when you press “Send quote request”."
           ]
         }
       ]
     }
   },
   "shop": {
-    "title": "Waveguide & component shop",
-    "intro": "Standard parts from stock: flexible waveguide, bends, twists, transitions, flanges and kits. Volume pricing and 48-hour dispatch.",
-    "demoNotice": "Demo prices and products",
-    "demoNoticeBody": "Sample codes, prices and specifications: the real ones will come from Tecnolambro. Orders are requests, no online payment.",
-    "filtersLabel": "Catalogue filters",
-    "search": "Search by code or name",
-    "searchPlaceholder": "e.g. WR-90, twist, TL-FT75",
-    "family": "Family",
-    "allFamilies": "All families",
+    "title": "Configure your part",
+    "intro": "Pick a ready-made part or build it size by size. Prices on request: every quote is tailored and arrives within 24 hours.",
+    "breadcrumb": "Configure",
+    "howTitle": "How it works",
+    "how": [
+      "Pick or build the part",
+      "Quantity and notes",
+      "Send: quote within 24 hours"
+    ],
+    "readyTitle": "Ready-made parts",
+    "readyBody": "The standard sizes from our technical tables.",
+    "composeTitle": "Build your part",
+    "composeBody": "Type, size, length and flanges. The drawing and the 3D model update as you choose.",
+    "filtersLabel": "Ready-made part filters",
+    "family": "Type",
+    "allFamilies": "All",
     "size": "Size",
     "allSizes": "All sizes",
-    "line": "Line",
-    "allLines": "All",
-    "lines": {
-      "pro": "Professional",
-      "ham": "Ham radio"
-    },
-    "families": {
-      "rigid": "Rigid waveguide",
-      "flexible": "Flexible",
-      "bends": "Bends",
-      "twist": "Twists",
-      "transitions": "Transitions",
-      "flanges": "Flanges & kits",
-      "ham": "Ham radio"
-    },
-    "results": "{count} products",
-    "resultsOne": "1 product",
-    "empty": "No products match these filters.",
+    "freq": "Frequency (GHz)",
+    "freqPlaceholder": "E.g. 10.5",
+    "results": "{count} parts",
+    "resultsOne": "1 part",
+    "empty": "No parts match these filters.",
     "reset": "Clear filters",
-    "priceFrom": "from {price} + VAT",
-    "vatExcluded": "VAT excluded",
-    "availability": {
-      "in_stock": "In stock",
-      "low_stock": "Low stock",
-      "on_order": "Made to order"
-    },
-    "availabilityHint": {
-      "in_stock": "Dispatched within 48 hours",
-      "low_stock": "Dispatched within 48 hours, limited stock",
-      "on_order": "Dispatched in about 10 working days (demo)"
-    },
-    "code": "Code",
+    "stock": "In stock · shipped within 48 hours",
     "band": "Band",
-    "breadcrumb": "Shop",
-    "specsTitle": "Specifications",
-    "specs": {
+    "configure": "Configure",
+    "configureLabel": "Configure {name} {size}",
+    "add": "Add to request",
+    "added": "Added",
+    "shipping": "Worldwide shipping: method and cost stated in the quote.",
+    "priceNote": "Prices on request: every quote is tailored.",
+    "bendsTitle": "Bends, twists and offsets",
+    "bendsBody": "On request or to your drawing: add the item to your request, describe the part in the notes and upload the drawing.",
+    "bendsCta": "Add a build-to-print part",
+    "showMore": "Show all sizes ({count})"
+  },
+  "tables": {
+    "title": "Technical tables",
+    "intro": "Electrical characteristics and dimensions of Tecnolambro flexible waveguide, size by size.",
+    "tabsLabel": "Technical tables",
+    "tabTwist": "Twistable",
+    "tabSeamless": "Seamless",
+    "tabDims": "Dimensions",
+    "captionTwist": "Twistable flexible waveguide: electrical characteristics",
+    "captionSeamless": "Seamless flexible waveguide: electrical characteristics",
+    "captionDims": "Flexible waveguide dimensions, TLFX codes",
+    "size": "Size",
+    "freq": "Frequency (GHz)",
+    "rl": "Return loss (dB)",
+    "att": "Attenuation (dB/m)",
+    "power": "Power",
+    "cw": "CW (W)",
+    "peak": "Peak (kW)",
+    "vswr600": "VSWR (600 mm)",
+    "code": "Code",
+    "dimsGroup": "Dimensions (mm)",
+    "tol": "Tolerance (mm)",
+    "vswrMax": "VSWR max",
+    "onRequest": "On request",
+    "filterLabel": "Highlight sizes for a frequency (GHz)",
+    "filterPlaceholder": "E.g. 10.5",
+    "filterNone": "No size covers {freq} GHz.",
+    "filterOne": "1 size covers {freq} GHz.",
+    "filterMany": "{count} sizes cover {freq} GHz.",
+    "covers": "covers the frequency",
+    "configure": "Configure",
+    "configureLabel": "Configure {type} {size}",
+    "download": "Download datasheet (PDF)",
+    "downloading": "Preparing the PDF…",
+    "material": "Material: brass {material}",
+    "notes": [
+      "** Insertion loss in dB per 1 foot, silver-plated.",
+      "*** VSWR for a 2-foot section.",
+      "Length L: from 1100 to 1300 mm.",
+      "* TLFX-400: maximum length L 3 feet."
+    ],
+    "verify": "Values to be checked with the Tecnolambro technical office.",
+    "scrollHint": "The table scrolls sideways.",
+    "drawingTitle": "Flexible waveguide: dimensions",
+    "legend": {
+      "AB": "A × B corrugation outer size",
+      "CD": "C × D corrugation root",
+      "P": "P corrugation pitch",
+      "rR": "r, R corner radii",
+      "L": "L length"
+    },
+    "sheetTitle": "Datasheet",
+    "sheetFooter": "Data to be checked with the technical office. Quote within 24 hours: info@tecnolambro.it · +39 375 577 1084"
+  },
+  "configurator": {
+    "title": "Build your part",
+    "progress": "Step {n} of {total}",
+    "stepsLabel": "Configurator steps",
+    "steps": {
+      "type": "Type",
       "size": "Size",
-      "band": "Band",
       "length": "Length",
       "flanges": "Flanges",
-      "material": "Material",
-      "vswr": "Max VSWR",
-      "code": "Code"
+      "options": "Options"
     },
-    "tiersTitle": "Volume pricing",
-    "tierRange": {
-      "t1": "1-4 pieces",
-      "t2": "5-9 pieces",
-      "t3": "10 pieces or more"
+    "typeTitle": "Which waveguide do you need?",
+    "sizeTitle": "Choose the size",
+    "sizeByList": "From the list",
+    "sizeByFreq": "Tell me the frequency",
+    "freqLabel": "Operating frequency (GHz)",
+    "freqSuggest": "At {freq} GHz we recommend {size}.",
+    "freqAlso": "Also suitable: {list}.",
+    "freqNone": "No standard size covers {freq} GHz: add it to the notes and we build it to your drawing.",
+    "useSize": "Use {size}",
+    "lengthTitle": "Length",
+    "lengthLabel": "Length L (mm)",
+    "lengthHint": "Up to {max} mm for this size.",
+    "lengthOut": "Possible on request, add it to the notes.",
+    "lengthInvalid": "Enter a length in millimetres.",
+    "flangesTitle": "Flanges",
+    "flangeA": "Flange, side A",
+    "flangeB": "Flange, side B",
+    "flangeOther": "Other (specify in the notes)",
+    "flangeNote": "List to be confirmed with the technical office.",
+    "optionsTitle": "Options",
+    "optionsNone": "No extra options for now: add a note if you need a jacket or a special finish.",
+    "options": {
+      "jacket": "Outer jacket",
+      "pressurized": "Pressurisable version"
     },
-    "tierList": "list",
-    "unitPrice": "Unit price",
-    "quantity": "Quantity",
-    "decrease": "Decrease quantity",
-    "increase": "Increase quantity",
-    "addToCart": "Add to cart",
-    "added": "Added to cart",
-    "lineTotal": "Line total",
-    "youSave": "You save {amount} with the volume discount",
-    "customVariant": "I need a custom variant",
-    "customVariantHint": "Different length, flanges or size: we will send you a quote.",
-    "related": "More parts",
-    "backToShop": "Back to the shop",
-    "shipping48": "Dispatched within 48 hours from Miradolo Terme, Italy",
-    "invoice": "Invoice with Italian, EU or export VAT treatment",
-    "quoteFallback": "Can’t find the part? Request a quote."
+    "next": "Next",
+    "back": "Back",
+    "summary": "Summary",
+    "code": "Code",
+    "type": "Type",
+    "size": "Size",
+    "band": "Band",
+    "length": "Length",
+    "flanges": "Flanges",
+    "electrical": "Electrical data",
+    "rl": "Return loss {len} mm",
+    "vswr600": "VSWR 600 mm",
+    "att": "Attenuation",
+    "cw": "CW power",
+    "peak": "Peak power",
+    "onRequest": "Electrical data on request",
+    "add": "Add to request",
+    "added": "Added to your request.",
+    "goToRequest": "Go to your request",
+    "drawing": "Technical drawing",
+    "view3d": "View in 3D",
+    "view2d": "View the drawing",
+    "downloadPdf": "Download drawing (PDF)",
+    "downloadStl": "Download 3D model (STL)",
+    "downloadGlb": "Download 3D model (GLB)",
+    "preparing": "Preparing…",
+    "loading3d": "Loading the 3D model…",
+    "viewerLabel": "3D model of {code}. Drag to rotate, scroll or pinch to zoom.",
+    "viewerHint": "Drag to rotate · scroll or pinch to zoom",
+    "error3d": "The 3D model did not load. The drawing is still available.",
+    "drawingNote": "Indicative drawing – the final drawing comes with the quote",
+    "drawingDate": "Date",
+    "drawingScale": "Not to scale",
+    "drawingMaterial": "Material",
+    "drawingTitleBlock": "Tecnolambro Microwave Components",
+    "drawingAlt": "Indicative technical drawing of {code}: side view with length and flanges, cross-section with dimensions A, B, C and D.",
+    "sideView": "Side view",
+    "section": "Cross-section",
+    "dimsUnknown": "Dimensions on request",
+    "downloadError": "The file could not be generated. Try again; the drawing and your data are still here."
   },
-  "cart": {
-    "title": "Cart",
-    "open": "Open cart",
-    "openWithCount": "Open cart, {count} items",
-    "close": "Close cart",
-    "empty": "Your cart is empty.",
-    "emptyCta": "Shop standard parts",
+  "request": {
+    "title": "Your request",
+    "intro": "Check the parts, add quantities and notes, upload your files and send: we reply with a quote within 24 hours.",
+    "open": "Your request",
+    "openWithCount": "Your request, {count} parts",
+    "openWithOne": "Your request, 1 part",
+    "empty": "Your request is empty.",
+    "emptyBody": "Configure a part or pick a ready-made one.",
+    "emptyCta": "Configure your part",
+    "itemsTitle": "Parts",
+    "quantity": "Quantity",
     "quantityFor": "Quantity of {code}",
     "decrease": "Decrease quantity of {code}",
     "increase": "Increase quantity of {code}",
+    "notes": "Notes",
+    "notesFor": "Notes for {code}",
+    "notesPlaceholder": "Tell us what you need",
     "remove": "Remove {code}",
-    "subtotal": "Subtotal",
-    "vatExcluded": "VAT excluded, shipping calculated at the next step",
-    "tiers": "5-9 pieces −8% · 10+ pieces −15% per item",
-    "discountApplied": "Volume discount −{percent}%",
-    "checkout": "Proceed to order",
-    "continue": "Continue shopping",
-    "loading": "Loading cart…",
-    "error": "The cart did not update. Please try again."
-  },
-  "checkout": {
-    "title": "Order",
-    "stepsLabel": "Order steps",
-    "step": "Step {n} of 3",
-    "step1": "Customer type",
-    "step2": "Details",
-    "step3": "Summary",
-    "customerType": "Who is ordering?",
-    "types": {
-      "business_it": "Company in Italy",
-      "private_it": "Individual in Italy",
-      "business_eu": "Company in the European Union",
-      "private_eu": "Individual in the European Union",
-      "extra_eu": "Customer outside the EU"
-    },
-    "typesHint": {
-      "business_it": "Electronic invoice with SDI code or PEC",
-      "private_it": "22% VAT included in the total",
-      "business_eu": "EU VAT number: reverse charge, 0% VAT",
-      "private_eu": "Italian VAT 22%",
-      "extra_eu": "Export: 0% VAT"
-    },
-    "next": "Continue",
-    "back": "Back",
-    "company": "Company name",
-    "name": "Full name",
-    "contactName": "Contact person",
+    "customItem": "Build-to-print part",
+    "customItemCode": "TO DRAWING",
+    "addCustom": "Add a build-to-print part",
+    "addMore": "Add another part",
+    "filesTitle": "Upload your 3D model or drawing",
+    "filesHint": "STEP/STP, IGES/IGS, STL, PDF, DWG, DXF. Several files allowed, up to 20 MB each.",
+    "filesButton": "Choose files",
+    "filesDrop": "or drag them here",
+    "fileRemove": "Remove {name}",
+    "fileType": "{name}: file type not accepted.",
+    "fileSize": "{name}: larger than 20 MB.",
+    "generatedNote": "We attach the PDF drawing of every configured part to the request.",
+    "customerTitle": "Your details",
+    "company": "Company",
+    "name": "First and last name",
     "email": "Email",
     "phone": "Phone",
-    "vat": "VAT number",
-    "vatHintIt": "11 digits, with or without the IT prefix.",
-    "vatHintEu": "With the country prefix, e.g. DE123456789. We check it on VIES.",
-    "sdi": "SDI code",
-    "pec": "PEC",
-    "sdiOrPec": "Enter the SDI code or the PEC address for the electronic invoice.",
-    "address": "Address",
-    "city": "City",
-    "postalCode": "Postal code",
-    "province": "Province",
     "country": "Country",
-    "countryPlaceholder": "Choose the country",
-    "notes": "Notes for the order office",
+    "vat": "VAT number",
     "optional": "optional",
     "required": "required",
-    "errors": {
-      "company": "Enter the company name.",
-      "name": "Enter your full name.",
-      "email": "Enter a valid email.",
-      "vatIt": "An Italian VAT number has 11 digits.",
-      "vatEu": "Use the format with the country prefix, e.g. DE123456789.",
-      "sdiOrPec": "An SDI code (7 characters) or a valid PEC is required.",
-      "address": "Enter the address.",
-      "city": "Enter the city.",
-      "postalCode": "Enter the postal code.",
-      "country": "Choose the country.",
-      "privacy": "We need your consent to handle the order."
-    },
-    "errorSummaryOne": "Please check the highlighted field.",
-    "errorSummaryOther": "Please check the {count} highlighted fields.",
-    "summary": "Items",
-    "subtotal": "Subtotal",
-    "shipping": "Shipping",
-    "shippingZone": {
-      "it": "Italy",
-      "eu": "European Union",
-      "world": "Rest of the world"
-    },
-    "shippingDemo": "demo rate",
-    "total": "Total",
-    "rule": {
-      "it_standard": "22% VAT: sale within Italy.",
-      "eu_private": "Italian VAT 22%: sale to an individual in another EU country (within the OSS threshold).",
-      "eu_reverse_charge": "0% VAT: intra-EU B2B supply, reverse charge (Art. 41 Italian DL 331/1993). The VAT number is checked on VIES.",
-      "export": "0% VAT: zero-rated export (Art. 8 Italian DPR 633/1972). Duties and local taxes are paid by the recipient."
-    },
-    "customer": "Customer",
-    "privacy": "I have read the <link>privacy policy</link> and agree to the processing of my data to handle the order.",
-    "submitLocal": "Send order request",
-    "submitShopify": "Go to payment",
+    "privacy": "I have read the <link>privacy policy</link> and agree to the processing of my data to receive the quote.",
+    "submit": "Send quote request",
     "sending": "Sending…",
-    "noPayment": "No payment now: the order office confirms availability and total within 2 business hours.",
-    "sendError": "Sending failed. Please try again or email info@tecnolambro.it.",
-    "emptyCart": "Your cart is empty: add at least one item.",
-    "edit": "Edit",
-    "vatTotal": "VAT"
+    "uploading": "Uploading files…",
+    "errors": {
+      "items": "Add at least one part to the request.",
+      "quantity": "Quantity of at least 1 for {code}.",
+      "customNotes": "Describe the build-to-print part in the notes.",
+      "company": "Enter the company name.",
+      "name": "Enter your first and last name.",
+      "email": "Enter a valid email, for example name@company.com.",
+      "country": "Enter the country.",
+      "privacy": "We need your consent to reply."
+    },
+    "errorSummaryOne": "Check the highlighted field.",
+    "errorSummaryOther": "Check the {count} highlighted fields.",
+    "sendError": "The request was not sent: {reason}. Your data is still here: try again shortly or write to info@tecnolambro.it.",
+    "reasons": {
+      "network": "no connection",
+      "tooLarge": "the files are too large to send from the site (over 4 MB in total): email them to info@tecnolambro.it quoting the request",
+      "notConfigured": "the email service is not configured yet",
+      "rateLimited": "too many requests in a short time",
+      "invalid": "some data is not valid",
+      "server": "server error"
+    },
+    "shipping": "Worldwide shipping: method and cost stated in the quote.",
+    "priceNote": "Prices on request: every quote is tailored."
   },
-  "orderSent": {
-    "title": "Order request sent",
+  "requestSent": {
+    "title": "Request received.",
+    "body": "We will reply with a quote within 24 hours.",
     "number": "Request number",
-    "body": "Thank you. We have received your request: nothing has been charged.",
-    "demo": "Demo version: the request was not actually sent. The connection to the order office goes live at launch.",
+    "copy": "We have emailed you a confirmation with the summary.",
     "nextTitle": "What happens next",
     "next": [
       {
-        "title": "Confirmation within 2 hours",
-        "body": "The order office checks availability and total and writes to you within 2 business hours, with payment instructions."
+        "title": "Quote within 24 hours",
+        "body": "The technical office checks the parts and files and sends you a tailored quote, with lead time and shipping method."
       },
       {
-        "title": "Shipping",
-        "body": "After payment, stock items leave Miradolo Terme within 48 hours."
+        "title": "Final drawing",
+        "body": "The final drawing of the configured parts comes with the quote."
       },
       {
-        "title": "Tracking",
-        "body": "You receive the tracking number by email as soon as the courier collects the parcel."
-      },
-      {
-        "title": "Invoice",
-        "body": "The invoice is sent by email (electronic invoice via SDI for Italian companies)."
+        "title": "Order confirmation",
+        "body": "If the quote works for you, reply to the email and we start production."
       }
     ],
-    "backToShop": "Back to the shop",
+    "back": "Back to the configurator",
     "missing": "No recent request in this session."
   }
 }

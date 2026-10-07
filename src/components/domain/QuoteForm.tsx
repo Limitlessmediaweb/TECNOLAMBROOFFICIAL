@@ -4,8 +4,8 @@ import { useEffect, useId, useRef, useState, type FormEvent } from "react";
 import NextLink from "next/link";
 import { splitTag, useClientLocale, useT } from "@/lib/client-i18n";
 import { ArrowRight, CheckCircle2, LoaderCircle } from "lucide-react";
-import { WR_OPTIONS } from "@/data/bands";
-import { ACCEPTED_EXTENSIONS, MAX_FILE_BYTES, formatBytes, isAcceptedFile, submitQuote } from "@/lib/quote";
+import { WR_LIST } from "@/data/waveguides";
+import { ACCEPTED_EXTENSIONS, MAX_FILE_BYTES, formatBytes, isAcceptedFile, submitQuote, type SubmitReason } from "@/lib/quote";
 import { track } from "@/lib/analytics";
 import type { PrefillDetail } from "./BandFinder";
 import { cn } from "@/lib/cn";
@@ -49,6 +49,7 @@ export type FamilyOption = { value: string; label: string };
 
 export function QuoteForm({ families, defaultFamily, privacyHref }: { families: FamilyOption[]; defaultFamily?: string; privacyHref: string }) {
   const t = useT("quote");
+  const tr = useT("request");
   const locale = useClientLocale();
   const uid = useId();
   const id = (name: string) => `${uid}-${name}`;
@@ -62,7 +63,8 @@ export function QuoteForm({ families, defaultFamily, privacyHref }: { families: 
   const [touched, setTouched] = useState<Partial<Record<FieldName, boolean>>>({});
   const [submitted, setSubmitted] = useState(false);
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
-  const [demo, setDemo] = useState(false);
+  const [number, setNumber] = useState<string | null>(null);
+  const [reason, setReason] = useState<SubmitReason | null>(null);
   const [prefilled, setPrefilled] = useState<string | null>(null);
 
   const validate = (v: Values, f: File | null): Errors => {
@@ -101,7 +103,7 @@ export function QuoteForm({ families, defaultFamily, privacyHref }: { families: 
       const size = params.get("misura");
       const ghz = params.get("ghz");
       const fam = params.get("famiglia");
-      if (size || ghz) apply({ size: size && WR_OPTIONS.includes(size) ? size : undefined, frequency: ghz ?? undefined });
+      if (size || ghz) apply({ size: size && WR_LIST.includes(size) ? size : undefined, frequency: ghz ?? undefined });
       if (fam && families.some((f) => f.value === fam)) setValues((prev) => ({ ...prev, family: fam }));
       // Dallo shop ("Mi serve una variante su misura"): riferimento al codice nel messaggio
       const rif = params.get("rif");
@@ -154,27 +156,41 @@ export function QuoteForm({ families, defaultFamily, privacyHref }: { families: 
       return;
     }
     setStatus("sending");
-    const result = await submitQuote({
-      name: values.name.trim(),
-      company: values.company.trim(),
-      email: values.email.trim(),
-      phone: values.phone.trim() || undefined,
-      country: values.country.trim(),
-      vat: values.vat.trim() || undefined,
-      family: values.family,
-      size: values.size || undefined,
-      frequency: values.frequency.trim() || undefined,
-      quantity: Number(values.quantity),
-      message: values.message.trim(),
-      file,
-      locale,
-    });
+    setReason(null);
+    const familyLabel = families.find((f) => f.value === values.family)?.label ?? values.family;
+    const size = values.size === "other" ? t("sizeOther") : values.size;
+    const result = await submitQuote(
+      {
+        source: "contact",
+        locale: locale === "en" ? "en" : "it",
+        items: [
+          {
+            kind: "contact",
+            code: [familyLabel, size].filter(Boolean).join(" · "),
+            qty: Number(values.quantity),
+            notes: values.message.trim(),
+            detail: values.frequency.trim() ? `${t("frequency")}: ${values.frequency.trim()}` : undefined,
+          },
+        ],
+        customer: {
+          company: values.company.trim(),
+          name: values.name.trim(),
+          email: values.email.trim(),
+          phone: values.phone.trim() || undefined,
+          country: values.country.trim(),
+          vat: values.vat.trim() || undefined,
+        },
+        privacy: values.privacy,
+      },
+      file ? [file] : [],
+    );
     if (result.ok) {
-      setDemo(result.demo);
+      setNumber(result.number);
       setStatus("success");
       track("quote_submit", { family: values.family, size: values.size || "none", file: Boolean(file) });
       window.setTimeout(() => statusRef.current?.focus(), 30);
     } else {
+      setReason(result.reason);
       setStatus("error");
     }
   };
@@ -187,6 +203,7 @@ export function QuoteForm({ families, defaultFamily, privacyHref }: { families: 
     setSubmitted(false);
     setStatus("idle");
     setPrefilled(null);
+    setNumber(null);
     formRef.current?.reset();
   };
 
@@ -196,11 +213,7 @@ export function QuoteForm({ families, defaultFamily, privacyHref }: { families: 
         <CheckCircle2 aria-hidden="true" className="size-9 text-ok" strokeWidth={1.5} />
         <p className="text-display-s font-bold">{t("successTitle")}</p>
         <p className="text-muted">{t("successBody")}</p>
-        {demo ? (
-          <p className="text-sm">
-            <span className="todo">{t("successDemo")}</span>
-          </p>
-        ) : null}
+        {number ? <p className="font-mono text-lg">{t("successNumber", { number })}</p> : null}
         <button type="button" onClick={reset} className="btn btn-ghost mt-2 justify-self-start">
           {t("again")}
         </button>
@@ -377,7 +390,7 @@ export function QuoteForm({ families, defaultFamily, privacyHref }: { families: 
         </label>
         <select id={id("size")} name="size" className="input font-mono" value={values.size} onChange={(e) => set("size", e.target.value)}>
           <option value="">{t("sizeUnknown")}</option>
-          {WR_OPTIONS.map((wr) => (
+          {WR_LIST.map((wr) => (
             <option key={wr} value={wr}>
               {wr}
             </option>
@@ -533,7 +546,7 @@ export function QuoteForm({ families, defaultFamily, privacyHref }: { families: 
         </button>
         {status === "error" ? (
           <p role="alert" className="field-error">
-            {t("errorSend")}
+            {t("errorSend", { reason: tr(`reasons.${reason ?? "server"}`) })}
           </p>
         ) : null}
       </div>

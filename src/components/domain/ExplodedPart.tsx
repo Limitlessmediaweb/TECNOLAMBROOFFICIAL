@@ -2,11 +2,11 @@
 
 import { useRef } from "react";
 import { useLazyGSAP, MQ } from "@/lib/motion";
-import { PartDrawing, type PartLabels } from "./PartDrawings";
-import type { FamilyKey } from "@/data/products";
+import { PartDrawing, type DrawingKind, type PartLabels } from "./PartDrawings";
 
 type Props = {
-  family: FamilyKey;
+  family: DrawingKind;
+  twist?: boolean;
   labels: PartLabels;
   locale: string;
   title: string;
@@ -18,7 +18,7 @@ type Props = {
  * lungo l'asse e compaiono le quote. Desktop: sezione fissata con scrub.
  * Mobile: scrub senza pin. Reduced motion: disegno già esploso, fermo.
  */
-export function ExplodedPart({ family, labels, locale, title, caption }: Props) {
+export function ExplodedPart({ family, twist, labels, locale, title, caption }: Props) {
   const root = useRef<HTMLElement>(null);
 
   useLazyGSAP(
@@ -62,7 +62,7 @@ export function ExplodedPart({ family, labels, locale, title, caption }: Props) 
           <span aria-hidden="true" className="annot absolute left-3 top-2 text-muted sm:left-6 sm:top-4">
             FIG. 1
           </span>
-          <PartDrawing family={family} labels={labels} locale={locale} title={title} className="h-auto w-full overflow-visible" />
+          <PartDrawing family={family} twist={twist} labels={labels} locale={locale} title={title} className="h-auto w-full overflow-visible" />
         </div>
         <figcaption className="annot mx-auto mt-3 max-w-5xl text-muted">{caption}</figcaption>
       </div>

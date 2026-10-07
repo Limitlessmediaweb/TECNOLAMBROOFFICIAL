@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * Audit di accessibilità automatico (axe-core, regole WCAG 2.1 A/AA) in tema chiaro e scuro:
- * pagine principali, shop, scheda, carrello aperto e passi del checkout.
+ * pagine principali, tabelle (tre tab), configuratore, vista 3D, richiesta con errori, conferma.
  * Uso: BASE_URL=http://localhost:3000 npm run check:a11y
  */
 import { chromium } from "playwright";
@@ -11,7 +11,7 @@ import { createRequire } from "node:module";
 const require = createRequire(import.meta.url);
 const AXE = readFileSync(require.resolve("axe-core/axe.min.js"), "utf8");
 const BASE = (process.env.BASE_URL ?? "http://localhost:3000").replace(/\/$/, "");
-const PAGES = ["/", "/en", "/prodotti", "/prodotti/flessibile", "/contatti", "/faq", "/shop", "/en/shop", "/shop/flex-twist-wr90-600", "/en/shop/feed-10ghz-qo100", "/shop/ordine"];
+const PAGES = ["/", "/en", "/prodotti", "/prodotti/guida-flessibile-twistabile", "/prodotti/curve-twist-disassati", "/prodotti/tabelle", "/en/products/tables", "/contatti", "/faq", "/radioamatori", "/shop", "/en/shop", "/shop/richiesta", "/shop/richiesta-inviata"];
 
 const browser = await chromium.launch();
 let total = 0;
@@ -39,18 +39,27 @@ for (const theme of ["light", "dark"]) {
     await page.waitForTimeout(400);
     await audit(page, `${theme} ${path}`);
   }
-  // Carrello aperto con un articolo
-  await page.goto(BASE + "/shop/twist-wr75-90", { waitUntil: "load" });
-  await page.getByRole("button", { name: /Aggiungi al carrello/ }).click();
-  await page.locator('dialog[aria-labelledby="cart-title"]').waitFor({ state: "visible" });
-  await page.waitForTimeout(300);
-  await audit(page, `${theme} carrello aperto`);
-  // Checkout passo 2 con errori di validazione
-  await page.goto(BASE + "/shop/ordine", { waitUntil: "load" });
-  await page.getByRole("button", { name: "Continua" }).click();
-  await page.getByRole("button", { name: "Continua" }).click();
+  // Tabelle: tab seamless e dimensioni, con filtro di frequenza attivo
+  await page.goto(BASE + "/prodotti/tabelle", { waitUntil: "load" });
+  await page.getByLabel(/Evidenzia le misure/).fill("10,5");
+  for (const tab of ["Seamless", "Dimensioni"]) {
+    await page.getByRole("tab", { name: tab }).click();
+    await page.waitForTimeout(150);
+    await audit(page, `${theme} tabelle ${tab} con filtro`);
+  }
+  // Configuratore: passo misura per frequenza, poi vista 3D
+  await page.goto(BASE + "/shop?ghz=10.5", { waitUntil: "load" });
+  await page.waitForTimeout(400);
+  await audit(page, `${theme} configuratore (frequenza)`);
+  await page.getByRole("button", { name: "Vedi in 3D" }).click();
+  await page.locator("figure canvas").waitFor({ timeout: 30000 }).catch(() => {});
+  await audit(page, `${theme} vista 3D`);
+  // La tua richiesta: un pezzo, invio a vuoto con errori di validazione
+  await page.locator("aside").getByRole("button", { name: "Aggiungi alla richiesta" }).click();
+  await page.goto(BASE + "/shop/richiesta", { waitUntil: "load" });
+  await page.getByRole("button", { name: "Invia richiesta di preventivo" }).click();
   await page.waitForTimeout(200);
-  await audit(page, `${theme} checkout passo 2 con errori`);
+  await audit(page, `${theme} richiesta con errori`);
   await ctx.close();
 }
 

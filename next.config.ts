@@ -5,6 +5,39 @@ const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  // Pagine tolte o rinominate nella versione 2 (riunione del 7 ottobre 2026): redirect permanenti 308.
+  async redirects() {
+    const family: [string, string][] = [
+      ["/prodotti/rigida", "/prodotti/curve-twist-disassati"],
+      ["/prodotti/flessibile", "/prodotti/guida-flessibile-twistabile"],
+      ["/prodotti/illuminatori", "/prodotti"],
+      ["/prodotti/transizioni", "/prodotti"],
+      ["/prodotti/flange-e-kit", "/prodotti"],
+      ["/prodotti/su-disegno", "/su-misura"],
+      ["/en/products/rigid", "/en/products/bends-twists-offsets"],
+      ["/en/products/flexible", "/en/products/twistable-flexible-waveguide"],
+      ["/en/products/feed-horns", "/en/products"],
+      ["/en/products/transitions", "/en/products"],
+      ["/en/products/flanges-and-kits", "/en/products"],
+      ["/en/products/custom-built", "/en/custom"],
+      ["/shop/ordine", "/shop/richiesta"],
+      ["/shop/ordine-inviato", "/shop/richiesta-inviata"],
+      ["/en/shop/order", "/en/shop/request"],
+      ["/en/shop/order-sent", "/en/shop/request-sent"],
+    ];
+    // Vecchie schede dello shop con i prezzi: ora c'è il configuratore
+    const handles = [
+      "flex-twist-wr75-600", "flex-twist-wr90-600", "bend-e-wr90-90", "bend-h-wr90-90", "twist-wr75-90", "straight-wr90-300",
+      "flange-adapter-wr90", "install-kit-wr75", "transition-wr90-n", "termination-wr90", "feed-10ghz-qo100", "transition-10ghz-sma",
+    ];
+    return [
+      ...family.map(([source, destination]) => ({ source, destination, permanent: true })),
+      ...handles.flatMap((h) => [
+        { source: `/shop/${h}`, destination: "/shop", permanent: true },
+        { source: `/en/shop/${h}`, destination: "/en/shop", permanent: true },
+      ]),
+    ];
+  },
   // Intestazioni di sicurezza per tutte le risposte. La CSP rigorosa va definita al deploy
   // (script inline del tema/intro e JSON-LD richiedono nonce o hash).
   async headers() {

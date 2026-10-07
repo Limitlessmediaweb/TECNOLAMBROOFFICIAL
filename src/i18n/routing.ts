@@ -15,6 +15,7 @@ export const routing = defineRouting({
   pathnames: {
     "/": "/",
     "/prodotti": { it: "/prodotti", en: "/products" },
+    "/prodotti/tabelle": { it: "/prodotti/tabelle", en: "/products/tables" },
     "/prodotti/[famiglia]": { it: "/prodotti/[famiglia]", en: "/products/[famiglia]" },
     "/su-misura": { it: "/su-misura", en: "/custom" },
     "/azienda": { it: "/azienda", en: "/company" },
@@ -26,9 +27,8 @@ export const routing = defineRouting({
     "/termini": { it: "/termini", en: "/terms" },
     "/cookie": { it: "/cookie", en: "/cookies" },
     "/shop": "/shop",
-    "/shop/[handle]": "/shop/[handle]",
-    "/shop/ordine": { it: "/shop/ordine", en: "/shop/order" },
-    "/shop/ordine-inviato": { it: "/shop/ordine-inviato", en: "/shop/order-sent" },
+    "/shop/richiesta": { it: "/shop/richiesta", en: "/shop/request" },
+    "/shop/richiesta-inviata": { it: "/shop/richiesta-inviata", en: "/shop/request-sent" },
   },
 });
 
@@ -39,4 +39,4 @@ export function isLocale(value: string): value is Locale {
 }
 
 /** Rotte senza parametri, usabili come stringa nei link. */
-export type StaticPathname = Exclude<AppPathname, "/prodotti/[famiglia]" | "/shop/[handle]">;
+export type StaticPathname = Exclude<AppPathname, "/prodotti/[famiglia]">;

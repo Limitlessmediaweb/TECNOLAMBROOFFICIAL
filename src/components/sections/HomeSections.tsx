@@ -13,6 +13,7 @@ import { MagneticButton } from "@/components/motion/MagneticButton";
 import { QuoteLink, ShopLink } from "@/components/ui/TrackedLink";
 import { WithTodo } from "@/components/ui/Bits";
 import { FAQ_PREVIEW } from "@/data/faq";
+import { COMPANY } from "@/data/site";
 import { localizedHref, type Href } from "@/components/ui/TrackedLink";
 
 /* ------------------------------------------------------------ BandFinder */
@@ -20,6 +21,7 @@ import { localizedHref, type Href } from "@/components/ui/TrackedLink";
 export async function BandFinderSection({ formOnPage = true }: { formOnPage?: boolean }) {
   const t = await getTranslations("bandFinder");
   const contactPath = await localizedHref("/contatti");
+  const configurePath = await localizedHref("/shop");
   return (
     <section id="bande" className="section-y border-t border-line bg-surface/40" aria-labelledby="band-title">
       <div className="container-site">
@@ -29,7 +31,7 @@ export async function BandFinderSection({ formOnPage = true }: { formOnPage?: bo
           </SplitReveal>
           <p className="mt-5 max-w-[52ch] text-lead text-muted">{t("body")}</p>
         </div>
-        <BandFinder formOnPage={formOnPage} contactPath={contactPath} />
+        <BandFinder formOnPage={formOnPage} contactPath={contactPath} configurePath={configurePath} />
       </div>
     </section>
   );
@@ -68,7 +70,7 @@ export async function HistorySection({ headingLevel = 2 }: { headingLevel?: 2 | 
         <div className="flex flex-wrap items-end justify-between gap-6">
           <H className="max-w-[18ch] text-display-l font-bold">{t("title")}</H>
           <span aria-hidden="true" className="font-display text-[clamp(4.5rem,12vw,11rem)] font-extrabold leading-none text-transparent wdth-xwide [-webkit-text-stroke:1.5px_var(--c-accent)]">
-            1986
+            {COMPANY.founded}
           </span>
         </div>
       }
@@ -213,7 +215,17 @@ export async function FinalCta({ href }: { href?: Href } = {}) {
           {t("title")}
         </h2>
         <p className="mx-auto mt-6 max-w-[40ch] text-lead text-muted">
-          <DrawUnderline>{t("body")}</DrawUnderline>
+          {(() => {
+            // sottolineata solo la parola chiave prima dei due punti: il resto va a capo su telefono
+            const [key, ...rest] = t("body").split(":");
+            return rest.length ? (
+              <>
+                <DrawUnderline>{key}</DrawUnderline>:{rest.join(":")}
+              </>
+            ) : (
+              t("body")
+            );
+          })()}
         </p>
         <div className="mt-10 flex flex-wrap justify-center gap-3">
           <MagneticButton>

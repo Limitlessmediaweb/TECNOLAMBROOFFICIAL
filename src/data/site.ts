@@ -5,10 +5,15 @@ export const COMPANY = {
   legalName: "Tecnolambro S.a.s. di Marco Pasquini & C.",
   vat: "08639310153",
   vatFull: "IT08639310153",
-  founded: 1986,
+  founded: 1987,
   email: "info@tecnolambro.it",
-  phone: "+39 0382 75385",
-  phoneHref: "tel:+39038275385",
+  pec: "tecnolambrosnc@pec.it",
+  /** Cellulare: il primo numero da mostrare */
+  phone: "+39 375 577 1084",
+  phoneHref: "tel:+393755771084",
+  /** Fisso: secondo numero */
+  phone2: "+39 0382 75385",
+  phone2Href: "tel:+39038275385",
   legalAddress: {
     street: "Via delle Betulle 1",
     postalCode: "20078",
@@ -27,7 +32,7 @@ export const COMPANY = {
   },
 } as const;
 
-/** Anni di attività calcolati dall'anno corrente: il brief dice 39 (calcolo 2025), nel 2026 sono 40. */
+/** Anni di attività calcolati dall'anno corrente (fondazione 1987). */
 export function yearsActive(now = new Date()): number {
   return now.getFullYear() - COMPANY.founded;
 }

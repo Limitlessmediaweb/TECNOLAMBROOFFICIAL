@@ -65,19 +65,11 @@ export default async function CustomPage({ params }: PageProps<"/[locale]/su-mis
       </section>
 
       <ExplodedPart
-        family="custom"
+        family="bends"
         locale={locale}
         title={page("drawingLabel", { name: t("title") })}
         caption={page("drawingCaption")}
-        labels={{
-          flange: page("partFlange"),
-          body: page("partBody"),
-          gasket: page("partGasket"),
-          screws: page("partScrews"),
-          cover: page("partCover"),
-          horn: page("partHorn"),
-          taper: page("partTaper"),
-        }}
+        labels={{ flange: page("partFlange"), body: page("partBody"), gasket: page("partGasket") }}
       />
 
       <section className="border-t border-line" aria-label={t("formatsTitle")}>
@@ -99,7 +91,7 @@ export default async function CustomPage({ params }: PageProps<"/[locale]/su-mis
       </section>
 
       <ProcessSection />
-      <QuoteSection title={t("formTitle")} defaultFamily="custom" />
+      <QuoteSection title={t("formTitle")} defaultFamily="other" />
     </>
   );
 }

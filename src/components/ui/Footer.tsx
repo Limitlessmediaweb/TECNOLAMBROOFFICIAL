@@ -8,6 +8,7 @@ import { ShopLink } from "./TrackedLink";
 
 const SITE: { href: StaticPathname; key: string }[] = [
   { href: "/prodotti", key: "products" },
+  { href: "/prodotti/tabelle", key: "tables" },
   { href: "/su-misura", key: "custom" },
   { href: "/azienda", key: "about" },
   { href: "/qualita", key: "quality" },
@@ -61,6 +62,12 @@ export async function Footer() {
             </a>
             <a href={COMPANY.phoneHref} className="tabular text-fg hover:text-accent">
               {COMPANY.phone}
+            </a>
+            <a href={COMPANY.phone2Href} className="tabular text-fg hover:text-accent">
+              {COMPANY.phone2}
+            </a>
+            <a href={`mailto:${COMPANY.pec}`} className="text-fg hover:text-accent">
+              <span className="text-muted">{t("pec")}</span> {COMPANY.pec}
             </a>
             <span className="text-muted">
               {op.street}

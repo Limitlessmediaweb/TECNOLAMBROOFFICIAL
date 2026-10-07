@@ -2,7 +2,7 @@ import { getLocale, getTranslations } from "next-intl/server";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { LocalLink as Link } from "@/components/ui/LocalLink";
 import type { Locale } from "@/i18n/routing";
-import { FAMILIES, type FamilyKey } from "@/data/products";
+import { VISIBLE_FAMILIES, type FamilyKey } from "@/data/families";
 import { TiltCard } from "@/components/motion/TiltCard";
 import { SplitReveal } from "@/components/motion/SplitReveal";
 import { Stagger } from "@/components/motion/Stagger";
@@ -10,17 +10,15 @@ import { ScrambleText } from "@/components/motion/ScrambleText";
 import { PartDrawing } from "@/components/domain/PartDrawings";
 import { cn } from "@/lib/cn";
 
-/** Disposizione asimmetrica: righe di larghezza diversa invece di una griglia 3×2 uniforme. */
+/** Disposizione asimmetrica: la twistabile in evidenza, seamless accanto, curve e disassati sotto. */
 const LAYOUT: Record<FamilyKey, string> = {
-  rigid: "lg:col-span-4",
-  flexible: "lg:col-span-2 lg:row-span-2",
-  feeds: "lg:col-span-2",
-  transitions: "lg:col-span-2",
-  flanges: "lg:col-span-3",
-  custom: "lg:col-span-3",
+  twistable: "lg:col-span-4 lg:row-span-2",
+  seamless: "lg:col-span-2",
+  bends: "lg:col-span-2",
+  pending: "lg:col-span-2",
 };
 
-function sizeRange(sizes: string[]): string | null {
+function sizeRange(sizes: readonly string[]): string | null {
   if (!sizes.length) return null;
   return sizes.length === 1 ? sizes[0] : `${sizes[0]} - ${sizes[sizes.length - 1]}`;
 }
@@ -28,15 +26,16 @@ function sizeRange(sizes: string[]): string | null {
 export async function ProductGrid({ exclude, headingLevel = 3 }: { exclude?: FamilyKey; headingLevel?: 2 | 3 }) {
   const t = await getTranslations("products.items");
   const s = await getTranslations("productsSection");
+  const page = await getTranslations("products.page");
   const locale = (await getLocale()) as Locale;
   const H = `h${headingLevel}` as "h2" | "h3";
-  const items = FAMILIES.filter((f) => f.key !== exclude);
+  const items = VISIBLE_FAMILIES.filter((f) => f.key !== exclude);
 
   return (
-    <Stagger as="ul" className={cn("grid gap-4 sm:grid-cols-2", exclude ? "lg:grid-cols-5" : "lg:grid-cols-6")}>
+    <Stagger as="ul" className={cn("grid gap-4 sm:grid-cols-2", exclude ? "lg:grid-cols-2" : "lg:grid-cols-6")}>
       {items.map((family) => {
         const range = sizeRange(family.sizes);
-        const featured = family.key === "flexible" && !exclude;
+        const featured = family.key === "twistable" && !exclude;
         return (
           <li key={family.key} className={cn(!exclude && LAYOUT[family.key], exclude && "lg:col-span-1")}>
             <TiltCard className="h-full">
@@ -47,7 +46,7 @@ export async function ProductGrid({ exclude, headingLevel = 3 }: { exclude?: Fam
                 )}
               >
                 <div className={cn("relative -mx-2 mb-5", featured ? "lg:my-auto lg:origin-center lg:scale-[1.3] lg:py-10" : "")}>
-                  <PartDrawing family={family.key} compact className="h-auto w-full transition-transform duration-500 group-hover:scale-[1.03]" />
+                  <PartDrawing family={family.drawing} twist={family.key === "twistable"} compact className="h-auto w-full transition-transform duration-500 group-hover:scale-[1.03]" />
                 </div>
                 <H className="text-display-s font-bold">
                   <Link
@@ -60,7 +59,7 @@ export async function ProductGrid({ exclude, headingLevel = 3 }: { exclude?: Fam
                 </H>
                 <p className="mt-2 text-muted">{t(`${family.key}.short`)}</p>
                 <div className="mt-auto flex items-center justify-between gap-4 pt-6">
-                  {range ? <ScrambleText text={range} trigger="hover" className="annot text-primary-ink" /> : <span className="annot text-primary-ink">PDF · DWG · DXF · STEP</span>}
+                  {range ? <ScrambleText text={range} trigger="hover" className="annot text-primary-ink" /> : <span className="annot text-primary-ink">{page("onRequestTitle")}</span>}
                   <span aria-hidden="true" className="grid size-9 place-items-center rounded-full border border-line-strong transition-colors group-hover:border-accent group-hover:bg-accent group-hover:text-on-accent">
                     <ArrowUpRight className="size-4" strokeWidth={1.75} />
                   </span>
