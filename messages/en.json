@@ -745,7 +745,9 @@
     "search": "Search",
     "searchPlaceholder": "E.g. WR-90, H bend, TLFX-100",
     "faqTitle": "FAQ",
-    "faqAll": "All questions"
+    "faqAll": "All questions",
+    "filtersButton": "Filters",
+    "showMoreCount": "Show more ({count})"
   },
   "tables": {
     "title": "Technical tables",
@@ -953,7 +955,13 @@
     "customize": "Customize",
     "lengthOther": "Other length",
     "lengthFreeHint": "{min} to {max} mm. Other lengths on request: we assess them in the quote.",
-    "rlNote": "value for {len} mm"
+    "rlNote": "value for {len} mm",
+    "stepClose": "Close",
+    "stepEdit": "Edit",
+    "stepDone": "Done",
+    "notesNone": "No notes",
+    "addedShort": "Added",
+    "miniPreview": "Back to the part preview"
   },
   "request": {
     "title": "Your request",

@@ -745,7 +745,9 @@
     "search": "Cerca",
     "searchPlaceholder": "Es. WR-90, curva H, TLFX-100",
     "faqTitle": "Domande frequenti",
-    "faqAll": "Tutte le domande"
+    "faqAll": "Tutte le domande",
+    "filtersButton": "Filtri",
+    "showMoreCount": "Mostra altri ({count})"
   },
   "tables": {
     "title": "Tabelle tecniche",
@@ -953,7 +955,13 @@
     "customize": "Personalizza",
     "lengthOther": "Altra lunghezza",
     "lengthFreeHint": "Da {min} a {max} mm. Lunghezze diverse su richiesta: la valutiamo nel preventivo.",
-    "rlNote": "valore riferito a {len} mm"
+    "rlNote": "valore riferito a {len} mm",
+    "stepClose": "Chiudi",
+    "stepEdit": "Modifica",
+    "stepDone": "Fatto",
+    "notesNone": "Nessuna nota",
+    "addedShort": "Aggiunto",
+    "miniPreview": "Torna all’anteprima del pezzo"
   },
   "request": {
     "title": "La tua richiesta",

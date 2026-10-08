@@ -13,7 +13,9 @@ import { cn } from "@/lib/cn";
 
 type Filters = { type: string; size: string; ghz: string; q: string };
 const EMPTY: Filters = { type: "", size: "", ghz: "", q: "" };
+/** card mostrate prima di "Mostra altri": 9 su desktop, 6 su telefono */
 const PAGE = 9;
+const PAGE_MOBILE = 6;
 
 /** Tipi del catalogo pronto: flessibili (lunghezza da indicare), curve E/H a 90°, twist a 90°. */
 const READY_TYPES: readonly PartType[] = ["twistable", "seamless", "bend", "twist"];
@@ -44,6 +46,16 @@ export function ReadyCatalog({ thumbs = {} }: { thumbs?: Record<string, string> 
   const [f, setF] = useState<Filters>(EMPTY);
   const [all, setAll] = useState(false);
   const [added, setAdded] = useState<string | null>(null);
+  const [page, setPage] = useState(PAGE);
+  const [filtersOpen, setFiltersOpen] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 1023px)");
+    const apply = () => setPage(mq.matches ? PAGE_MOBILE : PAGE);
+    apply();
+    mq.addEventListener("change", apply);
+    return () => mq.removeEventListener("change", apply);
+  }, []);
 
   useEffect(() => {
     if (!added) return;
@@ -77,7 +89,7 @@ export function ReadyCatalog({ thumbs = {} }: { thumbs?: Record<string, string> 
     return true;
   });
   const filtered = Boolean(f.type || f.size || ghzOk || q);
-  const shown = all || filtered ? visible : visible.slice(0, PAGE);
+  const shown = all || filtered ? visible : visible.slice(0, page);
 
   const keyData = (i: Ready): string | null => {
     if (i.type === "twistable") {
@@ -99,7 +111,20 @@ export function ReadyCatalog({ thumbs = {} }: { thumbs?: Record<string, string> 
   return (
     <div className="grid gap-8 lg:grid-cols-[16rem_1fr] lg:gap-10">
       <search aria-label={t("filtersLabel")} className="grid content-start gap-5 lg:sticky lg:top-28">
-        <p className="annot flex items-center gap-2 uppercase tracking-[0.14em] text-muted">
+        <button
+          type="button"
+          className="btn btn-ghost justify-self-start lg:hidden"
+          aria-expanded={filtersOpen}
+          aria-controls={`${uid}-filters`}
+          onClick={() => setFiltersOpen(!filtersOpen)}
+          data-filters-toggle
+        >
+          <SlidersHorizontal aria-hidden="true" className="size-4" strokeWidth={1.75} />
+          {t("filtersButton")}
+          {filtered ? <span aria-hidden="true" className="size-2 rounded-full bg-accent" /> : null}
+        </button>
+        <div id={`${uid}-filters`} className={cn("grid content-start gap-5", !filtersOpen && "max-lg:hidden")}>
+        <p className="annot hidden items-center gap-2 uppercase tracking-[0.14em] text-muted lg:flex">
           <SlidersHorizontal aria-hidden="true" className="size-4" strokeWidth={1.75} />
           {t("filtersLabel")}
         </p>
@@ -148,6 +173,7 @@ export function ReadyCatalog({ thumbs = {} }: { thumbs?: Record<string, string> 
             {t("reset")}
           </button>
         ) : null}
+        </div>
       </search>
 
       <div className="min-w-0">
@@ -218,7 +244,7 @@ export function ReadyCatalog({ thumbs = {} }: { thumbs?: Record<string, string> 
         )}
         {!all && shown.length < visible.length ? (
           <button type="button" className={cn("btn btn-ghost mt-6")} onClick={() => setAll(true)}>
-            {t("showMore", { count: visible.length })}
+            {t("showMoreCount", { count: visible.length - shown.length })}
           </button>
         ) : null}
         <p className="sr-only" aria-live="polite">

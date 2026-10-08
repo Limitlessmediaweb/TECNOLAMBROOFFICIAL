@@ -16,6 +16,7 @@ import { track } from "@/lib/analytics";
 import { TechDrawing } from "./TechDrawing";
 import { Viewer3D } from "./Viewer3D";
 import { StlPreview } from "./StlPreview";
+import { MobileConfigBar } from "./MobileConfigBar";
 import { CustomPartForm } from "@/components/request/CustomPartForm";
 import { cn } from "@/lib/cn";
 
@@ -82,6 +83,8 @@ export function Configurator({ requestPath }: { requestPath: string }) {
   const labels = useDrawingLabels();
   const text = usePartText();
   const root = useRef<HTMLDivElement>(null);
+  const figureRef = useRef<HTMLElement>(null);
+  const [openStep, setOpenStep] = useState<number | null>(3);
 
   const [spec, setSpecState] = useState<PartSpec>(() => defaultSpec("twistable"));
   const [freq, setFreq] = useState("");
@@ -168,6 +171,14 @@ export function Configurator({ requestPath }: { requestPath: string }) {
   // "Altra lunghezza": scelta esplicita, oppure una lunghezza non standard (es. da un link condiviso)
   const freeLength = freeLengthState || (geo === "length" && lState === "out");
   const valid = specValid(spec);
+  /** riferimento corto per la barra su telefono: "Curva E · WR-90 · 90°" */
+  const shortRef = [
+    `${t(`types.${spec.type}.name`)}${geo === "bend" || geo === "offset" ? ` ${spec.plane ?? "E"}` : ""}`,
+    spec.wr,
+    geo === "length" ? `${spec.length ?? ""} mm` : geo === "bend" ? `${spec.angle ?? 90}°` : geo === "twist" ? `${spec.rotation ?? 90}°` : geo === "offset" ? `X ${spec.offset ?? 0}` : "",
+  ]
+    .filter(Boolean)
+    .join(" · ");
 
   const chooseType = (type: PartType) => {
     const wr = spec.wr !== "unknown" ? spec.wr : "WR-90";
@@ -325,17 +336,60 @@ export function Configurator({ requestPath }: { requestPath: string }) {
       </div>
     );
   };
-  const section = (n: number, title: string, children: ReactNode) => (
-    <fieldset className="grid gap-4 border-t border-line pt-6">
-      <legend className="flex items-center gap-3 text-display-s font-bold">
-        <span aria-hidden="true" className="grid size-8 shrink-0 place-items-center rounded-full border border-accent font-mono text-sm text-accent">
-          {n}
-        </span>
-        {title}
-      </legend>
-      {children}
-    </fieldset>
-  );
+  const mm = (v?: number | null) => `${num(v ?? 0, locale, 0, 1)} mm`;
+  /** riga di riepilogo degli step 3–6, mostrata quando lo step è chiuso (telefono) */
+  const stepSummary: Record<number, string> = isCustom
+    ? {}
+    : {
+        3:
+          geo === "length"
+            ? `L ${mm(spec.length)}`
+            : geo === "bend"
+              ? [t(`plane.${spec.plane ?? "E"}`), `${num(spec.angle ?? 90, locale, 0, 1)}°`, spec.radius ? `R ${mm(spec.radius)}` : t("radiusStd"), `L1 ${mm(spec.leg1)}`, `L2 ${mm(spec.leg2)}`].join(" · ")
+              : geo === "twist"
+                ? [`${num(spec.rotation ?? 90, locale, 0, 1)}° ${t(`dir.${spec.direction ?? "cw"}`)}`, `L ${mm(spec.length)}`].join(" · ")
+                : [t(`plane.${spec.plane ?? "E"}`), `X ${mm(spec.offset)}`, `L ${mm(spec.length)}`].join(" · "),
+        4: `${t("flanges")}: ${text.flange(spec.f1)} / ${text.flange(spec.f2)}`,
+        5: `${t(`finishes.${spec.finish}`)} · ${t(`treatments.${spec.treatment}`)}`,
+        6: notes.trim() ? notes.trim().slice(0, 60) : t("notesNone"),
+      };
+  const section = (n: number, title: string, children: ReactNode) => {
+    const summaryLine = stepSummary[n];
+    const collapsible = summaryLine !== undefined;
+    const open = !collapsible || openStep === n;
+    return (
+      <fieldset className="grid gap-4 border-t border-line pt-6" data-step={n}>
+        <legend className="flex items-center gap-3 text-display-s font-bold">
+          <span aria-hidden="true" className="grid size-8 shrink-0 place-items-center rounded-full border border-accent font-mono text-sm text-accent">
+            {n}
+          </span>
+          {title}
+        </legend>
+        {collapsible ? (
+          <button
+            type="button"
+            className="flex min-h-11 w-full items-center justify-between gap-3 border border-line bg-surface px-4 text-left text-sm lg:hidden"
+            aria-expanded={open}
+            aria-controls={`${uid}-step-${n}`}
+            onClick={() => setOpenStep(open ? null : n)}
+            data-step-toggle={n}
+          >
+            <span className="min-w-0 truncate">{summaryLine}</span>
+            <span className="shrink-0 font-medium text-primary-ink">{open ? t("stepClose") : t("stepEdit")}</span>
+          </button>
+        ) : null}
+        <div id={`${uid}-step-${n}`} className={cn("grid gap-4", !open && "max-lg:hidden")}>
+          {children}
+          {collapsible ? (
+            <button type="button" className="btn btn-ghost btn-sm justify-self-start lg:hidden" onClick={() => setOpenStep(n < 6 ? n + 1 : null)}>
+              <Check aria-hidden="true" className="size-4" strokeWidth={1.75} />
+              {t("stepDone")}
+            </button>
+          ) : null}
+        </div>
+      </fieldset>
+    );
+  };
   const lengths = standardLengths(spec.wr);
   const goTo = (
     <NextLink href={requestPath} className="font-medium text-primary-ink underline underline-offset-4">
@@ -351,10 +405,10 @@ export function Configurator({ requestPath }: { requestPath: string }) {
   ) : null;
 
   return (
-    <div ref={root} className="scroll-mt-24" data-configurator data-type={spec.type}>
-      <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,30rem)]">
-        {/* ------------------------------------------------- opzioni */}
-        <div className="grid min-w-0 content-start gap-8">
+    <div ref={root} className="scroll-mt-24 max-lg:pb-20" data-configurator data-type={spec.type}>
+      <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,30rem)] lg:items-start">
+        {/* ------------------------------------------------- step 1–2 (su telefono poi l'anteprima, poi gli step 3–6) */}
+        <div className="grid min-w-0 content-start gap-8 max-lg:order-1 lg:col-start-1 lg:row-start-1">
           {section(
             1,
             t("typeTitle"),
@@ -381,8 +435,7 @@ export function Configurator({ requestPath }: { requestPath: string }) {
               </>,
             )
           ) : (
-            <>
-              {section(
+              section(
                 2,
                 t("sizeTitle"),
                 <>
@@ -410,8 +463,12 @@ export function Configurator({ requestPath }: { requestPath: string }) {
                     ))}
                   </div>
                 </>,
-              )}
+              )
+          )}
+        </div>
 
+        {!isCustom ? (
+          <div className="grid min-w-0 content-start gap-8 max-lg:order-3 lg:col-start-1 lg:row-start-2">
               {section(
                 3,
                 t("geometryTitle"),
@@ -609,13 +666,12 @@ export function Configurator({ requestPath }: { requestPath: string }) {
                   <textarea id={`${uid}-notes`} rows={3} className="input resize-y" value={notes} onChange={(e) => setNotes(e.target.value)} placeholder={t("notesPlaceholder")} maxLength={3000} />
                 </div>,
               )}
-            </>
-          )}
-        </div>
+          </div>
+        ) : null}
 
-        {/* ------------------------------------------------- 3D, disegno, riepilogo */}
-        <aside aria-label={t("summary")} className="grid min-w-0 content-start gap-4 lg:sticky lg:top-24 lg:self-start">
-          <figure className="border border-line bg-surface">
+        {/* ------------------------------------------------- 3D, disegno, riepilogo (fisso a destra su desktop) */}
+        <aside aria-label={t("summary")} className="contents lg:sticky lg:top-24 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:grid lg:min-w-0 lg:content-start lg:gap-4 lg:self-start">
+          <figure ref={figureRef} className="min-w-0 scroll-mt-24 border border-line bg-surface max-lg:order-2" data-preview>
             <div className="flex flex-wrap items-center justify-between gap-2 border-b border-line px-3 py-2">
               <figcaption className="annot uppercase tracking-[0.14em] text-muted">{isCustom ? t("stlPreviewLabel") : view === "3d" ? t("view3d") : t("drawing")}</figcaption>
               {!isCustom ? (
@@ -644,7 +700,7 @@ export function Configurator({ requestPath }: { requestPath: string }) {
           </figure>
 
           {!isCustom ? (
-            <div className="border border-line bg-surface p-5">
+            <div className="min-w-0 border border-line bg-surface p-5 max-lg:order-4">
               <h3 className="annot uppercase tracking-[0.14em] text-muted">{t("summary")}</h3>
               <p className="mt-2 break-words font-mono text-base font-medium leading-snug" data-part-code>
                 {code}
@@ -744,6 +800,20 @@ export function Configurator({ requestPath }: { requestPath: string }) {
           ) : null}
         </aside>
       </div>
+      {!isCustom ? (
+        <MobileConfigBar
+          spec={spec}
+          label={shortRef}
+          onAdd={add}
+          disabled={!valid}
+          added={added}
+          addLabel={t("add")}
+          addedLabel={t("addedShort")}
+          previewLabel={t("miniPreview")}
+          rootRef={root}
+          figureRef={figureRef}
+        />
+      ) : null}
     </div>
   );
 }
