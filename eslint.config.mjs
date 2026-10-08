@@ -12,6 +12,10 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // file generati e output locali (spot video, dati delle schede)
+    "test-output/**",
+    "video/*/scenes/part3d.bundle.js",
+    "video/*/node_modules/**",
   ]),
 ]);
 
