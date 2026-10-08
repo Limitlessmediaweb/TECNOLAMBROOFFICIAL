@@ -1,3 +1,5 @@
+import { pick } from "@/i18n/locales";
+
 /** Dati aziendali veri (dal brief). Non aggiungere dati non forniti dal titolare. */
 export const COMPANY = {
   brand: "Tecnolambro",
@@ -46,10 +48,13 @@ export const COMPANY = {
 export const WHATSAPP_TEXT = {
   it: "Buongiorno, vorrei informazioni su una guida d’onda",
   en: "Hello, I’d like information about a waveguide",
+  es: "Buenos días, quisiera información sobre una guía de ondas",
+  zh: "您好，我想了解波导产品的信息",
+  de: "Guten Tag, ich hätte gerne Informationen zu einem Hohlleiter",
 } as const;
 
 export function whatsappHref(locale: string): string {
-  return `https://wa.me/${COMPANY.whatsapp}?text=${encodeURIComponent(locale === "en" ? WHATSAPP_TEXT.en : WHATSAPP_TEXT.it)}`;
+  return `https://wa.me/${COMPANY.whatsapp}?text=${encodeURIComponent(pick(WHATSAPP_TEXT, locale))}`;
 }
 
 /** Anni di attività calcolati dall'anno corrente (fondazione 1987). */

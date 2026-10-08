@@ -17,7 +17,7 @@ export const PHOTO_DIRS = {
 export const OWNER_PHOTO = ["foto/persone/marco-pasquini.jpg", "foto/persone/marco-pasquini.webp"] as const;
 
 /** Testi alternativi specifici (chiave = percorso pubblico, es. "/foto/officina/collaudo-1.jpg"). */
-export const PHOTO_ALTS: Record<string, Record<Locale, string>> = {};
+export const PHOTO_ALTS: Record<string, Partial<Record<Locale, string>> & { it: string; en: string }> = {};
 
 /** Reparti dell'officina riconosciuti dal nome del file. */
 export const WORKSHOP_AREAS = ["lavorazione", "collaudo", "magazzino"] as const;

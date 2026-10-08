@@ -8,15 +8,16 @@ import type { Locale } from "@/i18n/routing";
  */
 export const PENDING = {
   /** Citazione di Marco Pasquini per "Chi guida Tecnolambro". Non inventarla. */
-  ownerQuote: null as Record<Locale, string> | null,
+  ownerQuote: null as (Partial<Record<Locale, string>> & { it: string; en: string }) | null,
   /** Quarta famiglia di prodotto (oggi hidden: true in data/families.ts) */
-  pendingFamily: null as { name: Record<Locale, string> } | null,
+  pendingFamily: null as { name: Partial<Record<Locale, string>> & { it: string; en: string } } | null,
   /** Foto reali: prodotti, officina, titolare (si leggono dalle cartelle, qui solo il promemoria) */
   photos: null as null | true,
 };
 
 /** Etichette dei dati mancanti, per i badge in anteprima. */
-export const PENDING_LABELS: Record<string, Record<Locale, string>> = {
+/** Solo anteprima (NEXT_PUBLIC_DEMO=true): le lingue senza voce usano l'inglese, vedi pick() */
+export const PENDING_LABELS: Record<string, Partial<Record<Locale, string>> & { it: string; en: string }> = {
   ownerQuote: { it: "citazione del titolare", en: "owner quote" },
   ownerPhoto: { it: "foto di Marco Pasquini", en: "photo of Marco Pasquini" },
   workshopPhotos: { it: "foto dell'officina", en: "workshop photos" },

@@ -108,7 +108,8 @@ export type MailFiles = {
   modelsSkipped?: boolean;
 };
 
-const LANG = { it: "Italiano", en: "Inglese" } as const;
+/** Lingua del cliente nell'email all'ufficio (che resta sempre in italiano) */
+const LANG: Record<string, string> = { it: "Italiano", en: "Inglese", es: "Spagnolo", zh: "Cinese", de: "Tedesco" };
 
 /** Oggetto: [Preventivo TL-261008-4821] Azienda · Paese · 3 pezzi */
 export function officeSubject(p: QuotePayload, number: string): string {
@@ -152,7 +153,7 @@ export function internalMail(p: QuotePayload, number: string, files: MailFiles):
 <h1 style="font-size:22px;margin:0 0 16px">Richiesta di preventivo ${esc(number)}</h1>
 <p style="margin:0 0 8px"><a href="${esc(reply)}" style="display:inline-block;background:${C.accent};color:#ffffff;text-decoration:none;padding:10px 18px;border-radius:999px;font-weight:bold">Rispondi al cliente</a></p>
 <h2 style="${h2}">Cliente</h2>
-<table style="font-size:14px;border-collapse:collapse">${row("Azienda", c.company)}${row("Nome", c.name)}${row("Email", c.email, `mailto:${c.email}`)}${row("Telefono", c.phone, c.phone ? `tel:${c.phone.replace(/[^\d+]/g, "")}` : undefined)}${row("Paese", c.country ? `${c.country}${c.countryCode ? ` (${c.countryCode})` : ""}` : undefined)}${row("P.IVA", c.vat)}${row("Lingua del sito", LANG[p.locale])}</table>
+<table style="font-size:14px;border-collapse:collapse">${row("Azienda", c.company)}${row("Nome", c.name)}${row("Email", c.email, `mailto:${c.email}`)}${row("Telefono", c.phone, c.phone ? `tel:${c.phone.replace(/[^\d+]/g, "")}` : undefined)}${row("Paese", c.country ? `${c.country}${c.countryCode ? ` (${c.countryCode})` : ""}` : undefined)}${row("P.IVA", c.vat)}${row("Lingua del sito", LANG[p.locale] ?? p.locale)}</table>
 ${p.message ? `<h2 style="${h2}">Messaggio</h2><p style="font-size:14px;line-height:1.5">${nl2br(p.message)}</p>` : ""}
 <h2 style="${h2}">Pezzi</h2>
 <table style="border-collapse:collapse;width:100%;font-size:14px">
@@ -169,7 +170,7 @@ ${files.modelsSkipped ? `<p style="font-size:13px;color:${C.muted}">I modelli 3D
     `Rispondi al cliente: ${c.email}`,
     "",
     "CLIENTE",
-    [c.company, c.name, c.email, c.phone, c.country, c.vat && `P.IVA ${c.vat}`, `Lingua: ${LANG[p.locale]}`].filter(Boolean).join("\n"),
+    [c.company, c.name, c.email, c.phone, c.country, c.vat && `P.IVA ${c.vat}`, `Lingua: ${LANG[p.locale] ?? p.locale}`].filter(Boolean).join("\n"),
     ...(p.message ? ["", "MESSAGGIO", p.message] : []),
     "",
     "PEZZI",
@@ -217,6 +218,54 @@ const OUT = {
     whatsapp: "Message us on WhatsApp",
     sign: "Tecnolambro Microwave Components",
   },
+  es: {
+    subject: (n: string) => `Hemos recibido su solicitud ${n} – Tecnolambro`,
+    hello: (name: string) => `Estimado/a ${name}:`,
+    thanks: "gracias por su solicitud de presupuesto.",
+    number: "Número de solicitud",
+    reply: "Le enviaremos el presupuesto en un plazo de 24 horas laborables.",
+    recap: "Resumen",
+    code: "Pieza",
+    qty: "Cantidad",
+    customItem: "Solicitud según plano",
+    drawings: "Adjuntamos el plano PDF de cada pieza configurada. El plano definitivo se envía con el presupuesto.",
+    contacts: "Para cualquier consulta",
+    mobile: "Móvil",
+    whatsapp: "Escríbanos por WhatsApp",
+    sign: "Tecnolambro Microwave Components",
+  },
+  zh: {
+    subject: (n: string) => `我们已收到您的询价 ${n} – Tecnolambro`,
+    hello: (name: string) => `${name}，您好：`,
+    thanks: "感谢您的询价。",
+    number: "询价编号",
+    reply: "我们将在24个工作小时内向您发送报价。",
+    recap: "摘要",
+    code: "零件",
+    qty: "数量",
+    customItem: "按图定制询价",
+    drawings: "附件为每个已配置零件的PDF图纸。正式图纸将随报价一并发送。",
+    contacts: "如有任何问题",
+    mobile: "手机",
+    whatsapp: "通过 WhatsApp 联系我们",
+    sign: "Tecnolambro Microwave Components",
+  },
+  de: {
+    subject: (n: string) => `Wir haben Ihre Anfrage ${n} erhalten – Tecnolambro`,
+    hello: (name: string) => `Guten Tag ${name},`,
+    thanks: "vielen Dank für Ihre Angebotsanfrage.",
+    number: "Anfragenummer",
+    reply: "Sie erhalten unser Angebot innerhalb von 24 Arbeitsstunden.",
+    recap: "Zusammenfassung",
+    code: "Teil",
+    qty: "Menge",
+    customItem: "Anfrage nach Zeichnung",
+    drawings: "Im Anhang finden Sie die PDF-Zeichnung jedes konfigurierten Teils. Die endgültige Zeichnung erhalten Sie mit dem Angebot.",
+    contacts: "Bei Fragen",
+    mobile: "Mobil",
+    whatsapp: "Schreiben Sie uns auf WhatsApp",
+    sign: "Tecnolambro Microwave Components",
+  },
 } as const;
 
 /**
@@ -224,7 +273,7 @@ const OUT = {
  * non vengono ripetuti, così il modulo non si può usare per mandare testi a indirizzi di terzi.
  */
 export function customerMail(p: QuotePayload, number: string, hasDrawings: boolean): { subject: string; html: string; text: string } {
-  const t = OUT[p.locale];
+  const t = OUT[p.locale as keyof typeof OUT] ?? OUT.en;
   const name = p.customer.name.split(/\s+/)[0] ?? "";
   const code = (i: QuotePayload["items"][number]) => (i.kind === "contact" ? t.customItem : i.code);
   const rows = p.items.map((i) => `<tr><td style="${td};font-family:Consolas,Menlo,monospace">${esc(code(i))}</td><td style="${td};text-align:right">${i.qty}</td></tr>`).join("");

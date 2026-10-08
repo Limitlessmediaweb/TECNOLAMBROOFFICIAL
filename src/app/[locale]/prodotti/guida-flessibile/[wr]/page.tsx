@@ -5,7 +5,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { routing, type Locale } from "@/i18n/routing";
 import { DIM_BY_WR, MATERIAL, SEAMLESS_TABLE, SIZES, SIZE_BY_WR, TWIST_TABLE, isOnRequest, num, range, standardLengths } from "@/data/waveguides";
 import { flangesFor } from "@/data/flanges";
-import { familyByKey } from "@/data/families";
+import { familyByKey, familySlug } from "@/data/families";
 import { COMPANY, ENV } from "@/data/site";
 import { absoluteUrl, buildMetadata } from "@/lib/seo";
 import { breadcrumbsFor } from "@/lib/page";
@@ -153,7 +153,7 @@ export default async function WrPage({ params }: Props) {
           <div className="mt-8 grid gap-6 md:grid-cols-2">
             <div className="border border-line bg-surface p-6">
               <h3 className="text-display-s font-bold">
-                <Link href={{ pathname: "/prodotti/[famiglia]", params: { famiglia: twistable.slug[locale as Locale] } }} className="tap hover:text-accent">
+                <Link href={{ pathname: "/prodotti/[famiglia]", params: { famiglia: familySlug(twistable, locale) } }} className="tap hover:text-accent">
                   {t("twistable")}
                 </Link>
               </h3>
@@ -189,7 +189,7 @@ export default async function WrPage({ params }: Props) {
             </div>
             <div className="border border-line bg-surface p-6">
               <h3 className="text-display-s font-bold">
-                <Link href={{ pathname: "/prodotti/[famiglia]", params: { famiglia: seamlessFamily.slug[locale as Locale] } }} className="tap hover:text-accent">
+                <Link href={{ pathname: "/prodotti/[famiglia]", params: { famiglia: familySlug(seamlessFamily, locale) } }} className="tap hover:text-accent">
                   {t("seamless")}
                 </Link>
               </h3>

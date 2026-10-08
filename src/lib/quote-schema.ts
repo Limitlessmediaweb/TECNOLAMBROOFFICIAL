@@ -1,3 +1,4 @@
+import { intlLocale, isLocale, type Locale } from "@/i18n/locales";
 /**
  * Formato della richiesta di preventivo, condiviso da client e route handler (/api/quote).
  * La validazione vera è quella del server: il client la ripete solo per dare errori subito.
@@ -58,7 +59,7 @@ export type BlobRef = { name: string; url: string; size: number; kind?: BlobKind
 export type QuotePayload = {
   /** request = "La tua richiesta" · contact = modulo breve (home, contatti, su misura) */
   source: "request" | "contact";
-  locale: "it" | "en";
+  locale: Locale;
   items: QuoteItem[];
   customer: QuoteCustomer;
   privacy: boolean;
@@ -89,7 +90,7 @@ export function isModelFile(name: string): boolean {
 
 export function formatBytes(bytes: number, locale: string): string {
   const mb = bytes / (1024 * 1024);
-  const fmt = new Intl.NumberFormat(locale === "it" ? "it-IT" : "en-GB", { maximumFractionDigits: 1 });
+  const fmt = new Intl.NumberFormat(intlLocale(locale), { maximumFractionDigits: 1 });
   return mb >= 1 ? `${fmt.format(mb)} MB` : `${fmt.format(Math.max(1, bytes / 1024))} KB`;
 }
 
@@ -173,7 +174,7 @@ export function validatePayload(raw: unknown): { payload: QuotePayload | null; f
   const elapsed = Number(r.elapsedMs);
   const payload: QuotePayload = {
     source,
-    locale: r.locale === "en" ? "en" : "it",
+    locale: typeof r.locale === "string" && isLocale(r.locale) ? r.locale : "it",
     items,
     customer,
     privacy: r.privacy === true,

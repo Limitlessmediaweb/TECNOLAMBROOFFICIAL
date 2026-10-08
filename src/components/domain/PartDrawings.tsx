@@ -1,5 +1,6 @@
 import { useId, type ReactNode } from "react";
 import { SIZE_BY_WR } from "@/data/waveguides";
+import { intlLocale } from "@/i18n/locales";
 
 /**
  * Disegni tecnici a linee (vista laterale) delle famiglie: guida flessibile (con il simbolo di
@@ -36,7 +37,7 @@ type DrawingProps = {
 const VIEW = "0 0 640 280";
 
 function n(value: number, locale = "it") {
-  return new Intl.NumberFormat(locale === "it" ? "it-IT" : "en-GB", { minimumFractionDigits: 2 }).format(value);
+  return new Intl.NumberFormat(intlLocale(locale), { minimumFractionDigits: 2 }).format(value);
 }
 
 function Part({ dx = 0, dy = 0, label, lx, ly, children }: { dx?: number; dy?: number; label?: string; lx?: number; ly?: number; children: ReactNode }) {

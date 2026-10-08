@@ -19,6 +19,7 @@ import { StlPreview } from "./StlPreview";
 import { MobileConfigBar } from "./MobileConfigBar";
 import { CustomPartForm } from "@/components/request/CustomPartForm";
 import { cn } from "@/lib/cn";
+import { decimalSep } from "@/i18n/locales";
 
 export type ConfigureDetail = { spec?: PartSpec; type?: PartType; wr?: string };
 
@@ -50,7 +51,7 @@ export function usePartText() {
   return useMemo(() => {
     const flange = (f: string) => (f === OTHER_FLANGE ? t("flangeOther") : f);
     const reference = (spec: PartSpec) =>
-      partReference(spec, { other: locale === "it" ? "ALTRA" : "OTHER", flexName: t(`flexName.${spec.type === "seamless" ? "seamless" : "twistable"}`), customLabel: t("customRef") });
+      partReference(spec, { other: t("otherRef"), flexName: t(`flexName.${spec.type === "seamless" ? "seamless" : "twistable"}`), customLabel: t("customRef") });
     /** riga leggibile: tipo · misura · banda · geometria · flange · finitura · trattamento */
     const detail = (spec: PartSpec) => {
       const size = SIZE_BY_WR.get(spec.wr);
@@ -134,7 +135,7 @@ export function Configurator({ requestPath }: { requestPath: string }) {
         if (!TYPE_DEF[fromUrl.type].has3d) setView("2d");
       }
       const ghz = p.get("ghz");
-      if (ghz) setFreq(ghz.replace(".", locale === "it" ? "," : "."));
+      if (ghz) setFreq(ghz.replace(".", decimalSep(locale)));
     }, 0);
     const onConfigure = (e: Event) => {
       const d = (e as CustomEvent<ConfigureDetail>).detail;
@@ -443,7 +444,7 @@ export function Configurator({ requestPath }: { requestPath: string }) {
                     <label htmlFor={`${uid}-freq`} className="field-label">
                       {t("freqLabel")}
                     </label>
-                    <input id={`${uid}-freq`} inputMode="decimal" autoComplete="off" className="input tabular" value={freq} onChange={(e) => setFreq(e.target.value)} placeholder={locale === "it" ? "Es. 10,5" : "E.g. 10.5"} data-field="ghz" />
+                    <input id={`${uid}-freq`} inputMode="decimal" autoComplete="off" className="input tabular" value={freq} onChange={(e) => setFreq(e.target.value)} placeholder={t("freqPlaceholder", { value: `10${decimalSep(locale)}5` })} data-field="ghz" />
                   </div>
                   <p aria-live="polite" className="min-h-6 text-sm">
                     {freqValid ? (suggested ? t("freqSuggest", { freq: num(freqNum, locale, 0, 2), size: sizeLabel(suggested) }) : t("freqNone", { freq: num(freqNum, locale, 0, 2) })) : ""}

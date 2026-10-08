@@ -1,3 +1,4 @@
+import { pick } from "@/i18n/locales";
 import Image from "next/image";
 import { getLocale, getTranslations } from "next-intl/server";
 import { Download, ShieldCheck } from "lucide-react";
@@ -35,7 +36,7 @@ export async function CertificationCards() {
             <div className="flex flex-col gap-2">
               <h3 className="font-display text-display-s font-extrabold wdth-wide">{cert.standard}</h3>
               <p className="font-medium">{cert.system[locale]}</p>
-              {cert.extra ? <p className="text-sm text-muted">{cert.extra}</p> : null}
+              {cert.extra ? <p className="text-sm text-muted">{cert.extra[locale]}</p> : null}
               <p className="text-sm text-muted">{t("certBy")}</p>
               <p className="annot mt-1 text-muted">{t("certNumber", { number: cert.number })}</p>
               <p className="text-sm">
@@ -52,7 +53,7 @@ export async function CertificationCards() {
                   {t("download")}
                 </a>
               ) : (
-                <MissingBadge label={c("missing", { what: PENDING_LABELS.certPdf[locale] })} className="mt-3" />
+                <MissingBadge label={c("missing", { what: pick(PENDING_LABELS.certPdf, locale) })} className="mt-3" />
               )}
             </div>
           </article>

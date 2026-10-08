@@ -1,4 +1,5 @@
 import type { Locale } from "@/i18n/routing";
+import { intlLocale } from "@/i18n/locales";
 
 /**
  * Certificazioni (dati degli attestati PJR). Gli attestati PDF stanno in public/certificazioni/,
@@ -10,7 +11,7 @@ export type Certification = {
   /** "ISO 9001:2015" */
   standard: string;
   /** riferimento aggiuntivo, es. regolamento tecnico ACCREDIA */
-  extra?: string;
+  extra?: Record<Locale, string>;
   system: Record<Locale, string>;
   number: string;
   /** date ISO (AAAA-MM-GG) */
@@ -35,13 +36,16 @@ export const CERT_BODY = {
 export const CERT_SCOPE: Record<Locale, string> = {
   it: "Progettazione e Produzione di Componenti di Guide d'Onda attraverso le Fasi di Taglio, Fresatura, Tornitura, Assemblaggio e Giunzione.",
   en: "Design and manufacture of waveguide components through cutting, milling, turning, assembly and joining.",
+  es: "Diseño y fabricación de componentes de guía de ondas mediante corte, fresado, torneado, montaje y unión.",
+  zh: "通过切割、铣削、车削、装配和连接工序进行波导元件的设计与生产。",
+  de: "Entwicklung und Fertigung von Hohlleiterkomponenten durch Schneiden, Fräsen, Drehen, Montage und Fügen.",
 };
 
 export const CERTIFICATIONS: readonly Certification[] = [
   {
     id: "iso9001",
     standard: "ISO 9001:2015",
-    system: { it: "Sistema di Gestione Qualità", en: "Quality Management System" },
+    system: { it: "Sistema di Gestione Qualità", en: "Quality Management System", es: "Sistema de Gestión de la Calidad", zh: "质量管理体系", de: "Qualitätsmanagementsystem" },
     number: "C2026-05582",
     firstIssue: "2023-09-14",
     currentIssue: "2026-09-10",
@@ -52,8 +56,8 @@ export const CERTIFICATIONS: readonly Certification[] = [
   {
     id: "iso14001",
     standard: "ISO 14001:2015",
-    extra: "Regolamento Tecnico ACCREDIA RT-09",
-    system: { it: "Sistema di Gestione Ambientale", en: "Environmental Management System" },
+    extra: { it: "Regolamento Tecnico ACCREDIA RT-09", en: "ACCREDIA Technical Regulation RT-09", es: "Reglamento Técnico ACCREDIA RT-09", zh: "ACCREDIA 技术规则 RT-09", de: "Technische Regel ACCREDIA RT-09" },
+    system: { it: "Sistema di Gestione Ambientale", en: "Environmental Management System", es: "Sistema de Gestión Ambiental", zh: "环境管理体系", de: "Umweltmanagementsystem" },
     number: "C2026-05583",
     firstIssue: "2023-09-14",
     currentIssue: "2026-09-10",
@@ -69,5 +73,5 @@ export function isExpired(c: Certification, now = new Date()): boolean {
 }
 
 export function formatDate(iso: string, locale: string): string {
-  return new Intl.DateTimeFormat(locale === "it" ? "it-IT" : "en-GB", { day: "numeric", month: "long", year: "numeric" }).format(new Date(`${iso}T12:00:00`));
+  return new Intl.DateTimeFormat(intlLocale(locale), { day: "numeric", month: "long", year: "numeric" }).format(new Date(`${iso}T12:00:00`));
 }

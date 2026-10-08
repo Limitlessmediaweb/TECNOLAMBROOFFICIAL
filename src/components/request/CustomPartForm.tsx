@@ -9,6 +9,7 @@ import { saveItemFiles } from "@/lib/request-files";
 import { ACCEPTED_EXTENSIONS, MAX_FILE_BYTES, formatBytes, isAcceptedFile } from "@/lib/quote";
 import { track } from "@/lib/analytics";
 import { cn } from "@/lib/cn";
+import { decimalSep } from "@/i18n/locales";
 
 /**
  * "Aggiungi un pezzo su disegno": descrizione, misura (anche "Non lo so"), frequenza, quantità e file.
@@ -51,7 +52,7 @@ export function CustomPartForm({ onFilesChange, onAdded, addedNote }: { onFilesC
     setTried(true);
     if (v.description.trim().length < 5) return;
     const qty = Math.max(1, Math.floor(Number(v.qty)) || 1);
-    const freq = v.freq.trim().replace(".", locale === "it" ? "," : ".");
+    const freq = v.freq.trim().replace(".", decimalSep(locale));
     const detail = [t("types.custom.name"), v.wr === "unknown" ? t("sizeUnknown") : v.wr, freq ? `${freq} GHz` : ""].filter(Boolean).join(" · ");
     const id = addItem({ kind: "custom", code: t("customRef"), detail, qty, notes: v.description.trim() });
     if (files.length) {

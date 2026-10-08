@@ -1,7 +1,8 @@
 import type { MetadataRoute } from "next";
 import { routing, type StaticPathname } from "@/i18n/routing";
-import { absoluteUrl } from "@/lib/seo";
-import { VISIBLE_FAMILIES } from "@/data/families";
+import { absoluteUrl, indexedLocales } from "@/lib/seo";
+import { LOCALE_META } from "@/i18n/locales";
+import { VISIBLE_FAMILIES, familySlug } from "@/data/families";
 import { SIZES } from "@/data/waveguides";
 import { wrSlug } from "@/lib/wr-page";
 
@@ -26,16 +27,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = [];
 
   for (const page of STATIC) {
-    const languages = Object.fromEntries(routing.locales.map((l) => [l, absoluteUrl(page.href, l)]));
-    for (const locale of routing.locales) {
+    const languages = Object.fromEntries(indexedLocales().map((l) => [LOCALE_META[l].hreflang, absoluteUrl(page.href, l)]));
+    for (const locale of indexedLocales()) {
       entries.push({ url: absoluteUrl(page.href, locale), lastModified, changeFrequency: page.changeFrequency, priority: page.priority, alternates: { languages } });
     }
   }
 
   for (const family of VISIBLE_FAMILIES) {
-    const hrefFor = (l: (typeof routing.locales)[number]) => ({ pathname: "/prodotti/[famiglia]" as const, params: { famiglia: family.slug[l] } });
-    const languages = Object.fromEntries(routing.locales.map((l) => [l, absoluteUrl(hrefFor(l), l)]));
-    for (const locale of routing.locales) {
+    const hrefFor = (l: (typeof routing.locales)[number]) => ({ pathname: "/prodotti/[famiglia]" as const, params: { famiglia: familySlug(family, l) } });
+    const languages = Object.fromEntries(indexedLocales().map((l) => [LOCALE_META[l].hreflang, absoluteUrl(hrefFor(l), l)]));
+    for (const locale of indexedLocales()) {
       entries.push({ url: absoluteUrl(hrefFor(locale), locale), lastModified, changeFrequency: "monthly", priority: 0.8, alternates: { languages } });
     }
   }
@@ -43,8 +44,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // una pagina per ogni misura WR
   for (const size of SIZES) {
     const href = { pathname: "/prodotti/guida-flessibile/[wr]" as const, params: { wr: wrSlug(size.wr) } };
-    const languages = Object.fromEntries(routing.locales.map((l) => [l, absoluteUrl(href, l)]));
-    for (const locale of routing.locales) {
+    const languages = Object.fromEntries(indexedLocales().map((l) => [LOCALE_META[l].hreflang, absoluteUrl(href, l)]));
+    for (const locale of indexedLocales()) {
       entries.push({ url: absoluteUrl(href, locale), lastModified, changeFrequency: "monthly", priority: 0.7, alternates: { languages } });
     }
   }

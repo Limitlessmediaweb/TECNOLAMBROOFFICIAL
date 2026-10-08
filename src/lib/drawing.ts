@@ -2,6 +2,7 @@ import { DIM_BY_WR, MATERIAL, SIZE_BY_WR, num, rigidOuter } from "@/data/wavegui
 import { PRINT } from "@/data/brand";
 import { visualBendRadius } from "@/data/configurator/defaults";
 import { isFlexible, type PartSpec } from "@/data/configurator/types";
+import { intlLocale } from "@/i18n/locales";
 
 /**
  * Disegno tecnico indicativo del pezzo, come stringa SVG (stesso disegno a schermo, nel PDF e nella
@@ -301,5 +302,5 @@ export function drawingSvg(input: DrawingInput): string {
 
 /** Data del cartiglio nel formato della lingua. */
 export function drawingDate(locale: string, d = new Date()): string {
-  return new Intl.DateTimeFormat(locale === "it" ? "it-IT" : "en-GB", { day: "2-digit", month: "2-digit", year: "numeric" }).format(d);
+  return new Intl.DateTimeFormat(intlLocale(locale), { day: "2-digit", month: "2-digit", year: "numeric" }).format(d);
 }

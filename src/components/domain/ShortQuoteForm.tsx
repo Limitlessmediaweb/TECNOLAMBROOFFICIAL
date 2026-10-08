@@ -11,6 +11,7 @@ import { COMPANY } from "@/data/site";
 import { requestMeta, track } from "@/lib/analytics";
 import type { PrefillDetail } from "./BandFinder";
 import { cn } from "@/lib/cn";
+import { intlLocale, isLocale } from "@/i18n/locales";
 
 type Field = "name" | "email" | "message" | "privacy";
 
@@ -90,7 +91,7 @@ export function ShortQuoteForm({ privacyHref, shopPath, sentPath }: { privacyHre
     const result = await submitQuote(
       {
         source: "contact",
-        locale: locale === "en" ? "en" : "it",
+        locale: isLocale(locale) ? locale : "it",
         items: [{ kind: "contact", code, qty: 1, notes: "", files: files.map((f) => f.name) }],
         customer: { company: "", name: v.name.trim(), email: v.email.trim(), phone: v.phone.trim() || undefined, country: "" },
         message: v.message.trim(),
@@ -106,8 +107,8 @@ export function ShortQuoteForm({ privacyHref, shopPath, sentPath }: { privacyHre
       track("quote_submit_success", { source: "short_form", files: files.length });
       saveSent({
         number: result.number,
-        date: new Date().toLocaleDateString(locale === "en" ? "en-GB" : "it-IT"),
-        locale: locale === "en" ? "en" : "it",
+        date: new Date().toLocaleDateString(intlLocale(locale)),
+        locale: isLocale(locale) ? locale : "it",
         customer: { name: v.name.trim(), email: v.email.trim() },
         items: [{ code, qty: 1, detail: files.map((f) => f.name).join(", ") || undefined }],
       });

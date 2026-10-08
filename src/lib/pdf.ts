@@ -256,6 +256,9 @@ export async function summaryPdf(
   data: { number: string; date: string; customer: { name: string; company?: string; email: string }; items: { code: string; qty: number; detail?: string }[] },
   tx: SummaryTexts,
 ): Promise<Uint8Array> {
+  // testo fuori dai font standard del PDF (es. cinese): pagina disegnata su canvas con i font di sistema
+  const all = [tx.title, tx.number, tx.date, tx.customer, tx.items, tx.qty, tx.reply, tx.contacts, data.customer.name, data.customer.company ?? "", ...data.items.flatMap((i) => [i.code, i.detail ?? ""])].join(" ");
+  if (/[^\x00-\xFF–—‘’“”•…€]/.test(all)) return summaryPdfRaster(data, tx);
   const { PDFDocument, StandardFonts, rgb } = await import("pdf-lib");
   const doc = await PDFDocument.create();
   doc.setTitle(`${tx.title} ${data.number}`);
@@ -336,6 +339,113 @@ export async function summaryPdf(
     y -= 15;
   }
   page.drawText(safe(tx.contacts), { x: M, y: M - 10, size: 8.5, font, color: col(accent) });
+  return doc.save();
+}
+
+/** Riepilogo come immagine A4 (150 dpi): per le lingue che i font standard del PDF non coprono. */
+async function summaryPdfRaster(
+  data: { number: string; date: string; customer: { name: string; company?: string; email: string }; items: { code: string; qty: number; detail?: string }[] },
+  tx: SummaryTexts,
+): Promise<Uint8Array> {
+  const { PDFDocument } = await import("pdf-lib");
+  const W = 1240;
+  const H = 1754;
+  const k = W / 595; // punti PDF → pixel
+  const canvas = document.createElement("canvas");
+  canvas.width = W;
+  canvas.height = H;
+  const ctx = canvas.getContext("2d");
+  if (!ctx) throw new Error("canvas 2D non disponibile");
+  const SANS = '"PingFang SC", "Microsoft YaHei", "Noto Sans SC", "Source Han Sans SC", Arial, sans-serif';
+  const MONO = 'Consolas, "Courier New", "Microsoft YaHei", monospace';
+  ctx.fillStyle = PRINT.paper;
+  ctx.fillRect(0, 0, W, H);
+  const M = 48 * k;
+  let y = M;
+  const logo = await logoBytes();
+  if (logo) {
+    const img = new Image();
+    img.src = URL.createObjectURL(new Blob([logo as BlobPart], { type: "image/png" }));
+    await img.decode();
+    const w = 150 * k;
+    ctx.drawImage(img, M, y, w, (img.height / img.width) * w);
+  }
+  y += 110 * k;
+  const text = (t: string, x: number, size: number, opts: { bold?: boolean; mono?: boolean; color?: string; align?: CanvasTextAlign } = {}) => {
+    ctx.font = `${opts.bold ? "700" : "400"} ${size * k}px ${opts.mono ? MONO : SANS}`;
+    ctx.fillStyle = opts.color ?? PRINT.ink;
+    ctx.textAlign = opts.align ?? "left";
+    ctx.fillText(t, x, y);
+  };
+  const wrap = (t: string, size: number, max: number, mono = false) => {
+    ctx.font = `400 ${size * k}px ${mono ? MONO : SANS}`;
+    const out: string[] = [];
+    let line = "";
+    // a capo per carattere (adatto al cinese), con preferenza per gli spazi
+    for (const ch of Array.from(t)) {
+      const next = line + ch;
+      if (ctx.measureText(next).width > max && line) {
+        const cut = line.lastIndexOf(" ");
+        if (cut > line.length * 0.6) {
+          out.push(line.slice(0, cut));
+          line = line.slice(cut + 1) + ch;
+        } else {
+          out.push(line);
+          line = ch;
+        }
+      } else line = next;
+    }
+    if (line) out.push(line);
+    return out;
+  };
+  text(tx.title, M, 20, { bold: true });
+  y += 34 * k;
+  text(tx.number.toUpperCase(), M, 8.5, { bold: true, color: PRINT.muted });
+  text(tx.date.toUpperCase(), 320 * k, 8.5, { bold: true, color: PRINT.muted });
+  y += 20 * k;
+  text(data.number, M, 16, { mono: true });
+  text(data.date, 320 * k, 12);
+  y += 34 * k;
+  text(tx.customer.toUpperCase(), M, 8.5, { bold: true, color: PRINT.muted });
+  y += 18 * k;
+  for (const l of [data.customer.company, data.customer.name, data.customer.email].filter(Boolean) as string[]) {
+    text(l, M, 11);
+    y += 16 * k;
+  }
+  y += 14 * k;
+  ctx.fillStyle = PRINT.fill;
+  ctx.fillRect(M, y - 15 * k, W - 2 * M, 22 * k);
+  text(tx.items, M + 8 * k, 9, { bold: true });
+  text(tx.qty, W - M - 8 * k, 9, { bold: true, align: "right" });
+  y += 26 * k;
+  for (const it of data.items) {
+    text(String(it.qty), W - M - 8 * k, 11, { align: "right" });
+    for (const l of wrap(it.code, 10, W - 2 * M - 80 * k, true)) {
+      text(l, M + 8 * k, 10, { mono: true });
+      y += 14 * k;
+    }
+    for (const l of it.detail ? wrap(it.detail, 8.5, W - 2 * M - 80 * k) : []) {
+      text(l, M + 8 * k, 8.5, { color: PRINT.muted });
+      y += 12 * k;
+    }
+    y += 10 * k;
+    if (y > H - 140 * k) break;
+  }
+  y += 10 * k;
+  for (const l of wrap(tx.reply, 11, W - 2 * M)) {
+    text(l, M, 11, { bold: true });
+    y += 16 * k;
+  }
+  y = H - M + 10 * k;
+  text(tx.contacts, M, 8.5, { color: PRINT.accent });
+  const blob = await new Promise<Blob | null>((res) => canvas.toBlob(res, "image/png"));
+  if (!blob) throw new Error("PNG non generato");
+  const doc = await PDFDocument.create();
+  doc.setTitle(`${tx.title} ${data.number}`);
+  doc.setAuthor("Tecnolambro Microwave Components");
+  const page = doc.addPage([595, 842]);
+  const png = await doc.embedPng(new Uint8Array(await blob.arrayBuffer()));
+  page.drawImage(png, { x: 0, y: 0, width: 595, height: 842 });
   return doc.save();
 }
 

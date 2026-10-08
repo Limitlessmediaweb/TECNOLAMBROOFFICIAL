@@ -37,6 +37,7 @@ Script utili:
 | `NEXT_PUBLIC_SITE_URL` | `https://tecnolambro.it` | canonical, hreflang, sitemap, Open Graph |
 | `CANONICAL_REDIRECT`, `REDIRECT_HOSTS` | vuote | al lancio: redirect 308 da www e da *.vercel.app al dominio (vedi [docs/messa-online.md](docs/messa-online.md)) |
 | `NEXT_PUBLIC_ALLOW_INDEXING` | `false` | `false` = `noindex` globale + robots.txt `Disallow: /`. **Mettere a `true` solo al lancio.** |
+| `NEXT_PUBLIC_NEW_LOCALES_NOINDEX` | `true` | ES, ZH, DE in noindex e fuori dalla sitemap finché le traduzioni non sono riviste |
 | `NEXT_PUBLIC_DEMO` | `true` | `true` = badge "Versione demo" e segnaposto gialli ("manca: …", `[DA COMPLETARE]`). **Al lancio `false`**: nessun segnaposto visibile |
 | `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` | vuota | facoltativa: Plausible in aggiunta a Vercel Web Analytics |
 | `NEXT_PUBLIC_LIMITLESS_URL` | `https://www.limitlessmedia.it` | credito nel footer |
@@ -80,6 +81,15 @@ Token derivati (in [globals.css](src/app/globals.css), copia per i contesti senz
 | `--c-line-strong` bordi dei campi | `#6e8191` | `#5e778d` | 3,8:1 / 4,0:1 (≥ 3:1 per i componenti) |
 
 I neutri sono tutti tinti sulla tonalità 207-210 del blu del logo. L'**ottone è stato eliminato**: con il blu e grigio del logo non si accordava. Il campo TE10 disegna E > 0 nel blu del logo ed E < 0 nel grigio del logo.
+
+## Lingue (IT · EN · ES · 中文 · DE)
+
+- **Traduzioni ES/ZH/DE da far rivedere a un madrelingua prima della messa online.** Glossario tecnico: [messages/glossario.md](messages/glossario.md).
+- Finché non sono riviste, le pagine ES, ZH e DE hanno `noindex` e restano fuori da sitemap e hreflang: `NEXT_PUBLIC_NEW_LOCALES_NOINDEX=true` (predefinito). Dopo la revisione: `false`.
+- Indirizzi tradotti e nuove lingue: [src/i18n/locales.ts](src/i18n/locales.ts). Una lingua nuova (es. il francese) si aggiunge con una riga in `LOCALES`/`LOCALE_META` e il file `messages/fr.json`.
+- `npm run i18n:check` segnala chiavi mancanti, segnaposto sbagliati e testi non tradotti: quando il sito cambia si traducono solo quelle chiavi. `node scripts/i18n-pages.mjs` apre home, /shop, richiesta e FAQ in ogni lingua a 375 px.
+- L'email all'ufficio resta sempre in italiano, con la lingua del cliente; la conferma al cliente è nella sua lingua.
+- Cinese: font di sistema (PingFang SC, Microsoft YaHei, Noto Sans SC), niente corsivo; il riepilogo PDF in cinese è un'immagine A4 (i font standard dei PDF non hanno i caratteri cinesi).
 
 ## Modifiche v3 (8 ottobre 2026)
 

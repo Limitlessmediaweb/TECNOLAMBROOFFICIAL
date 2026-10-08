@@ -13,6 +13,7 @@ import { defaultSpec } from "@/data/configurator/defaults";
 
 const GENERIC_SPEC = defaultSpec("twistable");
 import { cn } from "@/lib/cn";
+import { intlLocale } from "@/i18n/locales";
 
 export type TableTab = "twist" | "seamless" | "dims";
 const TABS: TableTab[] = ["twist", "seamless", "dims"];
@@ -77,7 +78,7 @@ export function SpecTables({ defaultTab = "twist", configurePath, familyNames, h
       const bytes = await datasheetPdf(tab, locale, {
         familyName: familyNames[family],
         sheetTitle: t("sheetTitle"),
-        date: new Intl.DateTimeFormat(locale === "it" ? "it-IT" : "en-GB", { dateStyle: "long" }).format(new Date()),
+        date: new Intl.DateTimeFormat(intlLocale(locale), { dateStyle: "long" }).format(new Date()),
         size: t("size"),
         freq: t("freq"),
         rl: t("rl"),

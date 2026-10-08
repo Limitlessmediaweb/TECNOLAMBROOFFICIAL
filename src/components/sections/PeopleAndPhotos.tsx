@@ -1,3 +1,4 @@
+import { pick } from "@/i18n/locales";
 import Image from "next/image";
 import { getLocale, getTranslations } from "next-intl/server";
 import { ArrowRight } from "lucide-react";
@@ -53,8 +54,8 @@ export async function OwnerSection({ variant = "full" }: { variant?: "full" | "s
             </Link>
           ) : null}
           <div className="mt-4 flex flex-wrap gap-2">
-            {!photo ? <MissingBadge label={c("missing", { what: PENDING_LABELS.ownerPhoto[locale] })} /> : null}
-            {!quote && !short ? <MissingBadge label={c("missing", { what: PENDING_LABELS.ownerQuote[locale] })} /> : null}
+            {!photo ? <MissingBadge label={c("missing", { what: pick(PENDING_LABELS.ownerPhoto, locale) })} /> : null}
+            {!quote && !short ? <MissingBadge label={c("missing", { what: pick(PENDING_LABELS.ownerQuote, locale) })} /> : null}
           </div>
         </div>
       </div>
@@ -71,7 +72,7 @@ export async function WorkshopSection() {
   if (!photos.length) {
     return (
       <div className="container-site">
-        <MissingBadge label={c("missing", { what: PENDING_LABELS.workshopPhotos[locale] })} className="mb-8" />
+        <MissingBadge label={c("missing", { what: pick(PENDING_LABELS.workshopPhotos, locale) })} className="mb-8" />
       </div>
     );
   }
@@ -86,7 +87,7 @@ export async function WorkshopSection() {
           {photos.map((src, i) => {
             const area = workshopArea(src);
             const caption = area ? t(`areas.${area}`) : t("generic");
-            const alt = PHOTO_ALTS[src]?.[locale] ?? t("alt", { what: caption.toLowerCase(), n: i + 1 });
+            const alt = (PHOTO_ALTS[src] ? pick(PHOTO_ALTS[src], locale) : undefined) ?? t("alt", { what: caption.toLowerCase(), n: i + 1 });
             return (
               <li key={src}>
                 <figure>
@@ -113,11 +114,11 @@ export async function FamilyGallery({ family, familyName }: { family: string; fa
   if (!files.length) {
     return (
       <div className="container-site">
-        <MissingBadge label={c("missing", { what: `${PENDING_LABELS.productPhotos[locale]} (${familyName})` })} className="mb-8" />
+        <MissingBadge label={c("missing", { what: `${pick(PENDING_LABELS.productPhotos, locale)} (${familyName})` })} className="mb-8" />
       </div>
     );
   }
-  const photos: Photo[] = files.map((src, i) => ({ src, alt: PHOTO_ALTS[src]?.[locale] ?? t("alt", { name: familyName, n: i + 1 }) }));
+  const photos: Photo[] = files.map((src, i) => ({ src, alt: (PHOTO_ALTS[src] ? pick(PHOTO_ALTS[src], locale) : undefined) ?? t("alt", { name: familyName, n: i + 1 }) }));
   return (
     <section className="container-site pb-16" aria-label={t("title", { name: familyName })}>
       <Gallery photos={photos} labels={await galleryLabels()} />

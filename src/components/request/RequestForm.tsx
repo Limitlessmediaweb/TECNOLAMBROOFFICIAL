@@ -18,6 +18,7 @@ import { requestMeta, track } from "@/lib/analytics";
 import { useDrawingLabels } from "@/components/configurator/Configurator";
 import { CustomPartForm } from "./CustomPartForm";
 import { cn } from "@/lib/cn";
+import { intlLocale, isLocale } from "@/i18n/locales";
 
 type Field = "company" | "name" | "email" | "country" | "privacy";
 const EMPTY: CustomerDraft = { company: "", name: "", email: "", phone: "", country: "", vat: "" };
@@ -178,7 +179,7 @@ export function RequestForm({ privacyHref, sentPath, shopPath, aside }: { privac
     const result = await submitQuote(
       {
         source: "request",
-        locale: locale === "en" ? "en" : "it",
+        locale: isLocale(locale) ? locale : "it",
         items: (items.length ? items : [{ id: "files", kind: "custom" as const, code: tc("customRef"), qty: 1, notes: "", detail: undefined, spec: undefined }]).map((i) => ({
           kind: i.kind,
           code: i.code,
@@ -201,8 +202,8 @@ export function RequestForm({ privacyHref, sentPath, shopPath, aside }: { privac
       track("quote_submit_success", { source: "request", items: items.length, files: files.length + customFiles.length });
       saveSent({
         number: result.number,
-        date: new Date().toLocaleDateString(locale === "en" ? "en-GB" : "it-IT"),
-        locale: locale === "en" ? "en" : "it",
+        date: new Date().toLocaleDateString(intlLocale(locale)),
+        locale: isLocale(locale) ? locale : "it",
         customer: { name: customer.name, company: customer.company, email: customer.email },
         items: items.map((i) => ({ code: i.code, qty: i.qty, detail: i.detail })),
       });
@@ -284,7 +285,7 @@ export function RequestForm({ privacyHref, sentPath, shopPath, aside }: { privac
       : null;
 
   return (
-    <form onSubmit={onSubmit} noValidate className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_22rem] lg:gap-12" aria-label={t("title")}>
+    <form onSubmit={onSubmit} noValidate className="grid grid-cols-[minmax(0,1fr)] gap-12 lg:grid-cols-[minmax(0,1fr)_22rem] lg:gap-12" aria-label={t("title")}>
       <div className="grid min-w-0 content-start gap-14">
         <p ref={summaryRef} tabIndex={-1} role="alert" className={cn("field-error outline-none", !(submitted && errorCount) && "sr-only")}>
           {submitted && errorCount ? (errorCount === 1 ? t("errorSummaryOne") : t("errorSummaryOther", { count: errorCount })) : ""}
@@ -572,7 +573,7 @@ export function RequestForm({ privacyHref, sentPath, shopPath, aside }: { privac
 
       {/* ----------------------------------------------------------- invio fisso (mobile) */}
       <div className="sticky bottom-0 z-30 -mx-4 flex items-center justify-between gap-3 border-t border-line bg-bg/95 px-4 py-3 backdrop-blur lg:hidden" data-sticky-submit>
-        <span className="text-sm tabular text-muted">{!canSend ? t("errors.itemsOrFiles") : pieces === 1 ? t("summaryOne") : t("summaryCount", { count: pieces })}</span>
+        <span className="min-w-0 text-sm tabular text-muted">{!canSend ? t("errors.itemsOrFiles") : pieces === 1 ? t("summaryOne") : t("summaryCount", { count: pieces })}</span>
         <button type="submit" className="btn btn-primary shrink-0" disabled={busy || !canSend} aria-disabled={busy || !canSend}>
           {submitLabel}
         </button>

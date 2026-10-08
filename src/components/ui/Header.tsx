@@ -28,10 +28,10 @@ const SECONDARY: { href: StaticPathname; key: string }[] = [
 export function Wordmark({ className }: { className?: string }) {
   return (
     <span className={cn("flex flex-col leading-none", className)}>
-      <span className="font-display text-[0.92rem] font-extrabold uppercase tracking-[0.04em] wdth-wide max-[420px]:text-[0.8rem] max-[420px]:tracking-[0.02em] sm:text-[1.15rem] sm:tracking-[0.06em] sm:wdth-xwide">
+      <span className="font-display text-[0.92rem] font-extrabold uppercase tracking-[0.04em] wdth-wide max-[420px]:text-[0.8rem] max-[420px]:tracking-[0.02em] max-[390px]:text-[0.74rem] max-[390px]:tracking-normal sm:text-[1.15rem] sm:tracking-[0.06em] sm:wdth-xwide">
         Tecnolambro
       </span>
-      <span className="annot mt-1 text-[0.5625rem] uppercase tracking-[0.2em] text-primary-ink max-[420px]:tracking-[0.12em] sm:text-[0.625rem] sm:tracking-[0.26em]">Microwave Components</span>
+      <span className="annot mt-1 text-[0.5625rem] uppercase tracking-[0.2em] text-primary-ink max-[420px]:tracking-[0.12em] max-[390px]:tracking-[0.06em] sm:text-[0.625rem] sm:tracking-[0.26em]">Microwave Components</span>
     </span>
   );
 }
@@ -52,7 +52,7 @@ export async function Header() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-line/70 bg-scrim backdrop-blur-md">
       <div className="container-site flex h-16 items-center gap-2 sm:gap-4 lg:h-[4.5rem]">
-        <NextLink href={home} className="mr-auto inline-flex min-h-11 items-center rounded-sm">
+        <NextLink href={home} className="mr-auto inline-flex min-h-11 min-w-0 items-center overflow-hidden rounded-sm">
           <Wordmark />
           <span className="sr-only">, {t("homeShort")}</span>
         </NextLink>
@@ -71,7 +71,7 @@ export async function Header() {
           </a>
           <RequestButton href={requestPath} className="max-sm:hidden" />
           <MagneticButton>
-            <QuoteLink source="header" className="btn btn-primary btn-sm max-sm:px-3 max-[420px]:px-2.5 max-[420px]:text-[0.8125rem]">
+            <QuoteLink source="header" className="btn btn-primary btn-sm max-sm:px-3 max-[420px]:px-2.5 max-[420px]:text-[0.8125rem] max-[390px]:px-2">
               <span className="sm:hidden">{t("quoteShort")}</span>
               <span className="hidden sm:inline">{t("quote")}</span>
             </QuoteLink>
@@ -92,8 +92,8 @@ export async function Header() {
                   {COMPANY.phone}
                 </a>
               </div>
-              <div className="mt-8 flex items-center gap-3">
-                <LanguageSwitcher />
+              <div className="mt-8 grid gap-4">
+                <LanguageSwitcher inline />
                 <ThemeToggle />
               </div>
             </nav>

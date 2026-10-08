@@ -1,42 +1,49 @@
 import { defineRouting } from "next-intl/routing";
+import { DEFAULT_LOCALE, LOCALES, ROUTE_SLUGS, type Locale } from "./locales";
 
-export const locales = ["it", "en"] as const;
-export type Locale = (typeof locales)[number];
+export { LOCALES as locales, isLocale } from "./locales";
+export type { Locale } from "./locales";
+
+/** Indirizzi tradotti per tutte le lingue (le lingue senza traduzione usano l'indirizzo inglese). */
+function localizedPathnames() {
+  const out: Record<string, Record<Locale, string>> = {};
+  for (const [internal, slugs] of Object.entries(ROUTE_SLUGS)) {
+    out[internal] = Object.fromEntries(LOCALES.map((l) => [l, slugs[l] ?? slugs.en])) as Record<Locale, string>;
+  }
+  return out as Record<keyof typeof ROUTE_SLUGS, Record<Locale, string>>;
+}
 
 export const routing = defineRouting({
-  locales,
-  defaultLocale: "it",
-  // Italiano su "/", inglese su "/en". Nessun redirect automatico in base al browser:
-  // gli URL restano stabili per SEO e per chi condivide un link.
+  locales: LOCALES,
+  defaultLocale: DEFAULT_LOCALE,
+  // Italiano su "/", le altre lingue con il prefisso (/en, /es, /zh, /de). Nessun redirect automatico
+  // in base al browser: gli URL restano stabili per SEO e per chi condivide un link (la lingua del
+  // browser si propone con un banner, vedi components/ui/LanguageBanner.tsx).
   localePrefix: "as-needed",
   localeDetection: false,
   // Gli hreflang li generiamo noi (metadata + sitemap) con NEXT_PUBLIC_SITE_URL, non con l'host della richiesta.
   alternateLinks: false,
-  pathnames: {
-    "/": "/",
-    "/prodotti": { it: "/prodotti", en: "/products" },
-    "/prodotti/tabelle": { it: "/prodotti/tabelle", en: "/products/tables" },
-    "/prodotti/[famiglia]": { it: "/prodotti/[famiglia]", en: "/products/[famiglia]" },
-    "/prodotti/guida-flessibile/[wr]": { it: "/prodotti/guida-flessibile/[wr]", en: "/products/flexible-waveguide/[wr]" },
-    "/su-misura": { it: "/su-misura", en: "/custom" },
-    "/azienda": { it: "/azienda", en: "/company" },
-    "/qualita": { it: "/qualita", en: "/quality" },
-    "/contatti": { it: "/contatti", en: "/contact" },
-    "/faq": "/faq",
-    "/privacy": "/privacy",
-    "/termini": { it: "/termini", en: "/terms" },
-    "/cookie": { it: "/cookie", en: "/cookies" },
-    "/shop": "/shop",
-    "/shop/richiesta": { it: "/shop/richiesta", en: "/shop/request" },
-    "/shop/richiesta/inviata": { it: "/shop/richiesta/inviata", en: "/shop/request/sent" },
+  pathnames: localizedPathnames() as {
+    "/": Record<Locale, string>;
+    "/prodotti": Record<Locale, string>;
+    "/prodotti/tabelle": Record<Locale, string>;
+    "/prodotti/[famiglia]": Record<Locale, string>;
+    "/prodotti/guida-flessibile/[wr]": Record<Locale, string>;
+    "/su-misura": Record<Locale, string>;
+    "/azienda": Record<Locale, string>;
+    "/qualita": Record<Locale, string>;
+    "/contatti": Record<Locale, string>;
+    "/faq": Record<Locale, string>;
+    "/privacy": Record<Locale, string>;
+    "/termini": Record<Locale, string>;
+    "/cookie": Record<Locale, string>;
+    "/shop": Record<Locale, string>;
+    "/shop/richiesta": Record<Locale, string>;
+    "/shop/richiesta/inviata": Record<Locale, string>;
   },
 });
 
 export type AppPathname = keyof typeof routing.pathnames;
-
-export function isLocale(value: string): value is Locale {
-  return (locales as readonly string[]).includes(value);
-}
 
 /** Rotte senza parametri, usabili come stringa nei link. */
 export type StaticPathname = Exclude<AppPathname, "/prodotti/[famiglia]" | "/prodotti/guida-flessibile/[wr]">;

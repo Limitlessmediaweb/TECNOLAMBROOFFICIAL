@@ -1,5 +1,5 @@
 import { routing, type Locale, type StaticPathname } from "./routing";
-import { FAMILIES } from "@/data/families";
+import { FAMILIES, familySlug } from "@/data/families";
 
 /**
  * Converte un percorso reale ("/en/products/seamless-flexible-waveguide") nel percorso equivalente
@@ -35,7 +35,8 @@ export function switchLocalePath(pathname: string, from: Locale, target: Locale)
     let out = templateFor(entry, target);
     for (const [key, value] of Object.entries(match.groups ?? {})) {
       // Le famiglie hanno slug tradotti
-      const translated = key === "famiglia" ? (FAMILIES.find((f) => f.slug[from] === value)?.slug[target] ?? value) : value;
+      const fam = key === "famiglia" ? FAMILIES.find((f) => familySlug(f, from) === value) : undefined;
+      const translated = fam ? familySlug(fam, target) : value;
       out = out.replace(`[${key}]`, translated);
     }
     return withPrefix(out, target);

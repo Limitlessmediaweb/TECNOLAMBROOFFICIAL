@@ -2,7 +2,7 @@ import { getLocale, getTranslations } from "next-intl/server";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { LocalLink as Link } from "@/components/ui/LocalLink";
 import type { Locale } from "@/i18n/routing";
-import { VISIBLE_FAMILIES, type FamilyKey } from "@/data/families";
+import { VISIBLE_FAMILIES, type FamilyKey, familySlug } from "@/data/families";
 import { TiltCard } from "@/components/motion/TiltCard";
 import { SplitReveal } from "@/components/motion/SplitReveal";
 import { Stagger } from "@/components/motion/Stagger";
@@ -61,7 +61,7 @@ export async function ProductGrid({ exclude, headingLevel = 3 }: { exclude?: Fam
                 </div>
                 <H className="text-display-s font-bold">
                   <Link
-                    href={{ pathname: "/prodotti/[famiglia]", params: { famiglia: family.slug[locale] } }}
+                    href={{ pathname: "/prodotti/[famiglia]", params: { famiglia: familySlug(family, locale) } }}
                     className="after:absolute after:inset-0 after:content-['']"
                     aria-label={s("open", { name: t(`${family.key}.name`) })}
                   >

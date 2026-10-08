@@ -1,3 +1,4 @@
+import { intlLocale } from "@/i18n/locales";
 /**
  * Paesi per la richiesta di preventivo: codici ISO 3166-1, nomi nella lingua del sito
  * (Intl.DisplayNames). Italia per prima, poi in ordine alfabetico.
@@ -19,7 +20,7 @@ export function countries(locale: string): Country[] {
   if (hit) return hit;
   let names: Intl.DisplayNames | null = null;
   try {
-    names = new Intl.DisplayNames([locale === "en" ? "en-GB" : "it-IT"], { type: "region" });
+    names = new Intl.DisplayNames([intlLocale(locale)], { type: "region" });
   } catch {
     names = null;
   }

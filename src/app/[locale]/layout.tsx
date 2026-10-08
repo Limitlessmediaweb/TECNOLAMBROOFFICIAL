@@ -6,6 +6,7 @@ import { ClientI18nProvider } from "@/lib/client-i18n";
 import { ClickTracker } from "@/components/ui/ClickTracker";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { routing, type Locale } from "@/i18n/routing";
+import { LOCALE_META, isReviewLocale } from "@/i18n/locales";
 import { fontVariables } from "../fonts";
 import "../globals.css";
 import { ENV } from "@/data/site";
@@ -15,6 +16,7 @@ import { Header } from "@/components/ui/Header";
 import { Footer } from "@/components/ui/Footer";
 import { DemoBadge } from "@/components/ui/Bits";
 import { WhatsAppFloat } from "@/components/ui/WhatsAppFloat";
+import { LanguageBanner } from "@/components/ui/LanguageBanner";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { Analytics } from "@/components/ui/Analytics";
 import { InlineScript, BOOT_SCRIPT } from "@/components/ui/InlineScript";
@@ -45,7 +47,8 @@ export async function generateMetadata({ params }: LayoutProps<"/[locale]">): Pr
     metadataBase: new URL(ENV.siteUrl),
     applicationName: t("siteName"),
     // Fino al lancio: noindex globale (NEXT_PUBLIC_ALLOW_INDEXING=false).
-    robots: ENV.allowIndexing ? { index: true, follow: true } : { index: false, follow: false, googleBot: { index: false, follow: false } },
+    // Lingue nuove (ES, ZH, DE) fuori dai motori finché non sono riviste: NEXT_PUBLIC_NEW_LOCALES_NOINDEX=true
+    robots: ENV.allowIndexing && !isReviewLocale(locale) ? { index: true, follow: true } : { index: false, follow: false, googleBot: { index: false, follow: false } },
     formatDetection: { telephone: false, email: false, address: false },
     authors: [{ name: "Tecnolambro S.a.s." }],
     creator: "LIMITLESS",
@@ -66,7 +69,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
   const highlightTodo = ENV.demo || process.env.NODE_ENV === "development";
 
   return (
-    <html lang={locale} data-theme="light" data-demo={highlightTodo ? "true" : "false"} className={fontVariables} suppressHydrationWarning>
+    <html lang={LOCALE_META[locale as Locale].hreflang} data-theme="light" data-demo={highlightTodo ? "true" : "false"} className={fontVariables} suppressHydrationWarning>
       <head>
         <InlineScript html={BOOT_SCRIPT} />
       </head>
@@ -93,6 +96,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
           </Suspense>
           <DemoBadge />
           <WhatsAppFloat />
+          <LanguageBanner />
         </ClientI18nProvider>
         <ClickTracker />
         <JsonLd data={organizationJsonLd(locale as Locale)} />

@@ -17,7 +17,8 @@ export type DrawingKind = "flexible" | "bend" | "twist" | "offset";
 
 export type Family = {
   key: FamilyKey;
-  slug: Record<Locale, string>;
+  /** indirizzo della pagina per lingua; le lingue mancanti usano lo slug inglese */
+  slug: Partial<Record<Locale, string>> & { it: string; en: string };
   /** tipo di pezzo nel configuratore (null = nessuno) */
   partType: PartType | null;
   /** true = non compare nel sito (segnaposto in attesa dei dati del titolare) */
@@ -41,11 +42,11 @@ export function familyModel(f: Family): PartType | "straight" | null {
 }
 
 export const FAMILIES: readonly Family[] = [
-  { key: "twistable", slug: { it: "guida-flessibile-twistabile", en: "twistable-flexible-waveguide" }, partType: "twistable", hidden: false, table: "twist", drawing: "flexible", sizes: WR_LIST },
-  { key: "seamless", slug: { it: "guida-flessibile-seamless", en: "seamless-flexible-waveguide" }, partType: "seamless", hidden: false, table: "seamless", drawing: "flexible", sizes: WR_LIST },
-  { key: "bends", slug: { it: "curve", en: "bends" }, partType: "bend", hidden: false, table: null, drawing: "bend", sizes: WR_LIST },
-  { key: "twists", slug: { it: "twist", en: "twists" }, partType: "twist", hidden: false, table: null, drawing: "twist", sizes: WR_LIST },
-  { key: "offsets", slug: { it: "disassati", en: "offsets" }, partType: "offset", hidden: false, table: null, drawing: "offset", sizes: WR_LIST },
+  { key: "twistable", slug: { it: "guida-flessibile-twistabile", en: "twistable-flexible-waveguide", es: "guia-de-ondas-flexible-torsionable", de: "flexibler-verdrehbarer-hohlleiter" }, partType: "twistable", hidden: false, table: "twist", drawing: "flexible", sizes: WR_LIST },
+  { key: "seamless", slug: { it: "guida-flessibile-seamless", en: "seamless-flexible-waveguide", es: "guia-de-ondas-flexible-sin-costura", de: "nahtloser-flexibler-hohlleiter" }, partType: "seamless", hidden: false, table: "seamless", drawing: "flexible", sizes: WR_LIST },
+  { key: "bends", slug: { it: "curve", en: "bends", es: "codos", de: "boegen" }, partType: "bend", hidden: false, table: null, drawing: "bend", sizes: WR_LIST },
+  { key: "twists", slug: { it: "twist", en: "twists", es: "torsiones", de: "twists" }, partType: "twist", hidden: false, table: null, drawing: "twist", sizes: WR_LIST },
+  { key: "offsets", slug: { it: "disassati", en: "offsets", es: "desplazamientos", de: "versatz" }, partType: "offset", hidden: false, table: null, drawing: "offset", sizes: WR_LIST },
   // [FAMIGLIA DA DEFINIRE]: il titolare la fornirà (data/pending.ts). Nascosta finché hidden = true.
   { key: "pending", slug: { it: "famiglia-da-definire", en: "family-to-be-defined" }, partType: null, hidden: true, table: null, drawing: "bend", sizes: [] },
 ] as const;
@@ -56,8 +57,13 @@ export function familyByKey(key: string): Family | undefined {
   return VISIBLE_FAMILIES.find((f) => f.key === key);
 }
 
+/** Slug della famiglia nella lingua (ripiego sull'inglese) */
+export function familySlug(f: Family, locale: string): string {
+  return f.slug[locale as Locale] ?? f.slug.en;
+}
+
 export function familyBySlug(slug: string, locale: Locale): Family | undefined {
-  return VISIBLE_FAMILIES.find((f) => f.slug[locale] === slug);
+  return VISIBLE_FAMILIES.find((f) => familySlug(f, locale) === slug);
 }
 
 export function familyForType(type: PartType): Family | undefined {

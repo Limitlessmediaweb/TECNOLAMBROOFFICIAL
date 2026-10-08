@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ArrowRight, Check, FilePlus2 } from "lucide-react";
 import { routing, type Locale } from "@/i18n/routing";
-import { VISIBLE_FAMILIES, familyBySlug, familyModel } from "@/data/families";
+import { VISIBLE_FAMILIES, familyBySlug, familyModel, familySlug } from "@/data/families";
 import { buildMetadata } from "@/lib/seo";
 import { breadcrumbsFor } from "@/lib/page";
 import { familyTexts } from "@/lib/families-text";
@@ -26,7 +26,7 @@ import { TYPE_PARAM } from "@/data/configurator/defaults";
 type Props = PageProps<"/[locale]/prodotti/[famiglia]">;
 
 export function generateStaticParams() {
-  return routing.locales.flatMap((locale) => VISIBLE_FAMILIES.map((f) => ({ locale, famiglia: f.slug[locale] })));
+  return routing.locales.flatMap((locale) => VISIBLE_FAMILIES.map((f) => ({ locale, famiglia: familySlug(f, locale) })));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -39,10 +39,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const description = t(`${family.key}.description`);
   return buildMetadata({
     locale: locale as Locale,
-    href: {
-      it: { pathname: "/prodotti/[famiglia]", params: { famiglia: family.slug.it } },
-      en: { pathname: "/prodotti/[famiglia]", params: { famiglia: family.slug.en } },
-    },
+    href: Object.fromEntries(routing.locales.map((l) => [l, { pathname: "/prodotti/[famiglia]" as const, params: { famiglia: familySlug(family, l) } }])) as Record<Locale, { pathname: "/prodotti/[famiglia]"; params: { famiglia: string } }>,
     title: fitTitle(m("title", { name }), name),
     description: fitDescription(description),
   });
@@ -72,7 +69,7 @@ export default async function FamilyPage({ params }: Props) {
   const nav = await getTranslations("nav");
   const name = t(`items.${family.key}.name`);
   const applications = t.raw(`items.${family.key}.applications`) as string[];
-  const href = { pathname: "/prodotti/[famiglia]" as const, params: { famiglia: family.slug[locale as Locale] } };
+  const href = { pathname: "/prodotti/[famiglia]" as const, params: { famiglia: familySlug(family, locale) } };
   const { names } = await familyTexts();
   const shopPath = await localizedHref("/shop");
   const shopQuery = family.partType ? { tipo: TYPE_PARAM[family.partType] } : undefined;

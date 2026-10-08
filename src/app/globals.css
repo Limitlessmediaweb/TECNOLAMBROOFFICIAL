@@ -667,3 +667,28 @@ html[data-fixed-bar] [data-whatsapp-float] {
     min-height: 44px;
   }
 }
+
+/* Cinese: font di sistema (nessun webfont pesante) e niente corsivo sui caratteri cinesi */
+html:lang(zh) {
+  /* lettere latine e numeri dai font del sito, caratteri cinesi dai font di sistema */
+  --font-display: var(--font-archivo), "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", "Source Han Sans SC", sans-serif;
+  --font-sans: var(--font-plex-sans), "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", "Source Han Sans SC", system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), "PingFang SC", "Microsoft YaHei", ui-monospace, monospace;
+}
+:lang(zh) :is(em, i, .italic) {
+  font-style: normal;
+  font-weight: 700;
+  color: var(--c-primary-ink, var(--c-accent));
+}
+:lang(zh) .uppercase {
+  letter-spacing: 0.04em;
+}
+:lang(zh) p,
+:lang(zh) li,
+:lang(zh) h1,
+:lang(zh) h2,
+:lang(zh) h3 {
+  line-break: strict;
+  word-break: normal;
+  overflow-wrap: anywhere;
+}

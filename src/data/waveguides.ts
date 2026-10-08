@@ -1,3 +1,4 @@
+import { intlLocale } from "@/i18n/locales";
 /**
  * Tabelle tecniche ufficiali Tecnolambro della guida d'onda flessibile.
  *
@@ -237,7 +238,7 @@ export function num(value: number, locale: string, min = 0, max = min): string {
   const key = `${locale}-${min}-${max}`;
   let f = fmtCache.get(key);
   if (!f) {
-    f = new Intl.NumberFormat(locale === "it" ? "it-IT" : "en-GB", { minimumFractionDigits: min, maximumFractionDigits: Math.max(min, max) });
+    f = new Intl.NumberFormat(intlLocale(locale), { minimumFractionDigits: min, maximumFractionDigits: Math.max(min, max) });
     fmtCache.set(key, f);
   }
   return f.format(value);

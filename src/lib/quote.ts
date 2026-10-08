@@ -6,6 +6,8 @@
  */
 import { MAX_DIRECT_BYTES, MAX_MODEL_ATTACH_BYTES, isAcceptedFile as acceptedName, type BlobKind, type BlobRef, type QuotePayload, type QuoteResponse } from "./quote-schema";
 
+import type { Locale } from "@/i18n/locales";
+
 export { ACCEPTED_EXTENSIONS, MAX_FILE_BYTES, formatBytes } from "./quote-schema";
 
 export type SubmitReason = "network" | "tooLarge" | "notConfigured" | "rateLimited" | "invalid" | "server";
@@ -98,7 +100,7 @@ export const SENT_KEY = "tl-last-request-v2";
 export type SentSummary = {
   number: string;
   date: string;
-  locale: "it" | "en";
+  locale: Locale;
   customer: { name: string; company?: string; email: string };
   items: { code: string; qty: number; detail?: string }[];
 };
