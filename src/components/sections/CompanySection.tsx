@@ -4,7 +4,9 @@ import { LocalLink as Link } from "@/components/ui/LocalLink";
 import { SplitReveal } from "@/components/motion/SplitReveal";
 import { Counter } from "@/components/motion/Counter";
 import { Stagger } from "@/components/motion/Stagger";
-import { PhotoPlaceholder } from "@/components/ui/Bits";
+import Image from "next/image";
+import { publicExists, publicImages } from "@/lib/public-files";
+import { PHOTO_DIRS } from "@/data/photos";
 import { COMPANY, yearsActive } from "@/data/site";
 
 /** L'azienda: frase forte e quattro dati veri (1987, anni di attività, collaudo al 100%, preventivo entro 24 ore). */
@@ -12,6 +14,9 @@ export async function CompanySection() {
   const t = await getTranslations("company");
   const about = await getTranslations("aboutPage");
   const years = yearsActive();
+  // foto vera dell'officina appena c'è; fino ad allora il modello 3D del configuratore
+  const photo = publicImages(PHOTO_DIRS.workshop)[0];
+  const render = publicExists("render/twistable.webp") ? "/render/twistable.webp" : null;
 
   return (
     <section className="section-y" aria-labelledby="company-title">
@@ -27,7 +32,15 @@ export async function CompanySection() {
           </Link>
         </div>
 
-        <PhotoPlaceholder ratio="4/3" caption={about("photoTodo")} className="lg:col-span-5 lg:mt-2" />
+        {photo ? (
+          <figure className="relative aspect-[4/3] overflow-hidden border border-line lg:col-span-5 lg:mt-2">
+            <Image src={photo} alt={about("workshopAlt")} fill sizes="(min-width: 1024px) 40vw, 100vw" className="object-cover" />
+          </figure>
+        ) : render ? (
+          <figure className="grid aspect-[4/3] place-items-center border border-line bg-[radial-gradient(120%_90%_at_50%_30%,var(--c-surface),var(--c-surface-2))] p-6 lg:col-span-5 lg:mt-2">
+            <Image src={render} alt={about("imageAlt")} width={640} height={400} sizes="(min-width: 1024px) 40vw, 100vw" className="h-auto w-full" />
+          </figure>
+        ) : null}
 
         <Stagger as="dl" className="grid grid-cols-2 gap-px border border-line bg-line lg:col-span-12 lg:grid-cols-4">
           <div className="flex flex-col gap-3 bg-bg p-5 sm:p-7">

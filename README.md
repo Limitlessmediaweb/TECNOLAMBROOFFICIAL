@@ -256,6 +256,10 @@ public/brand/logo.png       logo originale
 
 ## Dati da completare
 
+**Privacy, termini e cookie** hanno ora fornitori reali (Vercel, Resend o Aruba), tempi di conservazione (24 mesi le richieste, 10 anni i dati contabili, 12 mesi i log) e foro di Pavia, ma **vanno fatti rivedere da un legale** prima del lancio.
+
+**Nuove famiglie di prodotto**: si aggiungono solo con dati, vedi [docs/aggiungere-prodotti.md](docs/aggiungere-prodotti.md).
+
 L'elenco aggiornato è in [src/data/todo.ts](src/data/todo.ts) e, per i blocchi che si nascondono da soli, in [src/data/pending.ts](src/data/pending.ts). In anteprima (`NEXT_PUBLIC_DEMO=true`) ogni dato mancante ha un badge giallo; con `NEXT_PUBLIC_DEMO=false` il blocco semplicemente non compare.
 
 ## Decisioni

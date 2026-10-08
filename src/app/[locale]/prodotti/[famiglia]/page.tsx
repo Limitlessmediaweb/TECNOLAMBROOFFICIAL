@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ArrowRight, Check, FilePlus2 } from "lucide-react";
 import { routing, type Locale } from "@/i18n/routing";
-import { VISIBLE_FAMILIES, familyBySlug } from "@/data/families";
+import { VISIBLE_FAMILIES, familyBySlug, familyModel } from "@/data/families";
 import { buildMetadata } from "@/lib/seo";
 import { breadcrumbsFor } from "@/lib/page";
 import { familyTexts } from "@/lib/families-text";
@@ -76,6 +76,9 @@ export default async function FamilyPage({ params }: Props) {
   const { names } = await familyTexts();
   const shopPath = await localizedHref("/shop");
   const shopQuery = family.partType ? { tipo: TYPE_PARAM[family.partType] } : undefined;
+  const model = familyModel(family);
+  const COMPOSE: Record<string, string> = { bends: "composeBends", twists: "composeTwists", offsets: "composeOffsets" };
+  const composeLabel = COMPOSE[family.key] ? page(COMPOSE[family.key]) : nav("shop");
 
   return (
     <PageMessages namespaces={["tables", "configurator"]}>
@@ -98,7 +101,7 @@ export default async function FamilyPage({ params }: Props) {
           {family.partType ? (
             <MagneticButton>
               <ShopLink source={`family_${family.key}`} query={shopQuery} hash="configura" className="btn btn-primary">
-                {nav("shop")}
+                {composeLabel}
               </ShopLink>
             </MagneticButton>
           ) : null}
@@ -120,14 +123,14 @@ export default async function FamilyPage({ params }: Props) {
         labels={{ flange: page("partFlange"), body: page("partBody"), gasket: page("partGasket") }}
       />
 
-      {family.partType && !family.table ? (
+      {model && !family.table ? (
         <section className="section-y border-t border-line" aria-labelledby="demo-title">
           <div className="container-site">
             <h2 id="demo-title" className="mb-3 text-display-m font-bold">
               {page("demoTitle")}
             </h2>
             <p className="mb-8 max-w-[60ch] text-muted">{page("demoBody")}</p>
-            <FamilyDemo3D type={family.partType} shopPath={shopPath} />
+            <FamilyDemo3D type={model} shopPath={shopPath} name={name} ctaLabel={composeLabel} />
           </div>
         </section>
       ) : null}
@@ -150,7 +153,12 @@ export default async function FamilyPage({ params }: Props) {
           ) : (
             <div className="grid gap-6 border border-accent/50 bg-[color-mix(in_srgb,var(--c-accent)_8%,var(--c-bg))] p-7 md:grid-cols-[1fr_auto] md:items-center">
               <p className="max-w-[60ch] text-lead">{page("onRequestBody")}</p>
-              <AddCustomButton href={await localizedHref("/shop/richiesta")} label={nav("quote")} icon={<FilePlus2 aria-hidden="true" className="size-4" strokeWidth={1.75} />} />
+              <AddCustomButton
+                href={await localizedHref("/shop/richiesta")}
+                label={family.partType ? nav("quote") : page("requestFamily", { name })}
+                detail={name}
+                icon={<FilePlus2 aria-hidden="true" className="size-4" strokeWidth={1.75} />}
+              />
             </div>
           )}
         </div>

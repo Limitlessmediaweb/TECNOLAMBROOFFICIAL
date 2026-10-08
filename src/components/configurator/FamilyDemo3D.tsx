@@ -10,14 +10,33 @@ import { TechDrawing } from "./TechDrawing";
 import { Viewer3D } from "./Viewer3D";
 import { useDrawingLabels, usePartText } from "./Configurator";
 
-/** Pagina famiglia o misura: il pezzo standard in 3D e in disegno, con il link al configuratore. */
-export function FamilyDemo3D({ type, shopPath, wr = "WR-90", stacked = false }: { type: PartType; shopPath: string; wr?: string; stacked?: boolean }) {
+/**
+ * Pagina famiglia o misura: il pezzo standard in 3D e in disegno, con il link al configuratore.
+ * type "straight" = tratto rigido con flange, per le famiglie senza configuratore: niente link
+ * al configuratore e didascalia col nome della famiglia (`name`).
+ */
+export function FamilyDemo3D({
+  type,
+  shopPath,
+  wr = "WR-90",
+  stacked = false,
+  name,
+  ctaLabel,
+}: {
+  type: PartType | "straight";
+  shopPath: string;
+  wr?: string;
+  stacked?: boolean;
+  name?: string;
+  ctaLabel?: string;
+}) {
   const t = useT("configurator");
   const locale = useClientLocale();
   const labels = useDrawingLabels();
   const text = usePartText();
-  const spec = useMemo(() => defaultSpec(type, wr), [type, wr]);
-  const code = text.reference(spec);
+  const straight = type === "straight";
+  const spec = useMemo(() => (type === "straight" ? { ...defaultSpec("twist", wr), rotation: 0, length: 150 } : defaultSpec(type, wr)), [type, wr]);
+  const code = straight ? `${name ?? ""} · ${wr}` : text.reference(spec);
   const [view, setView] = useState<"3d" | "2d">("3d");
   return (
     <div className={stacked ? "grid gap-5" : "grid gap-6 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] lg:items-start"}>
@@ -35,11 +54,15 @@ export function FamilyDemo3D({ type, shopPath, wr = "WR-90", stacked = false }: 
         )}
       </figure>
       <div className="grid gap-4">
-        <p className="text-muted">{text.detail(spec)}</p>
-        <NextLink href={`${shopPath}?${specToParams(spec)}#configura`} className="btn btn-primary justify-self-start">
-          {t("customize")}
-          <ArrowRight aria-hidden="true" className="size-4" strokeWidth={1.75} />
-        </NextLink>
+        {straight ? null : (
+          <>
+            <p className="text-muted">{text.detail(spec)}</p>
+            <NextLink href={`${shopPath}?${specToParams(spec)}#configura`} className="btn btn-primary justify-self-start">
+              {ctaLabel ?? t("customize")}
+              <ArrowRight aria-hidden="true" className="size-4" strokeWidth={1.75} />
+            </NextLink>
+          </>
+        )}
       </div>
     </div>
   );

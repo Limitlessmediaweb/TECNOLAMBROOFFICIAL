@@ -7,11 +7,13 @@ import { TiltCard } from "@/components/motion/TiltCard";
 import { SplitReveal } from "@/components/motion/SplitReveal";
 import { Stagger } from "@/components/motion/Stagger";
 import { ScrambleText } from "@/components/motion/ScrambleText";
+import Image from "next/image";
 import { PartDrawing } from "@/components/domain/PartDrawings";
+import { familyRender } from "@/lib/family-media";
 import { cn } from "@/lib/cn";
 
 /** Disposizione asimmetrica: la twistabile in evidenza, seamless e curve accanto, twist e disassati sotto. */
-const LAYOUT: Record<FamilyKey, string> = {
+const LAYOUT: Partial<Record<FamilyKey, string>> = {
   twistable: "lg:col-span-4 lg:row-span-2",
   seamless: "lg:col-span-2",
   bends: "lg:col-span-2",
@@ -39,7 +41,7 @@ export async function ProductGrid({ exclude, headingLevel = 3 }: { exclude?: Fam
         const range = sizeRange(family.sizes);
         const featured = family.key === "twistable" && !exclude;
         return (
-          <li key={family.key} className={cn(!exclude && LAYOUT[family.key], exclude && "lg:col-span-1")}>
+          <li key={family.key} className={cn(!exclude && (LAYOUT[family.key] ?? "lg:col-span-3"), exclude && "lg:col-span-1")}>
             <TiltCard className="h-full">
               <article
                 className={cn(
@@ -48,7 +50,14 @@ export async function ProductGrid({ exclude, headingLevel = 3 }: { exclude?: Fam
                 )}
               >
                 <div className={cn("relative -mx-2 mb-5", featured ? "lg:my-auto lg:origin-center lg:scale-[1.3] lg:py-10" : "")}>
-                  <PartDrawing family={family.drawing} twist={family.key === "twistable"} compact className="h-auto w-full transition-transform duration-500 group-hover:scale-[1.03]" />
+                  {(() => {
+                    const render = familyRender(family);
+                    return render ? (
+                      <Image src={render} alt="" width={640} height={400} sizes={featured ? "(min-width: 1024px) 60vw, 100vw" : "(min-width: 1024px) 30vw, 100vw"} className="h-auto w-full transition-transform duration-500 group-hover:scale-[1.03]" />
+                    ) : (
+                      <PartDrawing family={family.drawing} twist={family.key === "twistable"} compact className="h-auto w-full transition-transform duration-500 group-hover:scale-[1.03]" />
+                    );
+                  })()}
                 </div>
                 <H className="text-display-s font-bold">
                   <Link

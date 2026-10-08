@@ -26,11 +26,12 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/azienda
   const t = await getTranslations("aboutPage");
   const nav = await getTranslations("nav");
   const common = await getTranslations("common");
+  // l'ordine del lavoro: progettazione → produzione → trattamenti → collaudo finale al 100%
   const blocks = [
+    { icon: PencilRuler, title: t("officeTitle"), body: t("officeBody") },
     { icon: Factory, title: t("productionTitle"), body: t("productionBody") },
     { icon: Paintbrush, title: t("treatmentsTitle"), body: t("treatmentsBody") },
     { icon: FlaskConical, title: t("labTitle"), body: t("labBody") },
-    { icon: PencilRuler, title: t("officeTitle"), body: t("officeBody") },
   ];
   const sites = [
     { label: t("operational"), address: COMPANY.operationalAddress, main: true },
@@ -50,10 +51,12 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/azienda
         intro={<p>{t("intro")}</p>}
       />
 
-      <section className="section-y border-t border-line" aria-label={t("productionTitle")}>
+      <OwnerSection />
+
+      <section className="section-y border-t border-line" aria-label={t("processLabel")}>
         <Stagger className="container-site grid gap-px border border-line bg-line sm:grid-cols-2">
           {blocks.map(({ icon: Icon, title, body }, i) => (
-            <div key={title} className={i === 0 ? "flex flex-col gap-4 bg-[color-mix(in_srgb,var(--c-accent)_8%,var(--c-bg))] p-7 lg:p-10" : "flex flex-col gap-4 bg-bg p-7 lg:p-10"}>
+            <div key={title} className={i === 3 ? "flex flex-col gap-4 bg-[color-mix(in_srgb,var(--c-accent)_8%,var(--c-bg))] p-7 lg:p-10" : "flex flex-col gap-4 bg-bg p-7 lg:p-10"}>
               <Icon aria-hidden="true" className="size-7 text-accent" strokeWidth={1.5} />
               <h2 className="text-display-m font-bold">{title}</h2>
               <p className="max-w-[48ch] text-muted">{body}</p>
@@ -62,7 +65,6 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/azienda
         </Stagger>
       </section>
 
-      <OwnerSection />
       <HistorySection />
       <WorkshopSection />
 

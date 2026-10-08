@@ -226,7 +226,11 @@
       "shopBody": "Misura, lunghezza e flange: disegno quotato e modello 3D subito, preventivo entro 24 ore.",
       "others": "Altre famiglie",
       "demoTitle": "Il pezzo in 3D",
-      "demoBody": "Il pezzo standard in WR-90: ruotalo, guarda le quote e il disegno, poi personalizzalo nel configuratore."
+      "demoBody": "Il pezzo standard in WR-90: ruotalo, guarda le quote e il disegno, poi personalizzalo nel configuratore.",
+      "composeBends": "Componi la tua curva",
+      "composeTwists": "Componi il tuo twist",
+      "composeOffsets": "Componi il tuo disassato",
+      "requestFamily": "Richiedi {name}"
     }
   },
   "bandFinder": {
@@ -346,15 +350,15 @@
       },
       "moq": {
         "q": "C’è una quantità minima d’ordine?",
-        "a": "[DA COMPLETARE: quantità minime d’ordine, se presenti] Indicate la quantità nella richiesta: ogni preventivo è personalizzato."
+        "a": "No: realizziamo anche pezzi singoli. Quantità e prezzi sono nel preventivo."
       },
       "shippingEu": {
         "q": "Spedite in tutta l’Unione Europea?",
-        "a": "Sì. Spediamo in tutto il mondo: modalità e costi sono indicati nel preventivo. [DA COMPLETARE: corriere]"
+        "a": "Sì. Modalità di spedizione, resa e documenti doganali sono indicati nel preventivo."
       },
       "shippingWorld": {
         "q": "Spedite anche fuori dall’Unione Europea?",
-        "a": "Sì, lavoriamo con clienti in tutto il mondo: modalità e costi di spedizione sono indicati nel preventivo. Le cessioni all’export sono non imponibili IVA. [DA COMPLETARE: Incoterms, documenti doganali]"
+        "a": "Sì, lavoriamo con clienti in tutto il mondo. Modalità di spedizione, resa e documenti doganali sono indicati nel preventivo. Le cessioni all’export sono non imponibili IVA."
       },
       "invoicing": {
         "q": "Come fatturate a un’azienda UE con partita IVA?",
@@ -362,11 +366,11 @@
       },
       "materials": {
         "q": "Quali materiali e finiture usate?",
-        "a": "La guida flessibile è in ottone OT 80 UNI 4897. Brillantatura, verniciatura, trattamenti termici e galvanici sono fatti con fornitori storici e selezionati. [DA COMPLETARE: altre finiture disponibili]"
+        "a": "La guida flessibile è in ottone OT 80 UNI 4897. Finiture e trattamenti: brillantatura, verniciatura, trattamenti termici e galvanici."
       },
       "testing": {
         "q": "I pezzi vengono collaudati?",
-        "a": "Sì: collaudiamo il 100% dei pezzi prima della spedizione. [DA COMPLETARE: parametri misurati e documentazione fornita con il pezzo]"
+        "a": "Sì: collaudiamo il 100% dei pezzi prima della spedizione, con controllo elettrico e dimensionale su ogni pezzo."
       },
       "flexTwist": {
         "q": "Che differenza c’è tra guida flessibile twistabile e seamless?",
@@ -495,26 +499,28 @@
     "title": "Dal 1987, guide d’onda di produzione propria.",
     "intro": "Tecnolambro progetta, costruisce e collauda componenti meccanici a microonde e dispositivi in guida d’onda. È nata nel 1987 e lavora in collaborazione con le più grandi aziende di telecomunicazioni.",
     "productionTitle": "Produzione",
-    "productionBody": "Un sistema produttivo autonomo, con magazzino di materie prime e di manufatti. La guida d’onda flessibile twistabile e seamless è di nostra produzione.",
+    "productionBody": "Un sistema produttivo autonomo, con magazzino di materie prime e di manufatti: taglio, fresatura, tornitura, assemblaggio e giunzione. La guida d’onda flessibile twistabile e seamless è di nostra produzione.",
     "treatmentsTitle": "Trattamenti",
     "treatmentsBody": "Brillantatura, verniciatura, trattamenti termici e galvanici, con fornitori storici e selezionati, noti per la loro affidabilità e professionalità.",
     "labTitle": "Collaudo finale al 100%",
-    "labBody": "Collaudiamo il 100% dei pezzi prima della spedizione.",
+    "labBody": "Collaudiamo il 100% dei pezzi prima della spedizione, con controllo elettrico e dimensionale su ogni pezzo.",
     "officeTitle": "Progettazione",
     "officeBody": "Progettiamo i componenti sul disegno del cliente e seguiamo il pezzo fino al collaudo.",
     "sitesTitle": "Sedi",
     "operational": "Sede operativa e produzione",
     "legal": "Sede legale",
     "mapLink": "Apri in Google Maps",
-    "photoTodo": "[DA COMPLETARE: foto reali dall’officina]",
-    "historyTitle": "Storia"
+    "historyTitle": "Storia",
+    "imageAlt": "Modello 3D di una guida d’onda flessibile twistabile Tecnolambro",
+    "processLabel": "Come lavoriamo",
+    "workshopAlt": "L’officina Tecnolambro a Miradolo Terme"
   },
   "qualityPage": {
     "title": "Qualità e certificazioni",
     "intro": "Sistema qualità ISO 9001:2015 e sistema ambientale ISO 14001:2015, e collaudo del 100% dei pezzi prima della spedizione.",
     "certTitle": "Certificazioni",
     "controlsTitle": "Collaudo finale al 100%",
-    "controlsBody": "Collaudiamo il 100% dei pezzi prima della spedizione, con controllo elettrico e dimensionale.",
+    "controlsBody": "Controllo elettrico e dimensionale su ogni pezzo.",
     "chainTitle": "Fornitori storici e selezionati",
     "chainBody": "Materie prime a magazzino e produzione propria. Brillantatura, verniciatura, trattamenti termici e galvanici con fornitori storici e selezionati, noti per la loro affidabilità e professionalità.",
     "certIntro": "Gli attestati, scaricabili in PDF.",
@@ -579,17 +585,16 @@
         {
           "h": "4. Conservazione",
           "p": [
-            "Richieste di preventivo e file allegati: per il tempo necessario a gestire la richiesta e fino a 24 mesi dall’ultimo contatto, salvo che diventino un ordine.",
-            "Documenti relativi a ordini e fatture: 10 anni, come previsto dalla normativa fiscale.",
-            "Log tecnici del server: al massimo 12 mesi.",
-            "[DA COMPLETARE: confermare i tempi di conservazione con il titolare]"
+            "Richieste di preventivo e file allegati: 24 mesi dall’ultimo contatto, salvo che diventino un ordine.",
+            "Documenti contabili relativi a ordini e fatture: 10 anni, come previsto dalla normativa fiscale.",
+            "Log tecnici del server: 12 mesi."
           ]
         },
         {
           "h": "5. A chi comunichiamo i dati",
           "p": [
             "I dati sono trattati dal personale autorizzato di Tecnolambro e, solo se necessario, da fornitori che agiscono come responsabili del trattamento: hosting del sito, servizio di invio del form ed email, consulenti fiscali, corrieri per le spedizioni.",
-            "[DA COMPLETARE: nomi dei fornitori di hosting (es. Vercel) e di invio email (Resend o server SMTP aziendale), con eventuali trasferimenti fuori UE e relative garanzie]"
+            "Fornitori: Vercel Inc. (hosting del sito e statistiche anonime, Stati Uniti: il trasferimento avviene sulla base delle clausole contrattuali standard approvate dalla Commissione europea); Resend o Aruba S.p.A. (invio delle email della richiesta di preventivo)."
           ]
         },
         {
@@ -655,8 +660,8 @@
         {
           "h": "6. Legge applicabile e contatti",
           "p": [
-            "Si applica la legge italiana. Per domande: info@tecnolambro.it, +39 375 577 1084.",
-            "[DA COMPLETARE: foro competente e rinvio alle condizioni generali di vendita, se esistenti]"
+            "Si applica la legge italiana. Foro competente: Pavia. Per domande: info@tecnolambro.it, +39 375 577 1084.",
+            "Le condizioni di fornitura sono indicate in ogni preventivo."
           ]
         }
       ]

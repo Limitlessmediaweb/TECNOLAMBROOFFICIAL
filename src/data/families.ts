@@ -3,11 +3,11 @@ import type { PartType } from "./configurator/types";
 import { WR_LIST } from "./waveguides";
 
 /**
- * Famiglie di prodotto. Per aggiungerne una: una voce qui, i testi in messages/*.json →
- * products.items.<key>, e (se serve) un tipo nel configuratore (data/configurator/types.ts).
- * Le pagine si generano da sole.
+ * Famiglie di prodotto. Una famiglia nuova si aggiunge solo con dati (guida passo passo in
+ * docs/aggiungere-prodotti.md): una voce qui, i testi in messages/*.json → products.items.<key>,
+ * le foto in public/foto/prodotti/<key>/. Pagina, card, sitemap e richiesta si generano da sole.
  */
-export type FamilyKey = "twistable" | "seamless" | "bends" | "twists" | "offsets" | "pending";
+export type FamilyKey = "twistable" | "seamless" | "bends" | "twists" | "offsets" | "pending" | (string & {});
 
 /** Tabella elettrica della famiglia in src/data/waveguides.ts */
 export type FamilyTable = "twist" | "seamless";
@@ -27,7 +27,18 @@ export type Family = {
   drawing: DrawingKind;
   /** misure disponibili */
   sizes: readonly string[];
+  /**
+   * Modello 3D dimostrativo della pagina famiglia: di solito il tipo del configuratore (partType);
+   * "straight" = tratto rigido con flange, per le famiglie senza configuratore; null = nessun 3D.
+   * Se omesso vale partType.
+   */
+  model3d?: PartType | "straight" | null;
 };
+
+/** Modello 3D dimostrativo della famiglia (vedi Family.model3d) */
+export function familyModel(f: Family): PartType | "straight" | null {
+  return f.model3d === undefined ? f.partType : f.model3d;
+}
 
 export const FAMILIES: readonly Family[] = [
   { key: "twistable", slug: { it: "guida-flessibile-twistabile", en: "twistable-flexible-waveguide" }, partType: "twistable", hidden: false, table: "twist", drawing: "flexible", sizes: WR_LIST },

@@ -226,7 +226,11 @@
       "shopBody": "Size, length and flanges: dimensioned drawing and 3D model straight away, quote within 24 hours.",
       "others": "Other families",
       "demoTitle": "The part in 3D",
-      "demoBody": "The standard WR-90 part: rotate it, check the dimensions and the drawing, then customize it in the configurator."
+      "demoBody": "The standard WR-90 part: rotate it, check the dimensions and the drawing, then customize it in the configurator.",
+      "composeBends": "Build your bend",
+      "composeTwists": "Build your twist",
+      "composeOffsets": "Build your offset",
+      "requestFamily": "Request {name}"
     }
   },
   "bandFinder": {
@@ -346,15 +350,15 @@
       },
       "moq": {
         "q": "Is there a minimum order quantity?",
-        "a": "[TO BE COMPLETED: minimum order quantities, if any] Give the quantity in your request: every quote is tailored."
+        "a": "No: we also make single parts. Quantities and prices are in the quote."
       },
       "shippingEu": {
         "q": "Do you ship across the European Union?",
-        "a": "Yes. We ship worldwide: method and cost are stated in the quote. [TO BE COMPLETED: courier]"
+        "a": "Yes. Shipping method, delivery terms and customs documents are stated in the quote."
       },
       "shippingWorld": {
         "q": "Do you ship outside the European Union?",
-        "a": "Yes, we work with customers worldwide: shipping method and cost are stated in the quote. Exports are zero-rated for Italian VAT. [TO BE COMPLETED: Incoterms, customs documents]"
+        "a": "Yes, we work with customers worldwide. Shipping method, delivery terms and customs documents are stated in the quote. Export supplies are VAT-exempt."
       },
       "invoicing": {
         "q": "How do you invoice an EU company with a VAT number?",
@@ -362,11 +366,11 @@
       },
       "materials": {
         "q": "Which materials and finishes do you use?",
-        "a": "The flexible waveguide is made of OT 80 UNI 4897 brass. Bright dipping, painting, heat and galvanic treatments are done with long-standing, selected suppliers. [TO BE COMPLETED: other finishes available]"
+        "a": "Our flexible waveguide is made of OT 80 UNI 4897 brass. Finishes and treatments: bright dipping, painting, heat and galvanic treatments."
       },
       "testing": {
         "q": "Are parts tested?",
-        "a": "Yes: we test 100% of parts before shipping. [TO BE COMPLETED: parameters measured and documents supplied with the part]"
+        "a": "Yes: we test 100% of parts before shipping, with electrical and dimensional checks on every part."
       },
       "flexTwist": {
         "q": "What is the difference between twistable and seamless flexible waveguide?",
@@ -495,26 +499,28 @@
     "title": "Our own waveguides, since 1987.",
     "intro": "Tecnolambro designs, builds and tests mechanical microwave components and waveguide devices. Founded in 1987, it works with the largest telecommunications companies.",
     "productionTitle": "Production",
-    "productionBody": "Independent production, with stocks of raw materials and finished parts. Our twistable and seamless flexible waveguide is made by us.",
+    "productionBody": "Independent production, with stocks of raw materials and finished parts: cutting, milling, turning, assembly and joining. Our twistable and seamless flexible waveguide is made by us.",
     "treatmentsTitle": "Finishing",
     "treatmentsBody": "Bright dipping, painting, heat and galvanic treatments, with long-standing, selected suppliers known for their reliability and professionalism.",
     "labTitle": "100% final test",
-    "labBody": "We test 100% of parts before shipping.",
+    "labBody": "We test 100% of parts before shipping, with electrical and dimensional checks on every part.",
     "officeTitle": "Design",
     "officeBody": "We design components to the customer’s drawing and follow each part through to testing.",
     "sitesTitle": "Locations",
     "operational": "Factory and production",
     "legal": "Registered office",
     "mapLink": "Open in Google Maps",
-    "photoTodo": "[TO BE COMPLETED: real photos from the workshop]",
-    "historyTitle": "History"
+    "historyTitle": "History",
+    "imageAlt": "3D model of a Tecnolambro twistable flexible waveguide",
+    "processLabel": "How we work",
+    "workshopAlt": "The Tecnolambro workshop in Miradolo Terme"
   },
   "qualityPage": {
     "title": "Quality & certifications",
     "intro": "ISO 9001:2015 quality system and ISO 14001:2015 environmental system, and 100% of parts tested before shipping.",
     "certTitle": "Certifications",
     "controlsTitle": "100% final test",
-    "controlsBody": "We test 100% of parts before shipping, with electrical and dimensional checks.",
+    "controlsBody": "Electrical and dimensional checks on every part.",
     "chainTitle": "Long-standing, selected suppliers",
     "chainBody": "Raw materials in stock and our own production. Bright dipping, painting, heat and galvanic treatments with long-standing, selected suppliers known for their reliability and professionalism.",
     "certIntro": "The certificates, downloadable as PDF.",
@@ -579,17 +585,16 @@
         {
           "h": "4. Retention",
           "p": [
-            "Quote requests and attached files: for as long as needed to handle the request and up to 24 months after the last contact, unless they become an order.",
-            "Documents relating to orders and invoices: 10 years, as required by tax law.",
-            "Server technical logs: up to 12 months.",
-            "[TO BE COMPLETED: confirm retention periods with the owner]"
+            "Quote requests and attached files: 24 months after the last contact, unless they become an order.",
+            "Accounting records relating to orders and invoices: 10 years, as required by tax law.",
+            "Server technical logs: 12 months."
           ]
         },
         {
           "h": "5. Who receives the data",
           "p": [
             "Data is processed by authorised Tecnolambro staff and, only where necessary, by suppliers acting as processors: website hosting, form and email delivery service, tax advisers, couriers for shipping.",
-            "[TO BE COMPLETED: names of the hosting provider (e.g. Vercel) and email service (Resend or company SMTP server), with any transfers outside the EU and the related safeguards]"
+            "Suppliers: Vercel Inc. (website hosting and anonymous statistics, United States: transfers are based on the standard contractual clauses approved by the European Commission); Resend or Aruba S.p.A. (sending the quote request emails)."
           ]
         },
         {
@@ -655,8 +660,8 @@
         {
           "h": "6. Governing law and contact",
           "p": [
-            "Italian law applies. Questions: info@tecnolambro.it, +39 375 577 1084.",
-            "[TO BE COMPLETED: competent court and reference to general terms of sale, if any]"
+            "Italian law applies. Competent court: Pavia, Italy. Questions: info@tecnolambro.it, +39 375 577 1084.",
+            "Supply conditions are stated in each quote."
           ]
         }
       ]

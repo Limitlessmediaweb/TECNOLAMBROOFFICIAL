@@ -4,7 +4,8 @@ import type { Locale } from "@/i18n/routing";
 import { pageMetadata, breadcrumbsFor } from "@/lib/page";
 import { faqJsonLd } from "@/lib/seo";
 import { FAQ } from "@/data/faq";
-import { Breadcrumbs, PageHeader, WithTodo } from "@/components/ui/Bits";
+import { Breadcrumbs, PageHeader, WithTodo, isOnlyPlaceholder } from "@/components/ui/Bits";
+import { ENV } from "@/data/site";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { QuoteLink } from "@/components/ui/TrackedLink";
 import { SplitReveal } from "@/components/motion/SplitReveal";
@@ -21,7 +22,8 @@ export default async function FaqPage({ params }: PageProps<"/[locale]/faq">) {
   const t = await getTranslations("faqPage");
   const f = await getTranslations("faq.items");
   const nav = await getTranslations("nav");
-  const raw = FAQ.map((item) => ({ id: item.id, q: f(`${item.id}.q`), a: f(`${item.id}.a`) }));
+  // senza dati (solo segnaposto) la domanda non si mostra fuori dall'anteprima
+  const raw = FAQ.map((item) => ({ id: item.id, q: f(`${item.id}.q`), a: f(`${item.id}.a`) })).filter((item) => ENV.demo || !isOnlyPlaceholder(item.a));
 
   return (
     <>
