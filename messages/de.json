@@ -1,0 +1,1185 @@
+{
+  "meta": {
+    "siteName": "Tecnolambro Microwave Components",
+    "home": {
+      "title": "Flexible Hohlleiter und Mikrowellenteile | Tecnolambro",
+      "description": "Flexibler verdrehbarer und nahtloser Hohlleiter, Bögen, Twists und Versätze. Seit 1987 von uns entwickelt, gefertigt und geprüft. Angebot in 24 Stunden."
+    },
+    "products": {
+      "title": "Produkte aus flexiblem Hohlleiter | Tecnolambro",
+      "description": "Flexibler verdrehbarer und nahtloser Hohlleiter von WR-22 bis WR-284, Bögen, Twists und Versätze auf Anfrage. Technische Tabellen, Angebot in 24 h."
+    },
+    "family": {
+      "title": "{name} | Tecnolambro Microwave Components"
+    },
+    "custom": {
+      "title": "Mikrowellenkomponenten nach Zeichnung | Tecnolambro",
+      "description": "Senden Sie Ihre Zeichnung als PDF, DWG, DXF, STEP, IGES oder STL: Wir entwickeln, fertigen und prüfen das Teil. Angebot in 24 Stunden."
+    },
+    "about": {
+      "title": "Seit 1987 in Miradolo Terme | Tecnolambro",
+      "description": "Seit 1987 entwickeln, fertigen und prüfen wir Hohlleiter, in Zusammenarbeit mit den größten Telekommunikationsunternehmen. Miradolo Terme, Italien."
+    },
+    "quality": {
+      "title": "Qualität und Zertifizierungen | Tecnolambro",
+      "description": "Endprüfung von 100% der Teile vor dem Versand, Oberflächen von langjährigen, ausgewählten Lieferanten. Zertifizierungen und Qualitätsverfahren."
+    },
+    "contact": {
+      "title": "Kontakt und Angebote | Tecnolambro",
+      "description": "Angebot für Hohlleiter und Mikrowellenteile anfragen: Antwort in 24 Stunden. +39 375 577 1084, info@tecnolambro.it, Miradolo Terme, Italien."
+    },
+    "faq": {
+      "title": "FAQ | Tecnolambro",
+      "description": "Verfügbare Größen, Fertigung nach Zeichnung, Dateiformate, Lieferzeiten, weltweiter Versand, Rechnung mit EU-USt-IdNr., Prüfung."
+    },
+    "privacy": {
+      "title": "Datenschutzerklärung | Tecnolambro",
+      "description": "Wie Tecnolambro S.a.s. personenbezogene Daten aus der Website und dem Formular für Angebotsanfragen gemäß Verordnung (EU) 2016/679 verarbeitet."
+    },
+    "terms": {
+      "title": "Nutzungsbedingungen | Tecnolambro",
+      "description": "Nutzungsbedingungen der Website Tecnolambro Microwave Components und Regeln für Zeichnungen, die mit einer Angebotsanfrage hochgeladen werden."
+    },
+    "cookie": {
+      "title": "Cookie-Richtlinie | Tecnolambro",
+      "description": "Die Website von Tecnolambro nutzt nur technische Speicherung und eine Statistik ohne Cookies. Keine Profiling-Cookies."
+    },
+    "notFound": {
+      "title": "Signal verloren | Tecnolambro",
+      "description": "Die gesuchte Seite existiert nicht oder wurde verschoben."
+    },
+    "shop": {
+      "title": "Hohlleiter-Teil konfigurieren | Tecnolambro",
+      "description": "Stellen Sie Ihren flexiblen Hohlleiter zusammen: Größe, Länge und Flansche, mit bemaßter Zeichnung und 3D-Modell. Preise auf Anfrage, Angebot in 24 h."
+    },
+    "tables": {
+      "title": "Technische Tabellen flexibler Hohlleiter | Tecnolambro",
+      "description": "Rückflussdämpfung, VSWR, Dämpfung, Leistung und Abmessungen des flexiblen verdrehbaren und nahtlosen Hohlleiters, von WR-22 bis WR-284."
+    },
+    "request": {
+      "title": "Ihre Angebotsanfrage | Tecnolambro",
+      "description": "Teile, Mengen, Notizen und Dateien Ihrer Angebotsanfrage."
+    },
+    "requestSent": {
+      "title": "Anfrage gesendet | Tecnolambro",
+      "description": "Bestätigung der Angebotsanfrage."
+    }
+  },
+  "nav": {
+    "label": "Hauptnavigation",
+    "products": "Produkte",
+    "custom": "Nach Maß",
+    "about": "Unternehmen",
+    "quality": "Qualität",
+    "faq": "FAQ",
+    "contact": "Kontakt",
+    "quote": "Angebot anfordern",
+    "quoteShort": "Angebot",
+    "shop": "Teil konfigurieren",
+    "menu": "Menü öffnen",
+    "close": "Menü schließen",
+    "skip": "Zum Inhalt springen",
+    "language": "Sprache",
+    "switchTo": "Italiano",
+    "switchToLabel": "Zur italienischen Version wechseln",
+    "theme": "Design wechseln",
+    "themeDark": "Dunkles Design",
+    "themeLight": "Helles Design",
+    "home": "Tecnolambro, Startseite",
+    "homeShort": "Startseite",
+    "menuLabel": "Menü",
+    "shopShort": "Konfigurieren",
+    "tables": "Technische Tabellen",
+    "call": "Anrufen"
+  },
+  "common": {
+    "demoBadge": "Demoversion",
+    "demoData": "Demodaten",
+    "demoDataNote": "Beispielwerte, die durch die technischen Daten von Tecnolambro ersetzt werden.",
+    "todo": "ZU ERGÄNZEN",
+    "breadcrumb": "Brotkrümelnavigation",
+    "home": "Startseite",
+    "opensNewTab": "(öffnet in neuem Tab)",
+    "photoPlaceholder": "Echtes Foto aus der Werkstatt",
+    "draftNote": "Entwurf, vor dem Start zu prüfen.",
+    "updated": "Zuletzt aktualisiert: {date}",
+    "readMore": "Mehr erfahren",
+    "allQuestions": "Alle Fragen",
+    "pauseMotion": "Animation anhalten",
+    "playMotion": "Animation abspielen",
+    "hoursTitle": "Öffnungszeiten",
+    "hoursWeek": "Montag–Freitag: 8:00–12:00 und 13:30–17:30",
+    "hoursWeekend": "Samstag und Sonntag: geschlossen",
+    "missing": "fehlt: {what}",
+    "whatsappLabel": "Schreiben Sie uns auf WhatsApp"
+  },
+  "intro": {
+    "skip": "Überspringen",
+    "tagline": "MICROWAVE COMPONENTS · SEIT 1987",
+    "label": "Intro-Animation"
+  },
+  "hero": {
+    "titleA": "Wir leiten Mikrowellen",
+    "sub": "Wir entwickeln, fertigen und prüfen flexible verdrehbare und nahtlose Hohlleiter, Bögen, Twists und Versätze.",
+    "legendTitle": "Feldlegende",
+    "legendMode": "Mode",
+    "legendGuide": "Hohlleiter",
+    "legendBand": "Band",
+    "fieldLabel": "Animation des elektrischen TE10-Felds in einem WR-90-Hohlleiter",
+    "since": "Seit 1987"
+  },
+  "marquee": {
+    "label": "Standardgrößen von Hohlleitern und Arbeitsbänder"
+  },
+  "company": {
+    "title": "Von der Zeichnung zum geprüften Teil.",
+    "body": "Tecnolambro wurde 1987 gegründet. Wir entwickeln, fertigen und prüfen unsere eigenen Komponenten, in Zusammenarbeit mit den größten Telekommunikationsunternehmen.",
+    "factFounded": "Gründungsjahr",
+    "factYears": "Jahre Erfahrung mit Mikrowellen",
+    "factFlexValue": "100%",
+    "factFlex": "Teile vor dem Versand geprüft",
+    "factReplyValue": "24 h",
+    "factReply": "Angebot in 24 Stunden",
+    "cta": "Über das Unternehmen"
+  },
+  "productsSection": {
+    "title": "Jeder Abschnitt des Signalwegs.",
+    "body": "Flexibler verdrehbarer und nahtloser Hohlleiter von WR-22 bis WR-284. Bögen, Twists und Versätze auf Anfrage oder nach Zeichnung.",
+    "cta": "Alle Produkte ansehen",
+    "open": "{name} öffnen"
+  },
+  "products": {
+    "items": {
+      "twistable": {
+        "name": "Flexibler verdrehbarer Hohlleiter",
+        "short": "Biegbar und verdrehbar: verbindet nicht fluchtende oder verdrehte Flansche. WR-22 bis WR-284.",
+        "description": "Flexibler, verdrehbarer Hohlleiter aus Messing aus eigener Fertigung. Er lässt sich in der E- und H-Ebene biegen und um die eigene Achse verdrehen: Er verbindet Funkgerät und Antenne, wenn die Flansche nicht fluchten oder verdreht sind, und nimmt Vibrationen und Wärmedehnungen auf.",
+        "applications": [
+          "Verbindung Funkgerät–Antenne in Richtfunkstrecken",
+          "Installationen mit Vibrationen",
+          "Ausgleich von Fluchtungsfehlern und Verdrehungen zwischen Flanschen"
+        ]
+      },
+      "seamless": {
+        "name": "Nahtloser flexibler Hohlleiter",
+        "short": "Ohne Nähte, CW-Leistung bis 10 kW. WR-22 bis WR-284.",
+        "description": "Nahtloser flexibler Hohlleiter, also ohne Nähte entlang des Körpers, aus eigener Fertigung. Die Tabelle enthält VSWR, Dämpfung und Leistung für jede Größe von WR-22 bis WR-284.",
+        "applications": [
+          "Richtfunk- und Satellitenverbindungen",
+          "Hochleistungsstrecken",
+          "Messplätze und Labore"
+        ]
+      },
+      "bends": {
+        "name": "Bögen",
+        "short": "E- und H-Bögen, 90° oder mit dem gewünschten Winkel.",
+        "description": "Bögen aus starrem Hohlleiter in der E- und H-Ebene, in unserem Labor entwickelt, gefertigt und geprüft. 90° in jeder Größe oder mit Winkel, Radius und geraden Schenkeln nach Maß.",
+        "applications": [
+          "E-Bögen",
+          "H-Bögen",
+          "Winkel, Radius und gerade Schenkel nach Maß"
+        ]
+      },
+      "pending": {
+        "name": "[FAMILIE NOCH ZU DEFINIEREN]",
+        "short": "[ZU ERGÄNZEN]",
+        "description": "[ZU ERGÄNZEN: Texte und Daten der Familie vom Inhaber]",
+        "applications": []
+      },
+      "twists": {
+        "name": "Twists",
+        "short": "Drehen die Polarisation: standardmäßig 90°, 45° oder nach Maß.",
+        "description": "Twists aus starrem Hohlleiter zum Drehen der Polarisation: 90° in jeder Größe, 45° oder mit der gewünschten Drehung, im oder gegen den Uhrzeigersinn.",
+        "applications": [
+          "Drehung der Polarisation",
+          "90°, 45° oder nach Maß",
+          "Im oder gegen den Uhrzeigersinn"
+        ]
+      },
+      "offsets": {
+        "name": "Versätze",
+        "short": "Verbinden versetzte Flansche, in der E- oder H-Ebene.",
+        "description": "Versätze aus starrem Hohlleiter zum Verbinden versetzter Flansche, in der E- oder H-Ebene, mit Versatz und Länge nach Maß.",
+        "applications": [
+          "Versetzte Flansche, E-Ebene",
+          "Versetzte Flansche, H-Ebene",
+          "Versatz und Länge nach Maß"
+        ]
+      }
+    },
+    "page": {
+      "title": "Hohlleiterprodukte",
+      "intro": "Flexibler verdrehbarer und nahtloser Hohlleiter, Bögen, Twists und Versätze. Standardgrößen aus unseren Tabellen oder Teile nach Ihrer Zeichnung.",
+      "drawingLabel": "Explosionszeichnung: {name}",
+      "drawingCaption": "Scrollen Sie, um die Teile zu trennen.",
+      "partFlange": "Flansch",
+      "partBody": "Körper",
+      "partGasket": "Dichtung",
+      "tableTitle": "Technische Daten",
+      "tablesLink": "Alle technischen Tabellen",
+      "onRequestTitle": "Auf Anfrage oder nach Zeichnung",
+      "onRequestBody": "Nennen Sie uns Teiletyp, Größe, Winkel oder Versatz und Flansche oder laden Sie Ihre Zeichnung hoch: Sie erhalten ein Angebot innerhalb von 24 Stunden.",
+      "applicationsTitle": "Einsatzbereiche",
+      "quoteTitle": "Andere Größe oder Ausführung?",
+      "quoteBody": "Nennen Sie Größe, Länge, Flansche und Menge: Angebot innerhalb von 24 Stunden. Preise auf Anfrage: Jedes Angebot ist individuell.",
+      "shopTitle": "Teil konfigurieren",
+      "shopBody": "Größe, Länge und Flansche: bemaßte Zeichnung und 3D-Modell sofort, Angebot innerhalb von 24 Stunden.",
+      "others": "Weitere Familien",
+      "demoTitle": "Das Teil in 3D",
+      "demoBody": "Das Standardteil in WR-90: Drehen Sie es, prüfen Sie Maße und Zeichnung und passen Sie es dann im Konfigurator an.",
+      "composeBends": "Bogen konfigurieren",
+      "composeTwists": "Twist konfigurieren",
+      "composeOffsets": "Versatz konfigurieren",
+      "requestFamily": "{name} anfragen"
+    }
+  },
+  "bandFinder": {
+    "title": "Nennen Sie uns die Frequenz, wir nennen Ihnen den passenden Hohlleiter.",
+    "body": "Schieben Sie den Regler auf Ihre Arbeitsfrequenz: Wir markieren den Hohlleiter, der sie abdeckt.",
+    "label": "Arbeitsfrequenz",
+    "unit": "GHz",
+    "result": "Bei {freq} GHz passt der Hohlleiter",
+    "resultMany": "Bei {freq} GHz eignen sich",
+    "or": "oder",
+    "none": "Keine Standardgröße deckt diese Frequenz ab: Wir können das Teil nach Zeichnung fertigen.",
+    "cutoff": "TE10-Grenzfrequenz",
+    "inside": "Innenmaß",
+    "tableCaption": "Arbeitsbänder der Standard-Rechteckhohlleiter",
+    "colSize": "Größe",
+    "colIec": "IEC",
+    "colBand": "Band",
+    "colInside": "Innen a × b (mm)",
+    "cta": "Diese Größe konfigurieren",
+    "ctaCustom": "Teil nach Zeichnung anfragen",
+    "decrease": "Frequenz verringern",
+    "increase": "Frequenz erhöhen",
+    "standardNote": "Bänder aus den Tecnolambro-Tabellen; Innenmaße a × b sind EIA-Standardwerte.",
+    "colWg": "WG"
+  },
+  "process": {
+    "title": "So arbeiten wir.",
+    "steps": [
+      {
+        "title": "Konstruktion",
+        "body": "Von Ihrer Zeichnung oder einer Spezifikation bis zur Ausführungskonstruktion des Bauteils."
+      },
+      {
+        "title": "Fertigung",
+        "body": "Schneiden, Fräsen, Drehen, Montage und Fügen: flexible verdrehbare und nahtlose Hohlleiter, Bögen, Twists und Versätze aus eigener Fertigung."
+      },
+      {
+        "title": "Oberflächen",
+        "body": "Glanzbeizen, Lackieren, Wärme- und galvanische Behandlungen, mit langjährigen, ausgewählten Lieferanten, die für Zuverlässigkeit und Professionalität bekannt sind."
+      },
+      {
+        "title": "100-%-Endprüfung",
+        "body": "Wir prüfen 100% der Teile vor dem Versand."
+      }
+    ]
+  },
+  "history": {
+    "title": "Hohlleiter seit 1987.",
+    "titleShort": "Geschichte",
+    "items": [
+      {
+        "label": "1987",
+        "body": "Gründung von Tecnolambro, in Zusammenarbeit mit den größten Telekommunikationsunternehmen."
+      },
+      {
+        "label": "Fertigung",
+        "body": "Eigenständige Fertigung mit Lager für Rohmaterial und Fertigteile."
+      },
+      {
+        "label": "Oberflächen",
+        "body": "Glanzbeizen, Lackieren, Wärme- und galvanische Behandlungen mit langjährigen, ausgewählten Lieferanten."
+      },
+      {
+        "label": "Prüfung",
+        "body": "Endprüfung von 100% der Teile vor dem Versand."
+      },
+      {
+        "label": "Heute",
+        "body": "Standardteile und Teile nach Zeichnung für Kunden in Italien, Europa und weltweit."
+      }
+    ]
+  },
+  "qualitySection": {
+    "title": "Qualität, Teil für Teil geprüft.",
+    "body": "Wir prüfen 100% der Teile vor dem Versand.",
+    "certTitle": "Zertifizierungen",
+    "controlsTitle": "Prüfungen",
+    "controls": [
+      "100-%-Endprüfung",
+      "Elektrische und maßliche Prüfung",
+      "Oberflächen von langjährigen, ausgewählten Lieferanten"
+    ],
+    "cta": "Qualität und Prüfung",
+    "certBody": "ISO 9001:2015 für Qualität und ISO 14001:2015 für Umwelt, zertifiziert von Perry Johnson Registrars mit ACCREDIA-Akkreditierung."
+  },
+  "shopSection": {
+    "title": "Teil konfigurieren, Angebot anfordern.",
+    "body": "Wählen Sie Typ, Größe, Länge und Flansche: Sie sehen sofort die bemaßte Zeichnung und das 3D-Modell. Preise auf Anfrage: Jedes Angebot ist individuell.",
+    "points": [
+      "Angebot in 24 Stunden",
+      "PDF-Zeichnung und 3D-Modell zum Download",
+      "Weltweiter Versand"
+    ],
+    "cta": "Teil konfigurieren"
+  },
+  "faqSection": {
+    "title": "Häufige Fragen",
+    "body": "Antworten auf die Fragen, die uns Technik- und Einkaufsabteilungen am häufigsten stellen."
+  },
+  "faq": {
+    "items": {
+      "sizes": {
+        "q": "Welche Hohlleitergrößen fertigen Sie?",
+        "a": "Wir fertigen {families}. Flexibler verdrehbarer und nahtloser Hohlleiter ist in {count} Größen erhältlich: {sizes}. Elektrische Daten und Abmessungen finden Sie in den technischen Tabellen; für Ihre genaue Frequenz nutzen Sie die Frequenzsuche."
+      },
+      "custom": {
+        "q": "Fertigen Sie Teile nach Kundenzeichnung?",
+        "a": "Ja. Wir entwickeln, fertigen und prüfen Einzelteile und Kleinserien nach Ihrer Zeichnung oder einer Spezifikation."
+      },
+      "files": {
+        "q": "Welche Dateiformate kann ich senden?",
+        "a": "PDF, DWG, DXF, STEP, IGES oder STL, bis 20 MB pro Datei, direkt über die Angebotsanfrage. Eine bemaßte PDF mit Toleranzen und Oberfläche genügt für ein erstes Angebot; ein 3D-Modell hilft bei komplexen Geometrien."
+      },
+      "leadTime": {
+        "q": "Wie lang sind Ihre Lieferzeiten?",
+        "a": "Lagerware wird innerhalb von 48 Stunden versandt. Für Teile nach Maß oder nach Zeichnung legen wir die Lieferzeit im Angebot fest."
+      },
+      "moq": {
+        "q": "Gibt es eine Mindestbestellmenge?",
+        "a": "Nein: Wir fertigen auch Einzelteile. Mengen und Preise stehen im Angebot."
+      },
+      "shippingEu": {
+        "q": "Liefern Sie in die gesamte Europäische Union?",
+        "a": "Ja. Versandart, Lieferbedingungen und Zolldokumente sind im Angebot angegeben."
+      },
+      "shippingWorld": {
+        "q": "Liefern Sie auch außerhalb der Europäischen Union?",
+        "a": "Ja, wir arbeiten mit Kunden weltweit. Versandart, Lieferbedingungen und Zolldokumente sind im Angebot angegeben. Ausfuhrlieferungen sind von der Mehrwertsteuer befreit."
+      },
+      "invoicing": {
+        "q": "Wie stellen Sie einem EU-Unternehmen mit USt-IdNr. Rechnungen aus?",
+        "a": "Mit einer gültigen EU-USt-IdNr. (im VIES geprüft) stellen wir ohne italienische Mehrwertsteuer in Rechnung: Der Kunde führt die Steuer im Reverse-Charge-Verfahren ab. Geben Sie Ihre USt-IdNr. im Angebotsformular an."
+      },
+      "materials": {
+        "q": "Welche Werkstoffe und Oberflächen verwenden Sie?",
+        "a": "Unser flexibler Hohlleiter besteht aus Messing OT 80 UNI 4897. Oberflächen und Behandlungen: Glanzbeizen, Lackieren, Wärme- und galvanische Behandlungen."
+      },
+      "testing": {
+        "q": "Werden die Teile geprüft?",
+        "a": "Ja: Wir prüfen 100% der Teile vor dem Versand, mit elektrischer und maßlicher Prüfung jedes Teils."
+      },
+      "flexTwist": {
+        "q": "Was unterscheidet flexiblen verdrehbaren von nahtlosem Hohlleiter?",
+        "a": "Der verdrehbare Hohlleiter lässt sich in der E- und H-Ebene biegen und um die eigene Achse verdrehen: Er ist die richtige Wahl, wenn die beiden Flansche zusätzlich gegeneinander verdreht sind. Der nahtlose Hohlleiter hat keine Nähte entlang des Körpers. VSWR, Dämpfung und Leistung beider Ausführungen finden Sie in den technischen Tabellen. Wir fertigen beide selbst."
+      },
+      "shopVsQuote": {
+        "q": "Kann ich online kaufen?",
+        "a": "Nein: Jede Bestellung beginnt mit einer Angebotsanfrage, da die Preise individuell sind. Konfigurieren Sie das Teil oder wählen Sie ein Standardprodukt, ergänzen Sie Menge und Notizen und senden Sie die Anfrage: Wir antworten innerhalb von 24 Stunden."
+      },
+      "drawing3d": {
+        "q": "Stellen Sie 3D-Zeichnungen bereit?",
+        "a": "Ja. Im Konfigurator laden Sie die PDF-Zeichnung und das 3D-Modell in STL und GLB sofort herunter; die STEP-Datei senden wir Ihnen zusammen mit dem Angebot."
+      },
+      "clientDrawing": {
+        "q": "Arbeiten Sie nach Kundenzeichnung?",
+        "a": "Ja. Laden Sie STEP, IGES, STL, PDF, DWG oder DXF mit Ihrer Angebotsanfrage hoch: Unsere Technikabteilung prüft die Zeichnung und antwortet innerhalb von 24 Arbeitsstunden."
+      },
+      "hours": {
+        "q": "Wann ist Ihr Büro besetzt?",
+        "a": "Montag bis Freitag, 8:00–12:00 und 13:30–17:30 Uhr (MEZ). Samstag und Sonntag geschlossen. Anfragen über die Website gehen auch außerhalb der Bürozeiten ein."
+      }
+    }
+  },
+  "quote": {
+    "title": "Senden Sie uns Ihre Zeichnung.",
+    "body": "Ein paar Zeilen und, falls vorhanden, die Datei: Wir antworten mit einem Angebot innerhalb von 24 Arbeitsstunden.",
+    "formLabel": "Angebotsanfrage",
+    "required": "Pflichtfeld",
+    "optional": "optional",
+    "name": "Vor- und Nachname",
+    "email": "E-Mail",
+    "phone": "Telefon",
+    "message": "Was Sie benötigen",
+    "messageHint": "Teiletyp, Größe oder Frequenz, Flansche, Menge, gewünschter Liefertermin.",
+    "file": "Zeichnung oder 3D anhängen",
+    "fileHint": "STEP/STP, IGES/IGS, STL, PDF, DWG, DXF. Mehrere Dateien möglich, je bis 20 MB.",
+    "privacy": "Ich habe die <link>Datenschutzerklärung</link> gelesen und willige in die Verarbeitung meiner Daten zum Erhalt des Angebots ein.",
+    "submit": "Anfrage senden",
+    "sending": "Wird gesendet…",
+    "errorSend": "Senden fehlgeschlagen: {reason}. Ihre Daten bleiben im Formular: Versuchen Sie es erneut oder schreiben Sie an <mail>info@tecnolambro.it</mail>.",
+    "errors": {
+      "name": "Geben Sie Ihren Vor- und Nachnamen ein.",
+      "email": "Geben Sie eine gültige E-Mail-Adresse ein, z. B. name@firma.de.",
+      "message": "Beschreiben Sie Ihren Bedarf in mindestens 10 Zeichen.",
+      "fileType": "Dateityp nicht zulässig.",
+      "fileSize": "größer als 20 MB.",
+      "privacy": "Wir benötigen Ihre Einwilligung, um Ihre Anfrage zu beantworten."
+    },
+    "prefilled": "Größe {size} aus der Frequenzsuche in die Nachricht übernommen.",
+    "contactTitle": "Direkter Kontakt",
+    "email_label": "E-Mail",
+    "phone_label": "Mobil",
+    "operational": "Werk",
+    "legal": "Firmensitz",
+    "errorSummaryOne": "Bitte prüfen Sie das markierte Feld.",
+    "errorSummaryOther": "Bitte prüfen Sie die {count} markierten Felder.",
+    "phone2_label": "Festnetz",
+    "pec_label": "Zertifizierte E-Mail (PEC)",
+    "fileRemove": "{name} entfernen",
+    "haveSize": "Größe bekannt? Teil konfigurieren →",
+    "itemCode": "NACH ZEICHNUNG",
+    "prefillLine": "Größe {size} · {freq} GHz",
+    "whatsapp": "Schreiben Sie uns auf WhatsApp",
+    "reasons": {
+      "network": "keine Verbindung",
+      "tooLarge": "die Dateien sind zu groß für den Versand über die Website",
+      "notConfigured": "der E-Mail-Dienst ist noch nicht eingerichtet",
+      "rateLimited": "zu viele Anfragen in kurzer Zeit",
+      "invalid": "einige Daten sind ungültig",
+      "server": "Serverfehler"
+    }
+  },
+  "finalCta": {
+    "title": "Angebot in 24 Stunden.",
+    "body": "Preise auf Anfrage: Jedes Angebot ist individuell.",
+    "quote": "Angebot anfordern",
+    "shop": "Teil konfigurieren"
+  },
+  "footer": {
+    "tagline": "Mechanische Mikrowellenkomponenten und Hohlleiterbauteile, seit 1987.",
+    "navTitle": "Website",
+    "legalTitle": "Rechtliches",
+    "contactTitle": "Kontakt",
+    "privacy": "Datenschutz",
+    "terms": "Nutzungsbedingungen",
+    "cookie": "Cookies",
+    "vat": "USt-IdNr.",
+    "credit": "Erstellt und betreut von",
+    "distinct": "Tecnolambro Microwave Components, Miradolo Terme (PV), Italien. Keine Verbindung zu anderen Unternehmen mit ähnlichem Namen.",
+    "rights": "© {year} Tecnolambro S.a.s. di Pasquini Marco & C.",
+    "logoAlt": "Tecnolambro-Logo: Hersteller von flexiblem verdrehbarem und nahtlosem Hohlleiter, Komponenten für Mikrowellenanwendungen",
+    "pec": "PEC"
+  },
+  "customPage": {
+    "title": "Mikrowellenkomponenten nach Zeichnung",
+    "intro": "Wenn das Teil nicht im Katalog ist, fertigen wir es: Wir entwickeln, fertigen und prüfen unsere eigenen Komponenten.",
+    "sendTitle": "Was Sie uns senden",
+    "send": [
+      {
+        "title": "Die Zeichnung",
+        "body": "Bemaßt, mit Toleranzen und Oberfläche. PDF, DWG, DXF, STEP, IGES oder STL, bis 20 MB."
+      },
+      {
+        "title": "Die Frequenz",
+        "body": "Arbeitsband in GHz und, falls relevant, das maximal zulässige VSWR."
+      },
+      {
+        "title": "Die Schnittstellen",
+        "body": "Hohlleitergröße und Flanschtyp an beiden Enden oder der Koaxialsteckverbinder."
+      },
+      {
+        "title": "Menge und Termin",
+        "body": "Einzelteil, Kleinserie oder wiederkehrende Lieferung. Gewünschter Liefertermin."
+      }
+    ],
+    "formatsTitle": "Akzeptierte Formate",
+    "formatsBody": "PDF für bemaßte Zeichnungen, DWG und DXF für 2D, STEP, IGES und STL für 3D-Modelle.",
+    "timeTitle": "Termine",
+    "timeBody": "Angebot innerhalb von 24 Stunden: Lieferzeit und Versandart legen wir im Angebot fest.",
+    "testTitle": "Prüfung",
+    "testBody": "Wir prüfen 100% der Teile vor dem Versand.",
+    "stepsTitle": "Von der Zeichnung zum Teil",
+    "formTitle": "Zeichnung senden"
+  },
+  "aboutPage": {
+    "title": "Eigene Hohlleiter, seit 1987.",
+    "intro": "Tecnolambro entwickelt, fertigt und prüft mechanische Mikrowellenkomponenten und Hohlleiterbauteile. Das 1987 gegründete Unternehmen arbeitet mit den größten Telekommunikationsunternehmen zusammen.",
+    "productionTitle": "Fertigung",
+    "productionBody": "Eigenständige Fertigung mit Lager für Rohmaterial und Fertigteile: Schneiden, Fräsen, Drehen, Montage und Fügen. Unseren flexiblen verdrehbaren und nahtlosen Hohlleiter fertigen wir selbst.",
+    "treatmentsTitle": "Oberflächen",
+    "treatmentsBody": "Glanzbeizen, Lackieren, Wärme- und galvanische Behandlungen, mit langjährigen, ausgewählten Lieferanten, die für Zuverlässigkeit und Professionalität bekannt sind.",
+    "labTitle": "100-%-Endprüfung",
+    "labBody": "Wir prüfen 100% der Teile vor dem Versand, mit elektrischer und maßlicher Prüfung jedes Teils.",
+    "officeTitle": "Konstruktion",
+    "officeBody": "Wir konstruieren die Komponenten nach Kundenzeichnung und begleiten jedes Teil bis zur Prüfung.",
+    "sitesTitle": "Standorte",
+    "operational": "Werk und Fertigung",
+    "legal": "Firmensitz",
+    "mapLink": "In Google Maps öffnen",
+    "historyTitle": "Geschichte",
+    "imageAlt": "3D-Modell eines flexiblen verdrehbaren Hohlleiters von Tecnolambro",
+    "processLabel": "So arbeiten wir",
+    "workshopAlt": "Die Werkstatt von Tecnolambro in Miradolo Terme"
+  },
+  "qualityPage": {
+    "title": "Qualität und Zertifizierungen",
+    "intro": "Qualitätsmanagementsystem nach ISO 9001:2015, Umweltmanagementsystem nach ISO 14001:2015 und Prüfung von 100% der Teile vor dem Versand.",
+    "certTitle": "Zertifizierungen",
+    "controlsTitle": "100-%-Endprüfung",
+    "controlsBody": "Elektrische und maßliche Prüfung jedes Teils.",
+    "chainTitle": "Langjährige, ausgewählte Lieferanten",
+    "chainBody": "Rohmaterial auf Lager und eigene Fertigung. Glanzbeizen, Lackieren, Wärme- und galvanische Behandlungen mit langjährigen, ausgewählten Lieferanten, die für Zuverlässigkeit und Professionalität bekannt sind.",
+    "certIntro": "Die Zertifikate als PDF zum Download.",
+    "certBy": "Zertifiziert von Perry Johnson Registrars · ACCREDIA-Akkreditierung",
+    "certNumber": "Zertifikat Nr. {number}",
+    "validUntil": "Gültig bis {date}",
+    "renewing": "Erneuerung läuft",
+    "firstIssue": "Erstausstellung: {date}",
+    "download": "Zertifikat herunterladen (PDF)",
+    "previewAlt": "Erste Seite des {standard}-Zertifikats von Tecnolambro",
+    "scopeTitle": "Geltungsbereich der Zertifizierung"
+  },
+  "contactPage": {
+    "title": "Kontakt und Angebote",
+    "intro": "Schreiben Sie uns, rufen Sie an oder senden Sie direkt Ihre Zeichnung. Angebot innerhalb von 24 Stunden.",
+    "hoursTitle": "Öffnungszeiten",
+    "company": "Firmendaten"
+  },
+  "faqPage": {
+    "title": "Häufige Fragen",
+    "intro": "Größen, Dateien, Lieferzeiten, Versand und Rechnungsstellung. Wenn Ihre Frage nicht dabei ist, schreiben Sie uns.",
+    "notFound": "Keine Antwort gefunden?",
+    "notFoundBody": "Senden Sie uns Ihre Frage zusammen mit Ihrer Angebotsanfrage."
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Signal verloren.",
+    "body": "Die gesuchte Seite existiert nicht oder wurde verschoben. Die Welle endet hier.",
+    "home": "Zur Startseite",
+    "products": "Produkte ansehen",
+    "quote": "Angebot anfordern"
+  },
+  "legal": {
+    "privacy": {
+      "title": "Datenschutzerklärung",
+      "updated": "8. Oktober 2026",
+      "sections": [
+        {
+          "h": "1. Verantwortlicher",
+          "p": [
+            "Verantwortlicher ist die Tecnolambro S.a.s. di Pasquini Marco & C., USt-IdNr. IT08639310153, Firmensitz Via Privata delle Betulle 1, 20078 San Colombano al Lambro (MI), Italien, Werk Via degli Spinedi 20, 27010 Miradolo Terme (PV), Italien.",
+            "Für alle Anfragen zum Datenschutz: info@tecnolambro.it, zertifizierte E-Mail (PEC) tecnolambrosnc@pec.it, Telefon +39 375 577 1084."
+          ]
+        },
+        {
+          "h": "2. Welche Daten wir erheben",
+          "p": [
+            "In der Angebotsanfrage eingegebene Daten: Unternehmen, Vor- und Nachname, E-Mail, Telefon (optional), Land, USt-IdNr. (optional), angefragte Teile mit Mengen und Notizen.",
+            "Mit der Anfrage hochgeladene Dateien (Zeichnungen und Modelle in PDF, DWG, DXF, STEP, IGES oder STL). Zeichnungen können personenbezogene Daten enthalten, zum Beispiel den Namen des Konstrukteurs im Schriftfeld.",
+            "Nutzungsdaten: IP-Adresse und technische Informationen, die der Server aus Sicherheits- und Betriebsgründen protokolliert. Aggregierte, anonyme Besuchsstatistiken ohne Cookies (siehe Abschnitt 7)."
+          ]
+        },
+        {
+          "h": "3. Zwecke und Rechtsgrundlage",
+          "p": [
+            "Beantwortung der Angebotsanfrage und Durchführung vorvertraglicher Verhandlungen: Rechtsgrundlage Art. 6 Abs. 1 lit. b DSGVO (vorvertragliche Maßnahmen auf Anfrage der betroffenen Person).",
+            "Erfüllung rechtlicher Verpflichtungen, zum Beispiel steuerlicher und buchhalterischer Art, wenn aus der Anfrage ein Auftrag wird: Art. 6 Abs. 1 lit. c DSGVO.",
+            "Gewährleistung der Sicherheit der Website und Messung ihrer Nutzung in aggregierter Form: berechtigtes Interesse des Verantwortlichen, Art. 6 Abs. 1 lit. f DSGVO.",
+            "Wir nutzen die Daten ohne gesonderte Einwilligung nicht für Marketingzwecke und verkaufen sie nicht an Dritte."
+          ]
+        },
+        {
+          "h": "4. Speicherdauer",
+          "p": [
+            "Angebotsanfragen und angehängte Dateien: 24 Monate nach dem letzten Kontakt, sofern daraus kein Auftrag wird.",
+            "Buchhaltungsunterlagen zu Aufträgen und Rechnungen: 10 Jahre, wie steuerrechtlich vorgeschrieben.",
+            "Technische Serverprotokolle: 12 Monate."
+          ]
+        },
+        {
+          "h": "5. Empfänger der Daten",
+          "p": [
+            "Die Daten werden von befugten Mitarbeitern von Tecnolambro und, nur soweit erforderlich, von Dienstleistern verarbeitet, die als Auftragsverarbeiter tätig sind: Hosting der Website, Dienst für den Formular- und E-Mail-Versand, Steuerberater, Kurierdienste für den Versand.",
+            "Dienstleister: Vercel Inc. (Hosting der Website und anonyme Statistiken, Vereinigte Staaten: Die Übermittlung erfolgt auf Grundlage der von der Europäischen Kommission genehmigten Standardvertragsklauseln); Resend oder Aruba S.p.A. (Versand der E-Mails zur Angebotsanfrage)."
+          ]
+        },
+        {
+          "h": "6. Ihre Rechte",
+          "p": [
+            "Sie können jederzeit Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung und Datenübertragbarkeit verlangen sowie der auf berechtigtem Interesse beruhenden Verarbeitung widersprechen (Art. 15-22 DSGVO).",
+            "Zur Ausübung dieser Rechte schreiben Sie an info@tecnolambro.it. Wir antworten innerhalb von 30 Tagen.",
+            "Sie haben das Recht, Beschwerde bei der italienischen Datenschutzbehörde Garante per la protezione dei dati personali (www.garanteprivacy.it) oder bei der Aufsichtsbehörde Ihres EU-Mitgliedstaats einzulegen."
+          ]
+        },
+        {
+          "h": "7. Statistik und Cookies",
+          "p": [
+            "Sofern aktiviert, nutzen wir Plausible Analytics, einen Statistikdienst ohne Cookies, der keine personenbezogenen Daten erhebt und Nutzer nicht websiteübergreifend verfolgt. Die Daten sind aggregiert und anonym.",
+            "Die Website nutzt nur technische Speicherung im Browser (gewähltes Design, bereits angesehene Intro-Animation). Details in der Cookie-Richtlinie."
+          ]
+        },
+        {
+          "h": "8. Änderungen",
+          "p": [
+            "Wir können diese Erklärung aktualisieren. Das Datum der letzten Aktualisierung ist oben auf der Seite angegeben."
+          ]
+        }
+      ]
+    },
+    "terms": {
+      "title": "Nutzungsbedingungen",
+      "updated": "8. Oktober 2026",
+      "sections": [
+        {
+          "h": "1. Nutzung der Website",
+          "p": [
+            "Diese Website stellt die Produkte und Leistungen der Tecnolambro S.a.s. di Pasquini Marco & C. (USt-IdNr. IT08639310153) vor. Technische Angaben sind unverbindlich: Verbindlich sind die im schriftlichen Angebot bestätigten Eigenschaften, Größen und Leistungsdaten."
+          ]
+        },
+        {
+          "h": "2. Hochgeladene Zeichnungen und Dateien",
+          "p": [
+            "Die von Ihnen übermittelten Zeichnungen, Modelle und Spezifikationen bleiben Ihr Eigentum, mit allen Rechten des geistigen Eigentums.",
+            "Wir verwenden sie nur, um die Machbarkeit zu prüfen und das Angebot zu erstellen sowie, im Falle einer Bestellung, um das Teil zu fertigen. Wir geben sie nicht an Dritte weiter, ausgenommen an Partner, die in Ihrem Auftrag einen Fertigungsschritt ausführen und zur Vertraulichkeit verpflichtet sind.",
+            "Auf Anfrage löschen wir Dateien, die keinem Auftrag zugeordnet sind. Wenn Sie eine Geheimhaltungsvereinbarung (NDA) benötigen, unterzeichnen wir diese, bevor Sie die Zeichnungen senden."
+          ]
+        },
+        {
+          "h": "3. Rechte an den Inhalten der Website",
+          "p": [
+            "Texte, technische Zeichnungen, Grafiken und die Marke Tecnolambro sind geschützt. Sie dürfen ohne schriftliche Genehmigung nicht kopiert oder weiterverwendet werden, ausgenommen Zitate mit Link."
+          ]
+        },
+        {
+          "h": "4. Haftung",
+          "p": [
+            "Wir achten auf die Richtigkeit der Inhalte, können jedoch nicht garantieren, dass sie stets vollständig oder aktuell sind. Vor einer Bestellung sind das Angebot und die Auftragsbestätigung maßgeblich.",
+            "Vom Konfigurator erzeugte Zeichnungen und 3D-Modelle sind unverbindlich: Die endgültige Zeichnung erhalten Sie mit dem Angebot."
+          ]
+        },
+        {
+          "h": "5. Änderungen",
+          "p": [
+            "Wir können diese Bedingungen ändern. Gültig ist die auf dieser Seite veröffentlichte Fassung mit ihrem Aktualisierungsdatum."
+          ]
+        },
+        {
+          "h": "6. Anwendbares Recht und Kontakt",
+          "p": [
+            "Es gilt italienisches Recht. Gerichtsstand: Pavia, Italien. Fragen: info@tecnolambro.it, +39 375 577 1084.",
+            "Die Lieferbedingungen sind in jedem Angebot angegeben."
+          ]
+        }
+      ]
+    },
+    "cookie": {
+      "title": "Cookie-Richtlinie",
+      "updated": "8. Oktober 2026",
+      "sections": [
+        {
+          "h": "Keine Profiling-Cookies",
+          "p": [
+            "Die Website verwendet weder Profiling-Cookies noch Werbe-Cookies von Drittanbietern. Deshalb zeigen wir kein Einwilligungsbanner an."
+          ]
+        },
+        {
+          "h": "Technische Speicherung",
+          "p": [
+            "Wir speichern einige technische Informationen in Ihrem Browser: das gewählte helle oder dunkle Design und die Liste „Ihre Anfrage“ mit Teilen, Mengen und Notizen (localStorage) sowie die Information, ob die Intro-Animation in dieser Sitzung bereits abgespielt wurde (sessionStorage). Diese Informationen bleiben auf Ihrem Gerät, bis Sie die Anfrage senden oder sie in den Browsereinstellungen löschen."
+          ]
+        },
+        {
+          "h": "Statistik ohne Cookies",
+          "p": [
+            "Sofern aktiviert, zählt Plausible Analytics die Besuche in aggregierter Form, ohne Cookies und ohne dauerhafte Kennungen."
+          ]
+        },
+        {
+          "h": "Angebotsanfrage",
+          "p": [
+            "Die Teileliste wird nach dem Senden geleert. Die im Formular eingegebenen Daten erreichen Tecnolambro erst, wenn Sie auf „Angebotsanfrage senden“ klicken."
+          ]
+        }
+      ]
+    }
+  },
+  "shop": {
+    "title": "Teil konfigurieren",
+    "intro": "Größe bekannt? Stellen Sie das Teil zusammen und sehen Sie es in 3D. Zeichnung vorhanden? Laden Sie sie hoch. Keine Online-Preise: Ihr individuelles Angebot erhalten Sie innerhalb von 24 Stunden.",
+    "breadcrumb": "Konfigurieren",
+    "howTitle": "So funktioniert es",
+    "how": [
+      "Teil wählen oder zusammenstellen",
+      "Menge und Notizen",
+      "Senden: Angebot in 24 Stunden"
+    ],
+    "readyTitle": "Standardprodukte",
+    "readyBody": "Standardgrößen: flexible Hohlleiter, 90°-E- und -H-Bögen und 90°-Twists. Fügen Sie sie Ihrer Anfrage hinzu oder passen Sie sie an.",
+    "composeTitle": "Teil zusammenstellen",
+    "composeBody": "Typ, Größe, Geometrie, Flansche und Oberfläche. Zeichnung und 3D-Modell aktualisieren sich während Ihrer Auswahl.",
+    "filtersLabel": "Filter für Standardprodukte",
+    "family": "Typ",
+    "allFamilies": "Alle",
+    "size": "Größe",
+    "allSizes": "Alle Größen",
+    "freq": "Frequenz (GHz)",
+    "freqPlaceholder": "z. B. 10,5",
+    "results": "{count} Teile",
+    "resultsOne": "1 Teil",
+    "empty": "Keine Teile für diese Filter.",
+    "reset": "Filter zurücksetzen",
+    "band": "Band",
+    "configure": "Anpassen",
+    "configureLabel": "{name} {size} anpassen",
+    "add": "Hinzufügen",
+    "added": "Hinzugefügt",
+    "shipping": "Weltweiter Versand: Versandart und Kosten im Angebot.",
+    "priceNote": "Preise auf Anfrage: Jedes Angebot ist individuell.",
+    "bendsTitle": "Bögen, Twists und Versätze",
+    "bendsBody": "Auf Anfrage oder nach Zeichnung: Fügen Sie die Position Ihrer Anfrage hinzu, beschreiben Sie das Teil in den Notizen und laden Sie die Zeichnung hoch.",
+    "bendsCta": "Teil nach Zeichnung hinzufügen",
+    "showMore": "Alle Größen anzeigen ({count})",
+    "stockNote": "Lagerware: Versand innerhalb von 48 Stunden.",
+    "choiceLabel": "Wie möchten Sie beginnen?",
+    "choiceMeasure": "Größe bekannt? Teil zusammenstellen",
+    "choiceMeasureBody": "Typ, Größe, Geometrie und Flansche: 3D-Modell und bemaßte Zeichnung aktualisieren sich während Ihrer Auswahl.",
+    "choiceMeasureCta": "Konfigurator öffnen",
+    "choiceDrawing": "Zeichnung vorhanden? Hochladen",
+    "choiceDrawingBody": "STEP, IGES, STL, PDF, DWG oder DXF: Unsere Technikabteilung prüft die Zeichnung und wir antworten mit einem Angebot.",
+    "choiceDrawingCta": "Zeichnung hochladen",
+    "typesTitle": "Teiletyp wählen",
+    "search": "Suchen",
+    "searchPlaceholder": "z. B. WR-90, H-Bogen, TLFX-100",
+    "faqTitle": "FAQ",
+    "faqAll": "Alle Fragen",
+    "filtersButton": "Filter",
+    "showMoreCount": "Mehr anzeigen ({count})"
+  },
+  "tables": {
+    "title": "Technische Tabellen",
+    "intro": "Elektrische Eigenschaften und Abmessungen des flexiblen Hohlleiters von Tecnolambro, Größe für Größe.",
+    "tabsLabel": "Technische Tabellen",
+    "tabTwist": "Verdrehbar",
+    "tabSeamless": "Nahtlos",
+    "tabDims": "Abmessungen",
+    "captionTwist": "Flexibler verdrehbarer Hohlleiter: elektrische Eigenschaften",
+    "captionSeamless": "Nahtloser flexibler Hohlleiter: elektrische Eigenschaften",
+    "captionDims": "Abmessungen des flexiblen Hohlleiters, TLFX-Codes",
+    "size": "Größe",
+    "freq": "Frequenz (GHz)",
+    "rl": "Rückflussdämpfung (dB)",
+    "att": "Dämpfung (dB/m)",
+    "power": "Leistung",
+    "cw": "CW (W)",
+    "peak": "Spitze (kW)",
+    "vswr600": "VSWR (600 mm)",
+    "code": "Code",
+    "dimsGroup": "Abmessungen (mm)",
+    "tol": "Toleranz (mm)",
+    "vswrMax": "VSWR max.",
+    "onRequest": "Auf Anfrage",
+    "filterLabel": "Größen für eine Frequenz markieren (GHz)",
+    "filterPlaceholder": "z. B. 10,5",
+    "filterNone": "Keine Größe deckt {freq} GHz ab.",
+    "filterOne": "1 Größe deckt {freq} GHz ab.",
+    "filterMany": "{count} Größen decken {freq} GHz ab.",
+    "covers": "deckt die Frequenz ab",
+    "configure": "Konfigurieren",
+    "configureLabel": "{type} {size} konfigurieren",
+    "download": "Datenblatt herunterladen (PDF)",
+    "downloading": "PDF wird erstellt…",
+    "material": "Werkstoff: Messing {material}",
+    "notes": [
+      "** Einfügedämpfung in dB pro 1 Fuß, versilbert.",
+      "*** VSWR für einen Abschnitt von 2 Fuß.",
+      "Standardlängen L: 300, 600, 900, 1000, 1200 mm.",
+      "* TLFX-400: maximale Länge L 3 Fuß."
+    ],
+    "verify": "Werte sind mit dem technischen Büro von Tecnolambro zu prüfen.",
+    "scrollHint": "Die Tabelle lässt sich seitlich scrollen.",
+    "drawingTitle": "Flexibler Hohlleiter: Abmessungen",
+    "legend": {
+      "AB": "A × B Außenmaß der Wellung",
+      "CD": "C × D Wellungsgrund",
+      "P": "P Wellungsteilung",
+      "rR": "r, R Eckenradien",
+      "L": "L Länge"
+    },
+    "sheetTitle": "Datenblatt",
+    "sheetFooter": "Angebot anfordern: tecnolambro.it/shop · +39 375 577 1084",
+    "indicative": "Richtwerte: Die endgültigen Werte stehen im Angebot."
+  },
+  "configurator": {
+    "typeTitle": "Teiletyp",
+    "sizeTitle": "Größe",
+    "freqLabel": "Arbeitsfrequenz (GHz)",
+    "freqSuggest": "Für {freq} GHz empfehlen wir {size}: jetzt ausgewählt.",
+    "freqNone": "Keine Standardgröße deckt {freq} GHz ab: Vermerken Sie dies in den Notizen, wir prüfen es im Angebot.",
+    "lengthLabel": "Länge L (mm)",
+    "lengthOut": "Sonderlänge: Wir prüfen sie im Angebot.",
+    "flangesTitle": "Flansche",
+    "flangeOther": "Andere (in den Notizen angeben)",
+    "flangeNote": "Liste von der Technikabteilung zu bestätigen.",
+    "summary": "Übersicht",
+    "type": "Typ",
+    "size": "Größe",
+    "band": "Band",
+    "flanges": "Flansche",
+    "electrical": "Elektrische Daten",
+    "rl": "Rückflussdämpfung {len} mm",
+    "vswr600": "VSWR 600 mm",
+    "att": "Dämpfung",
+    "cw": "CW-Leistung",
+    "peak": "Spitzenleistung",
+    "add": "Zur Anfrage hinzufügen",
+    "added": "Zu Ihrer Anfrage hinzugefügt.",
+    "goToRequest": "Zu Ihrer Anfrage",
+    "drawing": "Technische Zeichnung",
+    "view3d": "3D-Ansicht",
+    "downloadPdf": "PDF-Zeichnung",
+    "downloadStl": "STL",
+    "downloadGlb": "GLB",
+    "preparing": "Wird erstellt…",
+    "loading3d": "3D-Modell wird geladen…",
+    "viewerLabel": "3D-Modell von {code}. Ziehen zum Drehen, Mausrad oder zwei Finger zum Zoomen.",
+    "viewerHint": "Ziehen zum Drehen · Mausrad oder zwei Finger zum Zoomen",
+    "error3d": "Das 3D-Modell wurde nicht geladen. Die Zeichnung ist weiterhin verfügbar.",
+    "drawingNote": "Unverbindliche Zeichnung – die endgültige Zeichnung erhalten Sie mit dem Angebot",
+    "drawingDate": "Datum",
+    "drawingScale": "Nicht maßstäblich",
+    "drawingMaterial": "Werkstoff",
+    "drawingTitleBlock": "Tecnolambro Microwave Components",
+    "drawingAlt": "Unverbindliche technische Zeichnung von {code}: Seitenansicht mit den Hauptmaßen und Hohlleiterquerschnitt.",
+    "sideView": "Seitenansicht",
+    "section": "Schnitt",
+    "dimsUnknown": "Maße auf Anfrage",
+    "downloadError": "Die Datei wurde nicht erstellt. Bitte erneut versuchen; Ihre Konfiguration bleibt erhalten.",
+    "types": {
+      "twistable": {
+        "name": "Flexibel verdrehbar",
+        "short": "Biegbar und verdrehbar"
+      },
+      "seamless": {
+        "name": "Flexibel nahtlos",
+        "short": "Ohne Nähte, mit Mantel"
+      },
+      "bend": {
+        "name": "Bogen",
+        "short": "E- oder H-Ebene, beliebiger Winkel"
+      },
+      "twist": {
+        "name": "Twist",
+        "short": "Dreht die Polarisation"
+      },
+      "offset": {
+        "name": "Versatz",
+        "short": "Verbindet versetzte Flansche"
+      },
+      "custom": {
+        "name": "Nach Zeichnung",
+        "short": "STEP, STL oder PDF hochladen"
+      }
+    },
+    "flexName": {
+      "twistable": "flexibel verdrehbar",
+      "seamless": "flexibel nahtlos"
+    },
+    "customRef": "NACH ZEICHNUNG",
+    "sizeUnknown": "Weiß ich nicht",
+    "geometryTitle": "Geometrie",
+    "planeLabel": "Ebene",
+    "plane": {
+      "E": "E-Ebene",
+      "H": "H-Ebene"
+    },
+    "angleLabel": "Winkel",
+    "angleFree": "Freier Winkel (1–180°)",
+    "radiusLabel": "Biegeradius",
+    "radiusStd": "Standardradius",
+    "radiusStdShort": "Std. R",
+    "radiusCustom": "Radius nach Maß",
+    "radiusValue": "Radius R (mm)",
+    "leg1": "Gerader Schenkel L1 (mm)",
+    "leg2": "Gerader Schenkel L2 (mm)",
+    "rotationLabel": "Drehung",
+    "rotationFree": "Freie Drehung (°)",
+    "directionLabel": "Drehrichtung",
+    "dir": {
+      "cw": "im Uhrzeigersinn",
+      "ccw": "gegen den Uhrzeigersinn"
+    },
+    "offsetLabel": "Versatz X (mm)",
+    "offsetLength": "Gesamtlänge L (mm)",
+    "flange1": "Flansch 1",
+    "flange2": "Flansch 2",
+    "finishTitle": "Oberfläche und Behandlung",
+    "finish": "Oberfläche",
+    "finishes": {
+      "raw": "Roh",
+      "bright": "Glanzgebeizt",
+      "painted": "Lackiert"
+    },
+    "paintedHint": "Farbe und Lackart legen wir gemeinsam im Angebot fest.",
+    "treatment": "Behandlung",
+    "treatments": {
+      "none": "Keine",
+      "galvanic": "Galvanisch",
+      "thermal": "Wärmebehandlung"
+    },
+    "treatmentHint": "Wir legen sie gemeinsam im Angebot fest.",
+    "notesTitle": "Notizen",
+    "notesPlaceholder": "z. B. Druckbeaufschlagung, Oberfläche, gewünschter Liefertermin…",
+    "customTitle": "Ihr Teil nach Zeichnung",
+    "customBody": "Beschreiben Sie das Teil und laden Sie die Zeichnung oder das 3D-Modell hoch: Wir prüfen es und senden Ihnen innerhalb von 24 Stunden ein Angebot.",
+    "customDescription": "Teilebeschreibung",
+    "customPlaceholder": "z. B. H-Bogen 45° mit UG-39/U-Flanschen, Ausgang 300 mm",
+    "customDescriptionError": "Beschreiben Sie das Teil in wenigen Worten.",
+    "customFiles": "Zeichnung oder 3D hochladen",
+    "customFilesHint": "STEP/STP, IGES/IGS, STL, PDF, DWG, DXF. Bis 20 MB pro Datei.",
+    "quantity": "Menge",
+    "fileRemove": "{name} entfernen",
+    "fileType": "{name}: Dateityp nicht zulässig.",
+    "fileSize": "{name}: größer als 20 MB.",
+    "stlPreviewLabel": "Vorschau der 3D-Datei",
+    "stlPreviewEmpty": "Laden Sie eine STL-Datei hoch, um sie hier in 3D zu sehen. STEP-, IGES-, PDF- und DWG-Dateien gehen unverändert an die Technikabteilung.",
+    "drawingButton": "Zeichnung",
+    "views": {
+      "iso": "Iso",
+      "front": "Vorne",
+      "side": "Seite"
+    },
+    "viewTools": "Modellansichten",
+    "dims": "Maße",
+    "exploded": "Zerlegt",
+    "resetView": "Ansicht zurücksetzen",
+    "ar": "Im Raum ansehen (AR)",
+    "share": "Link kopieren",
+    "shared": "Link kopiert",
+    "shareEmail": "An Kollegen senden",
+    "shareText": "Hier ist die Konfiguration des Hohlleiterteils:",
+    "stepNote": "Die STEP-Datei senden wir Ihnen zusammen mit dem Angebot.",
+    "customize": "Anpassen",
+    "lengthOther": "Andere Länge",
+    "lengthFreeHint": "{min} bis {max} mm. Andere Längen auf Anfrage: Wir prüfen sie im Angebot.",
+    "rlNote": "Wert für {len} mm",
+    "stepClose": "Schließen",
+    "stepEdit": "Ändern",
+    "stepDone": "Fertig",
+    "notesNone": "Keine Notizen",
+    "addedShort": "Hinzugefügt",
+    "miniPreview": "Zurück zur Teilevorschau",
+    "addShort": "Hinzufügen",
+    "freqPlaceholder": "z. B. {value}",
+    "otherRef": "ANDERE"
+  },
+  "request": {
+    "title": "Ihre Anfrage",
+    "intro": "Prüfen Sie Ihre Teile, ergänzen Sie Mengen, Notizen und Dateien und senden Sie dann ab: Wir antworten mit einem Angebot innerhalb von 24 Arbeitsstunden.",
+    "open": "Ihre Anfrage",
+    "openWithCount": "Ihre Anfrage, {count} Teile",
+    "openWithOne": "Ihre Anfrage, 1 Teil",
+    "empty": "Ihre Anfrage ist leer.",
+    "emptyBody": "Konfigurieren Sie ein Teil oder wählen Sie ein Standardprodukt.",
+    "emptyCta": "Teil konfigurieren",
+    "itemsTitle": "Teile",
+    "quantity": "Menge",
+    "quantityFor": "Menge von {code}",
+    "decrease": "Menge von {code} verringern",
+    "increase": "Menge von {code} erhöhen",
+    "notes": "Notizen",
+    "notesFor": "Notizen zu {code}",
+    "remove": "{code} entfernen",
+    "customItem": "Teil nach Zeichnung",
+    "customItemCode": "NACH ZEICHNUNG",
+    "addCustom": "Teil nach Zeichnung hinzufügen",
+    "addMore": "Teil hinzufügen",
+    "filesTitle": "Weitere Dateien",
+    "filesHint": "Zeichnungen oder 3D-Modelle für die gesamte Anfrage: STEP/STP, IGES/IGS, STL, PDF, DWG, DXF. Je bis 20 MB.",
+    "filesButton": "Dateien wählen",
+    "filesDrop": "oder hierher ziehen",
+    "fileRemove": "{name} entfernen",
+    "fileType": "{name}: Dateityp nicht zulässig.",
+    "fileSize": "{name}: größer als 20 MB.",
+    "generatedNote": "Wir fügen Ihrer Anfrage die PDF-Zeichnung und das 3D-Modell jedes konfigurierten Teils bei.",
+    "customerTitle": "Ihre Daten",
+    "company": "Unternehmen",
+    "name": "Vor- und Nachname",
+    "email": "E-Mail",
+    "phone": "Telefon",
+    "country": "Land",
+    "vat": "USt-IdNr.",
+    "optional": "optional",
+    "required": "Pflichtfeld",
+    "privacy": "Ich habe die <link>Datenschutzerklärung</link> gelesen und willige in die Verarbeitung meiner Daten zum Erhalt des Angebots ein.",
+    "submit": "Angebotsanfrage senden",
+    "sending": "Wird gesendet…",
+    "uploading": "Dateien werden hochgeladen…",
+    "errors": {
+      "items": "Fügen Sie der Anfrage mindestens ein Teil hinzu.",
+      "quantity": "Menge von mindestens 1 für {code}.",
+      "customNotes": "Beschreiben Sie das Teil nach Zeichnung in den Notizen.",
+      "company": "Geben Sie den Firmennamen ein.",
+      "name": "Geben Sie Vor- und Nachnamen ein.",
+      "email": "Geben Sie eine gültige E-Mail-Adresse ein, z. B. name@firma.de.",
+      "country": "Geben Sie das Land an.",
+      "privacy": "Wir benötigen Ihre Einwilligung, um zu antworten.",
+      "itemsOrFiles": "Fügen Sie mindestens ein Teil oder eine Datei hinzu."
+    },
+    "errorSummaryOne": "Prüfen Sie das markierte Feld.",
+    "errorSummaryOther": "Prüfen Sie die {count} markierten Felder.",
+    "sendError": "Ihre Anfrage wurde nicht gesendet: {reason}. Ihre Daten bleiben erhalten: Versuchen Sie es gleich noch einmal oder schreiben Sie an <mail>info@tecnolambro.it</mail>.",
+    "reasons": {
+      "network": "keine Verbindung",
+      "tooLarge": "die Dateien sind zu groß für den Versand über die Website: Senden Sie sie unter Angabe Ihrer Anfrage an info@tecnolambro.it",
+      "notConfigured": "der E-Mail-Dienst ist noch nicht eingerichtet",
+      "rateLimited": "zu viele Anfragen in kurzer Zeit",
+      "invalid": "einige Daten sind ungültig",
+      "server": "Serverfehler"
+    },
+    "shipping": "Weltweiter Versand: Versandart und Kosten im Angebot.",
+    "priceNote": "Preise auf Anfrage: Jedes Angebot ist individuell.",
+    "customBody": "Beschreiben Sie das Teil und laden Sie die Zeichnung oder das 3D-Modell hoch: Wir fügen es Ihrer Anfrage hinzu.",
+    "customNotes": "Teilebeschreibung",
+    "countryPlaceholder": "Eingeben oder aus der Liste wählen",
+    "countryHint": "Lieferland: Wir benötigen es für Versand und Rechnungsstellung.",
+    "vatEu": "USt-IdNr. (Reverse-Charge-Rechnung)",
+    "summaryTitle": "Übersicht",
+    "summaryCount": "{count} Teile",
+    "summaryOne": "1 Teil",
+    "preparing": "Zeichnungen und 3D-Modelle werden erstellt…"
+  },
+  "requestSent": {
+    "title": "Anfrage erhalten.",
+    "body": "Wir antworten mit einem Angebot innerhalb von 24 Arbeitsstunden.",
+    "number": "Anfragenummer",
+    "copy": "Wir haben Ihnen eine Bestätigung mit der Übersicht und den Zeichnungen der konfigurierten Teile per E-Mail gesendet.",
+    "nextTitle": "Wie es weitergeht",
+    "next": [
+      {
+        "title": "Angebot in 24 Stunden",
+        "body": "Das technische Büro prüft Teile und Dateien und sendet Ihnen ein individuelles Angebot mit Lieferzeit und Versandart."
+      },
+      {
+        "title": "Endgültige Zeichnung",
+        "body": "Die endgültige Zeichnung der konfigurierten Teile erhalten Sie mit dem Angebot."
+      },
+      {
+        "title": "Auftragsbestätigung",
+        "body": "Wenn das Angebot für Sie passt, antworten Sie auf die E-Mail und wir starten die Fertigung."
+      }
+    ],
+    "back": "Zurück zum Konfigurator",
+    "missing": "Keine aktuelle Anfrage in dieser Sitzung.",
+    "downloadPdf": "PDF-Übersicht herunterladen",
+    "pdfTitle": "Übersicht der Anfrage",
+    "date": "Datum",
+    "customer": "Kunde",
+    "items": "Teile",
+    "qty": "Menge",
+    "whatsapp": "Schreiben Sie uns auf WhatsApp"
+  },
+  "trust": {
+    "label": "Warum Tecnolambro",
+    "since": "Seit {year}",
+    "ownProduction": "Eigene Fertigung",
+    "tested": "100% geprüft",
+    "quote24": "Angebot in 24 Stunden",
+    "worldwide": "Weltweiter Versand"
+  },
+  "owner": {
+    "title": "Wer Tecnolambro leitet",
+    "name": "Marco Pasquini",
+    "role": "Inhaber",
+    "body": "Marco Pasquini leitet Tecnolambro, das seit 1987 eigene Hohlleiter entwickelt, fertigt und prüft. Das Unternehmen arbeitet mit den größten Telekommunikationsunternehmen zusammen und prüft 100% der Teile vor dem Versand.",
+    "bodyShort": "Seit 1987 entwickelt, fertigt und prüft Tecnolambro eigene Hohlleiter, in Zusammenarbeit mit den größten Telekommunikationsunternehmen.",
+    "photoAlt": "Marco Pasquini, Inhaber von Tecnolambro",
+    "more": "Über das Unternehmen"
+  },
+  "workshop": {
+    "title": "Die Werkstatt",
+    "body": "Hier in Miradolo Terme entwickeln, fertigen und prüfen wir unsere Komponenten.",
+    "areas": {
+      "lavorazione": "Bearbeitung",
+      "collaudo": "Prüfung",
+      "magazzino": "Lager"
+    },
+    "generic": "Werkstatt",
+    "alt": "Werkstatt von Tecnolambro in Miradolo Terme: {what}, Foto {n}"
+  },
+  "gallery": {
+    "title": "Fotos: {name}",
+    "open": "Foto im Vollbild öffnen",
+    "close": "Schließen",
+    "prev": "Vorheriges Foto",
+    "next": "Nächstes Foto",
+    "counter": "{n} von {total}",
+    "alt": "{name}, Foto {n}"
+  },
+  "wrPage": {
+    "title": "Flexibler Hohlleiter {wr}",
+    "metaTitle": "Flexibler Hohlleiter {wr} {band} GHz | Tecnolambro",
+    "metaDescription": "Flexibler Hohlleiter {wr} ({iec}, {wg}) für {band} GHz, verdrehbar und nahtlos: Abmessungen, elektrische Daten, Flansche. Angebot in 24 Stunden.",
+    "intro": "Der flexible Hohlleiter {wr} ({iec} · {wg}) deckt {band} GHz ab. Wir fertigen ihn verdrehbar und nahtlos, mit den Flanschen und der Länge, die Sie benötigen.",
+    "category": "Flexibler Hohlleiter",
+    "configureTwistable": "Verdrehbar konfigurieren",
+    "configureSeamless": "Nahtlos konfigurieren",
+    "quote": "Angebot anfordern",
+    "specsTitle": "Daten der Größe",
+    "band": "Arbeitsband",
+    "designations": "Bezeichnungen",
+    "inner": "Innenquerschnitt a × b",
+    "innerNote": "Innenquerschnitt a × b: EIA-Standardwerte. Die übrigen Maße stammen aus der Maßtabelle von Tecnolambro.",
+    "code": "Code",
+    "outer": "Außenmaß A × B",
+    "root": "Wellungsgrund C × D",
+    "pitch": "Teilung P",
+    "tol": "Toleranz",
+    "length": "Standardlänge",
+    "material": "Werkstoff",
+    "brass": "Messing",
+    "electricalTitle": "Elektrische Daten",
+    "twistable": "Verdrehbar",
+    "seamless": "Nahtlos",
+    "rl": "Rückflussdämpfung {len} mm",
+    "att": "Dämpfung",
+    "cw": "CW-Leistung",
+    "peak": "Spitzenleistung",
+    "vswr600": "VSWR 600 mm",
+    "onRequest": "Elektrische Daten auf Anfrage.",
+    "tablesLink": "Alle technischen Tabellen",
+    "flangesTitle": "Flansche",
+    "flangesBody": "Die gängigsten IEC-Flansche für diese Größe. Andere Typen auf Anfrage: Vermerken Sie diese in den Notizen.",
+    "ctaTitle": "Benötigen Sie {wr}?",
+    "ctaBody": "Senden Sie uns Größe, Länge und Flansche oder Ihre Zeichnung: Das Angebot erhalten Sie innerhalb von 24 Arbeitsstunden.",
+    "neighbours": "Benachbarte Größen",
+    "lower": "Niedrigere Frequenz",
+    "higher": "Höhere Frequenz",
+    "indexTitle": "Flexibler Hohlleiter nach Größe",
+    "indexBody": "Eine Seite pro Größe: Band, Abmessungen, elektrische Daten und Flansche.",
+    "indicative": "Richtwerte: Die endgültigen Werte stehen im Angebot."
+  },
+  "applications": {
+    "title": "Wo unsere Hohlleiter arbeiten",
+    "body": "Flexible und starre Hohlleiter verbinden Antennen, Verstärker und Empfänger überall dort, wo eine verlustarme Verbindung gefragt ist.",
+    "items": {
+      "radar": {
+        "title": "Radar",
+        "body": "Verbindungen zwischen Sender, Drehkupplung und Antenne, auch dort, wo sich die Leitung biegen oder Vibrationen aufnehmen muss."
+      },
+      "telecom": {
+        "title": "Telekommunikation und Richtfunk",
+        "body": "Strecken zwischen Geräten und Antennen in Mikrowellen-Richtfunkstrecken, mit Flanschen und Längen nach Maß."
+      },
+      "satcom": {
+        "title": "Satellitenkommunikation",
+        "body": "Verbindungen in Bodenstationen, zwischen Verstärkern, Feeds und Hornstrahlern."
+      },
+      "broadcast": {
+        "title": "Rundfunk",
+        "body": "Übertragungsleitungen für Video- und Audioverbindungen im Mikrowellenbereich."
+      },
+      "research": {
+        "title": "Forschung und Labore",
+        "body": "Einzelteile und Sonderkonfigurationen für Messplätze und Prototypen."
+      },
+      "industry": {
+        "title": "Industrie",
+        "body": "Industrielle Mikrowellenanwendungen, die robuste Verbindungen nach Maß erfordern."
+      }
+    }
+  }
+}

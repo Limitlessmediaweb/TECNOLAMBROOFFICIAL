@@ -962,7 +962,9 @@
     "notesNone": "No notes",
     "addedShort": "Added",
     "miniPreview": "Back to the part preview",
-    "addShort": "Add"
+    "addShort": "Add",
+    "freqPlaceholder": "E.g. {value}",
+    "otherRef": "OTHER"
   },
   "request": {
     "title": "Your request",

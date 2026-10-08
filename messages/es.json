@@ -1,0 +1,1185 @@
+{
+  "meta": {
+    "siteName": "Tecnolambro Microwave Components",
+    "home": {
+      "title": "Guías de ondas flexibles y componentes | Tecnolambro",
+      "description": "Guía de ondas flexible torsionable y sin costura, codos, torsiones y desplazamientos. Diseño, fabricación y prueba desde 1987. Presupuesto en 24 horas."
+    },
+    "products": {
+      "title": "Productos en guía de ondas flexible | Tecnolambro",
+      "description": "Guía de ondas flexible torsionable y sin costura de WR-22 a WR-284, codos, torsiones y desplazamientos a petición. Tablas técnicas y presupuesto en 24 h."
+    },
+    "family": {
+      "title": "{name} | Tecnolambro Microwave Components"
+    },
+    "custom": {
+      "title": "Componentes de microondas según plano | Tecnolambro",
+      "description": "Envíe su plano en PDF, DWG, DXF, STEP, IGES o STL: diseñamos, fabricamos y probamos la pieza. Presupuesto en 24 horas."
+    },
+    "about": {
+      "title": "Desde 1987 en Miradolo Terme | Tecnolambro",
+      "description": "Diseñamos, fabricamos y probamos guías de ondas desde 1987, en colaboración con las mayores empresas de telecomunicaciones. Miradolo Terme, Italia."
+    },
+    "quality": {
+      "title": "Calidad y certificaciones | Tecnolambro",
+      "description": "Prueba final del 100 % de las piezas antes del envío, tratamientos con proveedores históricos y seleccionados. Certificaciones y procedimientos de calidad."
+    },
+    "contact": {
+      "title": "Contacto y presupuestos | Tecnolambro",
+      "description": "Solicite un presupuesto de guías de ondas y componentes de microondas: respuesta en 24 horas. +39 375 577 1084, info@tecnolambro.it, Miradolo Terme."
+    },
+    "faq": {
+      "title": "Preguntas frecuentes | Tecnolambro",
+      "description": "Tamaños disponibles, fabricación según plano, formatos de archivo, plazos, envíos a todo el mundo, facturación con NIF-IVA de la UE, pruebas."
+    },
+    "privacy": {
+      "title": "Política de privacidad | Tecnolambro",
+      "description": "Cómo trata Tecnolambro S.a.s. los datos personales recogidos por el sitio web y el formulario de presupuesto, según el Reglamento (UE) 2016/679."
+    },
+    "terms": {
+      "title": "Condiciones de uso | Tecnolambro",
+      "description": "Condiciones de uso del sitio web Tecnolambro Microwave Components y normas sobre los planos cargados con la solicitud de presupuesto."
+    },
+    "cookie": {
+      "title": "Política de cookies | Tecnolambro",
+      "description": "El sitio web de Tecnolambro usa solo almacenamiento técnico y estadísticas sin cookies. Ninguna cookie de elaboración de perfiles."
+    },
+    "notFound": {
+      "title": "Señal perdida | Tecnolambro",
+      "description": "La página que busca no existe o se ha trasladado."
+    },
+    "shop": {
+      "title": "Configure su pieza en guía de ondas | Tecnolambro",
+      "description": "Configure su guía de ondas flexible: tamaño, longitud y bridas, con plano acotado y modelo 3D. Precios a petición, presupuesto en 24 horas."
+    },
+    "tables": {
+      "title": "Tablas técnicas de guía de ondas flexible | Tecnolambro",
+      "description": "Pérdida de retorno, VSWR, atenuación, potencia y dimensiones de la guía de ondas flexible torsionable y sin costura, de WR-22 a WR-284."
+    },
+    "request": {
+      "title": "Su solicitud de presupuesto | Tecnolambro",
+      "description": "Piezas, cantidades, notas y archivos de su solicitud de presupuesto."
+    },
+    "requestSent": {
+      "title": "Solicitud enviada | Tecnolambro",
+      "description": "Confirmación de la solicitud de presupuesto."
+    }
+  },
+  "nav": {
+    "label": "Navegación principal",
+    "products": "Productos",
+    "custom": "A medida",
+    "about": "Empresa",
+    "quality": "Calidad",
+    "faq": "FAQ",
+    "contact": "Contacto",
+    "quote": "Solicitar presupuesto",
+    "quoteShort": "Presupuesto",
+    "shop": "Configure su pieza",
+    "menu": "Abrir el menú",
+    "close": "Cerrar el menú",
+    "skip": "Ir al contenido",
+    "language": "Idioma",
+    "switchTo": "Italiano",
+    "switchToLabel": "Passa alla versione italiana",
+    "theme": "Cambiar tema",
+    "themeDark": "Tema oscuro",
+    "themeLight": "Tema claro",
+    "home": "Tecnolambro, inicio",
+    "homeShort": "inicio",
+    "menuLabel": "Menú",
+    "shopShort": "Configurar",
+    "tables": "Tablas técnicas",
+    "call": "Llamar"
+  },
+  "common": {
+    "demoBadge": "Versión demo",
+    "demoData": "Datos de demostración",
+    "demoDataNote": "Valores de ejemplo, que se sustituirán por los datos técnicos de Tecnolambro.",
+    "todo": "POR COMPLETAR",
+    "breadcrumb": "Ruta de navegación",
+    "home": "Inicio",
+    "opensNewTab": "(se abre en una pestaña nueva)",
+    "photoPlaceholder": "Foto real del taller",
+    "draftNote": "Borrador que debe revisarse antes del lanzamiento.",
+    "updated": "Última actualización: {date}",
+    "readMore": "Más información",
+    "allQuestions": "Todas las preguntas",
+    "pauseMotion": "Pausar la animación",
+    "playMotion": "Reanudar la animación",
+    "hoursTitle": "Horario",
+    "hoursWeek": "Lunes–viernes: 8:00–12:00 y 13:30–17:30",
+    "hoursWeekend": "Sábado y domingo: cerrado",
+    "missing": "falta: {what}",
+    "whatsappLabel": "Escríbanos por WhatsApp"
+  },
+  "intro": {
+    "skip": "Saltar",
+    "tagline": "MICROWAVE COMPONENTS · DESDE 1987",
+    "label": "Animación de introducción"
+  },
+  "hero": {
+    "titleA": "Guiamos las microondas",
+    "sub": "Diseñamos, fabricamos y probamos guía de ondas flexible torsionable y sin costura, codos, torsiones y desplazamientos.",
+    "legendTitle": "Leyenda del campo",
+    "legendMode": "Modo",
+    "legendGuide": "Guía",
+    "legendBand": "Banda",
+    "fieldLabel": "Animación del campo eléctrico TE10 en una guía de ondas WR-90",
+    "since": "Desde 1987"
+  },
+  "marquee": {
+    "label": "Tamaños estándar de guía de ondas y bandas de trabajo"
+  },
+  "company": {
+    "title": "Del plano a la pieza probada.",
+    "body": "Tecnolambro nace en 1987. Diseñamos, fabricamos y probamos nuestros propios componentes, en colaboración con las mayores empresas de telecomunicaciones.",
+    "factFounded": "Año de fundación",
+    "factYears": "Años fabricando componentes de microondas",
+    "factFlexValue": "100 %",
+    "factFlex": "Piezas probadas antes del envío",
+    "factReplyValue": "24 h",
+    "factReply": "Presupuesto en 24 horas",
+    "cta": "Conozca la empresa"
+  },
+  "productsSection": {
+    "title": "Cada tramo del recorrido de la señal.",
+    "body": "Guía de ondas flexible torsionable y sin costura de WR-22 a WR-284. Codos, torsiones y desplazamientos a petición o según plano.",
+    "cta": "Ver todos los productos",
+    "open": "Abrir {name}"
+  },
+  "products": {
+    "items": {
+      "twistable": {
+        "name": "Guía de ondas flexible torsionable",
+        "short": "Se dobla y se tuerce: une bridas desalineadas o giradas. De WR-22 a WR-284.",
+        "description": "Guía de ondas flexible y torsionable de fabricación propia, en latón. Se dobla en los planos E y H y se tuerce sobre su propio eje: une radio y antena cuando las bridas no están alineadas o están giradas, y absorbe vibraciones y dilataciones térmicas.",
+        "applications": [
+          "Conexión radio-antena en radioenlaces",
+          "Instalaciones sometidas a vibraciones",
+          "Corrección de desalineaciones y giros entre bridas"
+        ]
+      },
+      "seamless": {
+        "name": "Guía de ondas flexible sin costura",
+        "short": "Sin costuras, con potencias CW de hasta 10 kW. De WR-22 a WR-284.",
+        "description": "Guía de ondas flexible sin costura, es decir, sin soldaduras a lo largo del cuerpo, de fabricación propia. Para cada tamaño, de WR-22 a WR-284, encontrará en la tabla VSWR, atenuación y potencia.",
+        "applications": [
+          "Radioenlaces y enlaces por satélite",
+          "Líneas de alta potencia",
+          "Bancos de medida y laboratorios"
+        ]
+      },
+      "bends": {
+        "name": "Codos",
+        "short": "Codos en plano E y H, a 90° o con el ángulo que necesite.",
+        "description": "Codos en guía de ondas rígida en plano E y en plano H, diseñados, fabricados y probados en nuestro laboratorio. A 90° en todos los tamaños, o con ángulo, radio y tramos rectos a medida.",
+        "applications": [
+          "Codos en plano E",
+          "Codos en plano H",
+          "Ángulo, radio y tramos rectos a medida"
+        ]
+      },
+      "pending": {
+        "name": "[FAMILIA POR DEFINIR]",
+        "short": "[POR COMPLETAR]",
+        "description": "[POR COMPLETAR: textos y datos de la familia facilitados por el titular]",
+        "applications": []
+      },
+      "twists": {
+        "name": "Torsiones (twist)",
+        "short": "Giran la polarización: 90° de serie, 45° o a medida.",
+        "description": "Torsiones (twist) en guía de ondas rígida para girar la polarización: a 90° en todos los tamaños, a 45° o con el giro que necesite, en sentido horario o antihorario.",
+        "applications": [
+          "Giro de la polarización",
+          "90°, 45° o a medida",
+          "Sentido horario o antihorario"
+        ]
+      },
+      "offsets": {
+        "name": "Desplazamientos (offset)",
+        "short": "Unen bridas desplazadas, en plano E o H.",
+        "description": "Desplazamientos (offset) en guía de ondas rígida para unir bridas desplazadas, en plano E o en plano H, con desplazamiento y longitud a medida.",
+        "applications": [
+          "Bridas desplazadas en plano E",
+          "Bridas desplazadas en plano H",
+          "Desplazamiento y longitud a medida"
+        ]
+      }
+    },
+    "page": {
+      "title": "Productos en guía de ondas",
+      "intro": "Guía de ondas flexible torsionable y sin costura, codos, torsiones y desplazamientos. Tamaños estándar según nuestras tablas o piezas fabricadas según su plano.",
+      "drawingLabel": "Plano en despiece: {name}",
+      "drawingCaption": "Desplácese para separar las piezas.",
+      "partFlange": "Brida",
+      "partBody": "Cuerpo",
+      "partGasket": "Junta",
+      "tableTitle": "Datos técnicos",
+      "tablesLink": "Todas las tablas técnicas",
+      "onRequestTitle": "A petición o según plano",
+      "onRequestBody": "Indíquenos el tipo de pieza, tamaño, ángulo o desplazamiento y bridas, o cargue su plano: le enviamos el presupuesto en 24 horas.",
+      "applicationsTitle": "Dónde se utiliza",
+      "quoteTitle": "¿Necesita otro tamaño o versión?",
+      "quoteBody": "Indíquenos tamaño, longitud, bridas y cantidad: presupuesto en 24 horas. Precios a petición: cada presupuesto es personalizado.",
+      "shopTitle": "Configure su pieza",
+      "shopBody": "Tamaño, longitud y bridas: plano acotado y modelo 3D al instante, presupuesto en 24 horas.",
+      "others": "Otras familias",
+      "demoTitle": "La pieza en 3D",
+      "demoBody": "La pieza estándar en WR-90: gírela, consulte las cotas y el plano y, después, personalícela en el configurador.",
+      "composeBends": "Configure su codo",
+      "composeTwists": "Configure su torsión",
+      "composeOffsets": "Configure su desplazamiento",
+      "requestFamily": "Solicitar {name}"
+    }
+  },
+  "bandFinder": {
+    "title": "Díganos la frecuencia y le indicamos la guía de ondas adecuada.",
+    "body": "Mueva el cursor hasta su frecuencia de trabajo: resaltamos la guía de ondas que la cubre.",
+    "label": "Frecuencia de trabajo",
+    "unit": "GHz",
+    "result": "A {freq} GHz la guía de ondas adecuada es",
+    "resultMany": "A {freq} GHz puede utilizar",
+    "or": "o",
+    "none": "Ningún tamaño estándar cubre esta frecuencia: podemos fabricarla según plano.",
+    "cutoff": "Corte TE10",
+    "inside": "Interior",
+    "tableCaption": "Bandas de trabajo de las guías de ondas rectangulares estándar",
+    "colSize": "Tamaño",
+    "colIec": "IEC",
+    "colBand": "Banda",
+    "colInside": "Interior a × b (mm)",
+    "cta": "Configurar este tamaño",
+    "ctaCustom": "Solicitar una pieza según plano",
+    "decrease": "Reducir la frecuencia",
+    "increase": "Aumentar la frecuencia",
+    "standardNote": "Bandas según las tablas de Tecnolambro; dimensiones interiores a × b según el estándar EIA.",
+    "colWg": "WG"
+  },
+  "process": {
+    "title": "Cómo trabajamos.",
+    "steps": [
+      {
+        "title": "Diseño",
+        "body": "De su plano o de una especificación al proyecto de detalle del componente."
+      },
+      {
+        "title": "Producción",
+        "body": "Corte, fresado, torneado, montaje y unión: guía de ondas flexible torsionable y sin costura, codos, torsiones y desplazamientos de fabricación propia."
+      },
+      {
+        "title": "Tratamientos",
+        "body": "Abrillantado, pintura, tratamientos térmicos y galvánicos, con proveedores históricos y seleccionados, conocidos por su fiabilidad y profesionalidad."
+      },
+      {
+        "title": "Prueba final al 100 %",
+        "body": "Probamos el 100 % de las piezas antes del envío."
+      }
+    ]
+  },
+  "history": {
+    "title": "Guías de ondas desde 1987.",
+    "titleShort": "Historia",
+    "items": [
+      {
+        "label": "1987",
+        "body": "Nace Tecnolambro, en colaboración con las mayores empresas de telecomunicaciones."
+      },
+      {
+        "label": "Producción",
+        "body": "Sistema de producción propio, con almacén de materias primas y de piezas terminadas."
+      },
+      {
+        "label": "Tratamientos",
+        "body": "Abrillantado, pintura, tratamientos térmicos y galvánicos con proveedores históricos y seleccionados."
+      },
+      {
+        "label": "Pruebas",
+        "body": "Prueba final del 100 % de las piezas antes del envío."
+      },
+      {
+        "label": "Hoy",
+        "body": "Componentes estándar y según plano para clientes en Italia, en Europa y en todo el mundo."
+      }
+    ]
+  },
+  "qualitySection": {
+    "title": "Calidad verificada pieza a pieza.",
+    "body": "Probamos el 100 % de las piezas antes del envío.",
+    "certTitle": "Certificaciones",
+    "controlsTitle": "Controles",
+    "controls": [
+      "Prueba final al 100 %",
+      "Control eléctrico y dimensional",
+      "Tratamientos con proveedores históricos y seleccionados"
+    ],
+    "cta": "Calidad y controles",
+    "certBody": "ISO 9001:2015 para la calidad e ISO 14001:2015 para el medio ambiente, certificadas por Perry Johnson Registrars con acreditación ACCREDIA."
+  },
+  "shopSection": {
+    "title": "Configure la pieza y solicite el presupuesto.",
+    "body": "Elija tipo, tamaño, longitud y bridas: vea al instante el plano acotado y el modelo 3D. Precios a petición: cada presupuesto es personalizado.",
+    "points": [
+      "Presupuesto en 24 horas",
+      "Plano PDF y modelo 3D descargables",
+      "Envíos a todo el mundo"
+    ],
+    "cta": "Configure su pieza"
+  },
+  "faqSection": {
+    "title": "Preguntas frecuentes",
+    "body": "Las respuestas a las preguntas que más nos hacen los departamentos técnicos y de compras."
+  },
+  "faq": {
+    "items": {
+      "sizes": {
+        "q": "¿Qué tamaños de guía de ondas fabrican?",
+        "a": "Fabricamos {families}. La guía de ondas flexible torsionable y sin costura está disponible en {count} tamaños: {sizes}. Los datos eléctricos y las dimensiones figuran en las tablas técnicas; para su frecuencia exacta, utilice la búsqueda por frecuencia."
+      },
+      "custom": {
+        "q": "¿Fabrican componentes según plano?",
+        "a": "Sí. Diseñamos, fabricamos y probamos piezas individuales y series cortas a partir de su plano o de una especificación."
+      },
+      "files": {
+        "q": "¿En qué formato puedo enviar el plano?",
+        "a": "PDF, DWG, DXF, STEP, IGES o STL, hasta 20 MB por archivo, directamente desde la solicitud de presupuesto. Un PDF acotado con tolerancias y acabado basta para una primera oferta; el modelo 3D ayuda con las geometrías complejas."
+      },
+      "leadTime": {
+        "q": "¿Cuáles son los plazos de entrega?",
+        "a": "El material disponible en almacén sale en 48 horas. Para las piezas a medida o según plano, fijamos el plazo de entrega en el presupuesto."
+      },
+      "moq": {
+        "q": "¿Hay una cantidad mínima de pedido?",
+        "a": "No: también fabricamos piezas individuales. Las cantidades y los precios figuran en el presupuesto."
+      },
+      "shippingEu": {
+        "q": "¿Envían a toda la Unión Europea?",
+        "a": "Sí. El método de envío, las condiciones de entrega y los documentos aduaneros se indican en el presupuesto."
+      },
+      "shippingWorld": {
+        "q": "¿Envían también fuera de la Unión Europea?",
+        "a": "Sí, trabajamos con clientes de todo el mundo. El método de envío, las condiciones de entrega y los documentos aduaneros se indican en el presupuesto. Las entregas de exportación están exentas de IVA."
+      },
+      "invoicing": {
+        "q": "¿Cómo facturan a una empresa de la UE con NIF-IVA?",
+        "a": "Con un NIF-IVA intracomunitario válido en el sistema VIES facturamos sin IVA italiano: el cliente liquida el impuesto mediante la inversión del sujeto pasivo. Indique su NIF-IVA en el formulario de presupuesto."
+      },
+      "materials": {
+        "q": "¿Qué materiales y acabados utilizan?",
+        "a": "La guía de ondas flexible es de latón OT 80 UNI 4897. Acabados y tratamientos: abrillantado, pintura, tratamientos térmicos y galvánicos."
+      },
+      "testing": {
+        "q": "¿Se prueban las piezas?",
+        "a": "Sí: probamos el 100 % de las piezas antes del envío, con control eléctrico y dimensional de cada pieza."
+      },
+      "flexTwist": {
+        "q": "¿Qué diferencia hay entre la guía de ondas flexible torsionable y la sin costura?",
+        "a": "La torsionable se dobla en los planos E y H y se tuerce sobre su propio eje: se utiliza cuando las dos bridas también están giradas entre sí. La sin costura no tiene soldaduras a lo largo del cuerpo. VSWR, atenuación y potencia de ambas versiones figuran en las tablas técnicas. Fabricamos las dos."
+      },
+      "shopVsQuote": {
+        "q": "¿Puedo comprar en línea?",
+        "a": "No: cada pedido parte de una solicitud de presupuesto, porque los precios son personalizados. Configure la pieza o elíjala entre los productos estándar, añada cantidad y notas y envíe la solicitud: respondemos en 24 horas."
+      },
+      "drawing3d": {
+        "q": "¿Facilitan el plano 3D?",
+        "a": "Sí. Desde el configurador puede descargar al instante el plano PDF y el modelo 3D en STL y GLB; el archivo STEP se lo enviamos junto con el presupuesto."
+      },
+      "clientDrawing": {
+        "q": "¿Trabajan según el plano del cliente?",
+        "a": "Sí. Cargue STEP, IGES, STL, PDF, DWG o DXF en la solicitud de presupuesto: nuestra oficina técnica lo estudia y le responde en 24 horas laborables."
+      },
+      "hours": {
+        "q": "¿Cuál es el horario de oficina?",
+        "a": "De lunes a viernes, de 8:00 a 12:00 y de 13:30 a 17:30 (CET). Sábados y domingos, cerrado. Las solicitudes desde el sitio web se reciben también fuera del horario."
+      }
+    }
+  },
+  "quote": {
+    "title": "Envíenos su plano.",
+    "body": "Un par de líneas y, si lo tiene, el archivo: le respondemos con el presupuesto en 24 horas laborables.",
+    "formLabel": "Solicitud de presupuesto",
+    "required": "obligatorio",
+    "optional": "opcional",
+    "name": "Nombre y apellidos",
+    "email": "Correo electrónico",
+    "phone": "Teléfono",
+    "message": "Qué necesita",
+    "messageHint": "Tipo de pieza, tamaño o frecuencia, bridas, cantidad, entrega requerida.",
+    "file": "Adjuntar plano o 3D",
+    "fileHint": "STEP/STP, IGES/IGS, STL, PDF, DWG, DXF. Admite varios archivos, hasta 20 MB cada uno.",
+    "privacy": "He leído la <link>política de privacidad</link> y acepto el tratamiento de mis datos para recibir el presupuesto.",
+    "submit": "Enviar solicitud",
+    "sending": "Enviando…",
+    "errorSend": "No se ha podido enviar: {reason}. Sus datos siguen en el formulario: inténtelo de nuevo o escríbanos a <mail>info@tecnolambro.it</mail>.",
+    "errors": {
+      "name": "Introduzca su nombre y apellidos.",
+      "email": "Introduzca un correo electrónico válido, p. ej., nombre@empresa.com.",
+      "message": "Describa lo que necesita en al menos 10 caracteres.",
+      "fileType": "formato no admitido.",
+      "fileSize": "supera los 20 MB.",
+      "privacy": "Necesitamos su consentimiento para responder a su solicitud."
+    },
+    "prefilled": "Tamaño {size} añadido al mensaje desde la búsqueda por frecuencia.",
+    "contactTitle": "Contacto directo",
+    "email_label": "Correo electrónico",
+    "phone_label": "Móvil",
+    "operational": "Sede operativa",
+    "legal": "Domicilio social",
+    "errorSummaryOne": "Revise el campo señalado.",
+    "errorSummaryOther": "Revise los {count} campos señalados.",
+    "phone2_label": "Teléfono fijo",
+    "pec_label": "Correo electrónico certificado (PEC)",
+    "fileRemove": "Quitar {name}",
+    "haveSize": "¿Ya conoce el tamaño? Configure la pieza →",
+    "itemCode": "SEGÚN PLANO",
+    "prefillLine": "Tamaño {size} · {freq} GHz",
+    "whatsapp": "Escríbanos por WhatsApp",
+    "reasons": {
+      "network": "sin conexión",
+      "tooLarge": "los archivos son demasiado grandes para enviarlos desde el sitio web",
+      "notConfigured": "el servicio de envío de correo aún no está configurado",
+      "rateLimited": "demasiadas solicitudes en poco tiempo",
+      "invalid": "algunos datos no son válidos",
+      "server": "error del servidor"
+    }
+  },
+  "finalCta": {
+    "title": "Presupuesto en 24 horas.",
+    "body": "Precios a petición: cada presupuesto es personalizado.",
+    "quote": "Solicitar presupuesto",
+    "shop": "Configure su pieza"
+  },
+  "footer": {
+    "tagline": "Componentes mecánicos de microondas y dispositivos en guía de ondas, desde 1987.",
+    "navTitle": "Sitio",
+    "legalTitle": "Aviso legal",
+    "contactTitle": "Contacto",
+    "privacy": "Privacidad",
+    "terms": "Condiciones de uso",
+    "cookie": "Cookies",
+    "vat": "NIF-IVA",
+    "credit": "Realizado y gestionado por",
+    "distinct": "Tecnolambro Microwave Components, Miradolo Terme (PV), Italia. Sin vínculo con otras empresas de nombre similar.",
+    "rights": "© {year} Tecnolambro S.a.s. di Pasquini Marco & C.",
+    "logoAlt": "Logotipo de Tecnolambro: fabricante de guía de ondas flexible torsionable y sin costura, componentes para aplicaciones de microondas",
+    "pec": "PEC"
+  },
+  "customPage": {
+    "title": "Componentes de microondas según plano",
+    "intro": "Cuando la pieza no está en catálogo, la fabricamos: diseñamos, fabricamos y probamos nuestros propios componentes.",
+    "sendTitle": "Qué debe enviarnos",
+    "send": [
+      {
+        "title": "El plano",
+        "body": "Acotado, con tolerancias y acabado. PDF, DWG, DXF, STEP, IGES o STL, hasta 20 MB."
+      },
+      {
+        "title": "La frecuencia",
+        "body": "Banda de trabajo en GHz y, si procede, el VSWR máximo admisible."
+      },
+      {
+        "title": "Las interfaces",
+        "body": "Tamaño de la guía de ondas y tipo de brida en ambos extremos, o el conector coaxial."
+      },
+      {
+        "title": "Cantidad y plazos",
+        "body": "Pieza individual, serie corta o suministro repetido. Fecha de entrega requerida."
+      }
+    ],
+    "formatsTitle": "Formatos admitidos",
+    "formatsBody": "PDF para planos acotados, DWG y DXF para 2D, STEP, IGES y STL para modelos 3D.",
+    "timeTitle": "Plazos",
+    "timeBody": "Presupuesto en 24 horas: el plazo y el método de entrega se fijan en el presupuesto.",
+    "testTitle": "Pruebas",
+    "testBody": "Probamos el 100 % de las piezas antes del envío.",
+    "stepsTitle": "Del plano a la pieza",
+    "formTitle": "Envíe su plano"
+  },
+  "aboutPage": {
+    "title": "Guías de ondas de fabricación propia, desde 1987.",
+    "intro": "Tecnolambro diseña, fabrica y prueba componentes mecánicos de microondas y dispositivos en guía de ondas. Fundada en 1987, trabaja en colaboración con las mayores empresas de telecomunicaciones.",
+    "productionTitle": "Producción",
+    "productionBody": "Un sistema de producción propio, con almacén de materias primas y de piezas terminadas: corte, fresado, torneado, montaje y unión. La guía de ondas flexible torsionable y sin costura es de fabricación propia.",
+    "treatmentsTitle": "Tratamientos",
+    "treatmentsBody": "Abrillantado, pintura, tratamientos térmicos y galvánicos, con proveedores históricos y seleccionados, conocidos por su fiabilidad y profesionalidad.",
+    "labTitle": "Prueba final al 100 %",
+    "labBody": "Probamos el 100 % de las piezas antes del envío, con control eléctrico y dimensional de cada pieza.",
+    "officeTitle": "Diseño",
+    "officeBody": "Diseñamos los componentes según el plano del cliente y seguimos cada pieza hasta la prueba final.",
+    "sitesTitle": "Sedes",
+    "operational": "Sede operativa y producción",
+    "legal": "Domicilio social",
+    "mapLink": "Abrir en Google Maps",
+    "historyTitle": "Historia",
+    "imageAlt": "Modelo 3D de una guía de ondas flexible torsionable Tecnolambro",
+    "processLabel": "Cómo trabajamos",
+    "workshopAlt": "El taller de Tecnolambro en Miradolo Terme"
+  },
+  "qualityPage": {
+    "title": "Calidad y certificaciones",
+    "intro": "Sistema de calidad ISO 9001:2015 y sistema ambiental ISO 14001:2015, y prueba del 100 % de las piezas antes del envío.",
+    "certTitle": "Certificaciones",
+    "controlsTitle": "Prueba final al 100 %",
+    "controlsBody": "Control eléctrico y dimensional de cada pieza.",
+    "chainTitle": "Proveedores históricos y seleccionados",
+    "chainBody": "Materias primas en almacén y producción propia. Abrillantado, pintura, tratamientos térmicos y galvánicos con proveedores históricos y seleccionados, conocidos por su fiabilidad y profesionalidad.",
+    "certIntro": "Los certificados, descargables en PDF.",
+    "certBy": "Certificado por Perry Johnson Registrars · acreditación ACCREDIA",
+    "certNumber": "Certificado n.º {number}",
+    "validUntil": "Válido hasta el {date}",
+    "renewing": "En renovación",
+    "firstIssue": "Primera emisión: {date}",
+    "download": "Descargar el certificado (PDF)",
+    "previewAlt": "Primera página del certificado {standard} de Tecnolambro",
+    "scopeTitle": "Alcance de la certificación"
+  },
+  "contactPage": {
+    "title": "Contacto y presupuestos",
+    "intro": "Escríbanos, llámenos o envíe directamente su plano. Presupuesto en 24 horas.",
+    "hoursTitle": "Horario",
+    "company": "Datos de la empresa"
+  },
+  "faqPage": {
+    "title": "Preguntas frecuentes",
+    "intro": "Tamaños, archivos, plazos, envíos y facturación. Si no encuentra su pregunta, escríbanos.",
+    "notFound": "¿No encuentra la respuesta?",
+    "notFoundBody": "Envíenos su pregunta junto con la solicitud de presupuesto."
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Señal perdida.",
+    "body": "La página que busca no existe o se ha trasladado. La onda se ha detenido aquí.",
+    "home": "Volver al inicio",
+    "products": "Ver productos",
+    "quote": "Solicitar presupuesto"
+  },
+  "legal": {
+    "privacy": {
+      "title": "Política de privacidad",
+      "updated": "8 de octubre de 2026",
+      "sections": [
+        {
+          "h": "1. Responsable del tratamiento",
+          "p": [
+            "El responsable del tratamiento es Tecnolambro S.a.s. di Pasquini Marco & C., NIF-IVA IT08639310153, con domicilio social en Via Privata delle Betulle 1, 20078 San Colombano al Lambro (MI), Italia, y sede operativa en Via degli Spinedi 20, 27010 Miradolo Terme (PV), Italia.",
+            "Para cualquier solicitud relativa a la privacidad: info@tecnolambro.it, correo electrónico certificado (PEC) tecnolambrosnc@pec.it, teléfono +39 375 577 1084."
+          ]
+        },
+        {
+          "h": "2. Datos que recogemos",
+          "p": [
+            "Datos introducidos en la solicitud de presupuesto: empresa, nombre y apellidos, correo electrónico, teléfono (opcional), país, NIF-IVA (opcional), piezas solicitadas con cantidades y notas.",
+            "Archivos cargados con la solicitud (planos y modelos en PDF, DWG, DXF, STEP, IGES o STL). Los planos pueden contener datos personales, por ejemplo el nombre del proyectista en el cajetín.",
+            "Datos de navegación: dirección IP e información técnica registradas por el servidor por motivos de seguridad y funcionamiento. Estadísticas de visitas agregadas y anónimas, sin cookies (véase el apartado 7)."
+          ]
+        },
+        {
+          "h": "3. Finalidades y base jurídica",
+          "p": [
+            "Responder a la solicitud de presupuesto y gestionar las negociaciones precontractuales: base jurídica art. 6.1.b) RGPD (medidas precontractuales adoptadas a petición del interesado).",
+            "Cumplir obligaciones legales, por ejemplo fiscales y contables, si la solicitud se convierte en un pedido: art. 6.1.c) RGPD.",
+            "Garantizar la seguridad del sitio web y medir su uso de forma agregada: interés legítimo del responsable, art. 6.1.f) RGPD.",
+            "No utilizamos los datos con fines de marketing sin un consentimiento específico y no los vendemos a terceros."
+          ]
+        },
+        {
+          "h": "4. Conservación",
+          "p": [
+            "Solicitudes de presupuesto y archivos adjuntos: 24 meses desde el último contacto, salvo que se conviertan en un pedido.",
+            "Documentos contables relativos a pedidos y facturas: 10 años, conforme a la normativa fiscal.",
+            "Registros técnicos del servidor: 12 meses."
+          ]
+        },
+        {
+          "h": "5. Destinatarios de los datos",
+          "p": [
+            "Los datos son tratados por el personal autorizado de Tecnolambro y, solo cuando es necesario, por proveedores que actúan como encargados del tratamiento: alojamiento del sitio web, servicio de envío del formulario y de correo electrónico, asesores fiscales, transportistas para los envíos.",
+            "Proveedores: Vercel Inc. (alojamiento del sitio web y estadísticas anónimas, Estados Unidos: la transferencia se basa en las cláusulas contractuales tipo aprobadas por la Comisión Europea); Resend o Aruba S.p.A. (envío de los correos electrónicos de la solicitud de presupuesto)."
+          ]
+        },
+        {
+          "h": "6. Sus derechos",
+          "p": [
+            "Puede solicitar en cualquier momento el acceso, la rectificación, la supresión, la limitación del tratamiento y la portabilidad de los datos, así como oponerse al tratamiento basado en el interés legítimo (arts. 15-22 RGPD).",
+            "Para ejercerlos, escriba a info@tecnolambro.it. Respondemos en un plazo de 30 días.",
+            "Tiene derecho a presentar una reclamación ante la autoridad italiana de protección de datos, el Garante per la protezione dei dati personali (www.garanteprivacy.it), o ante la autoridad de su país de la UE."
+          ]
+        },
+        {
+          "h": "7. Estadísticas y cookies",
+          "p": [
+            "Si está activado, utilizamos Plausible Analytics, un servicio de estadísticas que no usa cookies, no recoge datos personales y no rastrea a los usuarios entre distintos sitios web. Los datos son agregados y anónimos.",
+            "El sitio web solo utiliza almacenamiento técnico en el navegador (tema elegido, animación de introducción ya vista). Más detalles en la política de cookies."
+          ]
+        },
+        {
+          "h": "8. Modificaciones",
+          "p": [
+            "Podemos actualizar esta información. La fecha de la última actualización figura en la parte superior de la página."
+          ]
+        }
+      ]
+    },
+    "terms": {
+      "title": "Condiciones de uso",
+      "updated": "8 de octubre de 2026",
+      "sections": [
+        {
+          "h": "1. Uso del sitio web",
+          "p": [
+            "Este sitio web presenta los productos y servicios de Tecnolambro S.a.s. di Pasquini Marco & C. (NIF-IVA IT08639310153). La información técnica es orientativa: las características, tamaños y prestaciones vinculantes son los confirmados en la oferta escrita."
+          ]
+        },
+        {
+          "h": "2. Planos y archivos cargados",
+          "p": [
+            "Los planos, modelos y especificaciones que nos envíe siguen siendo de su propiedad, con todos los derechos de propiedad intelectual.",
+            "Los utilizamos únicamente para evaluar la viabilidad y preparar el presupuesto y, si realiza el pedido, para fabricar la pieza. No los cedemos a terceros, salvo a los colaboradores que realizan una fase de la fabricación por cuenta de usted, sujetos a confidencialidad.",
+            "A petición, eliminamos los archivos no vinculados a un pedido. Si necesita un acuerdo de confidencialidad (NDA), lo firmamos antes de que nos envíe los planos."
+          ]
+        },
+        {
+          "h": "3. Propiedad de los contenidos del sitio web",
+          "p": [
+            "Los textos, planos técnicos, gráficos y la marca Tecnolambro están protegidos. No se permite copiarlos ni reutilizarlos sin autorización por escrito, salvo la cita con enlace."
+          ]
+        },
+        {
+          "h": "4. Responsabilidad",
+          "p": [
+            "Procuramos que los contenidos sean exactos, pero no podemos garantizar que estén siempre completos o actualizados. Antes de un pedido, prevalecen el presupuesto y la confirmación del pedido.",
+            "Los planos y modelos 3D generados por el configurador son orientativos: el plano definitivo se entrega con el presupuesto."
+          ]
+        },
+        {
+          "h": "5. Modificaciones",
+          "p": [
+            "Podemos modificar estas condiciones. La versión vigente es la publicada en esta página, con su fecha de actualización."
+          ]
+        },
+        {
+          "h": "6. Legislación aplicable y contacto",
+          "p": [
+            "Se aplica la legislación italiana. Tribunal competente: Pavía (Italia). Consultas: info@tecnolambro.it, +39 375 577 1084.",
+            "Las condiciones de suministro se indican en cada presupuesto."
+          ]
+        }
+      ]
+    },
+    "cookie": {
+      "title": "Política de cookies",
+      "updated": "8 de octubre de 2026",
+      "sections": [
+        {
+          "h": "Ninguna cookie de elaboración de perfiles",
+          "p": [
+            "El sitio web no utiliza cookies de elaboración de perfiles ni cookies publicitarias de terceros. Por eso no mostramos un banner de consentimiento."
+          ]
+        },
+        {
+          "h": "Almacenamiento técnico",
+          "p": [
+            "Guardamos en su navegador cierta información técnica: el tema claro u oscuro elegido y la lista “Su solicitud” con las piezas, las cantidades y las notas (localStorage), y si la animación de introducción ya se ha mostrado en esta sesión (sessionStorage). Permanece en su dispositivo hasta que envíe la solicitud o la borre desde la configuración del navegador."
+          ]
+        },
+        {
+          "h": "Estadísticas sin cookies",
+          "p": [
+            "Si está activado, Plausible Analytics cuenta las visitas de forma agregada, sin cookies y sin identificadores persistentes."
+          ]
+        },
+        {
+          "h": "Solicitud de presupuesto",
+          "p": [
+            "La lista de piezas se vacía tras el envío. Los datos introducidos en el formulario solo llegan a Tecnolambro cuando pulsa “Enviar solicitud de presupuesto”."
+          ]
+        }
+      ]
+    }
+  },
+  "shop": {
+    "title": "Configure su pieza",
+    "intro": "¿Conoce el tamaño? Configure la pieza y véala en 3D. ¿Tiene un plano? Cárguelo. Sin precios en línea: su presupuesto personalizado llega en 24 horas.",
+    "breadcrumb": "Configurar",
+    "howTitle": "Cómo funciona",
+    "how": [
+      "Elija o configure la pieza",
+      "Cantidad y notas",
+      "Envíe: presupuesto en 24 horas"
+    ],
+    "readyTitle": "Productos estándar",
+    "readyBody": "Los tamaños estándar: flexibles, codos E y H a 90° y torsiones a 90°. Añádalos a su solicitud o personalícelos.",
+    "composeTitle": "Configure la pieza",
+    "composeBody": "Tipo, tamaño, geometría, bridas y acabado. El plano y el modelo 3D se actualizan a medida que elige.",
+    "filtersLabel": "Filtros de los productos estándar",
+    "family": "Tipo",
+    "allFamilies": "Todos",
+    "size": "Tamaño",
+    "allSizes": "Todos los tamaños",
+    "freq": "Frecuencia (GHz)",
+    "freqPlaceholder": "Ej.: 10,5",
+    "results": "{count} piezas",
+    "resultsOne": "1 pieza",
+    "empty": "Ninguna pieza coincide con estos filtros.",
+    "reset": "Borrar filtros",
+    "band": "Banda",
+    "configure": "Personalizar",
+    "configureLabel": "Personalizar {name} {size}",
+    "add": "Añadir a la solicitud",
+    "added": "Añadido",
+    "shipping": "Envíos a todo el mundo: método y coste indicados en el presupuesto.",
+    "priceNote": "Precios a petición: cada presupuesto es personalizado.",
+    "bendsTitle": "Codos, torsiones y desplazamientos",
+    "bendsBody": "A petición o según plano: añada el artículo a su solicitud, describa la pieza en las notas y cargue el plano.",
+    "bendsCta": "Añadir una pieza según plano",
+    "showMore": "Mostrar todos los tamaños ({count})",
+    "stockNote": "Material disponible en almacén: envío en 48 horas.",
+    "choiceLabel": "Cómo desea empezar",
+    "choiceMeasure": "¿Conoce el tamaño? Configure la pieza",
+    "choiceMeasureBody": "Tipo, tamaño, geometría y bridas: el modelo 3D y el plano acotado se actualizan a medida que elige.",
+    "choiceMeasureCta": "Abrir el configurador",
+    "choiceDrawing": "¿Tiene un plano? Cárguelo",
+    "choiceDrawingBody": "STEP, IGES, STL, PDF, DWG o DXF: nuestra oficina técnica lo estudia y le respondemos con el presupuesto.",
+    "choiceDrawingCta": "Cargar su plano",
+    "typesTitle": "Elija el tipo de pieza",
+    "search": "Buscar",
+    "searchPlaceholder": "Ej.: WR-90, codo H, TLFX-100",
+    "faqTitle": "Preguntas frecuentes",
+    "faqAll": "Todas las preguntas",
+    "filtersButton": "Filtros",
+    "showMoreCount": "Mostrar más ({count})"
+  },
+  "tables": {
+    "title": "Tablas técnicas",
+    "intro": "Características eléctricas y dimensiones de la guía de ondas flexible Tecnolambro, tamaño por tamaño.",
+    "tabsLabel": "Tablas técnicas",
+    "tabTwist": "Torsionable",
+    "tabSeamless": "Sin costura",
+    "tabDims": "Dimensiones",
+    "captionTwist": "Guía de ondas flexible torsionable: características eléctricas",
+    "captionSeamless": "Guía de ondas flexible sin costura: características eléctricas",
+    "captionDims": "Dimensiones de la guía de ondas flexible, códigos TLFX",
+    "size": "Tamaño",
+    "freq": "Frecuencia (GHz)",
+    "rl": "Pérdida de retorno (dB)",
+    "att": "Atenuación (dB/m)",
+    "power": "Potencia",
+    "cw": "CW (W)",
+    "peak": "Pico (kW)",
+    "vswr600": "VSWR (600 mm)",
+    "code": "Código",
+    "dimsGroup": "Dimensiones (mm)",
+    "tol": "Tolerancia (mm)",
+    "vswrMax": "VSWR máx.",
+    "onRequest": "A petición",
+    "filterLabel": "Resaltar los tamaños para una frecuencia (GHz)",
+    "filterPlaceholder": "Ej.: 10,5",
+    "filterNone": "Ningún tamaño cubre {freq} GHz.",
+    "filterOne": "1 tamaño cubre {freq} GHz.",
+    "filterMany": "{count} tamaños cubren {freq} GHz.",
+    "covers": "cubre la frecuencia",
+    "configure": "Configurar",
+    "configureLabel": "Configurar {type} {size}",
+    "download": "Descargar ficha técnica (PDF)",
+    "downloading": "Preparando el PDF…",
+    "material": "Material: latón {material}",
+    "notes": [
+      "** Pérdida de inserción en dB por 1 pie, con plateado.",
+      "*** VSWR para una sección de 2 pies.",
+      "Longitudes estándar L: 300, 600, 900, 1000, 1200 mm.",
+      "* TLFX-400: longitud L máxima 3 pies."
+    ],
+    "verify": "Valores que deben verificarse con la oficina técnica de Tecnolambro.",
+    "scrollHint": "La tabla se desplaza lateralmente.",
+    "drawingTitle": "Guía de ondas flexible: cotas",
+    "legend": {
+      "AB": "A × B dimensiones exteriores de la corrugación",
+      "CD": "C × D fondo de la corrugación",
+      "P": "P paso de la corrugación",
+      "rR": "r, R radios de las esquinas",
+      "L": "L longitud"
+    },
+    "sheetTitle": "Ficha técnica",
+    "sheetFooter": "Solicite un presupuesto: tecnolambro.it/shop · +39 375 577 1084",
+    "indicative": "Datos orientativos: los valores definitivos figuran en el presupuesto."
+  },
+  "configurator": {
+    "typeTitle": "Tipo de pieza",
+    "sizeTitle": "Tamaño",
+    "freqLabel": "Frecuencia de trabajo (GHz)",
+    "freqSuggest": "A {freq} GHz le recomendamos {size}: ya está seleccionado.",
+    "freqNone": "Ningún tamaño estándar cubre {freq} GHz: indíquelo en las notas y lo estudiaremos en el presupuesto.",
+    "lengthLabel": "Longitud L (mm)",
+    "lengthOut": "Fuera de estándar: lo estudiaremos en el presupuesto.",
+    "flangesTitle": "Bridas",
+    "flangeOther": "Otra (especifíquela en las notas)",
+    "flangeNote": "Lista pendiente de confirmación por la oficina técnica.",
+    "summary": "Resumen",
+    "type": "Tipo",
+    "size": "Tamaño",
+    "band": "Banda",
+    "flanges": "Bridas",
+    "electrical": "Datos eléctricos",
+    "rl": "Pérdida de retorno {len} mm",
+    "vswr600": "VSWR 600 mm",
+    "att": "Atenuación",
+    "cw": "Potencia CW",
+    "peak": "Potencia de pico",
+    "add": "Añadir a la solicitud",
+    "added": "Añadido a su solicitud.",
+    "goToRequest": "Ir a su solicitud",
+    "drawing": "Plano técnico",
+    "view3d": "Vista 3D",
+    "downloadPdf": "Plano PDF",
+    "downloadStl": "STL",
+    "downloadGlb": "GLB",
+    "preparing": "Preparando…",
+    "loading3d": "Cargando el modelo 3D…",
+    "viewerLabel": "Modelo 3D de {code}. Arrastre para girar; use la rueda o dos dedos para hacer zoom.",
+    "viewerHint": "Arrastre para girar · rueda o dos dedos para hacer zoom",
+    "error3d": "El modelo 3D no se ha cargado. El plano sigue disponible.",
+    "drawingNote": "Plano orientativo – el plano definitivo se entrega con el presupuesto",
+    "drawingDate": "Fecha",
+    "drawingScale": "Sin escala",
+    "drawingMaterial": "Material",
+    "drawingTitleBlock": "Tecnolambro Microwave Components",
+    "drawingAlt": "Plano técnico orientativo de {code}: vista lateral con las cotas principales y sección de la guía de ondas.",
+    "sideView": "Vista lateral",
+    "section": "Sección",
+    "dimsUnknown": "Cotas a petición",
+    "downloadError": "No se ha generado el archivo. Inténtelo de nuevo; su configuración se mantiene.",
+    "types": {
+      "twistable": {
+        "name": "Flexible torsionable",
+        "short": "Se dobla y se tuerce"
+      },
+      "seamless": {
+        "name": "Flexible sin costura",
+        "short": "Sin costuras, con funda"
+      },
+      "bend": {
+        "name": "Codo",
+        "short": "Plano E o H, cualquier ángulo"
+      },
+      "twist": {
+        "name": "Torsión (twist)",
+        "short": "Gira la polarización"
+      },
+      "offset": {
+        "name": "Desplazamiento (offset)",
+        "short": "Une bridas desplazadas"
+      },
+      "custom": {
+        "name": "Según plano",
+        "short": "Cargue su STEP, STL o PDF"
+      }
+    },
+    "flexName": {
+      "twistable": "flexible torsionable",
+      "seamless": "flexible sin costura"
+    },
+    "customRef": "SEGÚN PLANO",
+    "sizeUnknown": "No lo sé",
+    "geometryTitle": "Geometría",
+    "planeLabel": "Plano",
+    "plane": {
+      "E": "Plano E",
+      "H": "Plano H"
+    },
+    "angleLabel": "Ángulo",
+    "angleFree": "Ángulo libre (1–180°)",
+    "radiusLabel": "Radio de curvatura",
+    "radiusStd": "Radio estándar",
+    "radiusStdShort": "R estándar",
+    "radiusCustom": "Radio a medida",
+    "radiusValue": "Radio R (mm)",
+    "leg1": "Tramo recto L1 (mm)",
+    "leg2": "Tramo recto L2 (mm)",
+    "rotationLabel": "Giro",
+    "rotationFree": "Giro libre (°)",
+    "directionLabel": "Sentido de giro",
+    "dir": {
+      "cw": "horario",
+      "ccw": "antihorario"
+    },
+    "offsetLabel": "Desplazamiento X (mm)",
+    "offsetLength": "Longitud total L (mm)",
+    "flange1": "Brida 1",
+    "flange2": "Brida 2",
+    "finishTitle": "Acabado y tratamiento",
+    "finish": "Acabado",
+    "finishes": {
+      "raw": "En bruto",
+      "bright": "Abrillantado",
+      "painted": "Pintado"
+    },
+    "paintedHint": "El color y el tipo de pintura los acordamos en el presupuesto.",
+    "treatment": "Tratamiento",
+    "treatments": {
+      "none": "Ninguno",
+      "galvanic": "Galvánico",
+      "thermal": "Térmico"
+    },
+    "treatmentHint": "Lo definimos juntos en el presupuesto.",
+    "notesTitle": "Notas",
+    "notesPlaceholder": "Ej.: presurización, acabado, entrega requerida…",
+    "customTitle": "Su pieza según plano",
+    "customBody": "Describa la pieza y cargue el plano o el modelo 3D: lo estudiamos y le enviamos el presupuesto en 24 horas.",
+    "customDescription": "Descripción de la pieza",
+    "customPlaceholder": "Ej.: codo plano H 45° con bridas UG-39/U, salida a 300 mm",
+    "customDescriptionError": "Describa la pieza en pocas palabras.",
+    "customFiles": "Cargar plano o 3D",
+    "customFilesHint": "STEP/STP, IGES/IGS, STL, PDF, DWG, DXF. Hasta 20 MB por archivo.",
+    "quantity": "Cantidad",
+    "fileRemove": "Quitar {name}",
+    "fileType": "{name}: formato no admitido.",
+    "fileSize": "{name}: supera los 20 MB.",
+    "stlPreviewLabel": "Vista previa del archivo 3D",
+    "stlPreviewEmpty": "Cargue un archivo STL para verlo aquí en 3D. Los archivos STEP, IGES, PDF y DWG llegan a la oficina técnica tal cual.",
+    "drawingButton": "Plano",
+    "views": {
+      "iso": "Iso",
+      "front": "Frontal",
+      "side": "Lateral"
+    },
+    "viewTools": "Vistas del modelo",
+    "dims": "Cotas",
+    "exploded": "Despiece",
+    "resetView": "Restablecer la vista",
+    "ar": "Ver en su espacio (RA)",
+    "share": "Copiar enlace",
+    "shared": "Enlace copiado",
+    "shareEmail": "Enviar a un colega",
+    "shareText": "Esta es la configuración de la pieza en guía de ondas:",
+    "stepNote": "El archivo STEP se lo enviamos junto con el presupuesto.",
+    "customize": "Personalizar",
+    "lengthOther": "Otra longitud",
+    "lengthFreeHint": "De {min} a {max} mm. Otras longitudes a petición: las estudiamos en el presupuesto.",
+    "rlNote": "valor referido a {len} mm",
+    "stepClose": "Cerrar",
+    "stepEdit": "Editar",
+    "stepDone": "Hecho",
+    "notesNone": "Sin notas",
+    "addedShort": "Añadido",
+    "miniPreview": "Volver a la vista previa de la pieza",
+    "addShort": "Añadir",
+    "freqPlaceholder": "Ej.: {value}",
+    "otherRef": "OTRA"
+  },
+  "request": {
+    "title": "Su solicitud",
+    "intro": "Revise las piezas, añada cantidades, notas y archivos y, después, envíe: le respondemos con el presupuesto en 24 horas laborables.",
+    "open": "Su solicitud",
+    "openWithCount": "Su solicitud, {count} piezas",
+    "openWithOne": "Su solicitud, 1 pieza",
+    "empty": "Su solicitud está vacía.",
+    "emptyBody": "Configure una pieza o elíjala entre los productos estándar.",
+    "emptyCta": "Configure su pieza",
+    "itemsTitle": "Piezas",
+    "quantity": "Cantidad",
+    "quantityFor": "Cantidad de {code}",
+    "decrease": "Reducir la cantidad de {code}",
+    "increase": "Aumentar la cantidad de {code}",
+    "notes": "Notas",
+    "notesFor": "Notas para {code}",
+    "remove": "Quitar {code}",
+    "customItem": "Pieza según plano",
+    "customItemCode": "SEGÚN PLANO",
+    "addCustom": "Añadir una pieza según plano",
+    "addMore": "Añadir otra pieza",
+    "filesTitle": "Otros archivos",
+    "filesHint": "Planos o modelos 3D válidos para toda la solicitud: STEP/STP, IGES/IGS, STL, PDF, DWG, DXF. Hasta 20 MB cada uno.",
+    "filesButton": "Elegir archivos",
+    "filesDrop": "o arrástrelos aquí",
+    "fileRemove": "Quitar {name}",
+    "fileType": "{name}: formato no admitido.",
+    "fileSize": "{name}: supera los 20 MB.",
+    "generatedNote": "Adjuntamos a su solicitud el plano PDF y el modelo 3D de cada pieza configurada.",
+    "customerTitle": "Sus datos",
+    "company": "Empresa",
+    "name": "Nombre y apellidos",
+    "email": "Correo electrónico",
+    "phone": "Teléfono",
+    "country": "País",
+    "vat": "NIF-IVA",
+    "optional": "opcional",
+    "required": "obligatorio",
+    "privacy": "He leído la <link>política de privacidad</link> y acepto el tratamiento de mis datos para recibir el presupuesto.",
+    "submit": "Enviar solicitud de presupuesto",
+    "sending": "Enviando…",
+    "uploading": "Cargando archivos…",
+    "errors": {
+      "items": "Añada al menos una pieza a la solicitud.",
+      "quantity": "Cantidad mínima de 1 para {code}.",
+      "customNotes": "Describa la pieza según plano en las notas.",
+      "company": "Introduzca el nombre de la empresa.",
+      "name": "Introduzca su nombre y apellidos.",
+      "email": "Introduzca un correo electrónico válido, por ejemplo nombre@empresa.com.",
+      "country": "Indique el país.",
+      "privacy": "Necesitamos su consentimiento para responderle.",
+      "itemsOrFiles": "Añada al menos una pieza o un archivo."
+    },
+    "errorSummaryOne": "Revise el campo señalado.",
+    "errorSummaryOther": "Revise los {count} campos señalados.",
+    "sendError": "Su solicitud no se ha enviado: {reason}. Sus datos se mantienen aquí: inténtelo de nuevo en unos instantes o escríbanos a <mail>info@tecnolambro.it</mail>.",
+    "reasons": {
+      "network": "sin conexión",
+      "tooLarge": "los archivos son demasiado grandes para enviarlos desde el sitio web: envíelos a info@tecnolambro.it indicando su solicitud",
+      "notConfigured": "el servicio de envío de correo aún no está configurado",
+      "rateLimited": "demasiadas solicitudes en poco tiempo",
+      "invalid": "algunos datos no son válidos",
+      "server": "error del servidor"
+    },
+    "shipping": "Envíos a todo el mundo: método y coste indicados en el presupuesto.",
+    "priceNote": "Precios a petición: cada presupuesto es personalizado.",
+    "customBody": "Describa la pieza y cargue el plano o el modelo 3D: la añadimos a su solicitud.",
+    "customNotes": "Descripción de la pieza",
+    "countryPlaceholder": "Escriba o elija de la lista",
+    "countryHint": "País de entrega: lo necesitamos para el envío y la facturación.",
+    "vatEu": "NIF-IVA (factura con inversión del sujeto pasivo)",
+    "summaryTitle": "Resumen",
+    "summaryCount": "{count} piezas",
+    "summaryOne": "1 pieza",
+    "preparing": "Preparando planos y modelos 3D…"
+  },
+  "requestSent": {
+    "title": "Solicitud recibida.",
+    "body": "Le responderemos con el presupuesto en 24 horas laborables.",
+    "number": "Número de solicitud",
+    "copy": "Le hemos enviado por correo electrónico una confirmación con el resumen y los planos de las piezas configuradas.",
+    "nextTitle": "Próximos pasos",
+    "next": [
+      {
+        "title": "Presupuesto en 24 horas",
+        "body": "La oficina técnica revisa las piezas y los archivos y le envía un presupuesto personalizado, con plazo y método de envío."
+      },
+      {
+        "title": "Plano definitivo",
+        "body": "El plano definitivo de las piezas configuradas se entrega con el presupuesto."
+      },
+      {
+        "title": "Confirmación del pedido",
+        "body": "Si el presupuesto le conviene, responda al correo electrónico y empezamos la producción."
+      }
+    ],
+    "back": "Volver al configurador",
+    "missing": "No hay ninguna solicitud reciente en esta sesión.",
+    "downloadPdf": "Descargar el resumen en PDF",
+    "pdfTitle": "Resumen de la solicitud",
+    "date": "Fecha",
+    "customer": "Cliente",
+    "items": "Piezas",
+    "qty": "Cantidad",
+    "whatsapp": "Escríbanos por WhatsApp"
+  },
+  "trust": {
+    "label": "Por qué Tecnolambro",
+    "since": "Desde {year}",
+    "ownProduction": "Fabricación propia",
+    "tested": "Prueba al 100 %",
+    "quote24": "Presupuesto en 24 h",
+    "worldwide": "Envíos a todo el mundo"
+  },
+  "owner": {
+    "title": "Quién dirige Tecnolambro",
+    "name": "Marco Pasquini",
+    "role": "Titular",
+    "body": "Marco Pasquini dirige Tecnolambro, que desde 1987 diseña, fabrica y prueba guías de ondas de fabricación propia. La empresa trabaja en colaboración con las mayores empresas de telecomunicaciones y prueba el 100 % de las piezas antes del envío.",
+    "bodyShort": "Desde 1987, Tecnolambro diseña, fabrica y prueba guías de ondas de fabricación propia, en colaboración con las mayores empresas de telecomunicaciones.",
+    "photoAlt": "Marco Pasquini, titular de Tecnolambro",
+    "more": "Conozca la empresa"
+  },
+  "workshop": {
+    "title": "El taller",
+    "body": "Donde diseñamos, fabricamos y probamos nuestros componentes, en Miradolo Terme.",
+    "areas": {
+      "lavorazione": "Mecanizado",
+      "collaudo": "Pruebas",
+      "magazzino": "Almacén"
+    },
+    "generic": "Taller",
+    "alt": "Taller de Tecnolambro en Miradolo Terme: {what}, foto {n}"
+  },
+  "gallery": {
+    "title": "Fotos: {name}",
+    "open": "Abrir la foto a pantalla completa",
+    "close": "Cerrar",
+    "prev": "Foto anterior",
+    "next": "Foto siguiente",
+    "counter": "{n} de {total}",
+    "alt": "{name}, foto {n}"
+  },
+  "wrPage": {
+    "title": "Guía de ondas flexible {wr}",
+    "metaTitle": "Guía de ondas flexible {wr} {band} GHz | Tecnolambro",
+    "metaDescription": "Guía de ondas flexible {wr} ({iec}, {wg}) para {band} GHz, torsionable y sin costura: dimensiones, datos eléctricos, bridas. Presupuesto en 24 horas.",
+    "intro": "La guía de ondas flexible {wr} ({iec} · {wg}) cubre {band} GHz. La fabricamos torsionable y sin costura, con las bridas y la longitud que necesite.",
+    "category": "Guía de ondas flexible",
+    "configureTwistable": "Configurar torsionable",
+    "configureSeamless": "Configurar sin costura",
+    "quote": "Solicitar presupuesto",
+    "specsTitle": "Datos del tamaño",
+    "band": "Banda de trabajo",
+    "designations": "Designaciones",
+    "inner": "Sección interior a × b",
+    "innerNote": "Sección interior a × b: valores estándar EIA. Las demás cotas proceden de la tabla de dimensiones de Tecnolambro.",
+    "code": "Código",
+    "outer": "Dimensiones exteriores A × B",
+    "root": "Fondo de la corrugación C × D",
+    "pitch": "Paso P",
+    "tol": "Tolerancia",
+    "length": "Longitud estándar",
+    "material": "Material",
+    "brass": "Latón",
+    "electricalTitle": "Datos eléctricos",
+    "twistable": "Torsionable",
+    "seamless": "Sin costura",
+    "rl": "Pérdida de retorno {len} mm",
+    "att": "Atenuación",
+    "cw": "Potencia CW",
+    "peak": "Potencia de pico",
+    "vswr600": "VSWR 600 mm",
+    "onRequest": "Datos eléctricos a petición.",
+    "tablesLink": "Todas las tablas técnicas",
+    "flangesTitle": "Bridas",
+    "flangesBody": "Las bridas IEC más habituales para este tamaño. Otros tipos a petición: indíquelos en las notas.",
+    "ctaTitle": "¿Necesita la {wr}?",
+    "ctaBody": "Envíenos tamaño, longitud y bridas, o su plano: el presupuesto llega en 24 horas laborables.",
+    "neighbours": "Tamaños cercanos",
+    "lower": "Frecuencia más baja",
+    "higher": "Frecuencia más alta",
+    "indexTitle": "Guía de ondas flexible por tamaño",
+    "indexBody": "Una página por tamaño: banda, dimensiones, datos eléctricos y bridas.",
+    "indicative": "Datos orientativos: los valores definitivos figuran en el presupuesto."
+  },
+  "applications": {
+    "title": "Dónde trabajan nuestras guías de ondas",
+    "body": "Guía de ondas flexible y rígida para conectar antenas, amplificadores y receptores allí donde se necesita un enlace de bajas pérdidas.",
+    "items": {
+      "radar": {
+        "title": "Radar",
+        "body": "Conexiones entre transmisor, junta rotativa y antena, también donde la línea debe doblarse o absorber vibraciones."
+      },
+      "telecom": {
+        "title": "Telecomunicaciones y radioenlaces",
+        "body": "Tramos entre equipos y antenas en radioenlaces de microondas, con bridas y longitudes a medida."
+      },
+      "satcom": {
+        "title": "Comunicaciones por satélite",
+        "body": "Conexiones en estaciones terrenas, entre amplificadores, alimentadores y bocinas."
+      },
+      "broadcast": {
+        "title": "Radiodifusión",
+        "body": "Líneas de transmisión para enlaces de vídeo y audio en banda de microondas."
+      },
+      "research": {
+        "title": "Investigación y laboratorios",
+        "body": "Piezas individuales y configuraciones especiales para bancos de medida y prototipos."
+      },
+      "industry": {
+        "title": "Industria",
+        "body": "Aplicaciones industriales de microondas que requieren conexiones robustas y a medida."
+      }
+    }
+  }
+}

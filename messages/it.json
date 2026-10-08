@@ -962,7 +962,9 @@
     "notesNone": "Nessuna nota",
     "addedShort": "Aggiunto",
     "miniPreview": "Torna all’anteprima del pezzo",
-    "addShort": "Aggiungi"
+    "addShort": "Aggiungi",
+    "freqPlaceholder": "Es. {value}",
+    "otherRef": "ALTRA"
   },
   "request": {
     "title": "La tua richiesta",
