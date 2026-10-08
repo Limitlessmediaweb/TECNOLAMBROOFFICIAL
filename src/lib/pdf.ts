@@ -240,6 +240,105 @@ export async function datasheetPdf(kind: "twist" | "seamless", locale: string, t
   return doc.save();
 }
 
+export type SummaryTexts = {
+  title: string;
+  number: string;
+  date: string;
+  customer: string;
+  items: string;
+  qty: string;
+  reply: string;
+  contacts: string;
+};
+
+/** Riepilogo della richiesta inviata (pagina "Richiesta inviata"), A4 verticale, testo vettoriale. */
+export async function summaryPdf(
+  data: { number: string; date: string; customer: { name: string; company?: string; email: string }; items: { code: string; qty: number; detail?: string }[] },
+  tx: SummaryTexts,
+): Promise<Uint8Array> {
+  const { PDFDocument, StandardFonts, rgb } = await import("pdf-lib");
+  const doc = await PDFDocument.create();
+  doc.setTitle(`${tx.title} ${data.number}`);
+  doc.setAuthor("Tecnolambro Microwave Components");
+  const font = await doc.embedFont(StandardFonts.Helvetica);
+  const bold = await doc.embedFont(StandardFonts.HelveticaBold);
+  const mono = await doc.embedFont(StandardFonts.Courier);
+  const ink = hex(PRINT.ink), muted = hex(PRINT.muted), fill = hex(PRINT.fill), accent = hex(PRINT.accent);
+  const col = (c: { r: number; g: number; b: number }) => rgb(c.r, c.g, c.b);
+  // i font standard coprono solo WinAnsi: i caratteri fuori elenco diventano "?"
+  const safe = (t: string) => t.replace(/[^\x20-\x7E\xA0-\xFF–—‘’“”•…€]/g, "?");
+  const M = 48;
+  let page = doc.addPage([595, 842]);
+  let y = 842 - M;
+  const logo = await logoBytes();
+  if (logo) {
+    const img = await doc.embedPng(logo);
+    const w = 150;
+    const h = (img.height / img.width) * w;
+    page.drawImage(img, { x: M, y: y - h, width: w, height: h });
+  }
+  y -= 90;
+  page.drawText(safe(tx.title), { x: M, y, size: 20, font: bold, color: col(ink) });
+  y -= 30;
+  page.drawText(safe(tx.number.toUpperCase()), { x: M, y, size: 8.5, font: bold, color: col(muted) });
+  page.drawText(safe(tx.date.toUpperCase()), { x: 320, y, size: 8.5, font: bold, color: col(muted) });
+  y -= 18;
+  page.drawText(safe(data.number), { x: M, y, size: 16, font: mono, color: col(ink) });
+  page.drawText(safe(data.date), { x: 320, y, size: 12, font, color: col(ink) });
+  y -= 30;
+  page.drawText(safe(tx.customer.toUpperCase()), { x: M, y, size: 8.5, font: bold, color: col(muted) });
+  y -= 16;
+  for (const l of [data.customer.company, data.customer.name, data.customer.email].filter(Boolean) as string[]) {
+    page.drawText(safe(l), { x: M, y, size: 11, font, color: col(ink) });
+    y -= 15;
+  }
+  y -= 14;
+  const wrap = (text: string, size: number, max: number, f = font) => {
+    const out: string[] = [];
+    let line = "";
+    for (const w of safe(text).split(/\s+/)) {
+      const next = line ? `${line} ${w}` : w;
+      if (f.widthOfTextAtSize(next, size) > max && line) {
+        out.push(line);
+        line = w;
+      } else line = next;
+    }
+    if (line) out.push(line);
+    return out;
+  };
+  page.drawRectangle({ x: M, y: y - 6, width: 595 - 2 * M, height: 22, color: col(fill) });
+  page.drawText(safe(tx.items), { x: M + 8, y, size: 9, font: bold, color: col(ink) });
+  page.drawText(safe(tx.qty), { x: 595 - M - 8 - bold.widthOfTextAtSize(safe(tx.qty), 9), y, size: 9, font: bold, color: col(ink) });
+  y -= 24;
+  for (const it of data.items) {
+    const codeLines = wrap(it.code, 10, 595 - 2 * M - 80, mono);
+    const detailLines = it.detail ? wrap(it.detail, 8.5, 595 - 2 * M - 80) : [];
+    const need = codeLines.length * 13 + detailLines.length * 11 + 10;
+    if (y - need < M + 60) {
+      page = doc.addPage([595, 842]);
+      y = 842 - M;
+    }
+    const q = String(it.qty);
+    page.drawText(q, { x: 595 - M - 8 - font.widthOfTextAtSize(q, 11), y, size: 11, font, color: col(ink) });
+    for (const l of codeLines) {
+      page.drawText(l, { x: M + 8, y, size: 10, font: mono, color: col(ink) });
+      y -= 13;
+    }
+    for (const l of detailLines) {
+      page.drawText(l, { x: M + 8, y, size: 8.5, font, color: col(muted) });
+      y -= 11;
+    }
+    y -= 10;
+  }
+  y -= 10;
+  for (const l of wrap(tx.reply, 11, 595 - 2 * M, bold)) {
+    page.drawText(l, { x: M, y, size: 11, font: bold, color: col(ink) });
+    y -= 15;
+  }
+  page.drawText(safe(tx.contacts), { x: M, y: M - 10, size: 8.5, font, color: col(accent) });
+  return doc.save();
+}
+
 export function downloadBytes(bytes: Uint8Array | ArrayBuffer, filename: string, mime: string): void {
   const blob = new Blob([bytes as BlobPart], { type: mime });
   const url = URL.createObjectURL(blob);

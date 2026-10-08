@@ -91,7 +91,7 @@ export default async function CustomPage({ params }: PageProps<"/[locale]/su-mis
       </section>
 
       <ProcessSection />
-      <QuoteSection title={t("formTitle")} defaultFamily="other" />
+      <QuoteSection title={t("formTitle")} />
     </>
   );
 }

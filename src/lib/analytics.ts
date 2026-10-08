@@ -73,3 +73,9 @@ export function firstVisit(): FirstVisit | null {
     return null;
   }
 }
+
+/** Provenienza della richiesta: pagina attuale + prima visita (UTM, referrer, pagina d'ingresso). */
+export function requestMeta(): { page: string; landing?: string; referrer?: string; utm?: Record<string, string> } {
+  const fv = firstVisit();
+  return { page: typeof window !== "undefined" ? window.location.pathname + window.location.search : "", landing: fv?.landing, referrer: fv?.referrer, utm: fv?.utm };
+}

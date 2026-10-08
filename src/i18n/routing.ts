@@ -28,7 +28,7 @@ export const routing = defineRouting({
     "/cookie": { it: "/cookie", en: "/cookies" },
     "/shop": "/shop",
     "/shop/richiesta": { it: "/shop/richiesta", en: "/shop/request" },
-    "/shop/richiesta-inviata": { it: "/shop/richiesta-inviata", en: "/shop/request-sent" },
+    "/shop/richiesta/inviata": { it: "/shop/richiesta/inviata", en: "/shop/request/sent" },
   },
 });
 

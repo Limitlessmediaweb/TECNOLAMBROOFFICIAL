@@ -1,32 +1,22 @@
-import { getTranslations } from "next-intl/server";
-import { Mail, Phone, MapPin, Smartphone, ShieldCheck } from "lucide-react";
-import { QuoteForm, type FamilyOption } from "@/components/domain/QuoteForm";
+import { getLocale, getTranslations } from "next-intl/server";
+import { Mail, MapPin, MessageCircle, Phone, ShieldCheck, Smartphone } from "lucide-react";
+import { ShortQuoteForm } from "@/components/domain/ShortQuoteForm";
 import { SplitReveal } from "@/components/motion/SplitReveal";
-import { VISIBLE_FAMILIES, type FamilyKey } from "@/data/families";
-import { COMPANY } from "@/data/site";
+import { COMPANY, whatsappHref } from "@/data/site";
 import { localizedHref } from "@/components/ui/TrackedLink";
 
-export async function familyOptions(): Promise<FamilyOption[]> {
-  const t = await getTranslations("products.items");
-  const page = await getTranslations("products.page");
-  // Più "su richiesta o su disegno" per tutto quello che non sta nelle famiglie
-  return [...VISIBLE_FAMILIES.map((f) => ({ value: f.key, label: t(`${f.key}.name`) })), { value: "other", label: page("onRequestTitle") }];
-}
-
-/** Blocco preventivo: contatti diretti + form completo. Ancora #preventivo. */
+/** Blocco preventivo: contatti diretti + modulo breve (richiesta su disegno). Ancora #preventivo. */
 export async function QuoteSection({
   title,
   body,
-  defaultFamily,
   headingLevel = 2,
 }: {
   title?: string;
   body?: string;
-  defaultFamily?: FamilyKey | "other";
   headingLevel?: 1 | 2;
 }) {
   const t = await getTranslations("quote");
-  const families = await familyOptions();
+  const locale = await getLocale();
   const privacyHref = await localizedHref("/privacy");
   const op = COMPANY.operationalAddress;
   const lg = COMPANY.legalAddress;
@@ -61,6 +51,17 @@ export async function QuoteSection({
                 <p>
                   <a href={COMPANY.phoneHref} className="tabular text-lg hover:text-accent">
                     {COMPANY.phone}
+                  </a>
+                </p>
+              </div>
+            </li>
+            <li className="flex gap-3">
+              <MessageCircle aria-hidden="true" className="mt-1 size-5 shrink-0 text-accent" strokeWidth={1.5} />
+              <div>
+                <p className="text-sm text-muted">WhatsApp</p>
+                <p>
+                  <a href={whatsappHref(locale)} target="_blank" rel="noopener" className="text-lg hover:text-accent">
+                    {t("whatsapp")}
                   </a>
                 </p>
               </div>
@@ -104,7 +105,7 @@ export async function QuoteSection({
         </div>
 
         <div className="lg:col-span-8">
-          <QuoteForm families={families} defaultFamily={defaultFamily} privacyHref={privacyHref} />
+          <ShortQuoteForm privacyHref={privacyHref} shopPath={await localizedHref("/shop")} sentPath={await localizedHref("/shop/richiesta/inviata")} />
         </div>
       </div>
     </section>

@@ -1,232 +1,186 @@
 #!/usr/bin/env node
 /**
- * Test end-to-end della richiesta di preventivo (Playwright), IT/EN × 390/1440:
- * tabelle → "Configura" WR-90 → configuratore con la misura già scelta → lunghezza 1000 mm e
- * flangia B → "Vedi in 3D" → scarica PDF e STL → aggiungi alla richiesta → secondo pezzo dai
- * prodotti pronti → quantità e note → 2 file → invio (chiamata /api/quote SIMULATA) → conferma.
- * In più: invio fallito (503) → messaggio chiaro e dati conservati. Screenshot di ogni passo.
- * Uso: BASE_URL=http://localhost:3000 npm run test:request
+ * Flusso completo della richiesta di preventivo, con l'API in modalità test (nessuna email vera).
+ * Avvio del sito:  QUOTE_TEST_MODE=1 QUOTE_BCC_EMAIL=copia@example.test npx next start --port 3211
+ * Poi:            BASE=http://localhost:3211 npm run test:request
+ *
+ * 1. "La tua richiesta": twistabile WR-90 L600 (×2) + curva E WR-75 90° (con note) + pezzo su disegno
+ *    con 2 file (×3); cliente tedesco (dicitura reverse charge); invio → pagina "inviata";
+ *    controllo di oggetto, intestazioni, allegati (PDF, GLB, file, richiesta.json) e anteprime HTML
+ *    salvate in test-output/quote/<numero>/.
+ * 2. Modulo breve (contatti): crea una richiesta "su disegno" valida.
+ * 3. Invio fallito: messaggio chiaro, dati e pezzi conservati.
+ * 4. Anti-spam: invio in meno di 3 secondi → successo finto, nessuna email.
  */
 import { chromium } from "playwright";
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
-import { tmpdir } from "node:os";
 
-const BASE = (process.env.BASE_URL ?? "http://localhost:3000").replace(/\/$/, "");
-const OUT = join(process.cwd(), "screenshots", "v2");
-const MOCK_NUMBER = "TL-2026-000123";
+const BASE = process.env.BASE ?? "http://localhost:3211";
+const ROOT = process.cwd();
+const OUT = join(ROOT, "test-output", "quote");
+const FIX = join(ROOT, "test-output", "fixtures");
+mkdirSync(FIX, { recursive: true });
 
-const L = {
-  it: {
-    tables: "/prodotti/tabelle",
-    home: "/",
-    sent: "/shop/richiesta-inviata",
-    request: "/shop/richiesta",
-    next: "Avanti",
-    flangeB: "Flangia lato B",
-    view3d: "Vedi in 3D",
-    pdf: "Scarica disegno (PDF)",
-    stl: "Scarica modello 3D (STL)",
-    add: "Aggiungi alla richiesta",
-    seamless: "Guida d’onda flessibile seamless",
-    tabSeamless: "Seamless",
-    tabDims: "Dimensioni",
-    company: "Azienda",
-    name: "Nome e cognome",
-    email: "Email",
-    country: "Paese",
-    submit: "Invia richiesta di preventivo",
-    quantityOf: "Quantità di",
-    notes: "Scrivi cosa ti serve",
-    country_v: "Italia",
-  },
-  en: {
-    tables: "/en/products/tables",
-    home: "/en",
-    sent: "/en/shop/request-sent",
-    request: "/en/shop/request",
-    next: "Next",
-    flangeB: "Flange, side B",
-    view3d: "View in 3D",
-    pdf: "Download drawing (PDF)",
-    stl: "Download 3D model (STL)",
-    add: "Add to request",
-    seamless: "Seamless flexible waveguide",
-    tabSeamless: "Seamless",
-    tabDims: "Dimensions",
-    company: "Company",
-    name: "First and last name",
-    email: "Email",
-    country: "Country",
-    submit: "Send quote request",
-    quantityOf: "Quantity of",
-    notes: "Tell us what you need",
-    country_v: "Germany",
-  },
+let failures = 0;
+const check = (cond, msg) => {
+  if (cond) console.log("  ✓", msg);
+  else {
+    failures++;
+    console.error("  ✗", msg);
+  }
 };
 
-const VIEWPORTS = [
-  { name: "390", width: 390, height: 844, isMobile: true, hasTouch: true },
-  { name: "1440", width: 1440, height: 900, isMobile: false, hasTouch: false },
-];
+// file di prova del cliente
+const stepFile = join(FIX, "flangia-speciale.step");
+const pdfFile = join(FIX, "disegno-cliente.pdf");
+writeFileSync(stepFile, "ISO-10303-21;\nHEADER;\nFILE_DESCRIPTION(('test'),'2;1');\nENDSEC;\nDATA;\nENDSEC;\nEND-ISO-10303-21;\n");
+writeFileSync(pdfFile, "%PDF-1.4\n1 0 obj<<>>endobj\ntrailer<<>>\n%%EOF\n");
 
-function expect(cond, msg) {
-  if (!cond) throw new Error(`ASSERZIONE FALLITA: ${msg}`);
-}
+const browser = await chromium.launch({ args: ["--use-angle=swiftshader", "--enable-unsafe-swiftshader"] });
+const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 } });
+const page = await ctx.newPage();
+const errors = [];
+page.on("pageerror", (e) => errors.push(e.message));
+page.on("console", (m) => m.type() === "error" && errors.push(m.text()));
 
-// due file finti da caricare (estensioni accettate)
-const tmp = join(tmpdir(), "tl-e2e");
-mkdirSync(tmp, { recursive: true });
-const fileA = join(tmp, "disegno-cliente.pdf");
-const fileB = join(tmp, "modello-cliente.step");
-writeFileSync(fileA, "%PDF-1.4\n% file di prova\n");
-writeFileSync(fileB, "ISO-10303-21;\nHEADER;\nENDSEC;\nEND-ISO-10303-21;\n");
+const folder = (number) => join(OUT, number);
+const readJson = (p) => JSON.parse(readFileSync(p, "utf8"));
 
-const browser = await chromium.launch({ args: ["--enable-unsafe-swiftshader", "--use-angle=swiftshader"] });
-const failures = [];
+/* ------------------------------------------------------------- 1. richiesta completa */
+console.log("\n1. La tua richiesta (3 pezzi)");
+await page.goto(`${BASE}/shop?tipo=twistabile&wr=90&l=600&f1=UBR100&f2=PBR100#configura`, { waitUntil: "networkidle" });
+await page.waitForFunction(() => document.querySelector("[data-part-code]")?.textContent?.includes("L600"));
+await page.locator("[data-add-configured]").click();
+await page.goto(`${BASE}/shop?tipo=curva&piano=E&wr=75&ang=90&l1=100&l2=100&f1=UBR120&f2=UBR120#configura`, { waitUntil: "networkidle" });
+await page.waitForFunction(() => document.querySelector("[data-part-code]")?.textContent?.startsWith("CURVA-E · WR-75"));
+await page.locator("[data-add-configured]").click();
 
-for (const vp of VIEWPORTS) {
-  for (const [locale, l] of Object.entries(L)) {
-    const tag = `${locale}/${vp.name}`;
-    const dir = join(OUT, locale, vp.name);
-    mkdirSync(dir, { recursive: true });
-    const context = await browser.newContext({ viewport: { width: vp.width, height: vp.height }, isMobile: vp.isMobile, hasTouch: vp.hasTouch, reducedMotion: "reduce", acceptDownloads: true });
-    await context.addInitScript(() => sessionStorage.setItem("tl-intro-seen", "1"));
-    const page = await context.newPage();
-    const errors = [];
-    page.on("pageerror", (e) => errors.push(e.message));
-    const shot = (name, full = false) => page.screenshot({ path: join(dir, `${name}.png`), fullPage: full });
+await page.goto(`${BASE}/shop/richiesta`, { waitUntil: "networkidle" });
+check((await page.locator("[data-request-item]").count()) === 2, "2 pezzi configurati in lista");
+check((await page.locator("[data-notes]").first().inputValue()) === "", "note vuote all'inizio");
+check((await page.locator("[data-notes]").first().getAttribute("placeholder"))?.startsWith("Es. pressurizzazione"), "segnaposto delle note");
 
-    try {
-      // 0. Home
-      await page.goto(BASE + l.home, { waitUntil: "load", timeout: 60000 });
-      await page.evaluate(() => document.fonts.ready);
-      await shot("0-home");
+// pezzo su disegno con 2 file
+const custom = page.locator("#su-disegno");
+await custom.locator("[data-custom-field=description]").fill("Curva piano H 45° con flange UG-39/U, uscita a 300 mm");
+await custom.locator("[data-custom-field=wr]").selectOption("unknown");
+await custom.locator("[data-custom-field=freq]").fill("9,4");
+await custom.locator("[data-custom-field=qty]").fill("3");
+await custom.locator("[data-custom-file-input]").setInputFiles([stepFile, pdfFile]);
+await custom.locator("[data-add-custom]").click();
+await page.waitForFunction(() => document.querySelectorAll("[data-request-item]").length === 3);
+check(true, "pezzo su disegno aggiunto");
+await page.waitForFunction(() => document.querySelector("[data-request-item=custom]")?.textContent?.includes("flangia-speciale.step"));
+check(true, "file del pezzo su disegno mostrati");
 
-      // 1. Tabelle: tre tab
-      await page.goto(BASE + l.tables, { waitUntil: "load", timeout: 60000 });
-      const twistRows = await page.locator("table.data-table tbody tr").count();
-      expect(twistRows === 14, `${tag}: 14 righe nella tabella twistabile (${twistRows})`);
-      await shot("1-tabelle-twistabile", true);
-      await page.getByRole("tab", { name: l.tabSeamless }).click();
-      expect((await page.locator("table.data-table tbody tr").count()) === 14, `${tag}: 14 righe seamless`);
-      await shot("1-tabelle-seamless", true);
-      await page.getByRole("tab", { name: l.tabDims }).click();
-      expect((await page.locator("table.data-table tbody tr").count()) === 12, `${tag}: 12 righe dimensioni`);
-      await shot("1-tabelle-dimensioni", true);
-      // la pagina non deve scorrere di lato
-      const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
-      expect(overflow <= 1, `${tag}: nessuno scorrimento orizzontale della pagina (${overflow}px)`);
+// quantità e note diverse
+await page.locator("[data-qty]").nth(0).fill("2");
+await page.locator("[data-notes]").nth(1).fill("Pressurizzazione a 0,5 bar");
 
-      // 2. "Configura" sulla riga WR-90 della twistabile
-      await page.getByRole("tab", { name: "Twist" + (locale === "it" ? "abile" : "able") }).click();
-      await page.locator('tr[data-wr="WR-90"] a').click();
-      await page.waitForURL(/misura=WR-90/);
-      await page.locator("[data-part-code]").waitFor();
-      let code = (await page.locator("[data-part-code]").innerText()).trim();
-      expect(code.startsWith("TLFX-100 · TWIST"), `${tag}: configuratore con WR-90 twistabile (${code})`);
+// cliente
+await page.locator("input[name=company]").fill("Prova Mikrowellen GmbH");
+await page.locator("input[name=name]").fill("Anna Prova");
+await page.locator("input[name=email]").fill("anna@example.test");
+await page.locator("input[name=phone]").fill("+49 30 1234567");
+await page.locator("[data-country]").fill("Germania");
+const vatLabel = await page.locator("label[for$=vat]").textContent();
+check(vatLabel?.includes("reverse charge"), `dicitura P.IVA per paese UE: "${vatLabel?.trim()}"`);
+await page.locator("[data-vat]").fill("DE123456789");
+await page.locator("[data-privacy]").check();
+check(await page.locator("[data-submit]").isVisible(), "riepilogo con invio fisso a destra (desktop)");
+await page.waitForTimeout(3200);
+await page.locator("[data-submit]").click();
+await page.waitForURL(/\/shop\/richiesta\/inviata/, { timeout: 60000 });
+const number = (await page.locator("[data-request-number]").textContent())?.trim() ?? "";
+const ymd = new Intl.DateTimeFormat("sv-SE", { timeZone: "Europe/Rome" }).format(new Date()).slice(2).replace(/-/g, "");
+check(new RegExp(`^TL-${ymd}-[0-9]{4}$`).test(number), `numero richiesta ${number} (TL-AAMMGG-XXXX)`);
+check((await page.locator("ol li").count()) === 3, "3 passi nella pagina inviata");
+const [pdfDl] = await Promise.all([page.waitForEvent("download"), page.locator("[data-summary-pdf]").click()]);
+const sumPath = join(folder(number), "riepilogo-scaricato.pdf");
+mkdirSync(folder(number), { recursive: true });
+await pdfDl.saveAs(sumPath);
+check(readFileSync(sumPath).subarray(0, 5).toString() === "%PDF-", "riepilogo PDF scaricabile");
+check(await page.locator('a[href^="https://wa.me/393755771084"]').count() > 0, "link WhatsApp nella pagina inviata");
+check(await page.locator('a[href="tel:+393755771084"]').count() > 0, "telefono nella pagina inviata");
 
-      // 3. Lunghezza 1000 mm, poi flange: B = PDR100
-      await page.getByRole("button", { name: "1000 mm", exact: true }).click();
-      await page.getByRole("button", { name: l.next, exact: true }).click();
-      await page.getByLabel(l.flangeB).selectOption("PDR100");
-      code = (await page.locator("[data-part-code]").innerText()).trim();
-      expect(code === "TLFX-100 · TWIST · L1000 · UBR100/PDR100", `${tag}: codice aggiornato (${code})`);
-      await page.locator("figure .tech-drawing").scrollIntoViewIfNeeded();
-      await shot("2-configuratore");
+const office = readJson(join(folder(number), "ufficio.json"));
+const client = readJson(join(folder(number), "cliente.json"));
+console.log(`    oggetto: ${office.subject}`);
+check(office.subject === `[Preventivo ${number}] Prova Mikrowellen GmbH · Germania · 6 pezzi`, "oggetto [Preventivo …] Azienda · Paese · n pezzi");
+check(office.replyTo === "anna@example.test", "Reply-To = cliente");
+check(office.bcc === "copia@example.test", "BCC da QUOTE_BCC_EMAIL");
+check(office.to === "info@tecnolambro.it", "destinatario info@tecnolambro.it");
+const names = office.attachments.map((a) => a.filename);
+console.log(`    allegati ufficio: ${names.join(", ")}`);
+check(names.filter((n) => n.endsWith(".pdf") && n !== "disegno-cliente.pdf").length === 2, "2 disegni PDF generati");
+check(names.filter((n) => n.endsWith(".glb")).length === 2, "2 modelli GLB");
+check(names.includes("flangia-speciale.step") && names.includes("disegno-cliente.pdf"), "2 file del cliente");
+check(names.includes("richiesta.json"), "richiesta.json");
+const record = readJson(join(folder(number), "ufficio-allegati", "richiesta.json"));
+check(record.items.length === 3 && record.items[0].qty === 2 && record.items[2].qty === 3, "quantità nel payload (2, 1, 3)");
+check(record.items[1].notes === "Pressurizzazione a 0,5 bar", "note del pezzo nel payload");
+check(record.items[1].spec?.type === "bend" && record.items[1].spec?.plane === "E" && record.items[1].spec?.wr === "WR-75", "configurazione della curva nel payload");
+check(record.items[2].files?.length === 2, "file associati al pezzo su disegno");
+check(record.customer.countryCode === "DE" && record.locale === "it", "paese (DE) e lingua del sito");
+check(record.meta?.page?.startsWith("/shop/richiesta"), "pagina di provenienza");
+const html = readFileSync(join(folder(number), "ufficio.html"), "utf8");
+check(html.includes("Rispondi al cliente") && html.includes("mailto:anna%40example.test"), "pulsante Rispondi al cliente");
+check(html.includes("Lingua del sito") && html.includes("Provenienza"), "lingua e provenienza nell'email");
+check(client.to === "anna@example.test" && client.attachments.length === 2 && client.attachments.every((a) => a.filename.endsWith(".pdf")), "email al cliente con i 2 disegni PDF");
+const chtml = readFileSync(join(folder(number), "cliente.html"), "utf8");
+check(chtml.includes("entro 24 ore lavorative") && chtml.includes("wa.me/393755771084") && chtml.includes("+39 375 577 1084"), "email al cliente: 24 ore, WhatsApp, cellulare");
+check(!chtml.includes("Pressurizzazione"), "le note non vengono ripetute al cliente");
+await page.goto(`${BASE}/shop/richiesta`, { waitUntil: "networkidle" });
+check((await page.locator("[data-request-item]").count()) === 0, "richiesta svuotata dopo l'invio riuscito");
 
-      // 4. Vista 3D
-      await page.getByRole("button", { name: l.view3d }).click();
-      await page.locator("figure canvas").waitFor({ timeout: 30000 });
-      await page.waitForTimeout(800);
-      await page.locator("figure canvas").scrollIntoViewIfNeeded();
-      await shot("3-vista-3d");
+/* ------------------------------------------------------------- 2. modulo breve */
+console.log("\n2. Modulo breve (contatti)");
+await page.goto(`${BASE}/contatti`, { waitUntil: "networkidle" });
+const form = page.locator("[data-short-form]");
+check(await form.locator("[data-configure-link]").isVisible(), "link «Hai già una misura? Configura il pezzo →»");
+await form.locator("input[name=name]").fill("Marco Prova");
+await form.locator("input[name=email]").fill("marco@example.test");
+await form.locator("textarea[name=message]").fill("Ci servono 4 twist WR-62 a 90° con flange UBR140.");
+await form.locator("[data-short-file]").setInputFiles([pdfFile]);
+await form.locator("input[type=checkbox]").check();
+await page.waitForTimeout(3200);
+await form.locator("button[type=submit]").click();
+await page.waitForURL(/\/shop\/richiesta\/inviata/, { timeout: 30000 });
+const n2 = (await page.locator("[data-request-number]").textContent())?.trim() ?? "";
+const r2 = readJson(join(folder(n2), "ufficio-allegati", "richiesta.json"));
+check(r2.source === "contact" && r2.items[0].code === "SU DISEGNO" && r2.message.includes("twist WR-62"), `richiesta su disegno ${n2} creata dal modulo breve`);
+check(readJson(join(folder(n2), "ufficio.json")).attachments.some((a) => a.filename === "disegno-cliente.pdf"), "file allegato dal modulo breve");
 
-      // 5. Download PDF e STL
-      for (const [label, ext, check] of [
-        [l.pdf, ".pdf", (b) => b.subarray(0, 5).toString() === "%PDF-"],
-        [l.stl, ".stl", (b) => b.length > 84 && b.readUInt32LE(80) > 1000],
-      ]) {
-        const [dl] = await Promise.all([page.waitForEvent("download", { timeout: 60000 }), page.getByRole("button", { name: label }).click()]);
-        const name = dl.suggestedFilename();
-        const buf = readFileSync(await dl.path());
-        expect(name === `TLFX-100_TWIST_L1000_UBR100-PDR100${ext}`, `${tag}: nome file ${name}`);
-        expect(check(buf), `${tag}: contenuto valido ${name} (${buf.length} byte)`);
-      }
+/* ------------------------------------------------------------- 3. invio fallito */
+console.log("\n3. Invio fallito");
+await page.goto(`${BASE}/shop?tipo=twist&wr=90#configura`, { waitUntil: "networkidle" });
+await page.locator("[data-add-configured]").click();
+await page.goto(`${BASE}/shop/richiesta`, { waitUntil: "networkidle" });
+await page.route("**/api/quote", (route) => route.fulfill({ status: 502, contentType: "application/json", body: JSON.stringify({ ok: false, error: "server" }) }));
+for (const [sel, v] of [["input[name=company]", "Prova Srl"], ["input[name=name]", "Luca Prova"], ["input[name=email]", "luca@example.test"], ["[data-country]", "Italia"]]) await page.locator(sel).fill(v);
+await page.locator("[data-privacy]").check();
+await page.waitForTimeout(3200);
+await page.locator("[data-submit]").click();
+await page.locator("[data-send-error]:visible").first().waitFor({ timeout: 30000 });
+const errText = await page.locator("[data-send-error]:visible").first().textContent();
+check(errText?.includes("info@tecnolambro.it"), `messaggio d'errore con il link a info@: "${errText?.trim().slice(0, 80)}…"`);
+check((await page.locator("[data-request-item]").count()) === 1, "pezzi conservati dopo l'errore");
+check((await page.locator("input[name=company]").inputValue()) === "Prova Srl", "dati del cliente conservati");
+await page.unroute("**/api/quote");
 
-      // 6. Aggiungi alla richiesta (pulsante del riepilogo)
-      await page.locator("aside").getByRole("button", { name: l.add }).click();
-      await page.locator('[data-request-button]').waitFor();
+/* ------------------------------------------------------------- 4. anti-spam */
+console.log("\n4. Anti-spam");
+const before = existsSync(OUT) ? readdirSync(OUT).length : 0;
+const res = await page.evaluate(async () => {
+  const body = new FormData();
+  body.append("payload", JSON.stringify({ source: "contact", locale: "it", items: [{ kind: "contact", code: "SU DISEGNO", qty: 1, notes: "" }], customer: { name: "Bot", email: "bot@example.test", company: "", country: "" }, message: "spam spam spam spam", privacy: true, elapsedMs: 400 }));
+  const r = await fetch("/api/quote", { method: "POST", body });
+  return r.json();
+});
+check(res.ok === true && readdirSync(OUT).length === before, "invio in meno di 3 s: risposta ok, nessuna email");
 
-      // 7. Secondo pezzo dai prodotti pronti: seamless WR-75
-      await page.locator("#pronti").scrollIntoViewIfNeeded();
-      await page.locator("#pronti label", { hasText: l.seamless }).click();
-      await page.locator("#pronti select").selectOption("WR-75");
-      await page.locator('[data-ready-item="seamless:WR-75"] button.btn-primary').click();
-      await shot("4-prodotti-pronti");
-
-      // 8. La tua richiesta: quantità, note, 2 file
-      await page.goto(BASE + l.request, { waitUntil: "load" });
-      await page.locator("[data-request-items] > li").first().waitFor();
-      const count = await page.locator("[data-request-items] > li").count();
-      expect(count === 2, `${tag}: 2 pezzi nella richiesta (${count})`);
-      await page.getByRole("spinbutton", { name: `${l.quantityOf} TLFX-100 · TWIST · L1000 · UBR100/PDR100`, exact: true }).fill("4");
-      await page.getByPlaceholder(l.notes).first().fill("Consegna entro novembre, imballo singolo.");
-      await page.locator("[data-file-input]").setInputFiles([fileA, fileB]);
-      expect((await page.locator("[data-file-list] li").count()) === 2, `${tag}: 2 file in elenco`);
-      await page.getByLabel(l.company, { exact: false }).first().fill("Radiolink Srl");
-      await page.getByLabel(l.name).fill("Marco Bassi");
-      await page.getByLabel(l.email, { exact: false }).first().fill("acquisti@radiolink.example");
-      await page.getByLabel(l.country).fill(l.country_v);
-      await page.locator('form input[type="checkbox"]').check();
-      await shot("5-richiesta", true);
-
-      // 9a. Invio fallito (solo un giro): messaggio chiaro, dati conservati
-      if (tag === "it/1440") {
-        await page.route("**/api/quote", (route) => route.fulfill({ status: 503, contentType: "application/json", body: JSON.stringify({ ok: false, error: "notConfigured" }) }));
-        await page.getByRole("button", { name: l.submit }).click();
-        await page.locator("[data-send-error]").waitFor({ timeout: 30000 });
-        expect((await page.locator("[data-request-items] > li").count()) === 2, `${tag}: pezzi conservati dopo l'errore`);
-        expect((await page.getByLabel(l.name).inputValue()) === "Marco Bassi", `${tag}: dati del cliente conservati`);
-        await shot("5b-errore-invio");
-        await page.unroute("**/api/quote");
-      }
-
-      // 9b. Invio simulato riuscito: controllo del contenuto della richiesta
-      let posted = "";
-      await page.route("**/api/quote", (route) => {
-        posted = route.request().postDataBuffer()?.toString("latin1") ?? "";
-        return route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ ok: true, number: MOCK_NUMBER }) });
-      });
-      await page.getByRole("button", { name: l.submit }).click();
-      await page.waitForURL((u) => u.pathname === l.sent, { timeout: 30000 });
-      const payload = JSON.parse(posted.match(/name="payload"\r\n\r\n(.*?)\r\n--/s)?.[1] ?? "{}");
-      expect(payload.items?.length === 2, `${tag}: 2 pezzi inviati`);
-      expect(payload.items[0].qty === 4 && payload.items[0].code.includes("L1000"), `${tag}: quantità e codice del primo pezzo`);
-      expect((posted.match(/name="files"/g) ?? []).length === 2, `${tag}: 2 file allegati`);
-      expect((posted.match(/name="drawings"/g) ?? []).length === 1, `${tag}: 1 disegno PDF generato`);
-      expect(payload.customer?.company === "Radiolink Srl" && payload.privacy === true, `${tag}: dati cliente e consenso`);
-
-      // 10. Conferma
-      await page.locator("[data-request-number]").waitFor();
-      const number = (await page.locator("[data-request-number]").innerText()).trim();
-      expect(number === MOCK_NUMBER, `${tag}: numero richiesta (${number})`);
-      await shot("6-conferma");
-
-      expect(errors.length === 0, `${tag}: errori JS: ${errors.join(" | ")}`);
-      console.log(`OK  ${tag}  ${code}`);
-    } catch (e) {
-      failures.push(`${tag}: ${e.message}`);
-      await shot("ERRORE").catch(() => {});
-      console.log(`ERR ${tag}  ${e.message}`);
-    }
-    await context.close();
-  }
-}
-
+check(!errors.some((e) => !/Failed to load resource/.test(e)), `nessun errore JavaScript${errors.length ? `: ${errors.join(" | ")}` : ""}`);
 await browser.close();
-if (failures.length) {
-  console.error(`\n${failures.length} percorsi falliti`);
-  process.exit(1);
-}
-console.log(`\nTutti i percorsi superati. Screenshot in ${OUT}`);
+console.log(failures ? `\n${failures} controlli falliti` : "\nTutti i controlli superati");
+process.exit(failures ? 1 : 0);

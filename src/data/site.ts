@@ -42,6 +42,16 @@ export const COMPANY = {
   },
 } as const;
 
+/** Testo precompilato di WhatsApp, nella lingua del sito. */
+export const WHATSAPP_TEXT = {
+  it: "Buongiorno, vorrei informazioni su una guida d’onda",
+  en: "Hello, I’d like information about a waveguide",
+} as const;
+
+export function whatsappHref(locale: string): string {
+  return `https://wa.me/${COMPANY.whatsapp}?text=${encodeURIComponent(locale === "en" ? WHATSAPP_TEXT.en : WHATSAPP_TEXT.it)}`;
+}
+
 /** Anni di attività calcolati dall'anno corrente (fondazione 1987). */
 export function yearsActive(now = new Date()): number {
   return now.getFullYear() - COMPANY.founded;

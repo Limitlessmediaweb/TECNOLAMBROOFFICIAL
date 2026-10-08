@@ -23,9 +23,11 @@ const nextConfig: NextConfig = {
       ["/en/products/flanges-and-kits", "/en/products"],
       ["/en/products/custom-built", "/en/custom"],
       ["/shop/ordine", "/shop/richiesta"],
-      ["/shop/ordine-inviato", "/shop/richiesta-inviata"],
+      ["/shop/ordine-inviato", "/shop/richiesta/inviata"],
+      ["/shop/richiesta-inviata", "/shop/richiesta/inviata"],
       ["/en/shop/order", "/en/shop/request"],
-      ["/en/shop/order-sent", "/en/shop/request-sent"],
+      ["/en/shop/order-sent", "/en/shop/request/sent"],
+      ["/en/shop/request-sent", "/en/shop/request/sent"],
     ];
     // Vecchie schede dello shop con i prezzi: ora c'è il configuratore
     const handles = [

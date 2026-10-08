@@ -2,7 +2,7 @@
 
 import { useEffect, useId, useMemo, useRef, useState, type ReactNode } from "react";
 import NextLink from "next/link";
-import { Box, Check, Download, FileDown, Info, Mail, PencilRuler, Plus, Share2, Smartphone, Upload, X } from "lucide-react";
+import { Box, Check, Download, FileDown, Info, Mail, PencilRuler, Plus, Share2, Smartphone } from "lucide-react";
 import { ENV } from "@/data/site";
 import { useClientLocale, useT } from "@/lib/client-i18n";
 import { BEND_ANGLES, FINISHES, PART_TYPES, TREATMENTS, TWIST_ROTATIONS, TYPE_DEF, isFlexible, type PartSpec, type PartType } from "@/data/configurator/types";
@@ -11,13 +11,12 @@ import { LENGTH_PRESETS, SEAMLESS_TABLE, SIZES, SIZE_BY_WR, TWIST_TABLE, bestSiz
 import { OTHER_FLANGE, flangesFor } from "@/data/flanges";
 import { fileSafe, lengthStatus, partReference, specValid } from "@/lib/part";
 import { addItem } from "@/lib/request";
-import { saveItemFiles } from "@/lib/request-files";
-import { ACCEPTED_EXTENSIONS, MAX_FILE_BYTES, formatBytes, isAcceptedFile } from "@/lib/quote";
 import { drawingDate, drawingSvg, type DrawingLabels } from "@/lib/drawing";
 import { track } from "@/lib/analytics";
 import { TechDrawing } from "./TechDrawing";
 import { Viewer3D } from "./Viewer3D";
 import { StlPreview } from "./StlPreview";
+import { CustomPartForm } from "@/components/request/CustomPartForm";
 import { cn } from "@/lib/cn";
 
 export type ConfigureDetail = { spec?: PartSpec; type?: PartType; wr?: string };
@@ -101,11 +100,8 @@ export function Configurator({ requestPath }: { requestPath: string }) {
   const started = useRef(false);
   /** l'URL iniziale è stato letto: solo dopo si può riscrivere */
   const loaded = useRef(false);
-  // pezzo su disegno
-  const [custom, setCustom] = useState({ description: "", wr: "unknown", freq: "", qty: "1" });
+  // file del pezzo su disegno (anteprima STL)
   const [customFiles, setCustomFiles] = useState<File[]>([]);
-  const [fileErrors, setFileErrors] = useState<string[]>([]);
-  const [customTried, setCustomTried] = useState(false);
 
   const setSpec = (next: PartSpec | ((s: PartSpec) => PartSpec)) => {
     setSpecState(next);
@@ -229,33 +225,6 @@ export function Configurator({ requestPath }: { requestPath: string }) {
     track("request_add", { kind: "configured", type: spec.type, size: spec.wr });
   };
 
-  const addCustom = async () => {
-    setCustomTried(true);
-    if (custom.description.trim().length < 5) return;
-    const qty = Math.max(1, Math.floor(Number(custom.qty)) || 1);
-    const detail = [t("types.custom.name"), custom.wr === "unknown" ? t("sizeUnknown") : custom.wr, custom.freq.trim() ? `${custom.freq.trim()} GHz` : ""].filter(Boolean).join(" · ");
-    const id = addItem({ kind: "custom", code: t("customRef"), detail, qty, notes: custom.description.trim() });
-    if (customFiles.length) await saveItemFiles(id, customFiles);
-    if (customFiles.length) track("quote_3d_upload", { source: "configurator", files: customFiles.length });
-    track("request_add", { kind: "custom" });
-    setAdded(true);
-    setCustom({ description: "", wr: "unknown", freq: "", qty: "1" });
-    setCustomFiles([]);
-    setCustomTried(false);
-  };
-
-  const addFiles = (list: FileList) => {
-    const ok: File[] = [];
-    const errs: string[] = [];
-    for (const f of Array.from(list)) {
-      if (!isAcceptedFile(f)) errs.push(t("fileType", { name: f.name }));
-      else if (f.size > MAX_FILE_BYTES) errs.push(t("fileSize", { name: f.name }));
-      else ok.push(f);
-    }
-    setCustomFiles((prev) => [...prev, ...ok].slice(0, 10));
-    setFileErrors(errs);
-  };
-
   const share = async () => {
     const url = `${window.location.origin}${window.location.pathname}?${specToParams(spec)}#configura`;
     track("config_share", { channel: "link" });
@@ -355,13 +324,16 @@ export function Configurator({ requestPath }: { requestPath: string }) {
     </fieldset>
   );
   const range_ = size ? lengthRange(size.wr) : null;
+  const goTo = (
+    <NextLink href={requestPath} className="font-medium text-primary-ink underline underline-offset-4">
+      {t("goToRequest")}
+    </NextLink>
+  );
   const addedNote = added ? (
     <p className="flex flex-wrap items-center gap-x-2 gap-y-1">
       <Check aria-hidden="true" className="size-4 text-ok" strokeWidth={2} />
       {t("added")}
-      <NextLink href={requestPath} className="font-medium text-accent underline underline-offset-4">
-        {t("goToRequest")}
-      </NextLink>
+      {goTo}
     </p>
   ) : null;
 
@@ -392,102 +364,7 @@ export function Configurator({ requestPath }: { requestPath: string }) {
               t("customTitle"),
               <>
                 <p className="text-muted">{t("customBody")}</p>
-                <div className="field">
-                  <label htmlFor={`${uid}-cdesc`} className="field-label">
-                    {t("customDescription")}
-                  </label>
-                  <textarea
-                    id={`${uid}-cdesc`}
-                    rows={4}
-                    className="input resize-y"
-                    value={custom.description}
-                    onChange={(e) => setCustom({ ...custom, description: e.target.value })}
-                    placeholder={t("customPlaceholder")}
-                    aria-invalid={customTried && custom.description.trim().length < 5 ? true : undefined}
-                    aria-describedby={customTried && custom.description.trim().length < 5 ? `${uid}-cdesc-err` : undefined}
-                  />
-                  {customTried && custom.description.trim().length < 5 ? (
-                    <p id={`${uid}-cdesc-err`} className="field-error">
-                      {t("customDescriptionError")}
-                    </p>
-                  ) : null}
-                </div>
-                <div className="grid gap-4 sm:grid-cols-3">
-                  <div className="field">
-                    <label htmlFor={`${uid}-cwr`} className="field-label">
-                      {t("size")}
-                    </label>
-                    <select id={`${uid}-cwr`} className="input font-mono" value={custom.wr} onChange={(e) => setCustom({ ...custom, wr: e.target.value })}>
-                      <option value="unknown">{t("sizeUnknown")}</option>
-                      {SIZES.map((s) => (
-                        <option key={s.wr} value={s.wr}>
-                          {s.wr}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                  <div className="field">
-                    <label htmlFor={`${uid}-cfreq`} className="field-label">
-                      {t("freqLabel")}
-                    </label>
-                    <input id={`${uid}-cfreq`} inputMode="decimal" className="input tabular" value={custom.freq} onChange={(e) => setCustom({ ...custom, freq: e.target.value })} />
-                  </div>
-                  <div className="field">
-                    <label htmlFor={`${uid}-cqty`} className="field-label">
-                      {t("quantity")}
-                    </label>
-                    <input id={`${uid}-cqty`} type="number" min={1} inputMode="numeric" className="input tabular" value={custom.qty} onChange={(e) => setCustom({ ...custom, qty: e.target.value })} />
-                  </div>
-                </div>
-                <div className="grid gap-3">
-                  <input
-                    id={`${uid}-cfile`}
-                    type="file"
-                    multiple
-                    accept={ACCEPTED_EXTENSIONS.join(",")}
-                    className="peer sr-only"
-                    aria-describedby={`${uid}-cfile-hint`}
-                    onChange={(e) => {
-                      if (e.target.files) addFiles(e.target.files);
-                      e.target.value = "";
-                    }}
-                    data-custom-file-input
-                  />
-                  <label htmlFor={`${uid}-cfile`} className="btn btn-ghost cursor-pointer justify-self-start peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-accent">
-                    <Upload aria-hidden="true" className="size-4" strokeWidth={1.75} />
-                    {t("customFiles")}
-                  </label>
-                  <p id={`${uid}-cfile-hint`} className="field-hint">
-                    {t("customFilesHint")}
-                  </p>
-                  {fileErrors.map((m) => (
-                    <p key={m} className="field-error">
-                      {m}
-                    </p>
-                  ))}
-                  {customFiles.length ? (
-                    <ul className="grid gap-2">
-                      {customFiles.map((f) => (
-                        <li key={`${f.name}-${f.size}`} className="flex items-center justify-between gap-3 border border-line bg-surface px-3 py-2 text-sm">
-                          <span className="min-w-0 truncate font-mono">{f.name}</span>
-                          <span className="flex shrink-0 items-center gap-2 text-muted">
-                            {formatBytes(f.size, locale)}
-                            <button type="button" className="grid size-9 place-items-center rounded-full hover:text-error" aria-label={t("fileRemove", { name: f.name })} onClick={() => setCustomFiles((p) => p.filter((x) => x !== f))}>
-                              <X aria-hidden="true" className="size-4" strokeWidth={1.75} />
-                            </button>
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  ) : null}
-                </div>
-                <button type="button" className="btn btn-primary justify-self-start" onClick={addCustom} data-add-custom>
-                  <Plus aria-hidden="true" className="size-4" strokeWidth={1.75} />
-                  {t("add")}
-                </button>
-                <div aria-live="polite" className="min-h-6 text-sm">
-                  {addedNote}
-                </div>
+                <CustomPartForm onFilesChange={setCustomFiles} addedNote={goTo} />
               </>,
             )
           ) : (

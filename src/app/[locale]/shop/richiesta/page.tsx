@@ -4,6 +4,7 @@ import { pageMetadata } from "@/lib/page";
 import { Breadcrumbs, PageHeader } from "@/components/ui/Bits";
 import { PageMessages } from "@/components/ui/PageMessages";
 import { localizedHref } from "@/components/ui/TrackedLink";
+import { TrustBar } from "@/components/ui/TrustBar";
 import { RequestForm } from "@/components/request/RequestForm";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/shop/richiesta">): Promise<Metadata> {
@@ -26,11 +27,15 @@ export default async function RequestPage({ params }: PageProps<"/[locale]/shop/
         title={<h1 className="text-display-l font-extrabold uppercase wdth-wide">{t("title")}</h1>}
         intro={<p>{t("intro")}</p>}
       />
+      <div className="container-site pb-10 lg:hidden">
+        <TrustBar />
+      </div>
       <div className="container-site pb-24">
         <RequestForm
           privacyHref={await localizedHref("/privacy")}
-          sentPath={await localizedHref("/shop/richiesta-inviata")}
+          sentPath={await localizedHref("/shop/richiesta/inviata")}
           shopPath={await localizedHref("/shop")}
+          aside={<TrustBar vertical />}
         />
       </div>
     </PageMessages>

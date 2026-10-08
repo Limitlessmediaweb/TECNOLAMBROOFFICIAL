@@ -1,5 +1,5 @@
 import { handleUpload, type HandleUploadBody } from "@vercel/blob/client";
-import { MAX_FILE_BYTES, isAcceptedFile } from "@/lib/quote-schema";
+import { MAX_FILE_BYTES, isAcceptedFile, isModelFile } from "@/lib/quote-schema";
 import { clientIp, rateLimited, sameOrigin } from "@/lib/rate-limit";
 
 /** Tipi MIME accettati: formati CAD e PDF, più il generico che i browser usano per DWG, STEP, IGES. */
@@ -17,6 +17,8 @@ const CONTENT_TYPES = [
   "image/vnd.dwg",
   "application/dxf",
   "image/vnd.dxf",
+  // modelli 3D dei pezzi configurati (GLB)
+  "model/gltf-binary",
 ];
 
 /**
@@ -40,7 +42,7 @@ export async function POST(request: Request) {
       body,
       request,
       onBeforeGenerateToken: async (pathname) => {
-        if (!isAcceptedFile(pathname) || !pathname.startsWith("richieste/")) throw new Error("Formato non accettato");
+        if (!(isAcceptedFile(pathname) || isModelFile(pathname)) || !pathname.startsWith("richieste/")) throw new Error("Formato non accettato");
         return { maximumSizeInBytes: MAX_FILE_BYTES, addRandomSuffix: true, allowedContentTypes: CONTENT_TYPES };
       },
       onUploadCompleted: async ({ blob }) => {

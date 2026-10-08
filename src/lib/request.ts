@@ -131,6 +131,3 @@ export function clearDraft(): void {
     // ignorato
   }
 }
-
-/** Numero dell'ultima richiesta inviata, per la pagina di conferma (solo questa sessione). */
-export const LAST_REQUEST_KEY = "tl-last-request";
