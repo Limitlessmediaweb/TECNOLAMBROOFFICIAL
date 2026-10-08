@@ -286,7 +286,7 @@ export function RequestForm({ privacyHref, sentPath, shopPath, aside }: { privac
 
   return (
     <form onSubmit={onSubmit} noValidate className="grid grid-cols-[minmax(0,1fr)] gap-12 lg:grid-cols-[minmax(0,1fr)_22rem] lg:gap-12" aria-label={t("title")}>
-      <div className="grid min-w-0 content-start gap-14">
+      <div className="grid min-w-0 grid-cols-[minmax(0,1fr)] content-start gap-14">
         <p ref={summaryRef} tabIndex={-1} role="alert" className={cn("field-error outline-none", !(submitted && errorCount) && "sr-only")}>
           {submitted && errorCount ? (errorCount === 1 ? t("errorSummaryOne") : t("errorSummaryOther", { count: errorCount })) : ""}
         </p>
