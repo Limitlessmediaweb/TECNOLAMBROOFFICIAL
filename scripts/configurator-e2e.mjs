@@ -140,7 +140,13 @@ for (const c of CASES) {
   if (c.type === "bend") steps.push(() => page.locator("[data-field=leg1]").fill("140"));
   if (c.type === "twist") steps.push(() => page.getByRole("button", { name: "45°", exact: true }).click());
   if (c.type === "offset") steps.push(() => page.locator("[data-field=offset]").fill("30"));
-  if (c.type === "twistable" || c.type === "seamless") steps.push(() => page.locator("[data-field=length]").fill("1100"));
+  if (c.type === "twistable" || c.type === "seamless") {
+    steps.push(() => page.locator("[data-length='900']").click());
+    steps.push(async () => {
+      await page.locator("[data-length=other]").click();
+      await page.locator("[data-field=length]").fill("1450");
+    });
+  }
   if (c.type !== "custom") {
     steps.push(() => page.locator("[data-field=f2]").selectOption({ index: 2 }));
     steps.push(() => page.locator("[data-field=finish]").selectOption("painted"));

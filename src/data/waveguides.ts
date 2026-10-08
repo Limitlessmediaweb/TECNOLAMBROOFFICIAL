@@ -164,29 +164,28 @@ export const DIM_BY_WR: ReadonlyMap<string, DimRow> = new Map(DIM_TABLE.map((d) 
 export const MATERIAL = "OT 80 UNI 4897";
 
 /**
- * Limiti della lunghezza L della guida flessibile, DA VERIFICARE con l'ufficio tecnico.
- * Dalla tabella dimensioni: "Lunghezza L: da 1100 a 1300 mm" e "TLFX-400: lunghezza L massima 3 piedi"
- * (914 mm, minimo non indicato). Fuori da questi limiti il configuratore non blocca: mostra
- * "Fuori standard: lo valutiamo nel preventivo".
+ * Lunghezze standard della guida flessibile (confermate dal titolare): 300, 600, 900, 1000, 1200 mm,
+ * uguali per tutte le misure. Un'eccezione per una misura si aggiunge in LENGTH_OVERRIDES.
+ * Lunghezze diverse non si bloccano: il configuratore mostra "Fuori standard: lo valutiamo nel preventivo".
+ * La vecchia tabella riportava anche "TLFX-400 (WR-22): L massima 3 piedi": da riconfermare.
  */
-export type LengthRange = { min: number | null; max: number };
-const DEFAULT_RANGE: LengthRange = { min: 1100, max: 1300 };
-export const LENGTH_RANGE: Readonly<Record<string, LengthRange>> = {
-  ...Object.fromEntries(DIM_TABLE.map((d) => [d.wr, DEFAULT_RANGE])),
-  "WR-22": { min: null, max: 914 },
-};
+export const STANDARD_LENGTHS = [300, 600, 900, 1000, 1200] as const;
+export const LENGTH_OVERRIDES: Readonly<Record<string, readonly number[]>> = {};
+/** Limiti del campo "Altra lunghezza" */
+export const FREE_LENGTH = { min: 100, max: 3000 } as const;
 
-export function lengthRange(wr: string): LengthRange {
-  return LENGTH_RANGE[wr] ?? DEFAULT_RANGE;
-}
-
-export function maxLengthFor(wr: string): number {
-  return lengthRange(wr).max;
+export function standardLengths(wr: string): readonly number[] {
+  return LENGTH_OVERRIDES[wr] ?? STANDARD_LENGTHS;
 }
 
 export function isStandardLength(wr: string, mm: number): boolean {
-  const r = lengthRange(wr);
-  return mm <= r.max && (r.min === null || mm >= r.min);
+  return standardLengths(wr).includes(mm);
+}
+
+/** Colonna della tabella return loss (300 / 600 / 1000 mm) più vicina alla lunghezza scelta */
+export function rlColumn(mm: number): 300 | 600 | 1000 {
+  const cols = [300, 600, 1000] as const;
+  return cols.reduce((best, c) => (Math.abs(c - mm) < Math.abs(best - mm) ? c : best), cols[0]);
 }
 
 /**
@@ -203,8 +202,6 @@ export function rigidOuter(s: Size): { w: number; h: number; wall: number } {
   return { w: s.a + 2 * wall, h: s.b + 2 * wall, wall };
 }
 
-/** Scorciatoie di lunghezza (le stesse colonne della tabella return loss). */
-export const LENGTH_PRESETS = [300, 600, 1000] as const;
 
 /* ------------------------------------------------------------- frequenza */
 

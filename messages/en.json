@@ -784,7 +784,7 @@
     "notes": [
       "** Insertion loss in dB per 1 foot, silver-plated.",
       "*** VSWR for a 2-foot section.",
-      "Length L: from 1100 to 1300 mm.",
+      "Standard lengths L: 300, 600, 900, 1000, 1200 mm.",
       "* TLFX-400: maximum length L 3 feet."
     ],
     "verify": "Values to be checked with the Tecnolambro technical office.",
@@ -878,8 +878,6 @@
     "customRef": "TO DRAWING",
     "sizeUnknown": "I don’t know",
     "geometryTitle": "Geometry",
-    "lengthRange": "Standard from {min} to {max} mm for this size.",
-    "lengthMax": "Standard up to {max} mm for this size.",
     "planeLabel": "Plane",
     "plane": {
       "E": "E-plane",
@@ -951,7 +949,10 @@
     "shareEmail": "Send to a colleague",
     "shareText": "Here is the waveguide part configuration:",
     "stepNote": "We send the STEP file together with the quote.",
-    "customize": "Customize"
+    "customize": "Customize",
+    "lengthOther": "Other length",
+    "lengthFreeHint": "{min} to {max} mm. Other lengths on request: we assess them in the quote.",
+    "rlNote": "value for {len} mm"
   },
   "request": {
     "title": "Your request",
@@ -1115,8 +1116,6 @@
     "pitch": "Pitch P",
     "tol": "Tolerance",
     "length": "Standard length",
-    "lengthRange": "{min} to {max} mm",
-    "lengthMax": "up to {max} mm",
     "material": "Material",
     "brass": "Brass",
     "electricalTitle": "Electrical data",

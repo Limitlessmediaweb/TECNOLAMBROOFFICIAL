@@ -7,7 +7,7 @@ import { ENV } from "@/data/site";
 import { useClientLocale, useT } from "@/lib/client-i18n";
 import { BEND_ANGLES, FINISHES, PART_TYPES, TREATMENTS, TWIST_ROTATIONS, TYPE_DEF, isFlexible, type PartSpec, type PartType } from "@/data/configurator/types";
 import { defaultSpec, specFromParams, specToParams } from "@/data/configurator/defaults";
-import { LENGTH_PRESETS, SEAMLESS_TABLE, SIZES, SIZE_BY_WR, TWIST_TABLE, bestSizeFor, isOnRequest, lengthRange, num, range, sizeLabel, sizesFor } from "@/data/waveguides";
+import { FREE_LENGTH, SEAMLESS_TABLE, SIZES, SIZE_BY_WR, TWIST_TABLE, bestSizeFor, isOnRequest, num, range, rlColumn, sizeLabel, sizesFor, standardLengths } from "@/data/waveguides";
 import { OTHER_FLANGE, flangesFor } from "@/data/flanges";
 import { fileSafe, lengthStatus, partReference, specValid } from "@/lib/part";
 import { addItem } from "@/lib/request";
@@ -73,11 +73,6 @@ export function usePartText() {
   }, [t, locale]);
 }
 
-/** Return loss della colonna più vicina alla lunghezza scelta (300 / 600 / 1000 mm). */
-function rlColumn(lengthMm: number): 300 | 600 | 1000 {
-  return lengthMm <= 450 ? 300 : lengthMm <= 800 ? 600 : 1000;
-}
-
 const isIOS = () => typeof navigator !== "undefined" && (/iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1));
 
 export function Configurator({ requestPath }: { requestPath: string }) {
@@ -98,6 +93,7 @@ export function Configurator({ requestPath }: { requestPath: string }) {
   const [shared, setShared] = useState(false);
   const [ios, setIos] = useState(false);
   const started = useRef(false);
+  const [freeLengthState, setFreeLength] = useState(false);
   /** l'URL iniziale è stato letto: solo dopo si può riscrivere */
   const loaded = useRef(false);
   // file del pezzo su disegno (anteprima STL)
@@ -169,6 +165,8 @@ export function Configurator({ requestPath }: { requestPath: string }) {
   const flanges = useMemo(() => (size ? flangesFor(size.wr) : []), [size]);
   const code = text.reference(spec);
   const lState = geo === "length" ? lengthStatus(spec) : "ok";
+  // "Altra lunghezza": scelta esplicita, oppure una lunghezza non standard (es. da un link condiviso)
+  const freeLength = freeLengthState || (geo === "length" && lState === "out");
   const valid = specValid(spec);
 
   const chooseType = (type: PartType) => {
@@ -205,12 +203,17 @@ export function Configurator({ requestPath }: { requestPath: string }) {
 
   /* ------------------------------------------------------- dati elettrici */
   const electrical = useMemo(() => {
-    const rows: { label: string; value: string }[] = [];
+    const rows: { label: string; value: string; note?: string }[] = [];
     if (spec.type === "twistable") {
       const r = TWIST_TABLE.find((x) => x.wr === spec.wr);
       if (r) {
+        // tabella a 300 / 600 / 1000 mm: per le altre lunghezze il valore della colonna più vicina
         const col = rlColumn(spec.length || 600);
-        rows.push({ label: t("rl", { len: String(col) }), value: `${num(col === 300 ? r.rl300 : col === 600 ? r.rl600 : r.rl1000, locale, 1, 1)} dB` });
+        rows.push({
+          label: t("rl", { len: String(spec.length || 600) }),
+          value: `${num(col === 300 ? r.rl300 : col === 600 ? r.rl600 : r.rl1000, locale, 1, 1)} dB`,
+          note: (spec.length || 600) !== col ? t("rlNote", { len: String(col) }) : undefined,
+        });
         rows.push({ label: t("att"), value: `${num(r.att, locale, 2, 2)} dB/m` });
         if (r.cw != null) rows.push({ label: t("cw"), value: `${num(r.cw, locale)} W` });
         if (r.peak != null) rows.push({ label: t("peak"), value: `${num(r.peak, locale)} kW` });
@@ -333,7 +336,7 @@ export function Configurator({ requestPath }: { requestPath: string }) {
       {children}
     </fieldset>
   );
-  const range_ = size ? lengthRange(size.wr) : null;
+  const lengths = standardLengths(spec.wr);
   const goTo = (
     <NextLink href={requestPath} className="font-medium text-primary-ink underline underline-offset-4">
       {t("goToRequest")}
@@ -416,19 +419,25 @@ export function Configurator({ requestPath }: { requestPath: string }) {
                   {geo === "length" ? (
                     <>
                       <div className="flex flex-wrap gap-2" role="group" aria-label={t("lengthLabel")}>
-                        {LENGTH_PRESETS.map((p) => (
-                          <button key={p} type="button" aria-pressed={spec.length === p} onClick={() => patch({ length: p })} className={pill(spec.length === p)}>
+                        {lengths.map((p) => (
+                          <button key={p} type="button" aria-pressed={!freeLength && spec.length === p} onClick={() => (setFreeLength(false), patch({ length: p }))} className={pill(!freeLength && spec.length === p)} data-length={p}>
                             {p} mm
                           </button>
                         ))}
+                        <button type="button" aria-pressed={freeLength} onClick={() => setFreeLength(true)} className={pill(freeLength)} data-length="other">
+                          {t("lengthOther")}
+                        </button>
                       </div>
-                      <div className="max-w-xs">
-                        {numberField("length", t("lengthLabel"), {
-                          min: 1,
-                          hint: range_ ? (range_.min ? t("lengthRange", { min: num(range_.min, locale), max: num(range_.max, locale) }) : t("lengthMax", { max: num(range_.max, locale) })) : undefined,
-                          status: lState === "out" ? t("lengthOut") : undefined,
-                        })}
-                      </div>
+                      {freeLength ? (
+                        <div className="max-w-xs">
+                          {numberField("length", t("lengthLabel"), {
+                            min: FREE_LENGTH.min,
+                            max: FREE_LENGTH.max,
+                            hint: t("lengthFreeHint", { min: String(FREE_LENGTH.min), max: String(FREE_LENGTH.max) }),
+                            status: lState === "out" ? t("lengthOut") : undefined,
+                          })}
+                        </div>
+                      ) : null}
                     </>
                   ) : null}
 
@@ -666,7 +675,10 @@ export function Configurator({ requestPath }: { requestPath: string }) {
                   <dl className="mt-2 grid grid-cols-[1fr_auto] gap-x-4 gap-y-1.5 text-sm">
                     {electrical.map((r) => (
                       <div key={r.label} className="contents">
-                        <dt className="text-muted">{r.label}</dt>
+                        <dt className="text-muted">
+                          {r.label}
+                          {r.note ? <span className="block text-xs">{r.note}</span> : null}
+                        </dt>
                         <dd className="text-right tabular">{r.value}</dd>
                       </div>
                     ))}

@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { routing, type Locale } from "@/i18n/routing";
-import { DIM_BY_WR, MATERIAL, SEAMLESS_TABLE, SIZES, SIZE_BY_WR, TWIST_TABLE, isOnRequest, lengthRange, num, range } from "@/data/waveguides";
+import { DIM_BY_WR, MATERIAL, SEAMLESS_TABLE, SIZES, SIZE_BY_WR, TWIST_TABLE, isOnRequest, num, range, standardLengths } from "@/data/waveguides";
 import { flangesFor } from "@/data/flanges";
 import { familyByKey } from "@/data/families";
 import { COMPANY, ENV } from "@/data/site";
@@ -54,7 +54,6 @@ export default async function WrPage({ params }: Props) {
   const products = await getTranslations("products.page");
   const band = range(size.min, size.max, locale);
   const mm = (v: number | null | undefined, d = 1) => (v == null ? "—" : `${num(v, locale, 0, d)} mm`);
-  const len = lengthRange(wr);
   const near = neighbours(wr);
   const shopPath = await localizedHref("/shop");
   const twistable = familyByKey("twistable")!;
@@ -74,7 +73,7 @@ export default async function WrPage({ params }: Props) {
           [t("tol"), `± ${num(dim.tol, locale, 2, 2)} mm`],
         ] as [string, string][])
       : []),
-    [t("length"), len.min ? t("lengthRange", { min: num(len.min, locale), max: num(len.max, locale) }) : t("lengthMax", { max: num(len.max, locale) })],
+    [t("length"), `${standardLengths(wr).map((l) => num(l, locale)).join(" · ")} mm`],
     [t("material"), `${t("brass")} ${MATERIAL}`],
   ];
 

@@ -784,7 +784,7 @@
     "notes": [
       "** Perdita di inserzione in dB per 1 piede, con argentatura.",
       "*** VSWR per una sezione di 2 piedi.",
-      "Lunghezza L: da 1100 a 1300 mm.",
+      "Lunghezze standard L: 300, 600, 900, 1000, 1200 mm.",
       "* TLFX-400: lunghezza L massima 3 piedi."
     ],
     "verify": "Valori da verificare con l’ufficio tecnico Tecnolambro.",
@@ -878,8 +878,6 @@
     "customRef": "SU DISEGNO",
     "sizeUnknown": "Non lo so",
     "geometryTitle": "Geometria",
-    "lengthRange": "Standard da {min} a {max} mm per questa misura.",
-    "lengthMax": "Standard fino a {max} mm per questa misura.",
     "planeLabel": "Piano",
     "plane": {
       "E": "Piano E",
@@ -951,7 +949,10 @@
     "shareEmail": "Invia a un collega",
     "shareText": "Ecco la configurazione del pezzo in guida d’onda:",
     "stepNote": "Il file STEP ve lo mandiamo insieme al preventivo.",
-    "customize": "Personalizza"
+    "customize": "Personalizza",
+    "lengthOther": "Altra lunghezza",
+    "lengthFreeHint": "Da {min} a {max} mm. Lunghezze diverse su richiesta: la valutiamo nel preventivo.",
+    "rlNote": "valore riferito a {len} mm"
   },
   "request": {
     "title": "La tua richiesta",
@@ -1115,8 +1116,6 @@
     "pitch": "Passo P",
     "tol": "Tolleranza",
     "length": "Lunghezza standard",
-    "lengthRange": "da {min} a {max} mm",
-    "lengthMax": "fino a {max} mm",
     "material": "Materiale",
     "brass": "Ottone",
     "electricalTitle": "Dati elettrici",
