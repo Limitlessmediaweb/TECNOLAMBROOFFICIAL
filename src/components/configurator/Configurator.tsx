@@ -111,7 +111,17 @@ export function Configurator({ requestPath }: { requestPath: string }) {
       track("config_start");
     }
   };
-  const patch = (p: Partial<PartSpec>) => setSpec((s) => ({ ...s, ...p }));
+  const stepped = useRef(new Set<string>());
+  const step = (name: string) => {
+    if (stepped.current.has(name)) return;
+    stepped.current.add(name);
+    track("config_step", { step: name });
+  };
+  const patch = (p: Partial<PartSpec>) => {
+    const keys = Object.keys(p);
+    step(keys.some((k) => k === "f1" || k === "f2") ? "flanges" : keys.some((k) => k === "finish" || k === "treatment") ? "finish" : "geometry");
+    setSpec((s) => ({ ...s, ...p }));
+  };
 
   // configurazione dall'URL (link condivisibile) e dal catalogo ("Personalizza")
   useEffect(() => {
@@ -178,7 +188,7 @@ export function Configurator({ requestPath }: { requestPath: string }) {
       f1: s.f1 === OTHER_FLANGE ? s.f1 : (list[0]?.id ?? OTHER_FLANGE),
       f2: s.f2 === OTHER_FLANGE ? s.f2 : ((isFlexible(s.type) ? list[1]?.id : list[0]?.id) ?? OTHER_FLANGE),
     }));
-    track("config_step", { step: "size" });
+    step("size");
   };
 
   // frequenza in cima alla scelta della misura: evidenzia e preseleziona la misura giusta
