@@ -36,15 +36,20 @@ Script utili:
 |---|---|---|
 | `NEXT_PUBLIC_SITE_URL` | `https://www.tecnolambro.com` | canonical, hreflang, sitemap, Open Graph |
 | `NEXT_PUBLIC_ALLOW_INDEXING` | `false` | `false` = `noindex` globale + robots.txt `Disallow: /`. **Mettere a `true` solo al lancio.** |
-| `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` | vuota | se vuota non viene caricato nessuno script di analytics |
+| `NEXT_PUBLIC_DEMO` | `true` | `true` = badge "Versione demo" e segnaposto gialli ("manca: …", `[DA COMPLETARE]`). **Al lancio `false`**: nessun segnaposto visibile |
+| `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` | vuota | facoltativa: Plausible in aggiunta a Vercel Web Analytics |
 | `NEXT_PUBLIC_LIMITLESS_URL` | `https://www.limitlessmedia.it` | credito nel footer |
-| `NEXT_PUBLIC_DEMO` | `true` | badge "Versione demo" e segnaposto `[DA COMPLETARE]` in giallo |
-| `QUOTE_TO_EMAIL` | `riccardo.pasquini2k8@gmail.com` | casella che riceve le richieste di preventivo |
-| `QUOTE_FROM_EMAIL` | `onboarding@resend.dev` (Resend) / `SMTP_USER` | mittente; con Resend un indirizzo del dominio verificato |
-| `RESEND_API_KEY` | vuota | invio con Resend (consigliato). Solo server |
-| `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS` | vuote, porta 587 | invio SMTP con nodemailer, usato solo se manca `RESEND_API_KEY` |
+| `QUOTE_TO_EMAIL` | `info@tecnolambro.it` | casella che riceve le richieste |
+| `QUOTE_BCC_EMAIL` | vuota | copia nascosta di ogni richiesta (es. `riccardo.pasquini2k8@gmail.com`) |
+| `QUOTE_FROM_EMAIL` | `Tecnolambro <info@tecnolambro.it>` | mittente (con Resend: indirizzo del dominio verificato) |
+| `RESEND_API_KEY` | vuota | invio con Resend (prima scelta). Solo server |
+| `SMTP_PASS` | vuota | password di info@tecnolambro.it: attiva l'invio SMTP Aruba se manca `RESEND_API_KEY` |
+| `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER` | `smtps.aruba.it`, `465`, `info@tecnolambro.it` | da cambiare solo se si usa un'altra casella |
+| `BLOB_READ_WRITE_TOKEN` | vuota | Vercel Blob: file oltre 4 MB e modelli 3D oltre 5 MB arrivano come link |
 | `QUOTE_WEBHOOK_URL` | vuota | facoltativa: la stessa richiesta in JSON al futuro gestionale |
-| `BLOB_READ_WRITE_TOKEN` | vuota | facoltativa: file oltre 4 MB in totale caricati su Vercel Blob (link nella mail) |
+| `QUOTE_TEST_MODE` | vuota | `1` = nessuna email: le email e gli allegati vanno in `test-output/quote/<numero>/`. Ignorata in produzione su Vercel |
+
+Vercel Web Analytics: attivarlo in **Vercel → Project → Analytics → Enable** (gratuito nel piano Hobby, nessun cookie). Gli eventi personalizzati (`config_*`, `request_*`, `quote_*`, `whatsapp_click`, `phone_click`, `email_click`, `datasheet_download`, `cert_download`) si vedono in Analytics → Events sui piani che li includono; con Plausible configurato arrivano anche lì.
 
 ## Colori del logo
 
@@ -74,6 +79,32 @@ Token derivati (in [globals.css](src/app/globals.css), copia per i contesti senz
 | `--c-line-strong` bordi dei campi | `#6e8191` | `#5e778d` | 3,8:1 / 4,0:1 (≥ 3:1 per i componenti) |
 
 I neutri sono tutti tinti sulla tonalità 207-210 del blu del logo. L'**ottone è stato eliminato**: con il blu e grigio del logo non si accordava. Il campo TE10 disegna E > 0 nel blu del logo ed E < 0 nel grigio del logo.
+
+## Modifiche v3 (8 ottobre 2026)
+
+Branch `modifiche-v2`, un commit per blocco. Nessun merge su `main`, nessuna pubblicazione.
+
+- **Dati reali**: orari (contatti, footer, JSON-LD), ragione sociale e sede legale, certificazioni ISO 9001 e ISO 14001 ([src/data/certifications.ts](src/data/certifications.ts)) con `/qualita`, badge testuali e `hasCredential`. Niente loghi PJR/ACCREDIA fuori dai PDF.
+- **Segnaposto**: [src/data/pending.ts](src/data/pending.ts). I blocchi senza dati non si vedono; con `NEXT_PUBLIC_DEMO=true` compare un badge giallo "manca: …".
+- **Foto**: basta copiare i file in `public/foto/prodotti/<famiglia>/`, `public/foto/officina/` (nomi che iniziano con `lavorazione`, `collaudo`, `magazzino`) e `public/foto/persone/marco-pasquini.jpg`: gallerie, officina e titolare compaiono alla build successiva. Attestati: PDF in `public/certificazioni/` e `npm run cert:preview` per le miniature.
+- **TrustBar** sotto le CTA della hero, in /shop, accanto al modulo di richiesta e nei contatti.
+- **Configuratore** (`/shop`): 6 tipi (twistabile, seamless, curva, twist, disassato, su disegno), 3D parametrico con quote, viste ed esploso, download PDF/STL/GLB, AR su iPhone, link condivisibile. Prodotti pronti con ricerca. Miniature 3D statiche: `npm run render:thumbs` (sito avviato).
+- **Flusso unico di richiesta**, email e pagina di conferma: vedi sotto.
+- **WhatsApp** fisso su mobile, in footer e contatti; telefono nell'header mobile.
+- **Pagine per misura** `/prodotti/guida-flessibile/wr-90` (14 misure, IT/EN), sezione applicazioni, famiglie curve / twist / disassati separate. `/radioamatori` → 308 alla WR-90.
+- **Analytics**: Vercel Web Analytics + eventi; UTM e referrer della prima visita viaggiano con la richiesta.
+
+### Verifiche
+
+| Comando | Cosa controlla |
+|---|---|
+| `npm run check:placeholders` | con `NEXT_PUBLIC_DEMO=false`, nessun segnaposto visibile su tutte le pagine IT/EN |
+| `npm run test:configurator` | ogni tipo: link condivisibile, opzioni, 3D senza errori, ≤ 60.000 triangoli, download PDF/STL/GLB e bounding box |
+| `npm run test:request` | flusso completo in modalità test: 3 pezzi, modulo breve, errore di invio, anti-spam |
+| `npm run check:links`, `npm run check:a11y` | link interni, redirect, axe WCAG 2.1 AA (chiaro e scuro) |
+| `npm run screenshots:v3` | viste del brief a 390×844 e 1440×900, IT/EN, in `screenshots/v3/` |
+
+Tutti gli script vogliono il sito avviato (`BASE=http://localhost:3211`, per check:links e check:a11y `BASE_URL`).
 
 ## Modifiche v2 (riunione del 7 ottobre 2026)
 
@@ -142,50 +173,60 @@ Principio del titolare: **niente acquisto diretto**, ogni ordine è una richiest
 
 ## Invio delle richieste di preventivo (email)
 
-La rotta [src/app/api/quote/route.ts](src/app/api/quote/route.ts) riceve configuratore, "La tua richiesta" e modulo contatti (stessa rotta). Cosa fa:
+Un solo flusso: "La tua richiesta" (`/shop/richiesta`) e il modulo breve (home, contatti, su misura) usano la stessa rotta [src/app/api/quote/route.ts](src/app/api/quote/route.ts).
 
-- valida di nuovo tutto sul server, con trappola anti-spam (campo `website`) e un limite di 5 richieste ogni 10 minuti per IP (in memoria, per singola istanza);
-- manda all'ufficio un'email HTML leggibile con pezzi, codici, quantità, note, dati del cliente e allegati (file del cliente e PDF dei disegni);
-- manda al cliente la conferma nella sua lingua;
-- se è impostata `QUOTE_WEBHOOK_URL`, manda la stessa richiesta in JSON.
-
-**Risposte della rotta** (verificate):
+- **Numero** `TL-AAMMGG-XXXX` (data italiana + 4 cifre casuali).
+- **All'ufficio** (`QUOTE_TO_EMAIL`, copia nascosta `QUOTE_BCC_EMAIL`): oggetto `[Preventivo TL-…] Azienda · Paese · n pezzi`, Reply-To al cliente, pulsante "Rispondi al cliente", dati del cliente con la lingua del sito, tabella dei pezzi con tutte le opzioni, note, file, pagina di provenienza, prima pagina visitata, referrer e UTM.
+- **Allegati**: disegno PDF e modello GLB di ogni pezzo configurato (GLB come link oltre 5 MB in totale), file del cliente (o link Blob), `richiesta.json` con tutti i dati.
+- **Al cliente**, nella sua lingua: numero, riepilogo (solo codici e quantità), disegni PDF, "Vi rispondiamo con il preventivo entro 24 ore lavorative.", cellulare e WhatsApp.
+- **Conferma** su `/shop/richiesta/inviata` (EN `/shop/request/sent`): numero, 3 passi, riepilogo PDF, WhatsApp e telefono. La lista nel browser si svuota solo se l'invio riesce; se fallisce il sito spiega il motivo, tiene i dati e mostra info@tecnolambro.it.
+- **Anti-spam**: campo trappola, 5 richieste ogni 10 minuti per IP (in memoria, per istanza), almeno 3 secondi di compilazione (sotto: risposta di successo finta, nessuna email).
+- **Webhook** `QUOTE_WEBHOOK_URL`: invariato, riceve lo stesso contenuto di `richiesta.json`.
 
 | Caso | Risposta |
 |---|---|
 | Richiesta valida | 200 con il numero |
-| Dati non validi | 400 con i campi errati |
-| Tipo di file non accettato | 400 |
+| Dati non validi / tipo di file non accettato | 400 |
 | Corpo oltre 4,5 MB | 413 |
 | Troppe richieste | 429 |
 | Nessun servizio email configurato | 503 `notConfigured` |
 
-In tutti i casi di errore il sito mostra il motivo e **non perde i dati inseriti**.
+**Sicurezza**: la conferma al cliente non ripete note né messaggi (il modulo non serve per mandare testi a terzi); i disegni PDF girati al cliente sono accettati solo se piccoli e senza script, link o azioni; nella mail all'ufficio finiscono solo i link del proprio store Blob, nella cartella `richieste/`; il token di caricamento Blob si concede solo alle pagine del sito.
 
-**Sicurezza (dopo la revisione del codice):**
-- La conferma al cliente contiene solo codici e quantità, mai le note: il modulo non serve per mandare testi a indirizzi di terzi.
-- Nella mail all'ufficio finiscono solo i link del proprio store Blob, nella cartella `richieste/`.
-- Il token di caricamento si concede solo alle pagine del sito (controllo dell'Origin), con un massimo di 20 file per IP ogni ora.
-- Il limite di frequenza è in memoria, quindi vale per singola istanza Vercel. Se arrivasse spam, aggiungere un limite condiviso (es. Upstash Redis dal Marketplace di Vercel) o Cloudflare Turnstile.
-- Se `QUOTE_TO_EMAIL` non è impostata, le richieste vanno all'indirizzo indicato nel brief (`riccardo.pasquini2k8@gmail.com`). Al lancio impostarla esplicitamente (es. info@tecnolambro.it).
+### 1. Resend (prima scelta)
 
-### Attivare Resend (consigliato)
-1. Creare un account su [resend.com](https://resend.com).
-2. **Domains → Add Domain**: aggiungere `tecnolambro.com` (o un sottodominio, es. `mail.tecnolambro.com`) e inserire nel DNS i record SPF, DKIM e MX indicati da Resend. Attendere lo stato "Verified".
-3. **API Keys → Create API Key**, permesso "Sending access", limitata al dominio. Copiare la chiave (`re_…`): si vede una volta sola.
-4. Su Vercel: **Project → Settings → Environment Variables**, ambiente *Production* (e *Preview* per provarla). Aggiungere:
-   - `RESEND_API_KEY` = la chiave;
-   - `QUOTE_TO_EMAIL` = `riccardo.pasquini2k8@gmail.com`;
-   - `QUOTE_FROM_EMAIL` = `Tecnolambro <preventivi@tecnolambro.com>` (un indirizzo del dominio verificato).
-5. **Deployments → Redeploy** (le variabili valgono dal deploy successivo). Provare una richiesta: in **Resend → Emails** si vede l'invio.
+1. Account su [resend.com](https://resend.com) → **Domains → Add Domain** → `tecnolambro.it` (il dominio della casella info@; regione Europa, `eu-west-1`).
+2. Resend mostra i record da creare. Su **Aruba → Pannello di controllo → Gestione domini → tecnolambro.it → Gestione DNS** aggiungere **esattamente i valori mostrati da Resend** (la chiave DKIM è diversa per ogni account). Di solito sono:
 
-Senza dominio verificato Resend manda solo dall'indirizzo di prova `onboarding@resend.dev` e solo alla casella del proprietario dell'account: va bene per un test, non per il lancio.
+   | Tipo | Nome (host) | Valore | Priorità |
+   |---|---|---|---|
+   | TXT | `resend._domainkey` | `p=MIGfMA0GCSq…` (chiave DKIM dal pannello Resend) | — |
+   | MX | `send` | `feedback-smtp.eu-west-1.amazonses.com` | 10 |
+   | TXT | `send` | `v=spf1 include:amazonses.com ~all` | — |
+   | TXT (consigliato) | `_dmarc` | `v=DMARC1; p=none;` | — |
 
-### In alternativa: SMTP
-Impostare `SMTP_HOST`, `SMTP_PORT` (587 STARTTLS, 465 SSL), `SMTP_USER` e `SMTP_PASS` (es. la casella aziendale o il provider della PEC) e lasciare vuota `RESEND_API_KEY`.
+   I record stanno sul sottodominio `send`: **non toccano gli MX e lo SPF principali di Aruba**, quindi la posta di info@tecnolambro.it continua a funzionare. Se esiste già un record `_dmarc`, lasciare quello.
+3. Attendere lo stato **Verified** (da pochi minuti a qualche ora).
+4. **API Keys → Create API Key** ("Sending access", limitata a `tecnolambro.it`).
+5. Vercel → **Settings → Environment Variables** (Production e Preview): `RESEND_API_KEY`, `QUOTE_TO_EMAIL=info@tecnolambro.it`, `QUOTE_BCC_EMAIL` (facoltativa), `QUOTE_FROM_EMAIL=Tecnolambro <info@tecnolambro.it>`. Poi **Redeploy**.
 
-### File grandi
-Le funzioni Vercel accettano al massimo **4,5 MB** per richiesta. Fino a 4 MB complessivi i file viaggiano come allegati. Oltre, il browser li carica su **Vercel Blob** e nella mail arriva il link. Per attivarlo: Vercel → **Storage → Create → Blob** e collegarlo al progetto, che imposta `BLOB_READ_WRITE_TOKEN`. Senza Blob il sito spiega di mandare i file per email citando la richiesta.
+### 2. In alternativa: SMTP Aruba
+
+Lasciare vuota `RESEND_API_KEY` e impostare solo `SMTP_PASS` (password di info@tecnolambro.it): host `smtps.aruba.it`, porta 465 SSL e utente `info@tecnolambro.it` sono già i valori predefiniti. Aruba limita il numero di invii orari per casella: per un sito B2B basta, ma Resend dà più garanzie di consegna.
+
+### File grandi (Vercel Blob)
+
+Le funzioni Vercel accettano al massimo **4,5 MB** per richiesta. Oltre 4 MB complessivi i file del cliente (poi i modelli 3D, poi i disegni) vengono caricati dal browser su **Vercel Blob** e nella mail arriva il link; i modelli GLB oltre 5 MB arrivano sempre come link. Attivazione: Vercel → **Storage → Create → Blob** e collegamento al progetto (imposta `BLOB_READ_WRITE_TOKEN`). Senza Blob il sito chiede di mandare i file grandi per email; i modelli 3D troppo grandi si rigenerano dal link della configurazione.
+
+### Prova senza email vere
+
+```bash
+npm run build
+QUOTE_TEST_MODE=1 QUOTE_BCC_EMAIL=copia@example.test npx next start --port 3211
+BASE=http://localhost:3211 npm run test:request
+```
+
+Le anteprime HTML delle due email, le intestazioni e gli allegati finiscono in `test-output/quote/<numero>/`.
 
 ## Struttura
 
@@ -213,20 +254,9 @@ messages/{it,en}.json       tutti i testi
 public/brand/logo.png       logo originale
 ```
 
-## Elenco `[DA COMPLETARE]`
+## Dati da completare
 
-L'elenco completo e aggiornato è in [src/data/todo.ts](src/data/todo.ts). Ogni voce corrisponde a un segnaposto visibile nel sito (giallo in demo):
-
-1. **Certificazioni**: ISO 9001 e altre (ente, numero, scadenza, PDF), pagina `/qualita` e home.
-2. **Controlli di laboratorio**: strumenti e parametri misurati.
-3. **Foto reali** dall'officina di Miradolo Terme (home, `/azienda`).
-4. **Tabelle tecniche**: verifica dei valori trascritti ([src/data/waveguides.ts](src/data/waveguides.ts)); **flange** reali per misura e **opzioni** del configuratore ([src/data/flanges.ts](src/data/flanges.ts)); misure **a magazzino** (`STOCK`); la **quarta famiglia**.
-5. **FAQ**: tempi di consegna, quantità minime, spedizioni UE ed extra UE (Incoterms, dogana), materiali e finiture, documentazione di collaudo.
-6. **Spedizioni**: corriere, Incoterms, documenti doganali.
-7. **Storia**: eventuali date successive al 1987 da pubblicare.
-8. **Legale**: revisione di privacy, termini e cookie (sono bozze), tempi di conservazione, nomi dei fornitori (Vercel, Resend), foro competente.
-9. **Email**: chiave Resend (o SMTP) e dominio verificato su Vercel (vedi "Invio delle richieste").
-10. **Orari** della sede operativa (pagina contatti e JSON-LD `LocalBusiness`).
+L'elenco aggiornato è in [src/data/todo.ts](src/data/todo.ts) e, per i blocchi che si nascondono da soli, in [src/data/pending.ts](src/data/pending.ts). In anteprima (`NEXT_PUBLIC_DEMO=true`) ogni dato mancante ha un badge giallo; con `NEXT_PUBLIC_DEMO=false` il blocco semplicemente non compare.
 
 ## Decisioni
 

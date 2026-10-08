@@ -37,17 +37,23 @@ export function Viewer3D({ spec, eager = false, label }: { spec: PartSpec; eager
   useEffect(() => {
     if (!visible || !box.current) return;
     let cancelled = false;
+    let done = false;
     const el = box.current;
-    const raf = requestAnimationFrame(() => setState("loading"));
+    // "loading" solo se il modello non è già pronto (con il modulo in cache può arrivare prima)
+    const raf = requestAnimationFrame(() => !done && setState("loading"));
     import("@/lib/part3d")
       .then(async ({ mountViewer }) => {
         const v = await mountViewer(el, latest.current, (x) => num(x, locale, 0, 1));
+        done = true;
         if (cancelled) return v.dispose();
         viewer.current = v;
         setTriangles(v.triangles());
         setState("ready");
       })
-      .catch(() => !cancelled && setState("error"));
+      .catch(() => {
+        done = true;
+        if (!cancelled) setState("error");
+      });
     return () => {
       cancelled = true;
       cancelAnimationFrame(raf);

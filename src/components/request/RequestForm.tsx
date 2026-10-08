@@ -535,7 +535,7 @@ export function RequestForm({ privacyHref, sentPath, shopPath, aside }: { privac
             {pieces === 1 ? t("summaryOne") : t("summaryCount", { count: pieces })}
           </p>
           {items.length ? (
-            <ul className="grid max-h-64 gap-1.5 overflow-auto text-sm">
+            <ul className="grid max-h-64 gap-1.5 overflow-auto text-sm" tabIndex={0} aria-label={t("itemsTitle")}>
               {items.map((i) => (
                 <li key={i.id} className="flex justify-between gap-3">
                   <span className="min-w-0 truncate font-mono">{i.kind === "custom" ? t("customItem") : i.code}</span>

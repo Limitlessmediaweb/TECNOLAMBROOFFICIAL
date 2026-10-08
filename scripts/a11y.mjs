@@ -51,9 +51,13 @@ for (const theme of ["light", "dark"]) {
   await page.goto(BASE + "/shop?ghz=10.5", { waitUntil: "load" });
   await page.waitForTimeout(400);
   await audit(page, `${theme} configuratore (frequenza)`);
-  await page.getByRole("button", { name: "Vedi in 3D" }).click();
-  await page.locator("figure canvas").waitFor({ timeout: 30000 }).catch(() => {});
-  await audit(page, `${theme} vista 3D`);
+  // la vista 3D si carica da sola quando entra nello schermo
+  await page.locator("[data-viewer-state]").scrollIntoViewIfNeeded();
+  await page.waitForFunction(() => document.querySelector("[data-viewer-state]")?.dataset.viewerState === "ready", null, { timeout: 30000 }).catch(() => {});
+  await page.getByRole("button", { name: "Quote", exact: true }).click().catch(() => {});
+  await audit(page, `${theme} vista 3D con quote`);
+  await page.getByRole("button", { name: "Disegno", exact: true }).click();
+  await audit(page, `${theme} disegno tecnico`);
   // La tua richiesta: un pezzo, invio a vuoto con errori di validazione
   await page.locator("aside").getByRole("button", { name: "Aggiungi alla richiesta" }).click();
   await page.goto(BASE + "/shop/richiesta", { waitUntil: "load" });

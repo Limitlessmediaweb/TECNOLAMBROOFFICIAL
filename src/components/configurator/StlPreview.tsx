@@ -16,16 +16,21 @@ export function StlPreview({ files, emptyText, label }: { files: File[]; emptyTe
       return () => cancelAnimationFrame(raf);
     }
     let cancelled = false;
+    let done = false;
     let dispose: (() => void) | null = null;
-    const raf = requestAnimationFrame(() => setState("loading"));
+    const raf = requestAnimationFrame(() => !done && setState("loading"));
     import("@/lib/part3d")
       .then(({ mountStlPreview }) => mountStlPreview(el, stl))
       .then((d) => {
+        done = true;
         if (cancelled) return d();
         dispose = d;
         setState("ready");
       })
-      .catch(() => !cancelled && setState("error"));
+      .catch(() => {
+        done = true;
+        if (!cancelled) setState("error");
+      });
     return () => {
       cancelled = true;
       cancelAnimationFrame(raf);

@@ -25,4 +25,8 @@ export const TODO: readonly TodoItem[] = [
   { id: "materials", where: "FAQ (materiali e finiture)", what: "Finiture disponibili oltre all'ottone OT 80" },
   { id: "history-dates", where: "/azienda, home (Storia)", what: "Eventuali date successive al 1987 (nuove sedi, nuovi impianti) se il titolare le vuole pubblicare" },
   { id: "privacy-review", where: "/privacy, /termini, /cookie", what: "Revisione legale delle bozze prima del lancio, nomi dei fornitori (Vercel, Resend)" },
+  { id: "tlfx-missing", where: "src/data/waveguides.ts (DIM_TABLE)", what: "Codici TLFX di WR-34 (R260) e WR-159 (R58): oggi 'WR-34 flessibile twistabile'" },
+  { id: "length-limits", where: "src/data/waveguides.ts (LENGTH_RANGE)", what: "Limiti di lunghezza per misura: oggi 1100–1300 mm per tutte e max 914 mm (3 ft) per WR-22" },
+  { id: "rigid-geometry", where: "src/data/waveguides.ts (WALL), src/data/configurator/defaults.ts (visualBendRadius)", what: "Spessore di parete delle guide rigide e raggio standard delle curve: oggi valori indicativi per 3D e disegni" },
+  { id: "ar-android", where: "components/configurator/Configurator.tsx", what: "AR solo su iPhone/iPad (Quick Look). Su Android servirebbe un GLB pubblico per Scene Viewer" },
 ] as const;

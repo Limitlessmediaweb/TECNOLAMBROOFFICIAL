@@ -16,7 +16,9 @@
     "test:request": "node scripts/request-e2e.mjs",
     "cert:preview": "node scripts/cert-preview.mjs",
     "render:thumbs": "node scripts/render-thumbs.mjs",
-    "test:configurator": "node scripts/configurator-e2e.mjs"
+    "test:configurator": "node scripts/configurator-e2e.mjs",
+    "check:placeholders": "node scripts/check-placeholders.mjs",
+    "screenshots:v3": "node scripts/screenshots-v3.mjs"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
