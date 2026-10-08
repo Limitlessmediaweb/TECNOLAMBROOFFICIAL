@@ -28,7 +28,7 @@ export async function Hero() {
           as="h1"
           immediate
           delay={0.1}
-          className="max-w-[13ch] font-display text-display-xl font-extrabold uppercase tracking-[-0.02em] wdth-wide"
+          className="hero-title max-w-[13ch] font-display text-display-xl font-extrabold uppercase tracking-[-0.02em] wdth-wide"
         >
           {t("titleA")}
         </SplitReveal>

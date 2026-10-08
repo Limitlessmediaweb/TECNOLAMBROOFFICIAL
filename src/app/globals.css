@@ -692,3 +692,18 @@ html:lang(zh) {
   word-break: normal;
   overflow-wrap: anywhere;
 }
+
+/* Titolo dell'hero su telefono: il corpo si riduce quanto basta perché la parola più lunga
+   (MICROONDE, MICROWAVES, MICROONDAS, MIKROWELLEN) stia nello schermo */
+@media (max-width: 639px) {
+  .hero-title {
+    font-size: min(var(--text-display-xl), 11vw);
+  }
+  :lang(en) .hero-title,
+  :lang(es) .hero-title {
+    font-size: min(var(--text-display-xl), 10.2vw);
+  }
+  :lang(de) .hero-title {
+    font-size: min(var(--text-display-xl), 9.4vw);
+  }
+}

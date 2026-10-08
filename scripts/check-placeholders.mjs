@@ -7,14 +7,23 @@
  * Uso: build con NEXT_PUBLIC_DEMO=false, poi BASE=http://localhost:3211 npm run check:placeholders
  */
 import { chromium } from "playwright";
+import { readFileSync, readdirSync } from "node:fs";
+import { join } from "node:path";
 
 const BASE = (process.env.BASE ?? "http://localhost:3211").replace(/\/$/, "");
 const EXTRA = ["/shop/richiesta", "/shop/richiesta/inviata", "/en/shop/request", "/en/shop/request/sent", "/pagina-inesistente", "/en/missing-page"];
 const PATTERNS = [/DA COMPLETARE/i, /TO BE COMPLETED/i, /Versione demo/i, /Demo version/i, /\bmanca:/i, /\bmissing:/i, /Dati dimostrativi/i, /Demo data/i, /\[DA /, /segnaposto/i, /placeholder/i];
 
+// anche le stesse diciture nelle altre lingue (badge demo, "manca: …", "DA COMPLETARE" tradotto)
+const escRe = (x) => x.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+for (const f of readdirSync(join(process.cwd(), "messages")).filter((n) => /^[a-z]{2}\.json$/.test(n))) {
+  const c = JSON.parse(readFileSync(join(process.cwd(), "messages", f), "utf8")).common ?? {};
+  for (const v of [c.todo, c.demoBadge, c.demoData, (c.missing ?? "").split("{")[0].trim()]) if (v && v.length > 2) PATTERNS.push(new RegExp(escRe(v), "i"));
+}
+
 const browser = await chromium.launch();
 const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
-const queue = ["/", "/en", ...EXTRA];
+const queue = ["/", "/en", "/es", "/zh", "/de", ...EXTRA, "/es/shop/solicitud", "/zh/shop/request", "/de/shop/anfrage"];
 const seen = new Set();
 const problems = [];
 
