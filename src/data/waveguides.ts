@@ -164,14 +164,43 @@ export const DIM_BY_WR: ReadonlyMap<string, DimRow> = new Map(DIM_TABLE.map((d) 
 export const MATERIAL = "OT 80 UNI 4897";
 
 /**
- * Lunghezza L dalla tabella dimensioni: "da 1100 a 1300 mm" (lunghezza massima del pezzo,
- * secondo la misura) e "TLFX-400: L massima 3 piedi". Fuori limite il configuratore avvisa,
- * non blocca: "Possibile su richiesta".
+ * Limiti della lunghezza L della guida flessibile, DA VERIFICARE con l'ufficio tecnico.
+ * Dalla tabella dimensioni: "Lunghezza L: da 1100 a 1300 mm" e "TLFX-400: lunghezza L massima 3 piedi"
+ * (914 mm, minimo non indicato). Fuori da questi limiti il configuratore non blocca: mostra
+ * "Fuori standard: lo valutiamo nel preventivo".
  */
-export const LENGTH_LIMITS = { maxMm: 1300, maxMmFor: { "WR-22": 914 } as Record<string, number> } as const;
+export type LengthRange = { min: number | null; max: number };
+const DEFAULT_RANGE: LengthRange = { min: 1100, max: 1300 };
+export const LENGTH_RANGE: Readonly<Record<string, LengthRange>> = {
+  ...Object.fromEntries(DIM_TABLE.map((d) => [d.wr, DEFAULT_RANGE])),
+  "WR-22": { min: null, max: 914 },
+};
+
+export function lengthRange(wr: string): LengthRange {
+  return LENGTH_RANGE[wr] ?? DEFAULT_RANGE;
+}
 
 export function maxLengthFor(wr: string): number {
-  return LENGTH_LIMITS.maxMmFor[wr] ?? LENGTH_LIMITS.maxMm;
+  return lengthRange(wr).max;
+}
+
+export function isStandardLength(wr: string, mm: number): boolean {
+  const r = lengthRange(wr);
+  return mm <= r.max && (r.min === null || mm >= r.min);
+}
+
+/**
+ * Spessore di parete indicativo della guida rigida (curve, twist, disassati), in mm: valori tipici
+ * delle guide rettangolari standard, usati solo per disegno e modello 3D.
+ */
+const WALL: Readonly<Record<string, number>> = {
+  "WR-22": 0.76, "WR-28": 1.02, "WR-34": 1.02, "WR-42": 1.02, "WR-51": 1.02, "WR-62": 1.02, "WR-75": 1.27,
+  "WR-90": 1.27, "WR-112": 1.63, "WR-137": 1.63, "WR-159": 1.63, "WR-187": 1.63, "WR-229": 1.63, "WR-284": 2.03,
+};
+
+export function rigidOuter(s: Size): { w: number; h: number; wall: number } {
+  const wall = WALL[s.wr] ?? 1.27;
+  return { w: s.a + 2 * wall, h: s.b + 2 * wall, wall };
 }
 
 /** Scorciatoie di lunghezza (le stesse colonne della tabella return loss). */

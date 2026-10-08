@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { pageMetadata } from "@/lib/page";
-import { familyTexts } from "@/lib/families-text";
 import { Breadcrumbs, PageHeader } from "@/components/ui/Bits";
 import { PageMessages } from "@/components/ui/PageMessages";
 import { localizedHref } from "@/components/ui/TrackedLink";
@@ -19,7 +18,6 @@ export default async function RequestPage({ params }: PageProps<"/[locale]/shop/
   setRequestLocale(locale);
   const t = await getTranslations("request");
   const shop = await getTranslations("shop");
-  const { names } = await familyTexts();
 
   return (
     <PageMessages namespaces={["configurator"]}>
@@ -33,7 +31,6 @@ export default async function RequestPage({ params }: PageProps<"/[locale]/shop/
           privacyHref={await localizedHref("/privacy")}
           sentPath={await localizedHref("/shop/richiesta-inviata")}
           shopPath={await localizedHref("/shop")}
-          familyNames={names}
         />
       </div>
     </PageMessages>

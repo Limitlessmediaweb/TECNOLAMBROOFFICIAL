@@ -3,7 +3,7 @@ import { SIZE_BY_WR } from "@/data/waveguides";
 
 /**
  * Disegni tecnici a linee (vista laterale) delle famiglie: guida flessibile (con il simbolo di
- * torsione per la twistabile) e curva/disassato.
+ * torsione per la twistabile), curva, twist rigido e disassato.
  * Ogni parte è un <g data-part> con il vettore di esplosione in data-dx/data-dy:
  * ExplodedPart lo usa per separare le parti allo scroll. Le quote stanno in <g data-dim>.
  * Le misure interne riportate (a × b) sono dimensioni standard EIA, non dati Tecnolambro.
@@ -15,7 +15,7 @@ export type PartLabels = {
   gasket: string;
 };
 
-export type DrawingKind = "flexible" | "bends";
+export type DrawingKind = "flexible" | "bend" | "twist" | "offset";
 
 type DrawingProps = {
   family: DrawingKind;
@@ -170,7 +170,7 @@ export function PartDrawing({ family, twist = false, compact = false, labels, lo
         </>
       )}
 
-      {family === "bends" && (
+      {family === "offset" && (
         <>
           <path d="M30 170 H240 C 300 170 330 110 390 110 H610" className="draw-center" />
           <Part dx={-100}>
@@ -196,6 +196,74 @@ export function PartDrawing({ family, twist = false, compact = false, labels, lo
               <DimH x1={116} x2={524} y={18} text="L" />
               <text x={320} y={268} textAnchor="middle" className="draw-text" data-dim>
                 {caption ?? `${band.wr} · ${band.iec}`}
+              </text>
+            </>
+          )}
+        </>
+      )}
+      {family === "bend" && (
+        <>
+          <path d="M30 190 H300 A80 80 0 0 0 380 110 V8" className="draw-center" />
+          <Part dx={-100}>
+            <Gasket x={116} y1={142} y2={238} />
+          </Part>
+          <Part dx={-50} label={L?.flange} lx={134} ly={118}>
+            <Flange x={121} y1={118} y2={262} hatch={hatch} />
+          </Part>
+          <Part label={L?.body} lx={230} ly={154}>
+            <path d="M147 154 H300 A44 44 0 0 0 344 110 V60 H416 V110 A116 116 0 0 1 300 226 H147 Z" className="draw-line draw-fill" />
+            <path d="M147 163 H300 A53 53 0 0 0 353 110 V60 M147 217 H300 A107 107 0 0 0 407 110 V60" className="draw-dim" strokeDasharray="4 3" />
+          </Part>
+          <Part dy={-26}>
+            <rect x={308} y={34} width={144} height={26} fill={`url(#${hatch})`} />
+            <rect x={308} y={34} width={144} height={26} className="draw-accent" />
+          </Part>
+          <Part dy={-46}>
+            <rect x={332} y={29} width={96} height={5} className="draw-line draw-fill" />
+          </Part>
+          {showDims && (
+            <>
+              <DimH x1={116} x2={380} y={274} text="L1" />
+              <DimV x={600} y1={34} y2={190} text="L2" />
+              <line x1={452} y1={34} x2={608} y2={34} className="draw-dim" strokeDasharray="4 3" data-dim />
+              <line x1={416} y1={190} x2={608} y2={190} className="draw-dim" strokeDasharray="4 3" data-dim />
+              <text x={318} y={140} textAnchor="end" className="draw-text" data-dim>
+                90°
+              </text>
+              <text x={520} y={250} textAnchor="middle" className="draw-text" data-dim>
+                {caption ?? `${band.wr} · ${band.iec}`}
+              </text>
+            </>
+          )}
+        </>
+      )}
+
+      {family === "twist" && (
+        <>
+          <line x1="30" y1="140" x2="610" y2="140" className="draw-center" />
+          <Part dx={-105}>
+            <Gasket x={116} />
+          </Part>
+          <Part dx={-55} label={L?.flange} lx={134} ly={64}>
+            <Flange x={121} hatch={hatch} />
+          </Part>
+          <Part label={L?.body} lx={320} ly={96}>
+            <path d="M147 104 H230 C 290 104 350 122 410 122 H493 V158 H410 C 350 158 290 176 230 176 H147 Z" className="draw-line draw-fill" />
+            <path d="M230 104 C 290 104 350 158 410 158 M230 176 C 290 176 350 122 410 122" className="draw-dim" strokeDasharray="4 3" />
+            <path d="M300 92 A 24 8 0 1 1 340 92" className="draw-accent" />
+            <path d="M336 87 L341 92 L334 95" className="draw-accent" />
+          </Part>
+          <Part dx={55}>
+            <Flange x={493} y1={92} y2={188} hatch={hatch} />
+          </Part>
+          <Part dx={105} label={L?.gasket} lx={521} ly={92}>
+            <Gasket x={519} y1={122} y2={158} />
+          </Part>
+          {showDims && (
+            <>
+              <DimH x1={116} x2={524} y={36} text="L" />
+              <text x={320} y={250} textAnchor="middle" className="draw-text" data-dim>
+                {caption ?? `${band.wr} · ${band.iec} · 90°`}
               </text>
             </>
           )}

@@ -57,3 +57,6 @@ next-env.d.ts
 /video-tiktok/*/out/
 /video-tiktok/*/node_modules/
 /video-tiktok/*/3d/assets/*.hdr
+
+# output dei test locali
+/test-output/

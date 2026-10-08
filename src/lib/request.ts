@@ -75,15 +75,17 @@ function newId(): string {
   return typeof crypto !== "undefined" && "randomUUID" in crypto ? crypto.randomUUID() : `${Date.now()}-${Math.random().toString(36).slice(2)}`;
 }
 
-/** Aggiunge un pezzo; se lo stesso codice è già in lista ne aumenta la quantità. */
-export function addItem(item: Omit<RequestItem, "id" | "qty" | "notes"> & { qty?: number; notes?: string }): void {
+/** Aggiunge un pezzo (se lo stesso codice è già in lista ne aumenta la quantità). Restituisce l'id. */
+export function addItem(item: Omit<RequestItem, "id" | "qty" | "notes"> & { qty?: number; notes?: string }): string {
   const items = read();
-  const same = item.kind !== "custom" ? items.find((i) => i.code === item.code && i.kind === item.kind) : undefined;
+  const same = item.kind !== "custom" ? items.find((i) => i.code === item.code && i.kind === item.kind && !item.notes && !i.notes) : undefined;
   if (same) {
     write(items.map((i) => (i === same ? { ...i, qty: i.qty + (item.qty ?? 1) } : i)));
-    return;
+    return same.id;
   }
-  write([...items, { id: newId(), qty: item.qty ?? 1, notes: item.notes ?? "", ...item }]);
+  const id = newId();
+  write([...items, { id, qty: item.qty ?? 1, notes: item.notes ?? "", ...item }]);
+  return id;
 }
 
 export function updateItem(id: string, patch: Partial<Pick<RequestItem, "qty" | "notes">>): void {

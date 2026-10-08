@@ -20,6 +20,8 @@ import { ProductGrid } from "@/components/sections/ProductsSection";
 import { SpecTables } from "@/components/tables/SpecTables";
 import { FamilyGallery } from "@/components/sections/PeopleAndPhotos";
 import { AddCustomButton } from "@/components/request/AddCustomButton";
+import { FamilyDemo3D } from "@/components/configurator/FamilyDemo3D";
+import { TYPE_PARAM } from "@/data/configurator/defaults";
 
 type Props = PageProps<"/[locale]/prodotti/[famiglia]">;
 
@@ -73,6 +75,7 @@ export default async function FamilyPage({ params }: Props) {
   const href = { pathname: "/prodotti/[famiglia]" as const, params: { famiglia: family.slug[locale as Locale] } };
   const { names } = await familyTexts();
   const shopPath = await localizedHref("/shop");
+  const shopQuery = family.partType ? { tipo: TYPE_PARAM[family.partType] } : undefined;
 
   return (
     <PageMessages namespaces={["tables", "configurator"]}>
@@ -92,14 +95,14 @@ export default async function FamilyPage({ params }: Props) {
         intro={<p>{t(`items.${family.key}.description`)}</p>}
       >
         <div className="flex flex-wrap gap-3">
-          {family.configurable ? (
+          {family.partType ? (
             <MagneticButton>
-              <ShopLink source={`family_${family.key}`} query={{ tipo: family.key }} hash="configura" className="btn btn-primary">
+              <ShopLink source={`family_${family.key}`} query={shopQuery} hash="configura" className="btn btn-primary">
                 {nav("shop")}
               </ShopLink>
             </MagneticButton>
           ) : null}
-          <QuoteLink source={`family_${family.key}`} href={{ pathname: "/contatti", query: { famiglia: family.key }, hash: "preventivo" }} className={family.configurable ? "btn btn-ghost" : "btn btn-primary"}>
+          <QuoteLink source={`family_${family.key}`} href={{ pathname: "/contatti", query: { famiglia: family.key }, hash: "preventivo" }} className={family.partType ? "btn btn-ghost" : "btn btn-primary"}>
             {nav("quote")}
             <ArrowRight aria-hidden="true" className="size-4" strokeWidth={1.75} />
           </QuoteLink>
@@ -116,6 +119,18 @@ export default async function FamilyPage({ params }: Props) {
         caption={page("drawingCaption")}
         labels={{ flange: page("partFlange"), body: page("partBody"), gasket: page("partGasket") }}
       />
+
+      {family.partType && !family.table ? (
+        <section className="section-y border-t border-line" aria-labelledby="demo-title">
+          <div className="container-site">
+            <h2 id="demo-title" className="mb-3 text-display-m font-bold">
+              {page("demoTitle")}
+            </h2>
+            <p className="mb-8 max-w-[60ch] text-muted">{page("demoBody")}</p>
+            <FamilyDemo3D type={family.partType} shopPath={shopPath} />
+          </div>
+        </section>
+      ) : null}
 
       <section className="section-y border-t border-line" aria-labelledby="sizes-title">
         <div className="container-site">
@@ -178,7 +193,7 @@ export default async function FamilyPage({ params }: Props) {
           <div className="flex flex-col gap-4 border border-line bg-surface p-7">
             <h2 className="text-display-s font-bold">{page("shopTitle")}</h2>
             <p className="text-muted">{page("shopBody")}</p>
-            <ShopLink source={`family_bottom_${family.key}`} query={family.configurable ? { tipo: family.key } : undefined} hash="configura" className="btn btn-ghost mt-auto self-start">
+            <ShopLink source={`family_bottom_${family.key}`} query={shopQuery} hash="configura" className="btn btn-ghost mt-auto self-start">
               {nav("shop")}
             </ShopLink>
           </div>

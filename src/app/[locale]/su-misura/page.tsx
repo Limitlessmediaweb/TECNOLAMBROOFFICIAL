@@ -65,7 +65,7 @@ export default async function CustomPage({ params }: PageProps<"/[locale]/su-mis
       </section>
 
       <ExplodedPart
-        family="bends"
+        family="offset"
         locale={locale}
         title={page("drawingLabel", { name: t("title") })}
         caption={page("drawingCaption")}

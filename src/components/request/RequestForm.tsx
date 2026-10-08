@@ -18,7 +18,7 @@ import { cn } from "@/lib/cn";
 type Field = "company" | "name" | "email" | "country" | "privacy";
 const EMPTY: CustomerDraft = { company: "", name: "", email: "", phone: "", country: "", vat: "" };
 
-export function RequestForm({ privacyHref, sentPath, shopPath, familyNames }: { privacyHref: string; sentPath: string; shopPath: string; familyNames: Record<string, string> }) {
+export function RequestForm({ privacyHref, sentPath, shopPath }: { privacyHref: string; sentPath: string; shopPath: string }) {
   const t = useT("request");
   const tc = useT("configurator");
   const locale = useClientLocale();
@@ -93,12 +93,12 @@ export function RequestForm({ privacyHref, sentPath, shopPath, familyNames }: { 
     const { drawingPdf } = await import("@/lib/pdf");
     const out: File[] = [];
     for (const i of items) {
-      if (i.kind !== "configured" || !i.spec) continue;
+      if (!i.spec || !("type" in i.spec) || i.spec.type === "custom") continue;
       const s = i.spec;
       const fl = (x?: string | null) => (x === OTHER_FLANGE ? tc("flangeOther") : (x ?? null));
-      const svg = drawingSvg({ wr: s.wr, twist: s.family === "twistable", lengthMm: s.lengthMm, flangeA: fl(s.flangeA), flangeB: fl(s.flangeB), code: i.code, locale, labels, palette: "print", date: drawingDate(locale) });
+      const svg = drawingSvg({ spec: s, flangeA: fl(s.f1), flangeB: fl(s.f2), code: i.code, locale, labels, palette: "print", date: drawingDate(locale) });
       try {
-        const bytes = await drawingPdf(svg, { code: i.code, title: `${familyNames[s.family] ?? ""} – ${i.code}` }, 2);
+        const bytes = await drawingPdf(svg, { code: i.code, title: `${tc(`types.${s.type}.name`)} – ${i.code}` }, 2);
         out.push(new File([bytes as BlobPart], `${fileSafe(i.code)}.pdf`, { type: "application/pdf" }));
       } catch {
         // Il disegno generato è un aiuto: se il browser non riesce a produrlo, la richiesta parte lo stesso.
@@ -132,7 +132,7 @@ export function RequestForm({ privacyHref, sentPath, shopPath, familyNames }: { 
       (s) => setStatus(s),
     );
     if (result.ok) {
-      track("request_submit", { items: items.length, files: files.length });
+      track("quote_submit_success", { items: items.length, files: files.length });
       try {
         window.sessionStorage.setItem(LAST_REQUEST_KEY, result.number);
       } catch {

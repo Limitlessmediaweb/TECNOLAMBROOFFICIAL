@@ -174,13 +174,13 @@
         ]
       },
       "bends": {
-        "name": "Curve, twist e disassati",
-        "short": "Progettati, costruiti e collaudati nel nostro laboratorio, su richiesta o su disegno.",
-        "description": "Curve, twist e disassati progettati, costruiti e collaudati nel nostro laboratorio. Li realizziamo su richiesta o sul vostro disegno, nella misura e con le flange che vi servono.",
+        "name": "Curve",
+        "short": "Curve in piano E e H, a 90° o con l’angolo che vi serve.",
+        "description": "Curve in guida d’onda rigida in piano E e in piano H, progettate, costruite e collaudate nel nostro laboratorio. A 90° per ogni misura, oppure con angolo, raggio e tratti dritti su misura.",
         "applications": [
-          "Curve in piano E e in piano H",
-          "Twist per ruotare la polarizzazione",
-          "Disassati per collegare flange sfalsate"
+          "Curve in piano E",
+          "Curve in piano H",
+          "Angolo, raggio e tratti dritti su misura"
         ]
       },
       "pending": {
@@ -188,6 +188,26 @@
         "short": "[DA COMPLETARE]",
         "description": "[DA COMPLETARE: testi e dati della famiglia forniti dal titolare]",
         "applications": []
+      },
+      "twists": {
+        "name": "Twist",
+        "short": "Ruotano la polarizzazione: 90° di serie, 45° o su misura.",
+        "description": "Twist in guida d’onda rigida per ruotare la polarizzazione: a 90° per ogni misura, a 45° o con la rotazione che vi serve, in senso orario o antiorario.",
+        "applications": [
+          "Rotazione della polarizzazione",
+          "90°, 45° o su misura",
+          "Senso orario o antiorario"
+        ]
+      },
+      "offsets": {
+        "name": "Disassati",
+        "short": "Collegano flange sfalsate, in piano E o H.",
+        "description": "Disassati in guida d’onda rigida per collegare flange sfalsate, in piano E o in piano H, con disassamento e lunghezza su misura.",
+        "applications": [
+          "Flange sfalsate in piano E",
+          "Flange sfalsate in piano H",
+          "Disassamento e lunghezza su misura"
+        ]
       }
     },
     "page": {
@@ -207,7 +227,9 @@
       "quoteBody": "Indicate misura, lunghezza, flange e quantità: preventivo entro 24 ore. Prezzi su richiesta: ogni preventivo è personalizzato.",
       "shopTitle": "Configura il tuo pezzo",
       "shopBody": "Misura, lunghezza e flange: disegno quotato e modello 3D subito, preventivo entro 24 ore.",
-      "others": "Altre famiglie"
+      "others": "Altre famiglie",
+      "demoTitle": "Il pezzo in 3D",
+      "demoBody": "Il pezzo standard in WR-90: ruotalo, guarda le quote e il disegno, poi personalizzalo nel configuratore."
     }
   },
   "bandFinder": {
@@ -356,6 +378,18 @@
       "shopVsQuote": {
         "q": "Posso acquistare online?",
         "a": "No: ogni ordine parte da una richiesta di preventivo, perché i prezzi sono personalizzati. Configurate il pezzo o sceglietelo tra i prodotti pronti, aggiungete quantità e note e inviate la richiesta: rispondiamo entro 24 ore."
+      },
+      "drawing3d": {
+        "q": "Fornite il disegno 3D?",
+        "a": "Sì. Dal configuratore scaricate subito il disegno PDF e il modello 3D in STL e GLB; il file STEP ve lo mandiamo insieme al preventivo."
+      },
+      "clientDrawing": {
+        "q": "Lavorate su disegno del cliente?",
+        "a": "Sì. Caricate STEP, IGES, STL, PDF, DWG o DXF nella richiesta di preventivo: l’ufficio tecnico lo valuta e vi risponde entro 24 ore lavorative."
+      },
+      "hours": {
+        "q": "Quali sono gli orari dell’ufficio?",
+        "a": "Dal lunedì al venerdì, dalle 8:00 alle 12:00 e dalle 13:30 alle 17:30. Sabato e domenica chiuso. Le richieste dal sito arrivano anche fuori orario."
       }
     }
   },
@@ -684,7 +718,7 @@
   },
   "shop": {
     "title": "Configura il tuo pezzo",
-    "intro": "Scegli un pezzo pronto o componilo misura per misura. Prezzi su richiesta: ogni preventivo è personalizzato e arriva entro 24 ore.",
+    "intro": "Hai la misura? Componi il pezzo e vedilo in 3D. Hai un disegno? Caricalo. Niente prezzi online: il preventivo personalizzato arriva entro 24 ore.",
     "breadcrumb": "Configura",
     "howTitle": "Come funziona",
     "how": [
@@ -693,9 +727,9 @@
       "Invia: preventivo entro 24 ore"
     ],
     "readyTitle": "Prodotti pronti",
-    "readyBody": "Le misure standard delle nostre tabelle tecniche.",
+    "readyBody": "Le misure standard: flessibili, curve E e H a 90° e twist a 90°. Aggiungile alla richiesta o personalizzale.",
     "composeTitle": "Componi il pezzo",
-    "composeBody": "Tipo, misura, lunghezza e flange. Il disegno e il modello 3D si aggiornano mentre scegli.",
+    "composeBody": "Tipo, misura, geometria, flange e finitura. Il disegno e il modello 3D si aggiornano mentre scegli.",
     "filtersLabel": "Filtri dei prodotti pronti",
     "family": "Tipo",
     "allFamilies": "Tutti",
@@ -708,8 +742,8 @@
     "empty": "Nessun pezzo con questi filtri.",
     "reset": "Azzera i filtri",
     "band": "Banda",
-    "configure": "Configura",
-    "configureLabel": "Configura {name} {size}",
+    "configure": "Personalizza",
+    "configureLabel": "Personalizza {name} {size}",
     "add": "Aggiungi alla richiesta",
     "added": "Aggiunto",
     "shipping": "Spedizione in tutto il mondo: modalità e costi indicati nel preventivo.",
@@ -718,7 +752,19 @@
     "bendsBody": "Su richiesta o su disegno: aggiungi la voce alla richiesta, descrivi il pezzo nelle note e carica il disegno.",
     "bendsCta": "Aggiungi un pezzo su disegno",
     "showMore": "Mostra tutte le misure ({count})",
-    "stockNote": "Materiale disponibile a magazzino: spedizione in 48 ore."
+    "stockNote": "Materiale disponibile a magazzino: spedizione in 48 ore.",
+    "choiceLabel": "Come vuoi procedere",
+    "choiceMeasure": "Hai la misura? Componi il pezzo",
+    "choiceMeasureBody": "Tipo, misura, geometria e flange: il modello 3D e il disegno quotato si aggiornano mentre scegli.",
+    "choiceMeasureCta": "Apri il configuratore",
+    "choiceDrawing": "Hai un disegno? Caricalo",
+    "choiceDrawingBody": "STEP, IGES, STL, PDF, DWG o DXF: lo valuta l’ufficio tecnico e ti rispondiamo con il preventivo.",
+    "choiceDrawingCta": "Carica il disegno",
+    "typesTitle": "Scegli il tipo di pezzo",
+    "search": "Cerca",
+    "searchPlaceholder": "Es. WR-90, curva H, TLFX-100",
+    "faqTitle": "Domande frequenti",
+    "faqAll": "Tutte le domande"
   },
   "tables": {
     "title": "Tabelle tecniche",
@@ -774,49 +820,20 @@
     "sheetFooter": "Dati da verificare con l’ufficio tecnico. Preventivo entro 24 ore: info@tecnolambro.it · +39 375 577 1084"
   },
   "configurator": {
-    "title": "Componi il pezzo",
-    "progress": "Passo {n} di {total}",
-    "stepsLabel": "Passi del configuratore",
-    "steps": {
-      "type": "Tipo",
-      "size": "Misura",
-      "length": "Lunghezza",
-      "flanges": "Flange",
-      "options": "Opzioni"
-    },
-    "typeTitle": "Che guida ti serve?",
-    "sizeTitle": "Scegli la misura",
-    "sizeByList": "Dall’elenco",
-    "sizeByFreq": "Dimmi la frequenza",
+    "typeTitle": "Tipo di pezzo",
+    "sizeTitle": "Misura",
     "freqLabel": "Frequenza di lavoro (GHz)",
-    "freqSuggest": "A {freq} GHz ti consigliamo {size}.",
-    "freqAlso": "Va bene anche: {list}.",
-    "freqNone": "Nessuna misura standard copre {freq} GHz: scrivilo nelle note, la costruiamo su disegno.",
-    "useSize": "Usa {size}",
-    "lengthTitle": "Lunghezza",
+    "freqSuggest": "A {freq} GHz ti consigliamo {size}: l’abbiamo selezionata.",
+    "freqNone": "Nessuna misura standard copre {freq} GHz: scrivilo nelle note, lo valutiamo nel preventivo.",
     "lengthLabel": "Lunghezza L (mm)",
-    "lengthHint": "Fino a {max} mm per questa misura.",
-    "lengthOut": "Possibile su richiesta, scrivilo nelle note.",
-    "lengthInvalid": "Inserisci una lunghezza in millimetri.",
+    "lengthOut": "Fuori standard: lo valutiamo nel preventivo.",
     "flangesTitle": "Flange",
-    "flangeA": "Flangia lato A",
-    "flangeB": "Flangia lato B",
     "flangeOther": "Altra (specifica nelle note)",
     "flangeNote": "Elenco da confermare con l’ufficio tecnico.",
-    "optionsTitle": "Opzioni",
-    "optionsNone": "Nessuna opzione aggiuntiva per ora: scrivi nelle note se ti serve un rivestimento o una finitura particolare.",
-    "options": {
-      "jacket": "Rivestimento esterno",
-      "pressurized": "Versione pressurizzabile"
-    },
-    "next": "Avanti",
-    "back": "Indietro",
     "summary": "Riepilogo",
-    "code": "Codice",
     "type": "Tipo",
     "size": "Misura",
     "band": "Banda",
-    "length": "Lunghezza",
     "flanges": "Flange",
     "electrical": "Dati elettrici",
     "rl": "Return loss {len} mm",
@@ -824,16 +841,14 @@
     "att": "Attenuazione",
     "cw": "Potenza CW",
     "peak": "Potenza di picco",
-    "onRequest": "Dati elettrici su richiesta",
     "add": "Aggiungi alla richiesta",
     "added": "Aggiunto alla tua richiesta.",
     "goToRequest": "Vai alla tua richiesta",
     "drawing": "Disegno tecnico",
-    "view3d": "Vedi in 3D",
-    "view2d": "Vedi il disegno",
-    "downloadPdf": "Scarica disegno (PDF)",
-    "downloadStl": "Scarica modello 3D (STL)",
-    "downloadGlb": "Scarica modello 3D (GLB)",
+    "view3d": "Vista 3D",
+    "downloadPdf": "Disegno PDF",
+    "downloadStl": "STL",
+    "downloadGlb": "GLB",
     "preparing": "Preparazione…",
     "loading3d": "Caricamento del modello 3D…",
     "viewerLabel": "Modello 3D di {code}. Trascina per ruotare, rotella o due dita per lo zoom.",
@@ -844,11 +859,118 @@
     "drawingScale": "Non in scala",
     "drawingMaterial": "Materiale",
     "drawingTitleBlock": "Tecnolambro Microwave Components",
-    "drawingAlt": "Disegno tecnico indicativo di {code}: vista laterale con lunghezza e flange, sezione con le quote A, B, C e D.",
+    "drawingAlt": "Disegno tecnico indicativo di {code}: vista laterale con le quote principali e sezione della guida.",
     "sideView": "Vista laterale",
     "section": "Sezione",
     "dimsUnknown": "Quote su richiesta",
-    "downloadError": "Il file non si è generato. Riprova; il disegno e i dati restano qui."
+    "downloadError": "Il file non si è generato. Riprova; la configurazione resta qui.",
+    "types": {
+      "twistable": {
+        "name": "Flessibile twistabile",
+        "short": "Si piega e si torce"
+      },
+      "seamless": {
+        "name": "Flessibile seamless",
+        "short": "Senza saldature, con guaina"
+      },
+      "bend": {
+        "name": "Curva",
+        "short": "Piano E o H, angolo a scelta"
+      },
+      "twist": {
+        "name": "Twist",
+        "short": "Ruota la polarizzazione"
+      },
+      "offset": {
+        "name": "Disassato",
+        "short": "Collega flange sfalsate"
+      },
+      "custom": {
+        "name": "Su disegno",
+        "short": "Carica il tuo STEP, STL o PDF"
+      }
+    },
+    "flexName": {
+      "twistable": "flessibile twistabile",
+      "seamless": "flessibile seamless"
+    },
+    "customRef": "SU DISEGNO",
+    "sizeUnknown": "Non lo so",
+    "geometryTitle": "Geometria",
+    "lengthRange": "Standard da {min} a {max} mm per questa misura.",
+    "lengthMax": "Standard fino a {max} mm per questa misura.",
+    "planeLabel": "Piano",
+    "plane": {
+      "E": "Piano E",
+      "H": "Piano H"
+    },
+    "angleLabel": "Angolo",
+    "angleFree": "Angolo libero (1–180°)",
+    "radiusLabel": "Raggio di curvatura",
+    "radiusStd": "Raggio standard",
+    "radiusStdShort": "R standard",
+    "radiusCustom": "Raggio su misura",
+    "radiusValue": "Raggio R (mm)",
+    "leg1": "Tratto dritto L1 (mm)",
+    "leg2": "Tratto dritto L2 (mm)",
+    "rotationLabel": "Rotazione",
+    "rotationFree": "Rotazione libera (°)",
+    "directionLabel": "Senso di rotazione",
+    "dir": {
+      "cw": "orario",
+      "ccw": "antiorario"
+    },
+    "offsetLabel": "Disassamento X (mm)",
+    "offsetLength": "Lunghezza totale L (mm)",
+    "flange1": "Flangia 1",
+    "flange2": "Flangia 2",
+    "finishTitle": "Finitura e trattamento",
+    "finish": "Finitura",
+    "finishes": {
+      "raw": "Grezza",
+      "bright": "Brillantata",
+      "painted": "Verniciata"
+    },
+    "paintedHint": "Colore e tipo di vernice li definiamo insieme nel preventivo.",
+    "treatment": "Trattamento",
+    "treatments": {
+      "none": "Nessuno",
+      "galvanic": "Galvanico",
+      "thermal": "Termico"
+    },
+    "treatmentHint": "Lo definiamo insieme nel preventivo.",
+    "notesTitle": "Note",
+    "notesPlaceholder": "Es. pressurizzazione, finitura, consegna richiesta…",
+    "customTitle": "Il tuo pezzo su disegno",
+    "customBody": "Descrivi il pezzo e carica il disegno o il modello 3D: lo valutiamo e ti mandiamo il preventivo entro 24 ore.",
+    "customDescription": "Descrizione del pezzo",
+    "customPlaceholder": "Es. curva piano H 45° con flange UG-39/U, uscita a 300 mm",
+    "customDescriptionError": "Descrivi il pezzo in qualche parola.",
+    "customFiles": "Carica disegno o 3D",
+    "customFilesHint": "STEP/STP, IGES/IGS, STL, PDF, DWG, DXF. Massimo 20 MB per file.",
+    "quantity": "Quantità",
+    "fileRemove": "Togli {name}",
+    "fileType": "{name}: formato non accettato.",
+    "fileSize": "{name}: supera 20 MB.",
+    "stlPreviewLabel": "Anteprima del file 3D",
+    "stlPreviewEmpty": "Carica un file STL per vederlo qui in 3D. STEP, IGES, PDF e DWG arrivano all’ufficio tecnico così come sono.",
+    "drawingButton": "Disegno",
+    "views": {
+      "iso": "Iso",
+      "front": "Fronte",
+      "side": "Lato"
+    },
+    "viewTools": "Viste del modello",
+    "dims": "Quote",
+    "exploded": "Esploso",
+    "resetView": "Ripristina la vista",
+    "ar": "Vedi nella stanza (AR)",
+    "share": "Copia link",
+    "shared": "Link copiato",
+    "shareEmail": "Invia a un collega",
+    "shareText": "Ecco la configurazione del pezzo in guida d’onda:",
+    "stepNote": "Il file STEP ve lo mandiamo insieme al preventivo.",
+    "customize": "Personalizza"
   },
   "request": {
     "title": "La tua richiesta",

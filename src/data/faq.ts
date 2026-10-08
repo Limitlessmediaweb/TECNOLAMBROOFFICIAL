@@ -17,6 +17,12 @@ export const FAQ: readonly FaqItem[] = [
   { id: "testing", todo: true },
   { id: "flexTwist", todo: false },
   { id: "shopVsQuote", todo: false },
+  { id: "drawing3d", todo: false },
+  { id: "clientDrawing", todo: false },
+  { id: "hours", todo: false },
 ] as const;
+
+/** Domande brevi in fondo a /shop */
+export const SHOP_FAQ = ["shopVsQuote", "drawing3d", "files", "leadTime"] as const;
 
 export const FAQ_PREVIEW = FAQ.filter((f) => f.preview);

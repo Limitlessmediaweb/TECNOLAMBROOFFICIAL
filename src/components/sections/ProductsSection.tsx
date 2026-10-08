@@ -10,11 +10,13 @@ import { ScrambleText } from "@/components/motion/ScrambleText";
 import { PartDrawing } from "@/components/domain/PartDrawings";
 import { cn } from "@/lib/cn";
 
-/** Disposizione asimmetrica: la twistabile in evidenza, seamless accanto, curve e disassati sotto. */
+/** Disposizione asimmetrica: la twistabile in evidenza, seamless e curve accanto, twist e disassati sotto. */
 const LAYOUT: Record<FamilyKey, string> = {
   twistable: "lg:col-span-4 lg:row-span-2",
   seamless: "lg:col-span-2",
   bends: "lg:col-span-2",
+  twists: "lg:col-span-3",
+  offsets: "lg:col-span-3",
   pending: "lg:col-span-2",
 };
 

@@ -187,7 +187,7 @@ export function QuoteForm({ families, defaultFamily, privacyHref }: { families: 
     if (result.ok) {
       setNumber(result.number);
       setStatus("success");
-      track("quote_submit", { family: values.family, size: values.size || "none", file: Boolean(file) });
+      track("quote_submit_success", { family: values.family, size: values.size || "none", file: Boolean(file) });
       window.setTimeout(() => statusRef.current?.focus(), 30);
     } else {
       setReason(result.reason);

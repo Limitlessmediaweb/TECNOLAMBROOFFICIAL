@@ -16,7 +16,7 @@ export function AddCustomButton({ href, label, icon }: { href: string; label: st
       className="btn btn-primary"
       onClick={() => {
         addItem({ kind: "custom", code: t("customItemCode") });
-        track("add_to_request", { kind: "custom" });
+        track("request_add", { kind: "custom" });
         router.push(href);
       }}
     >

@@ -14,7 +14,9 @@
     "colors:logo": "node scripts/extract-logo-colors.mjs",
     "check:a11y": "node scripts/a11y.mjs",
     "test:request": "node scripts/request-e2e.mjs",
-    "cert:preview": "node scripts/cert-preview.mjs"
+    "cert:preview": "node scripts/cert-preview.mjs",
+    "render:thumbs": "node scripts/render-thumbs.mjs",
+    "test:configurator": "node scripts/configurator-e2e.mjs"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",

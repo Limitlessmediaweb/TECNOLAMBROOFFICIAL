@@ -1,31 +1,42 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { ArrowDown, FilePlus2, Truck } from "lucide-react";
+import { ArrowDown, ArrowRight, PencilRuler, Truck, Upload } from "lucide-react";
 import type { Locale } from "@/i18n/routing";
 import { pageMetadata, breadcrumbsFor } from "@/lib/page";
-import { familyTexts } from "@/lib/families-text";
-import { Breadcrumbs, PageHeader } from "@/components/ui/Bits";
+import { publicExists } from "@/lib/public-files";
+import { Breadcrumbs, PageHeader, WithTodo } from "@/components/ui/Bits";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { PageMessages } from "@/components/ui/PageMessages";
+import { LocalLink as Link } from "@/components/ui/LocalLink";
 import { localizedHref } from "@/components/ui/TrackedLink";
+import { TrustBar } from "@/components/ui/TrustBar";
 import { SplitReveal } from "@/components/motion/SplitReveal";
+import { FaqAccordion } from "@/components/domain/FaqAccordion";
 import { Configurator } from "@/components/configurator/Configurator";
 import { ReadyCatalog } from "@/components/configurator/ReadyCatalog";
-import { AddCustomButton } from "@/components/request/AddCustomButton";
+import { TypeTiles } from "@/components/configurator/TypeTiles";
+import { SHOP_FAQ } from "@/data/faq";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/shop">): Promise<Metadata> {
   const { locale } = await params;
   return pageMetadata(locale, "shop", "/shop");
 }
 
-/** "Configura il tuo pezzo": prodotti pronti dalle tabelle + configuratore. Niente prezzi né pagamento. */
+/** Miniature statiche dei modelli 3D (public/render, generate da scripts/render-thumbs.mjs) */
+const THUMB_KEYS = ["twistable", "seamless", "bend-E", "bend-H", "twist", "offset"] as const;
+function thumbs(): Record<string, string> {
+  return Object.fromEntries(THUMB_KEYS.filter((k) => publicExists(`render/${k}.webp`)).map((k) => [k, `/render/${k}.webp`]));
+}
+
+/** "Configura il tuo pezzo": due strade (misura o disegno), tipi, configuratore, prodotti pronti. Niente prezzi né pagamento. */
 export default async function ShopPage({ params }: PageProps<"/[locale]/shop">) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("shop");
+  const f = await getTranslations("faq.items");
   const how = t.raw("how") as string[];
-  const { names, short } = await familyTexts();
   const requestPath = await localizedHref("/shop/richiesta");
+  const th = thumbs();
 
   return (
     <PageMessages namespaces={["shop", "configurator", "tables"]}>
@@ -38,40 +49,41 @@ export default async function ShopPage({ params }: PageProps<"/[locale]/shop">) 
           </SplitReveal>
         }
         intro={<p>{t("intro")}</p>}
-      >
-        <div className="flex flex-wrap gap-3">
-          <a href="#pronti" className="btn btn-ghost">
-            {t("readyTitle")}
-            <ArrowDown aria-hidden="true" className="size-4" strokeWidth={1.75} />
-          </a>
-          <a href="#configura" className="btn btn-primary">
-            {t("composeTitle")}
-            <ArrowDown aria-hidden="true" className="size-4" strokeWidth={1.75} />
-          </a>
-        </div>
-      </PageHeader>
+      />
 
-      <section className="container-site pb-14" aria-labelledby="how-title">
-        <h2 id="how-title" className="sr-only">
-          {t("howTitle")}
+      <div className="container-site pb-10">
+        <TrustBar />
+      </div>
+
+      {/* due strade: ho la misura / ho un disegno */}
+      <section className="container-site pb-14" aria-label={t("choiceLabel")}>
+        <div className="grid gap-4 md:grid-cols-2">
+          <a href="#configura" className="group flex flex-col gap-3 border border-accent/60 bg-[color-mix(in_srgb,var(--c-accent)_9%,var(--c-bg))] p-7 transition-colors hover:border-accent" data-choice="measure">
+            <PencilRuler aria-hidden="true" className="size-7 text-accent" strokeWidth={1.5} />
+            <span className="text-display-s font-bold">{t("choiceMeasure")}</span>
+            <span className="text-muted">{t("choiceMeasureBody")}</span>
+            <span className="mt-auto inline-flex items-center gap-2 pt-2 font-medium text-primary-ink">
+              {t("choiceMeasureCta")}
+              <ArrowDown aria-hidden="true" className="size-4 transition-transform group-hover:translate-y-0.5" strokeWidth={1.75} />
+            </span>
+          </a>
+          <Link href={{ pathname: "/shop/richiesta", hash: "su-disegno" }} className="group flex flex-col gap-3 border border-line bg-surface p-7 transition-colors hover:border-accent" data-choice="drawing">
+            <Upload aria-hidden="true" className="size-7 text-accent" strokeWidth={1.5} />
+            <span className="text-display-s font-bold">{t("choiceDrawing")}</span>
+            <span className="text-muted">{t("choiceDrawingBody")}</span>
+            <span className="mt-auto inline-flex items-center gap-2 pt-2 font-medium text-primary-ink">
+              {t("choiceDrawingCta")}
+              <ArrowRight aria-hidden="true" className="size-4 transition-transform group-hover:translate-x-0.5" strokeWidth={1.75} />
+            </span>
+          </Link>
+        </div>
+      </section>
+
+      <section className="container-site pb-14" aria-labelledby="types-title">
+        <h2 id="types-title" className="mb-6 text-display-m font-bold">
+          {t("typesTitle")}
         </h2>
-        <ol className="grid gap-px border border-line bg-line sm:grid-cols-3">
-          {how.map((step, i) => (
-            <li key={step} className="flex items-center gap-4 bg-bg p-5">
-              <span aria-hidden="true" className="grid size-9 shrink-0 place-items-center rounded-full border border-accent font-mono text-sm text-accent">
-                {i + 1}
-              </span>
-              <span className="font-medium">{step}</span>
-            </li>
-          ))}
-        </ol>
-        <p className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-muted">
-          <span>{t("priceNote")}</span>
-          <span className="inline-flex items-center gap-2">
-            <Truck aria-hidden="true" className="size-4" strokeWidth={1.75} />
-            {t("shipping")}
-          </span>
-        </p>
+        <TypeTiles thumbs={th} />
       </section>
 
       <section id="configura" className="section-y scroll-mt-20 border-t border-line" aria-labelledby="compose-title">
@@ -82,7 +94,7 @@ export default async function ShopPage({ params }: PageProps<"/[locale]/shop">) 
             </h2>
             <p className="mt-4 text-lead text-muted">{t("composeBody")}</p>
           </div>
-          <Configurator familyNames={names} familyShort={short} requestPath={requestPath} />
+          <Configurator requestPath={requestPath} />
         </div>
       </section>
 
@@ -94,19 +106,49 @@ export default async function ShopPage({ params }: PageProps<"/[locale]/shop">) 
             </h2>
             <p className="mt-4 text-lead text-muted">{t("readyBody")}</p>
           </div>
-          <ReadyCatalog familyNames={names} />
+          <ReadyCatalog thumbs={th} />
         </div>
       </section>
 
-      <section className="border-t border-line" aria-labelledby="bends-title">
-        <div className="container-site grid gap-6 py-16 md:grid-cols-[1fr_auto] md:items-center">
-          <div>
-            <h2 id="bends-title" className="text-display-m font-bold">
-              {t("bendsTitle")}
+      <section className="section-y border-t border-line" aria-labelledby="how-title">
+        <div className="container-site">
+          <h2 id="how-title" className="mb-8 text-display-m font-bold">
+            {t("howTitle")}
+          </h2>
+          <ol className="grid gap-px border border-line bg-line sm:grid-cols-3">
+            {how.map((step, i) => (
+              <li key={step} className="flex items-center gap-4 bg-bg p-5">
+                <span aria-hidden="true" className="grid size-9 shrink-0 place-items-center rounded-full border border-accent font-mono text-sm text-accent">
+                  {i + 1}
+                </span>
+                <span className="font-medium">{step}</span>
+              </li>
+            ))}
+          </ol>
+          <p className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-muted">
+            <span>{t("priceNote")}</span>
+            <span>{t("stockNote")}</span>
+            <span className="inline-flex items-center gap-2">
+              <Truck aria-hidden="true" className="size-4" strokeWidth={1.75} />
+              {t("shipping")}
+            </span>
+          </p>
+        </div>
+      </section>
+
+      <section className="section-y border-t border-line" aria-labelledby="shop-faq-title">
+        <div className="container-site grid gap-10 lg:grid-cols-12">
+          <div className="lg:col-span-4">
+            <h2 id="shop-faq-title" className="text-display-m font-bold">
+              {t("faqTitle")}
             </h2>
-            <p className="mt-3 max-w-[60ch] text-muted">{t("bendsBody")}</p>
+            <Link href="/faq" className="btn btn-ghost mt-6">
+              {t("faqAll")}
+            </Link>
           </div>
-          <AddCustomButton href={requestPath} label={t("bendsCta")} icon={<FilePlus2 aria-hidden="true" className="size-4" strokeWidth={1.75} />} />
+          <div className="lg:col-span-8">
+            <FaqAccordion headingLevel={3} items={SHOP_FAQ.map((id) => ({ id, q: f(`${id}.q`), a: <WithTodo text={f(`${id}.a`)} /> }))} />
+          </div>
         </div>
       </section>
     </PageMessages>

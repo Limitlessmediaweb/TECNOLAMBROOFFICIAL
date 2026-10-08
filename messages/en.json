@@ -174,13 +174,13 @@
         ]
       },
       "bends": {
-        "name": "Bends, twists and offsets",
-        "short": "Designed, built and tested in our laboratory, on request or to your drawing.",
-        "description": "Bends, twists and offsets designed, built and tested in our laboratory. We make them on request or to your drawing, in the size and with the flanges you need.",
+        "name": "Bends",
+        "short": "E-plane and H-plane bends, 90° or at the angle you need.",
+        "description": "Rigid waveguide bends in the E-plane and H-plane, designed, built and tested in our laboratory. 90° in every size, or with custom angle, radius and straight legs.",
         "applications": [
-          "E-plane and H-plane bends",
-          "Twists to rotate polarization",
-          "Offsets to join staggered flanges"
+          "E-plane bends",
+          "H-plane bends",
+          "Custom angle, radius and straight legs"
         ]
       },
       "pending": {
@@ -188,6 +188,26 @@
         "short": "[TO BE COMPLETED]",
         "description": "[TO BE COMPLETED: family texts and data from the owner]",
         "applications": []
+      },
+      "twists": {
+        "name": "Twists",
+        "short": "Rotate polarization: 90° as standard, 45° or custom.",
+        "description": "Rigid waveguide twists to rotate polarization: 90° in every size, 45° or the rotation you need, clockwise or counter-clockwise.",
+        "applications": [
+          "Polarization rotation",
+          "90°, 45° or custom",
+          "Clockwise or counter-clockwise"
+        ]
+      },
+      "offsets": {
+        "name": "Offsets",
+        "short": "Join staggered flanges, in the E or H plane.",
+        "description": "Rigid waveguide offsets to join staggered flanges, in the E-plane or H-plane, with custom offset and length.",
+        "applications": [
+          "Staggered flanges, E-plane",
+          "Staggered flanges, H-plane",
+          "Custom offset and length"
+        ]
       }
     },
     "page": {
@@ -207,7 +227,9 @@
       "quoteBody": "Tell us size, length, flanges and quantity: quote within 24 hours. Prices on request: every quote is tailored.",
       "shopTitle": "Configure your part",
       "shopBody": "Size, length and flanges: dimensioned drawing and 3D model straight away, quote within 24 hours.",
-      "others": "Other families"
+      "others": "Other families",
+      "demoTitle": "The part in 3D",
+      "demoBody": "The standard WR-90 part: rotate it, check the dimensions and the drawing, then customize it in the configurator."
     }
   },
   "bandFinder": {
@@ -356,6 +378,18 @@
       "shopVsQuote": {
         "q": "Can I buy online?",
         "a": "No: every order starts from a quote request, because prices are tailored. Configure the part or pick a ready-made one, add quantity and notes and send the request: we reply within 24 hours."
+      },
+      "drawing3d": {
+        "q": "Do you provide 3D drawings?",
+        "a": "Yes. From the configurator you can download the PDF drawing and the 3D model in STL and GLB straight away; we send the STEP file together with the quote."
+      },
+      "clientDrawing": {
+        "q": "Do you work from customer drawings?",
+        "a": "Yes. Upload STEP, IGES, STL, PDF, DWG or DXF with your quote request: our engineering office reviews it and replies within 24 working hours."
+      },
+      "hours": {
+        "q": "What are your office hours?",
+        "a": "Monday to Friday, 8:00–12:00 and 13:30–17:30 (CET). Closed on Saturday and Sunday. Website requests are received outside office hours too."
       }
     }
   },
@@ -684,7 +718,7 @@
   },
   "shop": {
     "title": "Configure your part",
-    "intro": "Pick a ready-made part or build it size by size. Prices on request: every quote is tailored and arrives within 24 hours.",
+    "intro": "Know the size? Build the part and see it in 3D. Have a drawing? Upload it. No online prices: your tailored quote arrives within 24 hours.",
     "breadcrumb": "Configure",
     "howTitle": "How it works",
     "how": [
@@ -693,9 +727,9 @@
       "Send: quote within 24 hours"
     ],
     "readyTitle": "Ready-made parts",
-    "readyBody": "The standard sizes from our technical tables.",
+    "readyBody": "Standard sizes: flexibles, 90° E and H bends and 90° twists. Add them to your request or customize them.",
     "composeTitle": "Build your part",
-    "composeBody": "Type, size, length and flanges. The drawing and the 3D model update as you choose.",
+    "composeBody": "Type, size, geometry, flanges and finish. The drawing and the 3D model update as you choose.",
     "filtersLabel": "Ready-made part filters",
     "family": "Type",
     "allFamilies": "All",
@@ -708,8 +742,8 @@
     "empty": "No parts match these filters.",
     "reset": "Clear filters",
     "band": "Band",
-    "configure": "Configure",
-    "configureLabel": "Configure {name} {size}",
+    "configure": "Customize",
+    "configureLabel": "Customize {name} {size}",
     "add": "Add to request",
     "added": "Added",
     "shipping": "Worldwide shipping: method and cost stated in the quote.",
@@ -718,7 +752,19 @@
     "bendsBody": "On request or to your drawing: add the item to your request, describe the part in the notes and upload the drawing.",
     "bendsCta": "Add a build-to-print part",
     "showMore": "Show all sizes ({count})",
-    "stockNote": "Material in stock: shipped within 48 hours."
+    "stockNote": "Material in stock: shipped within 48 hours.",
+    "choiceLabel": "How do you want to start",
+    "choiceMeasure": "Know the size? Build the part",
+    "choiceMeasureBody": "Type, size, geometry and flanges: the 3D model and the dimensioned drawing update as you choose.",
+    "choiceMeasureCta": "Open the configurator",
+    "choiceDrawing": "Have a drawing? Upload it",
+    "choiceDrawingBody": "STEP, IGES, STL, PDF, DWG or DXF: our engineering office reviews it and we reply with a quote.",
+    "choiceDrawingCta": "Upload your drawing",
+    "typesTitle": "Choose the part type",
+    "search": "Search",
+    "searchPlaceholder": "E.g. WR-90, H bend, TLFX-100",
+    "faqTitle": "FAQ",
+    "faqAll": "All questions"
   },
   "tables": {
     "title": "Technical tables",
@@ -774,49 +820,20 @@
     "sheetFooter": "Data to be checked with the technical office. Quote within 24 hours: info@tecnolambro.it · +39 375 577 1084"
   },
   "configurator": {
-    "title": "Build your part",
-    "progress": "Step {n} of {total}",
-    "stepsLabel": "Configurator steps",
-    "steps": {
-      "type": "Type",
-      "size": "Size",
-      "length": "Length",
-      "flanges": "Flanges",
-      "options": "Options"
-    },
-    "typeTitle": "Which waveguide do you need?",
-    "sizeTitle": "Choose the size",
-    "sizeByList": "From the list",
-    "sizeByFreq": "Tell me the frequency",
+    "typeTitle": "Part type",
+    "sizeTitle": "Size",
     "freqLabel": "Operating frequency (GHz)",
-    "freqSuggest": "At {freq} GHz we recommend {size}.",
-    "freqAlso": "Also suitable: {list}.",
-    "freqNone": "No standard size covers {freq} GHz: add it to the notes and we build it to your drawing.",
-    "useSize": "Use {size}",
-    "lengthTitle": "Length",
+    "freqSuggest": "At {freq} GHz we recommend {size}: it’s now selected.",
+    "freqNone": "No standard size covers {freq} GHz: add it to the notes and we’ll assess it in the quote.",
     "lengthLabel": "Length L (mm)",
-    "lengthHint": "Up to {max} mm for this size.",
-    "lengthOut": "Possible on request, add it to the notes.",
-    "lengthInvalid": "Enter a length in millimetres.",
+    "lengthOut": "Non-standard: we’ll assess it in the quote.",
     "flangesTitle": "Flanges",
-    "flangeA": "Flange, side A",
-    "flangeB": "Flange, side B",
     "flangeOther": "Other (specify in the notes)",
-    "flangeNote": "List to be confirmed with the technical office.",
-    "optionsTitle": "Options",
-    "optionsNone": "No extra options for now: add a note if you need a jacket or a special finish.",
-    "options": {
-      "jacket": "Outer jacket",
-      "pressurized": "Pressurisable version"
-    },
-    "next": "Next",
-    "back": "Back",
+    "flangeNote": "List to be confirmed by the engineering office.",
     "summary": "Summary",
-    "code": "Code",
     "type": "Type",
     "size": "Size",
     "band": "Band",
-    "length": "Length",
     "flanges": "Flanges",
     "electrical": "Electrical data",
     "rl": "Return loss {len} mm",
@@ -824,31 +841,136 @@
     "att": "Attenuation",
     "cw": "CW power",
     "peak": "Peak power",
-    "onRequest": "Electrical data on request",
     "add": "Add to request",
     "added": "Added to your request.",
     "goToRequest": "Go to your request",
     "drawing": "Technical drawing",
-    "view3d": "View in 3D",
-    "view2d": "View the drawing",
-    "downloadPdf": "Download drawing (PDF)",
-    "downloadStl": "Download 3D model (STL)",
-    "downloadGlb": "Download 3D model (GLB)",
+    "view3d": "3D view",
+    "downloadPdf": "PDF drawing",
+    "downloadStl": "STL",
+    "downloadGlb": "GLB",
     "preparing": "Preparing…",
     "loading3d": "Loading the 3D model…",
     "viewerLabel": "3D model of {code}. Drag to rotate, scroll or pinch to zoom.",
     "viewerHint": "Drag to rotate · scroll or pinch to zoom",
-    "error3d": "The 3D model did not load. The drawing is still available.",
+    "error3d": "The 3D model didn’t load. The drawing is still available.",
     "drawingNote": "Indicative drawing – the final drawing comes with the quote",
     "drawingDate": "Date",
     "drawingScale": "Not to scale",
     "drawingMaterial": "Material",
     "drawingTitleBlock": "Tecnolambro Microwave Components",
-    "drawingAlt": "Indicative technical drawing of {code}: side view with length and flanges, cross-section with dimensions A, B, C and D.",
+    "drawingAlt": "Indicative technical drawing of {code}: side view with the main dimensions and waveguide cross-section.",
     "sideView": "Side view",
-    "section": "Cross-section",
+    "section": "Section",
     "dimsUnknown": "Dimensions on request",
-    "downloadError": "The file could not be generated. Try again; the drawing and your data are still here."
+    "downloadError": "The file wasn’t generated. Try again; your configuration is still here.",
+    "types": {
+      "twistable": {
+        "name": "Twistable flexible",
+        "short": "Bends and twists"
+      },
+      "seamless": {
+        "name": "Seamless flexible",
+        "short": "No seams, with jacket"
+      },
+      "bend": {
+        "name": "Bend",
+        "short": "E or H plane, any angle"
+      },
+      "twist": {
+        "name": "Twist",
+        "short": "Rotates polarization"
+      },
+      "offset": {
+        "name": "Offset",
+        "short": "Joins staggered flanges"
+      },
+      "custom": {
+        "name": "To your drawing",
+        "short": "Upload your STEP, STL or PDF"
+      }
+    },
+    "flexName": {
+      "twistable": "twistable flexible",
+      "seamless": "seamless flexible"
+    },
+    "customRef": "TO DRAWING",
+    "sizeUnknown": "I don’t know",
+    "geometryTitle": "Geometry",
+    "lengthRange": "Standard from {min} to {max} mm for this size.",
+    "lengthMax": "Standard up to {max} mm for this size.",
+    "planeLabel": "Plane",
+    "plane": {
+      "E": "E-plane",
+      "H": "H-plane"
+    },
+    "angleLabel": "Angle",
+    "angleFree": "Custom angle (1–180°)",
+    "radiusLabel": "Bend radius",
+    "radiusStd": "Standard radius",
+    "radiusStdShort": "Std R",
+    "radiusCustom": "Custom radius",
+    "radiusValue": "Radius R (mm)",
+    "leg1": "Straight leg L1 (mm)",
+    "leg2": "Straight leg L2 (mm)",
+    "rotationLabel": "Rotation",
+    "rotationFree": "Custom rotation (°)",
+    "directionLabel": "Direction",
+    "dir": {
+      "cw": "clockwise",
+      "ccw": "counter-clockwise"
+    },
+    "offsetLabel": "Offset X (mm)",
+    "offsetLength": "Overall length L (mm)",
+    "flange1": "Flange 1",
+    "flange2": "Flange 2",
+    "finishTitle": "Finish and treatment",
+    "finish": "Finish",
+    "finishes": {
+      "raw": "Raw",
+      "bright": "Bright",
+      "painted": "Painted"
+    },
+    "paintedHint": "We’ll agree colour and paint type in the quote.",
+    "treatment": "Treatment",
+    "treatments": {
+      "none": "None",
+      "galvanic": "Plating",
+      "thermal": "Heat treatment"
+    },
+    "treatmentHint": "We’ll define it together in the quote.",
+    "notesTitle": "Notes",
+    "notesPlaceholder": "E.g. pressurization, finish, required delivery…",
+    "customTitle": "Your part to drawing",
+    "customBody": "Describe the part and upload the drawing or 3D model: we’ll assess it and send you a quote within 24 hours.",
+    "customDescription": "Part description",
+    "customPlaceholder": "E.g. H-plane 45° bend with UG-39/U flanges, 300 mm exit",
+    "customDescriptionError": "Describe the part in a few words.",
+    "customFiles": "Upload drawing or 3D",
+    "customFilesHint": "STEP/STP, IGES/IGS, STL, PDF, DWG, DXF. Up to 20 MB per file.",
+    "quantity": "Quantity",
+    "fileRemove": "Remove {name}",
+    "fileType": "{name}: file type not accepted.",
+    "fileSize": "{name}: larger than 20 MB.",
+    "stlPreviewLabel": "3D file preview",
+    "stlPreviewEmpty": "Upload an STL file to see it here in 3D. STEP, IGES, PDF and DWG files reach the engineering office as they are.",
+    "drawingButton": "Drawing",
+    "views": {
+      "iso": "Iso",
+      "front": "Front",
+      "side": "Side"
+    },
+    "viewTools": "Model views",
+    "dims": "Dimensions",
+    "exploded": "Exploded",
+    "resetView": "Reset view",
+    "ar": "View in your room (AR)",
+    "share": "Copy link",
+    "shared": "Link copied",
+    "shareEmail": "Send to a colleague",
+    "shareText": "Here is the waveguide part configuration:",
+    "stepNote": "We send the STEP file together with the quote.",
+    "customize": "Customize"
   },
   "request": {
     "title": "Your request",

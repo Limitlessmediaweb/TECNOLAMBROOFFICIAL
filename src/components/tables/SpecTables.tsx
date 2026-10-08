@@ -9,6 +9,9 @@ import { DIM_TABLE, MATERIAL, SEAMLESS_TABLE, SIZE_BY_WR, TWIST_TABLE, isOnReque
 import { track } from "@/lib/analytics";
 import { TechDrawing } from "@/components/configurator/TechDrawing";
 import { useDrawingLabels } from "@/components/configurator/Configurator";
+import { defaultSpec } from "@/data/configurator/defaults";
+
+const GENERIC_SPEC = defaultSpec("twistable");
 import { cn } from "@/lib/cn";
 
 export type TableTab = "twist" | "seamless" | "dims";
@@ -62,7 +65,8 @@ export function SpecTables({ defaultTab = "twist", configurePath, familyNames, h
     tabRefs.current[next]?.focus();
   };
 
-  const configureHref = (wr: string, family?: string) => `${configurePath}?${new URLSearchParams(family ? { tipo: family, misura: wr } : { misura: wr })}#configura`;
+  const configureHref = (wr: string, family?: string) =>
+    `${configurePath}?${new URLSearchParams({ tipo: family === "seamless" ? "seamless" : "twistabile", wr: wr.replace("WR-", "") })}#configura`;
 
   const datasheet = async () => {
     if (tab === "dims") return;
@@ -91,7 +95,7 @@ export function SpecTables({ defaultTab = "twist", configurePath, familyNames, h
         footer: t("sheetFooter"),
       });
       downloadBytes(bytes, `Tecnolambro_${family}_${locale}.pdf`, "application/pdf");
-      track("download_datasheet", { family });
+      track("datasheet_download", { family });
     } finally {
       setBusy(false);
     }
@@ -358,7 +362,7 @@ export function SpecTables({ defaultTab = "twist", configurePath, familyNames, h
         {tab === "dims" ? (
           <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_18rem] lg:items-start">
             <figure className="border border-line bg-surface">
-              <TechDrawing wr="WR-90" generic labels={labels} locale={locale} alt={t("drawingTitle")} code="TLFX" />
+              <TechDrawing spec={GENERIC_SPEC} generic labels={labels} locale={locale} alt={t("drawingTitle")} code="TLFX" />
               <figcaption className="annot border-t border-line px-4 py-3 text-muted">{t("drawingTitle")}</figcaption>
             </figure>
             <ul className="grid gap-2 text-sm">

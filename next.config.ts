@@ -8,13 +8,15 @@ const nextConfig: NextConfig = {
   // Pagine tolte o rinominate nella versione 2 (riunione del 7 ottobre 2026): redirect permanenti 308.
   async redirects() {
     const family: [string, string][] = [
-      ["/prodotti/rigida", "/prodotti/curve-twist-disassati"],
+      ["/prodotti/rigida", "/prodotti/curve"],
+      ["/prodotti/curve-twist-disassati", "/prodotti/curve"],
       ["/prodotti/flessibile", "/prodotti/guida-flessibile-twistabile"],
       ["/prodotti/illuminatori", "/prodotti"],
       ["/prodotti/transizioni", "/prodotti"],
       ["/prodotti/flange-e-kit", "/prodotti"],
       ["/prodotti/su-disegno", "/su-misura"],
-      ["/en/products/rigid", "/en/products/bends-twists-offsets"],
+      ["/en/products/rigid", "/en/products/bends"],
+      ["/en/products/bends-twists-offsets", "/en/products/bends"],
       ["/en/products/flexible", "/en/products/twistable-flexible-waveguide"],
       ["/en/products/feed-horns", "/en/products"],
       ["/en/products/transitions", "/en/products"],
