@@ -12,6 +12,7 @@ import { ParallaxLayer } from "@/components/motion/ParallaxLayer";
 import { MagneticButton } from "@/components/motion/MagneticButton";
 import { QuoteLink, ShopLink } from "@/components/ui/TrackedLink";
 import { WithTodo } from "@/components/ui/Bits";
+import { IsoBadges } from "@/components/sections/Certifications";
 import { FAQ_PREVIEW } from "@/data/faq";
 import { COMPANY } from "@/data/site";
 import { localizedHref, type Href } from "@/components/ui/TrackedLink";
@@ -92,6 +93,7 @@ export async function HistorySection({ headingLevel = 2 }: { headingLevel?: 2 | 
 
 export async function QualitySection() {
   const t = await getTranslations("qualitySection");
+  const qualityHref = await localizedHref("/qualita");
   const controls = t.raw("controls") as string[];
   const icons = [Zap, Ruler, FlaskConical];
   return (
@@ -108,12 +110,11 @@ export async function QualitySection() {
           </Link>
         </div>
         <Reveal className="grid gap-4 sm:grid-cols-2 lg:col-span-7">
-          <div className="flex flex-col gap-4 border border-dashed border-line-strong p-6">
+          <div className="flex flex-col gap-4 border border-line bg-surface p-6">
             <ShieldCheck aria-hidden="true" className="size-7 text-accent" strokeWidth={1.5} />
             <h3 className="text-display-s font-bold">{t("certTitle")}</h3>
-            <p className="text-sm">
-              <WithTodo text={t("certTodo")} />
-            </p>
+            <p className="text-sm text-muted">{t("certBody")}</p>
+            <IsoBadges href={qualityHref} />
           </div>
           <div className="flex flex-col gap-4 border border-line bg-surface p-6">
             <h3 className="text-display-s font-bold">{t("controlsTitle")}</h3>

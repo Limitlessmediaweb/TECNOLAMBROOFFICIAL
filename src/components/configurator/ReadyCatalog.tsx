@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useId, useMemo, useState } from "react";
-import { Check, PackageCheck, Plus, SlidersHorizontal, X } from "lucide-react";
+import { Check, Plus, SlidersHorizontal, X } from "lucide-react";
 import { useClientLocale, useT } from "@/lib/client-i18n";
-import { CONFIGURABLE_FAMILIES, inStock, type FamilyKey } from "@/data/families";
+import { CONFIGURABLE_FAMILIES, type FamilyKey } from "@/data/families";
 import { SEAMLESS_TABLE, SIZES, TWIST_TABLE, isOnRequest, num, range, sizeLabel } from "@/data/waveguides";
 import { addItem } from "@/lib/request";
 import { partCode } from "@/lib/part";
@@ -118,7 +118,6 @@ export function ReadyCatalog({ familyNames }: { familyNames: Record<string, stri
             {shown.map(({ family, size, key }) => {
               const name = familyNames[family];
               const code = partCode({ family, wr: size.wr });
-              const stock = inStock(family, size.wr);
               return (
                 <li key={key}>
                   <article className="flex h-full flex-col border border-line bg-surface p-5 transition-colors hover:border-accent" data-ready-item={key}>
@@ -132,12 +131,6 @@ export function ReadyCatalog({ familyNames }: { familyNames: Record<string, stri
                       <dd className="tabular text-fg">{range(size.min, size.max, locale)} GHz</dd>
                     </dl>
                     <p className="mt-2 text-sm text-muted">{keyData(family, size.wr)}</p>
-                    {stock ? (
-                      <p className="mt-3 inline-flex items-center gap-2 text-sm text-ok">
-                        <PackageCheck aria-hidden="true" className="size-4" strokeWidth={1.75} />
-                        {t("stock")}
-                      </p>
-                    ) : null}
                     <div className="mt-auto flex flex-wrap gap-2 pt-5">
                       <button type="button" className="btn btn-ghost btn-sm" onClick={() => configure({ family, wr: size.wr })} aria-label={t("configureLabel", { name, size: size.wr })}>
                         {t("configure")}

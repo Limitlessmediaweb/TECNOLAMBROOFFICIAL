@@ -9,22 +9,29 @@ const C = { line: THEME.light.line, muted: THEME.light.muted, fill: THEME.light.
 /**
  * Invio delle email della richiesta di preventivo (solo server).
  * 1. Resend (RESEND_API_KEY), via API REST: nessuna dipendenza in più.
- * 2. Altrimenti SMTP (SMTP_HOST, SMTP_USER, SMTP_PASS, opzionale SMTP_PORT) con nodemailer.
+ * 2. Altrimenti SMTP con nodemailer: SMTP_PASS obbligatoria; SMTP_HOST, SMTP_PORT e SMTP_USER hanno
+ *    i valori di Aruba per info@tecnolambro.it (smtps.aruba.it, 465 SSL).
  * 3. Altrimenti "notConfigured": il client mostra l'errore e non perde i dati.
  */
 export type Attachment = { filename: string; content: Buffer; contentType?: string };
-export type Mail = { to: string; replyTo?: string; subject: string; html: string; text: string; attachments?: Attachment[] };
+export type Mail = { to: string; bcc?: string; replyTo?: string; subject: string; html: string; text: string; attachments?: Attachment[] };
 
 export class MailNotConfigured extends Error {}
 
 export function mailProvider(): "resend" | "smtp" | null {
   if (process.env.RESEND_API_KEY) return "resend";
-  if (process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS) return "smtp";
+  if (process.env.SMTP_PASS) return "smtp";
   return null;
 }
 
+const SMTP = {
+  host: () => process.env.SMTP_HOST || "smtps.aruba.it",
+  port: () => Number(process.env.SMTP_PORT || 465),
+  user: () => process.env.SMTP_USER || "info@tecnolambro.it",
+};
+
 function from(): string {
-  return process.env.QUOTE_FROM_EMAIL || (mailProvider() === "smtp" ? `Tecnolambro <${process.env.SMTP_USER}>` : "Tecnolambro <onboarding@resend.dev>");
+  return process.env.QUOTE_FROM_EMAIL || "Tecnolambro <info@tecnolambro.it>";
 }
 
 export async function sendMail(mail: Mail): Promise<void> {
@@ -37,6 +44,7 @@ export async function sendMail(mail: Mail): Promise<void> {
       body: JSON.stringify({
         from: from(),
         to: [mail.to],
+        bcc: mail.bcc ? [mail.bcc] : undefined,
         reply_to: mail.replyTo,
         subject: mail.subject,
         html: mail.html,
@@ -48,14 +56,14 @@ export async function sendMail(mail: Mail): Promise<void> {
     return;
   }
   const nodemailer = await import("nodemailer");
-  const port = Number(process.env.SMTP_PORT || 587);
+  const port = SMTP.port();
   const transport = nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
+    host: SMTP.host(),
     port,
     secure: port === 465,
-    auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS },
+    auth: { user: SMTP.user(), pass: process.env.SMTP_PASS },
   });
-  await transport.sendMail({ from: from(), to: mail.to, replyTo: mail.replyTo, subject: mail.subject, html: mail.html, text: mail.text, attachments: mail.attachments });
+  await transport.sendMail({ from: from(), to: mail.to, bcc: mail.bcc, replyTo: mail.replyTo, subject: mail.subject, html: mail.html, text: mail.text, attachments: mail.attachments });
 }
 
 /* ------------------------------------------------------------- contenuto */

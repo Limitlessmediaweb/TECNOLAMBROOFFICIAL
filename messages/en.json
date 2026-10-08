@@ -110,7 +110,11 @@
     "readMore": "Read more",
     "allQuestions": "All questions",
     "pauseMotion": "Pause animation",
-    "playMotion": "Play animation"
+    "playMotion": "Play animation",
+    "hoursTitle": "Opening hours",
+    "hoursWeek": "Monday–Friday: 8:00–12:00 and 13:30–17:30",
+    "hoursWeekend": "Saturday and Sunday: closed",
+    "missing": "missing: {what}"
   },
   "intro": {
     "skip": "Skip",
@@ -280,22 +284,22 @@
     "title": "Quality checked part by part.",
     "body": "We test 100% of parts before shipping.",
     "certTitle": "Certifications",
-    "certTodo": "[TO BE COMPLETED: ISO 9001 and other certifications]",
     "controlsTitle": "Inspection",
     "controls": [
       "100% final test",
       "Electrical and dimensional checks",
       "Finishing by long-standing, selected suppliers"
     ],
-    "cta": "Quality and inspection"
+    "cta": "Quality and inspection",
+    "certBody": "ISO 9001:2015 for quality and ISO 14001:2015 for the environment, certified by Perry Johnson Registrars with ACCREDIA accreditation."
   },
   "shopSection": {
     "title": "Configure the part, request a quote.",
     "body": "Choose type, size, length and flanges: see the dimensioned drawing and the 3D model straight away. Prices on request: every quote is tailored.",
     "points": [
       "Quote within 24 hours",
-      "Material in stock: shipped within 48 hours",
-      "PDF drawing and 3D model to download"
+      "PDF drawing and 3D model to download",
+      "Worldwide shipping"
     ],
     "cta": "Configure your part"
   },
@@ -319,7 +323,7 @@
       },
       "leadTime": {
         "q": "What are your lead times?",
-        "a": "Material in stock ships within 48 hours. For build-to-print parts the lead time depends on geometry, finishing and quantity, and we state it in the quote. [TO BE COMPLETED: typical lead times per family]"
+        "a": "Material in stock ships within 48 hours. For custom and build-to-print parts we set the delivery time in the quote."
       },
       "moq": {
         "q": "Is there a minimum order quantity?",
@@ -430,7 +434,7 @@
     "vat": "VAT",
     "credit": "Built and managed by",
     "distinct": "Tecnolambro Microwave Components, Miradolo Terme (PV), Italy. Not affiliated with other companies with a similar name.",
-    "rights": "© {year} Tecnolambro S.a.s. di Marco Pasquini & C.",
+    "rights": "© {year} Tecnolambro S.a.s. di Pasquini Marco & C.",
     "logoAlt": "Tecnolambro logo: manufacturer of twistable flexible and seamless flexible waveguide, components for microwave applications",
     "pec": "PEC"
   },
@@ -459,7 +463,7 @@
     "formatsTitle": "Accepted formats",
     "formatsBody": "PDF for dimensioned drawings, DWG and DXF for 2D, STEP, IGES and STL for 3D models.",
     "timeTitle": "Timing",
-    "timeBody": "Quote within 24 hours. Production time depends on geometry, finishing and quantity. [TO BE COMPLETED: typical lead times]",
+    "timeBody": "Quote within 24 hours: delivery time and method are set in the quote.",
     "testTitle": "Testing",
     "testBody": "We test 100% of parts before shipping.",
     "stepsTitle": "From drawing to part",
@@ -485,15 +489,21 @@
   },
   "qualityPage": {
     "title": "Quality & certifications",
-    "intro": "We test 100% of parts before shipping. Here you find certifications, checks and procedures.",
+    "intro": "ISO 9001:2015 quality system and ISO 14001:2015 environmental system, and 100% of parts tested before shipping.",
     "certTitle": "Certifications",
-    "certTodo": "[TO BE COMPLETED: ISO 9001 and other certifications]",
-    "certNote": "Certificates will be published here as PDF, with issuing body, number and expiry.",
     "controlsTitle": "100% final test",
     "controlsBody": "We test 100% of parts before shipping, with electrical and dimensional checks.",
-    "controlsTodo": "[TO BE COMPLETED: instruments and parameters checked]",
     "chainTitle": "Long-standing, selected suppliers",
-    "chainBody": "Raw materials in stock and our own production. Bright dipping, painting, heat and galvanic treatments with long-standing, selected suppliers known for their reliability and professionalism."
+    "chainBody": "Raw materials in stock and our own production. Bright dipping, painting, heat and galvanic treatments with long-standing, selected suppliers known for their reliability and professionalism.",
+    "certIntro": "The certificates, downloadable as PDF.",
+    "certBy": "Certified by Perry Johnson Registrars · ACCREDIA accreditation",
+    "certNumber": "Certificate no. {number}",
+    "validUntil": "Valid until {date}",
+    "renewing": "Renewal in progress",
+    "firstIssue": "First issued: {date}",
+    "download": "Download the certificate (PDF)",
+    "previewAlt": "First page of Tecnolambro’s {standard} certificate",
+    "scopeTitle": "Scope of certification"
   },
   "hamPage": {
     "title": "Waveguides for 10 GHz",
@@ -510,7 +520,6 @@
     "title": "Contact & quotes",
     "intro": "Write, call or send your drawing straight away. Quote within 24 hours.",
     "hoursTitle": "Opening hours",
-    "hoursTodo": "[TO BE COMPLETED: factory opening hours]",
     "company": "Company details"
   },
   "faqPage": {
@@ -535,7 +544,7 @@
         {
           "h": "1. Data controller",
           "p": [
-            "The data controller is Tecnolambro S.a.s. di Marco Pasquini & C., VAT IT08639310153, registered office at Via delle Betulle 1, 20078 San Colombano al Lambro (MI), Italy, factory at Via degli Spinedi 20, 27010 Miradolo Terme (PV), Italy.",
+            "The data controller is Tecnolambro S.a.s. di Pasquini Marco & C., VAT IT08639310153, registered office at Via Privata delle Betulle 1, 20078 San Colombano al Lambro (MI), Italy, factory at Via degli Spinedi 20, 27010 Miradolo Terme (PV), Italy.",
             "For any privacy request: info@tecnolambro.it, certified email tecnolambrosnc@pec.it, phone +39 375 577 1084."
           ]
         },
@@ -602,7 +611,7 @@
         {
           "h": "1. Use of the website",
           "p": [
-            "This website presents the products and services of Tecnolambro S.a.s. di Marco Pasquini & C. (VAT IT08639310153). Technical information is indicative: the binding characteristics, sizes and performance are those confirmed in the written offer.",
+            "This website presents the products and services of Tecnolambro S.a.s. di Pasquini Marco & C. (VAT IT08639310153). Technical information is indicative: the binding characteristics, sizes and performance are those confirmed in the written offer.",
             "Tables marked \"Demo data\" contain sample values."
           ]
         },
@@ -698,7 +707,6 @@
     "resultsOne": "1 part",
     "empty": "No parts match these filters.",
     "reset": "Clear filters",
-    "stock": "In stock · shipped within 48 hours",
     "band": "Band",
     "configure": "Configure",
     "configureLabel": "Configure {name} {size}",
@@ -709,7 +717,8 @@
     "bendsTitle": "Bends, twists and offsets",
     "bendsBody": "On request or to your drawing: add the item to your request, describe the part in the notes and upload the drawing.",
     "bendsCta": "Add a build-to-print part",
-    "showMore": "Show all sizes ({count})"
+    "showMore": "Show all sizes ({count})",
+    "stockNote": "Material in stock: shipped within 48 hours."
   },
   "tables": {
     "title": "Technical tables",

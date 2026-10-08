@@ -3,7 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Clock, Building2 } from "lucide-react";
 import type { Locale } from "@/i18n/routing";
 import { pageMetadata, breadcrumbsFor } from "@/lib/page";
-import { Breadcrumbs, WithTodo } from "@/components/ui/Bits";
+import { Breadcrumbs } from "@/components/ui/Bits";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { QuoteSection } from "@/components/sections/QuoteSection";
 import { COMPANY } from "@/data/site";
@@ -19,6 +19,7 @@ export default async function ContactPage({ params }: PageProps<"/[locale]/conta
   const t = await getTranslations("contactPage");
   const nav = await getTranslations("nav");
   const footer = await getTranslations("footer");
+  const common = await getTranslations("common");
 
   return (
     <>
@@ -33,11 +34,13 @@ export default async function ContactPage({ params }: PageProps<"/[locale]/conta
 
       <section className="border-t border-line" aria-label={t("company")}>
         <div className="container-site grid gap-4 py-16 md:grid-cols-2">
-          <div className="flex flex-col gap-4 border border-dashed border-line-strong p-7">
+          <div className="flex flex-col gap-4 border border-line bg-surface p-7">
             <Clock aria-hidden="true" className="size-7 text-accent" strokeWidth={1.5} />
             <h2 className="text-display-s font-bold">{t("hoursTitle")}</h2>
             <p>
-              <WithTodo text={t("hoursTodo")} />
+              {common("hoursWeek")}
+              <br />
+              {common("hoursWeekend")}
             </p>
           </div>
           <div className="flex flex-col gap-4 border border-line bg-surface p-7">

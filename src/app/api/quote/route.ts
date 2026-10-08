@@ -72,7 +72,8 @@ export async function POST(request: Request) {
   }
 
   const number = requestNumber();
-  const to = process.env.QUOTE_TO_EMAIL || "riccardo.pasquini2k8@gmail.com";
+  const to = process.env.QUOTE_TO_EMAIL || "info@tecnolambro.it";
+  const bcc = process.env.QUOTE_BCC_EMAIL || undefined;
   // solo link dello store Blob del sito, nella cartella delle richieste
   const host = blobHost();
   const blobs = (payload.blobs ?? []).filter((b) => {
@@ -82,7 +83,7 @@ export async function POST(request: Request) {
   const files = { names, blobs: blobs.map((b) => ({ name: b.name, url: b.url })) };
   const inbound = internalMail(payload, number, files);
   try {
-    await sendMail({ to, replyTo: payload.customer.email, subject: inbound.subject, html: inbound.html, text: inbound.text, attachments });
+    await sendMail({ to, bcc, replyTo: payload.customer.email, subject: inbound.subject, html: inbound.html, text: inbound.text, attachments });
   } catch (err) {
     if (err instanceof MailNotConfigured) return json({ ok: false, error: "notConfigured" }, 503);
     console.error("[quote] invio all'ufficio non riuscito", err);

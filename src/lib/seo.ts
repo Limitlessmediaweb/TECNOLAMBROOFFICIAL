@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getPathname } from "@/i18n/switch-path";
 import { routing, type Locale, type AppPathname } from "@/i18n/routing";
 import { COMPANY, ENV } from "@/data/site";
+import { CERTIFICATIONS, CERT_BODY } from "@/data/certifications";
 
 type Href = Parameters<typeof getPathname>[0]["href"];
 
@@ -99,6 +100,15 @@ export function organizationJsonLd(locale: Locale) {
         addressRegion: lg.province,
         addressCountry: lg.country,
       },
+      hasCredential: CERTIFICATIONS.map((c) => ({
+        "@type": "EducationalOccupationalCredential",
+        name: `${c.standard} – ${c.system.en}`,
+        credentialCategory: "certification",
+        identifier: c.number,
+        dateCreated: c.firstIssue,
+        validUntil: c.expiry,
+        recognizedBy: { "@type": "Organization", name: CERT_BODY.name },
+      })),
       contactPoint: [COMPANY.phone, COMPANY.phone2].map((telephone) => ({
         "@type": "ContactPoint",
         contactType: "sales",
@@ -128,7 +138,13 @@ export function organizationJsonLd(locale: Locale) {
         addressRegion: op.province,
         addressCountry: op.country,
       },
-      // TODO: aggiungere "openingHoursSpecification" e "geo" quando il titolare conferma orari e coordinate.
+      openingHoursSpecification: COMPANY.hours.map((h) => ({
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: h.days.map((d) => ["", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"][d]),
+        opens: h.opens,
+        closes: h.closes,
+      })),
+      // TODO: "geo" quando il titolare conferma le coordinate della sede.
     },
     {
       "@context": "https://schema.org",

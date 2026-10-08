@@ -2,7 +2,7 @@
 export const COMPANY = {
   brand: "Tecnolambro",
   brandFull: "Tecnolambro Microwave Components",
-  legalName: "Tecnolambro S.a.s. di Marco Pasquini & C.",
+  legalName: "Tecnolambro S.a.s. di Pasquini Marco & C.",
   vat: "08639310153",
   vatFull: "IT08639310153",
   founded: 1987,
@@ -14,8 +14,18 @@ export const COMPANY = {
   /** Fisso: secondo numero */
   phone2: "+39 0382 75385",
   phone2Href: "tel:+39038275385",
+  /** WhatsApp sul cellulare */
+  whatsapp: "393755771084",
+  /**
+   * Orari della sede operativa (lunedì-venerdì 8:00-12:00 e 13:30-17:30, sabato e domenica chiuso).
+   * Giorni ISO: 1 = lunedì.
+   */
+  hours: [
+    { days: [1, 2, 3, 4, 5], opens: "08:00", closes: "12:00" },
+    { days: [1, 2, 3, 4, 5], opens: "13:30", closes: "17:30" },
+  ],
   legalAddress: {
-    street: "Via delle Betulle 1",
+    street: "Via Privata delle Betulle 1",
     postalCode: "20078",
     city: "San Colombano al Lambro",
     province: "MI",

@@ -110,7 +110,11 @@
     "readMore": "Approfondisci",
     "allQuestions": "Tutte le domande",
     "pauseMotion": "Metti in pausa l’animazione",
-    "playMotion": "Riprendi l’animazione"
+    "playMotion": "Riprendi l’animazione",
+    "hoursTitle": "Orari",
+    "hoursWeek": "Lunedì–venerdì: 8:00–12:00 e 13:30–17:30",
+    "hoursWeekend": "Sabato e domenica: chiuso",
+    "missing": "manca: {what}"
   },
   "intro": {
     "skip": "Salta",
@@ -280,22 +284,22 @@
     "title": "Qualità verificata pezzo per pezzo.",
     "body": "Collaudiamo il 100% dei pezzi prima della spedizione.",
     "certTitle": "Certificazioni",
-    "certTodo": "[DA COMPLETARE: ISO 9001 e altre certificazioni]",
     "controlsTitle": "Controlli",
     "controls": [
       "Collaudo finale al 100%",
       "Controllo elettrico e dimensionale",
       "Trattamenti con fornitori storici e selezionati"
     ],
-    "cta": "Qualità e controlli"
+    "cta": "Qualità e controlli",
+    "certBody": "ISO 9001:2015 per la qualità e ISO 14001:2015 per l’ambiente, certificate da Perry Johnson Registrars con accreditamento ACCREDIA."
   },
   "shopSection": {
     "title": "Configura il pezzo, richiedi il preventivo.",
     "body": "Scegli tipo, misura, lunghezza e flange: vedi subito il disegno quotato e il modello 3D. Prezzi su richiesta: ogni preventivo è personalizzato.",
     "points": [
       "Preventivo entro 24 ore",
-      "Materiale disponibile a magazzino: spedizione in 48 ore",
-      "Disegno PDF e modello 3D da scaricare"
+      "Disegno PDF e modello 3D da scaricare",
+      "Spedizione in tutto il mondo"
     ],
     "cta": "Configura il tuo pezzo"
   },
@@ -319,7 +323,7 @@
       },
       "leadTime": {
         "q": "Quali sono i tempi di consegna?",
-        "a": "Il materiale disponibile a magazzino parte in 48 ore. Per i pezzi su disegno il tempo dipende da geometria, trattamenti e quantità e lo indichiamo nel preventivo. [DA COMPLETARE: tempi tipici per famiglia]"
+        "a": "Il materiale disponibile a magazzino parte in 48 ore. Per i pezzi su misura o su disegno i tempi di consegna li stabiliamo nel preventivo."
       },
       "moq": {
         "q": "C’è una quantità minima d’ordine?",
@@ -430,7 +434,7 @@
     "vat": "P.IVA",
     "credit": "Realizzato e gestito da",
     "distinct": "Tecnolambro Microwave Components, Miradolo Terme (PV). Nessun legame con altre aziende con nome simile.",
-    "rights": "© {year} Tecnolambro S.a.s. di Marco Pasquini & C.",
+    "rights": "© {year} Tecnolambro S.a.s. di Pasquini Marco & C.",
     "logoAlt": "Logo Tecnolambro: produttore di guida d’onda flessibile twistabile e senza saldature, componenti per applicazioni a microonde",
     "pec": "PEC"
   },
@@ -459,7 +463,7 @@
     "formatsTitle": "Formati accettati",
     "formatsBody": "PDF per disegni quotati, DWG e DXF per il 2D, STEP, IGES e STL per i modelli 3D.",
     "timeTitle": "Tempi",
-    "timeBody": "Preventivo entro 24 ore. Il tempo di produzione dipende da geometria, trattamenti e quantità. [DA COMPLETARE: tempi tipici]",
+    "timeBody": "Preventivo entro 24 ore: tempi e modalità di consegna li stabiliamo nel preventivo.",
     "testTitle": "Collaudo",
     "testBody": "Collaudiamo il 100% dei pezzi prima della spedizione.",
     "stepsTitle": "Dal disegno al pezzo",
@@ -485,15 +489,21 @@
   },
   "qualityPage": {
     "title": "Qualità e certificazioni",
-    "intro": "Collaudiamo il 100% dei pezzi prima della spedizione. Qui raccogliamo certificazioni, controlli e procedure.",
+    "intro": "Sistema qualità ISO 9001:2015 e sistema ambientale ISO 14001:2015, e collaudo del 100% dei pezzi prima della spedizione.",
     "certTitle": "Certificazioni",
-    "certTodo": "[DA COMPLETARE: ISO 9001 e altre certificazioni]",
-    "certNote": "I certificati verranno pubblicati qui in PDF, con ente, numero e scadenza.",
     "controlsTitle": "Collaudo finale al 100%",
     "controlsBody": "Collaudiamo il 100% dei pezzi prima della spedizione, con controllo elettrico e dimensionale.",
-    "controlsTodo": "[DA COMPLETARE: strumenti e parametri controllati]",
     "chainTitle": "Fornitori storici e selezionati",
-    "chainBody": "Materie prime a magazzino e produzione propria. Brillantatura, verniciatura, trattamenti termici e galvanici con fornitori storici e selezionati, noti per la loro affidabilità e professionalità."
+    "chainBody": "Materie prime a magazzino e produzione propria. Brillantatura, verniciatura, trattamenti termici e galvanici con fornitori storici e selezionati, noti per la loro affidabilità e professionalità.",
+    "certIntro": "Gli attestati, scaricabili in PDF.",
+    "certBy": "Certificato da Perry Johnson Registrars · accreditamento ACCREDIA",
+    "certNumber": "Certificato n° {number}",
+    "validUntil": "Valido fino al {date}",
+    "renewing": "In rinnovo",
+    "firstIssue": "Prima emissione: {date}",
+    "download": "Scarica il certificato (PDF)",
+    "previewAlt": "Prima pagina dell’attestato {standard} di Tecnolambro",
+    "scopeTitle": "Scopo della certificazione"
   },
   "hamPage": {
     "title": "Guide d’onda per i 10 GHz",
@@ -510,7 +520,6 @@
     "title": "Contatti e preventivi",
     "intro": "Scriveteci, chiamateci o inviate direttamente il disegno. Preventivo entro 24 ore.",
     "hoursTitle": "Orari",
-    "hoursTodo": "[DA COMPLETARE: orari della sede operativa]",
     "company": "Dati societari"
   },
   "faqPage": {
@@ -535,7 +544,7 @@
         {
           "h": "1. Titolare del trattamento",
           "p": [
-            "Il titolare del trattamento è Tecnolambro S.a.s. di Marco Pasquini & C., P.IVA 08639310153, sede legale in Via delle Betulle 1, 20078 San Colombano al Lambro (MI), sede operativa in Via degli Spinedi 20, 27010 Miradolo Terme (PV).",
+            "Il titolare del trattamento è Tecnolambro S.a.s. di Pasquini Marco & C., P.IVA 08639310153, sede legale in Via Privata delle Betulle 1, 20078 San Colombano al Lambro (MI), sede operativa in Via degli Spinedi 20, 27010 Miradolo Terme (PV).",
             "Per qualsiasi richiesta sulla privacy: info@tecnolambro.it, PEC tecnolambrosnc@pec.it, telefono +39 375 577 1084."
           ]
         },
@@ -602,7 +611,7 @@
         {
           "h": "1. Uso del sito",
           "p": [
-            "Questo sito presenta i prodotti e i servizi di Tecnolambro S.a.s. di Marco Pasquini & C. (P.IVA 08639310153). Le informazioni tecniche sono indicative: caratteristiche, misure e prestazioni valide sono quelle confermate nell’offerta scritta.",
+            "Questo sito presenta i prodotti e i servizi di Tecnolambro S.a.s. di Pasquini Marco & C. (P.IVA 08639310153). Le informazioni tecniche sono indicative: caratteristiche, misure e prestazioni valide sono quelle confermate nell’offerta scritta.",
             "Le tabelle segnate come \"Dati dimostrativi\" contengono valori di esempio."
           ]
         },
@@ -698,7 +707,6 @@
     "resultsOne": "1 pezzo",
     "empty": "Nessun pezzo con questi filtri.",
     "reset": "Azzera i filtri",
-    "stock": "Disponibile a magazzino · spedizione in 48 ore",
     "band": "Banda",
     "configure": "Configura",
     "configureLabel": "Configura {name} {size}",
@@ -709,7 +717,8 @@
     "bendsTitle": "Curve, twist e disassati",
     "bendsBody": "Su richiesta o su disegno: aggiungi la voce alla richiesta, descrivi il pezzo nelle note e carica il disegno.",
     "bendsCta": "Aggiungi un pezzo su disegno",
-    "showMore": "Mostra tutte le misure ({count})"
+    "showMore": "Mostra tutte le misure ({count})",
+    "stockNote": "Materiale disponibile a magazzino: spedizione in 48 ore."
   },
   "tables": {
     "title": "Tabelle tecniche",

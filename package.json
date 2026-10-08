@@ -13,10 +13,12 @@
     "check:links": "node scripts/check-links.mjs",
     "colors:logo": "node scripts/extract-logo-colors.mjs",
     "check:a11y": "node scripts/a11y.mjs",
-    "test:request": "node scripts/request-e2e.mjs"
+    "test:request": "node scripts/request-e2e.mjs",
+    "cert:preview": "node scripts/cert-preview.mjs"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
+    "@vercel/analytics": "^2.0.1",
     "@vercel/blob": "^2.8.1",
     "clsx": "^2.1.1",
     "gsap": "^3.15.0",
@@ -42,6 +44,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.4.0",
     "lighthouse": "^13.5.0",
+    "pdfjs-dist": "^6.4.299",
     "playwright": "^1.63.0",
     "sharp": "^0.35.5",
     "tailwindcss": "^4",

@@ -83,14 +83,3 @@ export function familyBySlug(slug: string, locale: Locale): Family | undefined {
 export function isFamilyKey(value: string): value is FamilyKey {
   return VISIBLE_FAMILIES.some((f) => f.key === value);
 }
-
-/**
- * Pezzi "pronti" del catalogo: misura per misura delle famiglie configurabili.
- * `inStock` = badge "Disponibile a magazzino · spedizione in 48 ore": lo decide l'azienda,
- * di default nessuna misura lo mostra. Esempio: STOCK.add("twistable:WR-90").
- */
-export const STOCK: ReadonlySet<string> = new Set<string>([]);
-
-export function inStock(family: FamilyKey, wr: string): boolean {
-  return STOCK.has(`${family}:${wr}`);
-}

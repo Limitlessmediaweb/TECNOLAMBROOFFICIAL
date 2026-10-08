@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { ShieldCheck, Gauge, Link2 } from "lucide-react";
+import { Gauge, Link2 } from "lucide-react";
+import { CertificationCards } from "@/components/sections/Certifications";
 import type { Locale } from "@/i18n/routing";
 import { pageMetadata, breadcrumbsFor } from "@/lib/page";
-import { Breadcrumbs, PageHeader, WithTodo } from "@/components/ui/Bits";
+import { Breadcrumbs, PageHeader } from "@/components/ui/Bits";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { SplitReveal } from "@/components/motion/SplitReveal";
 import { Reveal } from "@/components/motion/Reveal";
@@ -33,32 +34,29 @@ export default async function QualityPage({ params }: PageProps<"/[locale]/quali
       />
 
       <section className="border-t border-line" aria-labelledby="cert-title">
-        <div className="container-site grid gap-4 py-16 lg:grid-cols-12 lg:py-24">
-          <Reveal className="flex flex-col gap-5 border border-dashed border-line-strong p-7 lg:col-span-7 lg:p-10">
-            <ShieldCheck aria-hidden="true" className="size-8 text-accent" strokeWidth={1.5} />
-            <h2 id="cert-title" className="text-display-m font-bold">
-              {t("certTitle")}
-            </h2>
-            <p className="text-lead">
-              <WithTodo text={t("certTodo")} />
-            </p>
-            <p className="text-muted">{t("certNote")}</p>
-          </Reveal>
-          <div className="grid gap-4 lg:col-span-5">
-            <Reveal className="flex flex-col gap-4 border border-line bg-surface p-7">
-              <Gauge aria-hidden="true" className="size-7 text-primary-ink" strokeWidth={1.5} />
-              <h2 className="text-display-s font-bold">{t("controlsTitle")}</h2>
-              <p className="text-muted">{t("controlsBody")}</p>
-              <p className="text-sm">
-                <WithTodo text={t("controlsTodo")} />
-              </p>
-            </Reveal>
-            <Reveal className="flex flex-col gap-4 border border-line bg-surface p-7" delay={0.1}>
-              <Link2 aria-hidden="true" className="size-7 text-primary-ink" strokeWidth={1.5} />
-              <h2 className="text-display-s font-bold">{t("chainTitle")}</h2>
-              <p className="text-muted">{t("chainBody")}</p>
-            </Reveal>
+        <div className="container-site py-16 lg:py-24">
+          <h2 id="cert-title" className="text-display-m font-bold">
+            {t("certTitle")}
+          </h2>
+          <p className="mt-3 text-muted">{t("certIntro")}</p>
+          <div className="mt-8">
+            <CertificationCards />
           </div>
+        </div>
+      </section>
+
+      <section className="border-t border-line" aria-label={t("controlsTitle")}>
+        <div className="container-site grid gap-4 py-16 md:grid-cols-2">
+          <Reveal className="flex flex-col gap-4 border border-line bg-surface p-7">
+            <Gauge aria-hidden="true" className="size-7 text-primary-ink" strokeWidth={1.5} />
+            <h2 className="text-display-s font-bold">{t("controlsTitle")}</h2>
+            <p className="text-muted">{t("controlsBody")}</p>
+          </Reveal>
+          <Reveal className="flex flex-col gap-4 border border-line bg-surface p-7" delay={0.1}>
+            <Link2 aria-hidden="true" className="size-7 text-primary-ink" strokeWidth={1.5} />
+            <h2 className="text-display-s font-bold">{t("chainTitle")}</h2>
+            <p className="text-muted">{t("chainBody")}</p>
+          </Reveal>
         </div>
       </section>
 

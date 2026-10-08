@@ -1,7 +1,8 @@
+import { ENV } from "@/data/site";
 import { getTranslations } from "next-intl/server";
 import type { Locale, StaticPathname } from "@/i18n/routing";
 import { breadcrumbsFor } from "@/lib/page";
-import { Breadcrumbs, WithTodo } from "@/components/ui/Bits";
+import { Breadcrumbs, WithTodo, isOnlyPlaceholder } from "@/components/ui/Bits";
 import { JsonLd } from "@/components/ui/JsonLd";
 
 type Section = { h: string; p: string[] };
@@ -21,16 +22,18 @@ export async function LegalPage({ ns, href, locale }: { ns: "privacy" | "terms" 
           <header className="lg:col-span-4">
             <h1 className="text-display-l font-extrabold uppercase wdth-wide">{t("title")}</h1>
             <p className="annot mt-4 text-muted">{common("updated", { date: t("updated") })}</p>
-            <p className="mt-6 text-sm">
-              <span className="todo">{common("draftNote")}</span>
-            </p>
+            {ENV.demo ? (
+              <p className="mt-6 text-sm">
+                <span className="todo">{common("draftNote")}</span>
+              </p>
+            ) : null}
           </header>
           <div className="grid max-w-[70ch] gap-10 lg:col-span-8">
             {sections.map((s) => (
               <section key={s.h}>
                 <h2 className="text-display-s font-bold">{s.h}</h2>
                 <div className="mt-4 grid gap-3 text-muted">
-                  {s.p.map((p, i) => (
+                  {s.p.filter((p) => !isOnlyPlaceholder(p) || ENV.demo).map((p, i) => (
                     <p key={i}>
                       <WithTodo text={p} />
                     </p>

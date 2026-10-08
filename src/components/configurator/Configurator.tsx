@@ -1,5 +1,6 @@
 "use client";
 
+import { ENV } from "@/data/site";
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 import NextLink from "next/link";
 import { ArrowLeft, ArrowRight, Box, Check, Download, FileDown, PencilRuler, Plus } from "lucide-react";
@@ -384,9 +385,11 @@ export function Configurator({ familyNames, familyShort, requestPath }: { family
                     </select>
                   </div>
                 ))}
-                <p className="annot text-muted sm:col-span-2">
-                  <span className="todo">{t("flangeNote")}</span>
-                </p>
+                {ENV.demo ? (
+                  <p className="annot text-muted sm:col-span-2">
+                    <span className="todo">{t("flangeNote")}</span>
+                  </p>
+                ) : null}
               </div>
             ) : null}
 

@@ -1,5 +1,6 @@
 "use client";
 
+import { ENV } from "@/data/site";
 import { useId, useRef, useState, type KeyboardEvent } from "react";
 import NextLink from "next/link";
 import { FileDown, Search, SlidersHorizontal } from "lucide-react";
@@ -373,9 +374,11 @@ export function SpecTables({ defaultTab = "twist", configurePath, familyNames, h
 
         <div className="grid gap-1 text-sm text-muted">
           {tab === "dims" ? noteList(t).map((n) => <p key={n}>{n}</p>) : null}
-          <p>
-            <span className="todo">{t("verify")}</span>
-          </p>
+          {ENV.demo ? (
+            <p>
+              <span className="todo">{t("verify")}</span>
+            </p>
+          ) : null}
         </div>
       </div>
     </div>

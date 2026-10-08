@@ -74,6 +74,11 @@ export async function Footer() {
               <br />
               {op.postalCode} {op.city} ({op.province})
             </span>
+            <span className="text-muted">
+              {common("hoursWeek")}
+              <br />
+              {common("hoursWeekend")}
+            </span>
           </address>
         </div>
 
