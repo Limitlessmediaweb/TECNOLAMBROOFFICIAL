@@ -1,0 +1,29 @@
+@font-face { font-family: Display; font-weight: 300 800; src: url(/src/app/fonts/archivo-var-latin.woff2) format("woff2"); }
+@font-face { font-family: Serif; font-style: italic; src: url(/video/spot-3d/assets/InstrumentSerif-Italic.ttf) format("truetype"); }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { background: #000; overflow: hidden; }
+#stage canvas { display: block; }
+#layer { position: absolute; inset: 0; pointer-events: none; color: #f2f6f9; -webkit-font-smoothing: antialiased; }
+.title { position: absolute; font-family: Display; font-weight: 800; letter-spacing: -0.02em; line-height: 0.98; text-shadow: 0 2px 28px rgba(0,0,0,.65), 0 1px 3px rgba(0,0,0,.5); }
+.title em { white-space: nowrap; font-family: Serif; font-style: italic; font-weight: 400; letter-spacing: 0; color: #3daef5; font-size: 1.16em; line-height: 1; }
+.v .title { left: 84px; width: 856px; top: 470px; font-size: 104px; }
+.h .title { left: 120px; width: 1100px; bottom: 150px; font-size: 92px; }
+.card { position: absolute; font-family: Display; background: rgba(12,15,19,.82); border: 1px solid rgba(255,255,255,.14); border-radius: 18px; padding: 26px 30px; display: grid; gap: 16px; backdrop-filter: blur(6px); }
+.v .card { left: 84px; width: 856px; top: 1080px; }
+.h .card { right: 120px; width: 720px; top: 300px; }
+.row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.lab { width: 150px; font-weight: 500; font-size: 26px; color: #99a9b8; letter-spacing: .02em; }
+.chip { font-weight: 600; font-size: 26px; padding: 8px 18px; border-radius: 999px; border: 1.5px solid rgba(255,255,255,.22); color: #dfe7ee; }
+.chip.on { background: #3daef5; border-color: #3daef5; color: #06121c; }
+.logo { position: absolute; left: 50%; transform: translate(-50%, -50%); display: grid; justify-items: center; gap: 34px; }
+.v .logo { top: 44%; }
+.h .logo { top: 46%; }
+.plate { position: relative; background: #f5f8fa; border-radius: 14px; padding: 34px 44px; }
+.plate img { display: block; width: 520px; height: auto; }
+.v .plate img { width: 800px; }
+.h .plate img { width: 760px; }
+.trail { position: absolute; inset: -14px; width: calc(100% + 28px); height: calc(100% + 28px); overflow: visible; }
+.trail rect { fill: none; stroke: #3daef5; stroke-width: 4; filter: drop-shadow(0 0 10px #1aa0ff) drop-shadow(0 0 22px #1aa0ff); }
+.iso { font-family: Display; font-weight: 600; font-size: 40px; letter-spacing: .08em; color: #c9d4de; }
+.url { font-family: Display; font-weight: 800; font-size: 84px; letter-spacing: -0.01em; }
+.url em { font-family: Serif; font-style: italic; font-weight: 400; color: #3daef5; }

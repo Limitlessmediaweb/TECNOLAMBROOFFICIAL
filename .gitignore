@@ -60,3 +60,11 @@ next-env.d.ts
 
 # output dei test locali
 /test-output/
+
+# spot 3D: fotogrammi e video si rigenerano con gli script (video/spot-3d/README.md)
+/video/*/node_modules/
+/video/*/render/
+/video/*/out/
+/video/*/assets/*.hdr
+/video/*/scenes/part3d.bundle.js
+/video/*/out-build-log.txt

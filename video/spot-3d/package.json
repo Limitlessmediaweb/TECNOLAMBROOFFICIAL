@@ -1,0 +1,14 @@
+{
+  "name": "tecnolambro-spot-3d",
+  "private": true,
+  "type": "module",
+  "description": "Spot 3D provvisorio dei prodotti Tecnolambro (solo modelli del configuratore)",
+  "scripts": {
+    "bundle": "node scripts/bundle.mjs",
+    "render": "node scripts/render.mjs",
+    "build": "python scripts/build.py"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.12"
+  }
+}

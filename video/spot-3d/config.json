@@ -1,0 +1,158 @@
+{
+  "title": "Tecnolambro · spot 3D provvisorio dei prodotti",
+  "note": "Solo modelli 3D del configuratore del sito (src/lib/part3d.ts), in attesa delle riprese vere. Ogni scena è uno slot: si sostituisce con il video reale mettendo il file in slot.real (vedi README).",
+  "style": "limitless-spot-prodotto (design, luce radente, rotazioni lente) con il metodo limitless-spot-cinema",
+  "bpm": 100,
+  "beat": 0.6,
+  "fps": 30,
+  "duration": 26.4,
+  "formats": {
+    "9x16": {
+      "width": 1080,
+      "height": 1920
+    },
+    "16x9": {
+      "width": 1920,
+      "height": 1080
+    }
+  },
+  "safe_9x16": {
+    "top": 150,
+    "bottom": 380,
+    "right": 140,
+    "left": 84
+  },
+  "palette": {
+    "background": [
+      "#15181d",
+      "#050607"
+    ],
+    "brass": "#c9a24a",
+    "rim": "#1aa0ff",
+    "rim_note": "il logo non ha un ciano: il controluce è il blu del logo #0070bd (205°) schiarito, come nello spot del sito; #3FC7D0 del brief non è nel logo",
+    "key": "#ffd9b0",
+    "text": "#f2f6f9",
+    "keyword": "#3daef5",
+    "keyword_note": "--c-accent del tema scuro del sito"
+  },
+  "samples": 10,
+  "scenes": [
+    {
+      "id": "s01-macro",
+      "start": 0.0,
+      "beats": 4,
+      "shot": "macro",
+      "text": "",
+      "slot": {
+        "real": "riprese/01-officina.mp4",
+        "replace_with": "officina (sabato)"
+      }
+    },
+    {
+      "id": "s02-twist",
+      "start": 2.4,
+      "beats": 4,
+      "shot": "flexBend",
+      "text": "Guidiamo le <em>microonde</em>.",
+      "slot": {
+        "real": "",
+        "replace_with": "resta in 3D"
+      }
+    },
+    {
+      "id": "s03-flange",
+      "start": 4.8,
+      "beats": 4,
+      "shot": "flange",
+      "text": "Dal <em>1987</em>.",
+      "slot": {
+        "real": "riprese/03-mani-assemblano.mp4",
+        "replace_with": "mani che assemblano (sabato)"
+      }
+    },
+    {
+      "id": "s04-build",
+      "start": 7.2,
+      "beats": 4,
+      "shot": "bendBuild",
+      "text": "Progettiamo. <em>Costruiamo.</em>",
+      "slot": {
+        "real": "riprese/04-fresatura.mp4",
+        "replace_with": "fresatura (sabato)"
+      }
+    },
+    {
+      "id": "s05-twist-offset",
+      "start": 9.6,
+      "beats": 4,
+      "shot": "twistOffset",
+      "text": "<em>Collaudiamo</em> il&nbsp;100%.",
+      "slot": {
+        "real": "",
+        "replace_with": "resta in 3D"
+      }
+    },
+    {
+      "id": "s06-row",
+      "start": 12.0,
+      "beats": 6,
+      "shot": "row",
+      "text": "Da WR-22 a <em>WR-284</em>.",
+      "slot": {
+        "real": "",
+        "replace_with": "resta in 3D"
+      }
+    },
+    {
+      "id": "s07-burst",
+      "start": 15.6,
+      "beats": 4,
+      "shot": "burst",
+      "text": "",
+      "slot": {
+        "real": "riprese/07-collaudo.mp4",
+        "replace_with": "collaudo (sabato)"
+      }
+    },
+    {
+      "id": "s08-te10",
+      "start": 18.0,
+      "beats": 6,
+      "shot": "te10",
+      "text": "Diteci la frequenza. <em>Vi diciamo la guida.</em>",
+      "slot": {
+        "real": "",
+        "replace_with": "resta in 3D"
+      }
+    },
+    {
+      "id": "s09-config",
+      "start": 21.6,
+      "beats": 4,
+      "shot": "configurator",
+      "text": "Componilo in <em>3D</em>. Preventivo in 24&nbsp;ore.",
+      "slot": {
+        "real": "",
+        "replace_with": "resta in 3D"
+      }
+    },
+    {
+      "id": "s10-logo",
+      "start": 24.0,
+      "beats": 4,
+      "shot": "logo",
+      "text": "tecnolambro.it",
+      "slot": {
+        "real": "",
+        "replace_with": "resta così (logo vero)"
+      }
+    }
+  ],
+  "loop": {
+    "id": "loop-twistable",
+    "duration": 8,
+    "width": 1920,
+    "height": 1080,
+    "max_mb": 4
+  }
+}
