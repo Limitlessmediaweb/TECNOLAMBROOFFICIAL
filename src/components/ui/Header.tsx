@@ -5,7 +5,9 @@ import { LanguageSwitcher } from "./LanguageSwitcher";
 import { ThemeToggle } from "./ThemeToggle";
 import { QuoteLink, ShopLink, localizedHref } from "./TrackedLink";
 import { MobileMenu, NavList } from "./HeaderClient";
-import { RequestButton } from "@/components/request/RequestButton";
+import { RequestButton, RequestMenuLink } from "@/components/request/RequestButton";
+import { Phone } from "lucide-react";
+import { COMPANY } from "@/data/site";
 import { MagneticButton } from "@/components/motion/MagneticButton";
 import { cn } from "@/lib/cn";
 
@@ -20,7 +22,6 @@ const PRIMARY: { href: StaticPathname; key: string }[] = [
 
 const SECONDARY: { href: StaticPathname; key: string }[] = [
   { href: "/prodotti/tabelle", key: "tables" },
-  { href: "/radioamatori", key: "ham" },
   { href: "/faq", key: "faq" },
 ];
 
@@ -41,7 +42,6 @@ export function Wordmark({ className }: { className?: string }) {
  */
 export async function Header() {
   const t = await getTranslations("nav");
-  const r = await getTranslations("request");
   const toItems = async (list: typeof PRIMARY) =>
     Promise.all(list.map(async (item) => ({ href: await localizedHref(item.href), label: t(item.key) })));
   const primary = await toItems(PRIMARY);
@@ -66,7 +66,10 @@ export async function Header() {
             <LanguageSwitcher />
             <ThemeToggle />
           </div>
-          <RequestButton href={requestPath} />
+          <a href={COMPANY.phoneHref} aria-label={`${t("call")} ${COMPANY.phone}`} className="grid size-10 place-items-center rounded-full border border-line-strong transition-colors hover:border-accent sm:hidden" data-area="header" data-header-phone>
+            <Phone aria-hidden="true" className="size-[1.125rem]" strokeWidth={1.75} />
+          </a>
+          <RequestButton href={requestPath} className="max-sm:hidden" />
           <MagneticButton>
             <QuoteLink source="header" className="btn btn-primary btn-sm max-sm:px-3 max-[380px]:px-2.5 max-[380px]:text-[0.8125rem]">
               <span className="sm:hidden">{t("quoteShort")}</span>
@@ -83,9 +86,11 @@ export async function Header() {
                 <ShopLink source="mobile_menu" className="btn btn-ghost w-full">
                   {t("shop")}
                 </ShopLink>
-                <NextLink href={requestPath} className="btn btn-ghost w-full">
-                  {r("title")}
-                </NextLink>
+                <RequestMenuLink href={requestPath} />
+                <a href={COMPANY.phoneHref} className="btn btn-ghost w-full tabular" data-area="mobile_menu">
+                  <Phone aria-hidden="true" className="size-4" strokeWidth={1.75} />
+                  {COMPANY.phone}
+                </a>
               </div>
               <div className="mt-8 flex items-center gap-3">
                 <LanguageSwitcher />

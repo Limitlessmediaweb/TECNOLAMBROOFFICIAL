@@ -75,7 +75,6 @@
     "custom": "Su misura",
     "about": "Azienda",
     "quality": "Qualità",
-    "ham": "Radioamatori",
     "faq": "FAQ",
     "contact": "Contatti",
     "quote": "Richiedi un preventivo",
@@ -94,7 +93,8 @@
     "homeShort": "home",
     "menuLabel": "Menu",
     "shopShort": "Configura",
-    "tables": "Tabelle tecniche"
+    "tables": "Tabelle tecniche",
+    "call": "Chiama"
   },
   "common": {
     "demoBadge": "Versione demo",
@@ -114,7 +114,8 @@
     "hoursTitle": "Orari",
     "hoursWeek": "Lunedì–venerdì: 8:00–12:00 e 13:30–17:30",
     "hoursWeekend": "Sabato e domenica: chiuso",
-    "missing": "manca: {what}"
+    "missing": "manca: {what}",
+    "whatsappLabel": "Scrivici su WhatsApp"
   },
   "intro": {
     "skip": "Salta",

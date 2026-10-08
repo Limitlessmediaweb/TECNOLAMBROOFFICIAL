@@ -75,7 +75,6 @@
     "custom": "Custom",
     "about": "Company",
     "quality": "Quality",
-    "ham": "Ham radio",
     "faq": "FAQ",
     "contact": "Contact",
     "quote": "Request a quote",
@@ -94,7 +93,8 @@
     "homeShort": "home",
     "menuLabel": "Menu",
     "shopShort": "Configure",
-    "tables": "Technical tables"
+    "tables": "Technical tables",
+    "call": "Call"
   },
   "common": {
     "demoBadge": "Demo version",
@@ -114,7 +114,8 @@
     "hoursTitle": "Opening hours",
     "hoursWeek": "Monday–Friday: 8:00–12:00 and 13:30–17:30",
     "hoursWeekend": "Saturday and Sunday: closed",
-    "missing": "missing: {what}"
+    "missing": "missing: {what}",
+    "whatsappLabel": "Message us on WhatsApp"
   },
   "intro": {
     "skip": "Skip",

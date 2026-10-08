@@ -1,8 +1,8 @@
 import Image from "next/image";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { LocalLink as Link } from "@/components/ui/LocalLink";
 import type { StaticPathname } from "@/i18n/routing";
-import { COMPANY, ENV } from "@/data/site";
+import { COMPANY, ENV, whatsappHref } from "@/data/site";
 import { Wordmark } from "./Header";
 import { ShopLink, localizedHref } from "./TrackedLink";
 import { IsoBadges } from "@/components/sections/Certifications";
@@ -13,7 +13,6 @@ const SITE: { href: StaticPathname; key: string }[] = [
   { href: "/su-misura", key: "custom" },
   { href: "/azienda", key: "about" },
   { href: "/qualita", key: "quality" },
-  { href: "/radioamatori", key: "ham" },
   { href: "/faq", key: "faq" },
   { href: "/contatti", key: "contact" },
 ];
@@ -22,11 +21,12 @@ export async function Footer() {
   const t = await getTranslations("footer");
   const nav = await getTranslations("nav");
   const common = await getTranslations("common");
+  const locale = await getLocale();
   const op = COMPANY.operationalAddress;
   const lg = COMPANY.legalAddress;
 
   return (
-    <footer className="border-t border-line bg-surface pb-[max(2rem,env(safe-area-inset-bottom))] pt-14">
+    <footer data-area="footer" className="border-t border-line bg-surface pb-[max(5.5rem,env(safe-area-inset-bottom))] pt-14 lg:pb-[max(2rem,env(safe-area-inset-bottom))]">
       <div className="container-site grid gap-12 lg:grid-cols-12">
         <div className="lg:col-span-4">
           <Wordmark />
@@ -67,6 +67,9 @@ export async function Footer() {
             </a>
             <a href={COMPANY.phone2Href} className="tabular text-fg hover:text-accent">
               {COMPANY.phone2}
+            </a>
+            <a href={whatsappHref(locale)} target="_blank" rel="noopener" className="text-fg hover:text-accent">
+              WhatsApp
             </a>
             <a href={`mailto:${COMPANY.pec}`} className="text-fg hover:text-accent">
               <span className="text-muted">{t("pec")}</span> {COMPANY.pec}

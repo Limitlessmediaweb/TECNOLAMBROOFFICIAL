@@ -12,7 +12,7 @@ export async function DemoBadge() {
   return (
     <p
       role="note"
-      className="annot pointer-events-none fixed bottom-[max(1rem,env(safe-area-inset-bottom))] left-4 z-[60] rounded-sm bg-todo px-2.5 py-1 font-medium uppercase tracking-[0.12em] text-on-todo shadow-[0_6px_20px_var(--c-shadow)]"
+      className="annot pointer-events-none fixed bottom-[max(1rem,env(safe-area-inset-bottom))] right-4 z-[60] lg:left-4 lg:right-auto rounded-sm bg-todo px-2.5 py-1 font-medium uppercase tracking-[0.12em] text-on-todo shadow-[0_6px_20px_var(--c-shadow)]"
     >
       {t("demoBadge")}
     </p>

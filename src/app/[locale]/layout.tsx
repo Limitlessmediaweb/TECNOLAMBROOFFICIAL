@@ -14,6 +14,7 @@ import { organizationJsonLd } from "@/lib/seo";
 import { Header } from "@/components/ui/Header";
 import { Footer } from "@/components/ui/Footer";
 import { DemoBadge } from "@/components/ui/Bits";
+import { WhatsAppFloat } from "@/components/ui/WhatsAppFloat";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { Analytics } from "@/components/ui/Analytics";
 import { InlineScript, BOOT_SCRIPT } from "@/components/ui/InlineScript";
@@ -91,6 +92,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
             <Footer />
           </Suspense>
           <DemoBadge />
+          <WhatsAppFloat />
         </ClientI18nProvider>
         <ClickTracker />
         <JsonLd data={organizationJsonLd(locale as Locale)} />

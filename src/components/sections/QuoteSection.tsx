@@ -23,7 +23,7 @@ export async function QuoteSection({
   const H = headingLevel === 1 ? "h1" : "h2";
 
   return (
-    <section id="preventivo" className="section-y scroll-mt-20 border-t border-line" aria-labelledby="quote-title">
+    <section id="preventivo" data-area="quote_section" className="section-y scroll-mt-20 border-t border-line" aria-labelledby="quote-title">
       <div className="container-site grid gap-12 lg:grid-cols-12 lg:gap-8">
         <div className="lg:col-span-4">
           <SplitReveal as={H} id="quote-title" className="max-w-[12ch] text-display-l font-bold" by="words">
