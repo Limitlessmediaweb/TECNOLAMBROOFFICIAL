@@ -34,7 +34,8 @@ Script utili:
 
 | Variabile | Default | Note |
 |---|---|---|
-| `NEXT_PUBLIC_SITE_URL` | `https://www.tecnolambro.com` | canonical, hreflang, sitemap, Open Graph |
+| `NEXT_PUBLIC_SITE_URL` | `https://tecnolambro.it` | canonical, hreflang, sitemap, Open Graph |
+| `CANONICAL_REDIRECT`, `REDIRECT_HOSTS` | vuote | al lancio: redirect 308 da www e da *.vercel.app al dominio (vedi [docs/messa-online.md](docs/messa-online.md)) |
 | `NEXT_PUBLIC_ALLOW_INDEXING` | `false` | `false` = `noindex` globale + robots.txt `Disallow: /`. **Mettere a `true` solo al lancio.** |
 | `NEXT_PUBLIC_DEMO` | `true` | `true` = badge "Versione demo" e segnaposto gialli ("manca: …", `[DA COMPLETARE]`). **Al lancio `false`**: nessun segnaposto visibile |
 | `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` | vuota | facoltativa: Plausible in aggiunta a Vercel Web Analytics |

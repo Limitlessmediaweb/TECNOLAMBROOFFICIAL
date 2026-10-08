@@ -58,7 +58,7 @@ export function yearsActive(now = new Date()): number {
 }
 
 export const ENV = {
-  siteUrl: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.tecnolambro.com").replace(/\/$/, ""),
+  siteUrl: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://tecnolambro.it").replace(/\/$/, ""),
   allowIndexing: process.env.NEXT_PUBLIC_ALLOW_INDEXING === "true",
   plausibleDomain: process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN ?? "",
   limitlessUrl: process.env.NEXT_PUBLIC_LIMITLESS_URL ?? "https://www.limitlessmedia.it",

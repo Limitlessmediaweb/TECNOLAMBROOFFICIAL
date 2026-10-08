@@ -3,6 +3,21 @@ import createNextIntlPlugin from "next-intl/plugin";
 
 const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
+/**
+ * Al lancio (docs/messa-online.md): con CANONICAL_REDIRECT=true gli host secondari (www e l'indirizzo
+ * *.vercel.app di produzione, in REDIRECT_HOSTS separati da virgola) portano al dominio di
+ * NEXT_PUBLIC_SITE_URL con un redirect 308. Spento finché la variabile non è impostata.
+ */
+const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://tecnolambro.it").replace(/\/$/, "");
+const HOST_REDIRECTS =
+  process.env.CANONICAL_REDIRECT === "true"
+    ? (process.env.REDIRECT_HOSTS ?? "www.tecnolambro.it,tecnolambroooo.vercel.app")
+        .split(",")
+        .map((h) => h.trim())
+        .filter((h) => h && h !== new URL(SITE_URL).host)
+        .map((host) => ({ source: "/:path*", has: [{ type: "host" as const, value: host }], destination: `${SITE_URL}/:path*`, permanent: true }))
+    : [];
+
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   // Pagine tolte o rinominate nella versione 2 (riunione del 7 ottobre 2026): redirect permanenti 308.
@@ -38,6 +53,7 @@ const nextConfig: NextConfig = {
       "flange-adapter-wr90", "install-kit-wr75", "transition-wr90-n", "termination-wr90", "feed-10ghz-qo100", "transition-10ghz-sma",
     ];
     return [
+      ...HOST_REDIRECTS,
       ...family.map(([source, destination]) => ({ source, destination, permanent: true })),
       ...handles.flatMap((h) => [
         { source: `/shop/${h}`, destination: "/shop", permanent: true },

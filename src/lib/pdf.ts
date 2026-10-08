@@ -50,7 +50,7 @@ export async function drawingPdf(svg: string, meta: { code: string; title: strin
   doc.setTitle(meta.title);
   doc.setAuthor("Tecnolambro Microwave Components");
   doc.setSubject(meta.code);
-  doc.setCreator("tecnolambro.com");
+  doc.setCreator("tecnolambro.it");
   const page = doc.addPage([842, 595]);
   const png = await doc.embedPng(await svgToPng(svg, scale));
   const margin = 18;
