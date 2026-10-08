@@ -66,7 +66,8 @@ for (const vp of [
     for (const v of VIEWS) {
       const page = await ctx.newPage();
       page.on("pageerror", (e) => errors.push(`${locale} ${vp.w} ${v.name}: ${e.message}`));
-      await page.goto(`${BASE}${P[locale][v.page]}${v.query ?? ""}`, { waitUntil: "networkidle", timeout: 60000 });
+      await page.goto(`${BASE}${P[locale][v.page]}${v.query ?? ""}`, { waitUntil: "load", timeout: 60000 });
+      await page.waitForLoadState("networkidle", { timeout: 10000 }).catch(() => {});
       await page.evaluate(() => document.fonts.ready);
       if (v.target) {
         await page.locator(v.target).first().scrollIntoViewIfNeeded();
