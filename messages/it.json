@@ -24,10 +24,6 @@
       "title": "Qualità e certificazioni | Tecnolambro",
       "description": "Collaudo finale del 100% dei pezzi prima della spedizione, trattamenti con fornitori storici e selezionati. Certificazioni e procedure di qualità."
     },
-    "ham": {
-      "title": "Guide d’onda per i 10 GHz | Tecnolambro",
-      "description": "Guida d’onda flessibile WR-90 e WR-75 per la banda radioamatoriale dei 10 GHz. Configurate il pezzo e ricevete il preventivo entro 24 ore."
-    },
     "contact": {
       "title": "Contatti e preventivi | Tecnolambro",
       "description": "Richiedi un preventivo per guide d’onda e componenti a microonde: risposta entro 24 ore. +39 375 577 1084, info@tecnolambro.it, Miradolo Terme (PV)."
@@ -531,17 +527,6 @@
     "previewAlt": "Prima pagina dell’attestato {standard} di Tecnolambro",
     "scopeTitle": "Scopo della certificazione"
   },
-  "hamPage": {
-    "title": "Guide d’onda per i 10 GHz",
-    "intro": "Guida d’onda flessibile twistabile e seamless WR-90 e WR-75 per chi lavora sulla banda radioamatoriale dei 10 GHz.",
-    "bandsTitle": "Quale misura",
-    "band10": "Banda radioamatoriale dei 10 GHz (10,0–10,5 GHz): guida WR-90 (8,20–12,5 GHz) o WR-75 (9,84–15,0 GHz).",
-    "bandCustom": "Lunghezza, flange e versione twistabile o seamless si scelgono nel configuratore, con disegno quotato e modello 3D.",
-    "shopTitle": "Configura il tuo pezzo",
-    "shopBody": "Misura WR-90 o WR-75, lunghezza e flange: preventivo entro 24 ore. Prezzi su richiesta: ogni preventivo è personalizzato.",
-    "configureWr90": "Configura una WR-90",
-    "configureWr75": "Configura una WR-75"
-  },
   "contactPage": {
     "title": "Contatti e preventivi",
     "intro": "Scriveteci, chiamateci o inviate direttamente il disegno. Preventivo entro 24 ore.",
@@ -809,7 +794,7 @@
       "L": "L lunghezza"
     },
     "sheetTitle": "Scheda tecnica",
-    "sheetFooter": "Dati da verificare con l’ufficio tecnico. Preventivo entro 24 ore: info@tecnolambro.it · +39 375 577 1084"
+    "sheetFooter": "Richiedi un preventivo: tecnolambro.com/shop · +39 375 577 1084"
   },
   "configurator": {
     "typeTitle": "Tipo di pezzo",
@@ -1105,5 +1090,79 @@
     "next": "Foto successiva",
     "counter": "{n} di {total}",
     "alt": "{name}, foto {n}"
+  },
+  "wrPage": {
+    "title": "{wr} guida d’onda flessibile",
+    "metaTitle": "{wr} guida d’onda flessibile {band} GHz | Tecnolambro",
+    "metaDescription": "Guida d’onda flessibile {wr} ({iec}, {wg}) per {band} GHz, twistabile e seamless: dimensioni, dati elettrici, flange. Preventivo entro 24 ore.",
+    "intro": "La guida d’onda flessibile {wr} ({iec} · {wg}) lavora da {band} GHz. La costruiamo twistabile e seamless, con le flange e la lunghezza che vi servono.",
+    "category": "Guida d’onda flessibile",
+    "configureTwistable": "Configura la twistabile",
+    "configureSeamless": "Configura la seamless",
+    "quote": "Richiedi un preventivo",
+    "specsTitle": "Dati della misura",
+    "band": "Banda di lavoro",
+    "designations": "Designazioni",
+    "inner": "Sezione interna a × b",
+    "innerNote": "Sezione interna a × b: valori standard EIA. Le altre quote sono della tabella dimensioni Tecnolambro.",
+    "code": "Codice",
+    "outer": "Ingombro A × B",
+    "root": "Fondo dell’ondulazione C × D",
+    "pitch": "Passo P",
+    "tol": "Tolleranza",
+    "length": "Lunghezza standard",
+    "lengthRange": "da {min} a {max} mm",
+    "lengthMax": "fino a {max} mm",
+    "material": "Materiale",
+    "brass": "Ottone",
+    "electricalTitle": "Dati elettrici",
+    "twistable": "Twistabile",
+    "seamless": "Seamless",
+    "rl": "Return loss {len} mm",
+    "att": "Attenuazione",
+    "cw": "Potenza CW",
+    "peak": "Potenza di picco",
+    "vswr600": "VSWR 600 mm",
+    "onRequest": "Dati elettrici su richiesta.",
+    "tablesLink": "Tutte le tabelle tecniche",
+    "flangesTitle": "Flange",
+    "flangesBody": "Le flange IEC più comuni per questa misura. Altri tipi su richiesta: indicateli nelle note.",
+    "ctaTitle": "Vi serve la {wr}?",
+    "ctaBody": "Mandateci misura, lunghezza e flange, oppure il disegno: il preventivo arriva entro 24 ore lavorative.",
+    "neighbours": "Misure vicine",
+    "lower": "Frequenza più bassa",
+    "higher": "Frequenza più alta",
+    "indexTitle": "Guida flessibile per misura",
+    "indexBody": "Una pagina per ogni misura: banda, dimensioni, dati elettrici e flange."
+  },
+  "applications": {
+    "title": "Dove lavorano le nostre guide",
+    "body": "Guida d’onda flessibile e rigida per collegare antenne, amplificatori e ricevitori dove serve un collegamento a basse perdite.",
+    "items": {
+      "radar": {
+        "title": "Radar",
+        "body": "Collegamenti tra trasmettitore, rotary joint e antenna, anche dove la guida deve piegarsi o assorbire vibrazioni."
+      },
+      "telecom": {
+        "title": "Telecomunicazioni e ponti radio",
+        "body": "Tratte tra apparati e antenne nei ponti radio a microonde, con flange e lunghezze su misura."
+      },
+      "satcom": {
+        "title": "Comunicazioni satellitari",
+        "body": "Collegamenti nelle stazioni di terra, tra amplificatori, feed e illuminatori."
+      },
+      "broadcast": {
+        "title": "Broadcast",
+        "body": "Linee di trasmissione per collegamenti video e audio in banda microonde."
+      },
+      "research": {
+        "title": "Ricerca e laboratori",
+        "body": "Pezzi singoli e configurazioni particolari per banchi di misura e prototipi."
+      },
+      "industry": {
+        "title": "Industria",
+        "body": "Applicazioni industriali a microonde, dove servono collegamenti robusti e su misura."
+      }
+    }
   }
 }

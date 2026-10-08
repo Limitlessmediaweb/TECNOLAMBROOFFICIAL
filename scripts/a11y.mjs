@@ -11,7 +11,7 @@ import { createRequire } from "node:module";
 const require = createRequire(import.meta.url);
 const AXE = readFileSync(require.resolve("axe-core/axe.min.js"), "utf8");
 const BASE = (process.env.BASE_URL ?? "http://localhost:3000").replace(/\/$/, "");
-const PAGES = ["/", "/en", "/prodotti", "/prodotti/guida-flessibile-twistabile", "/prodotti/curve-twist-disassati", "/prodotti/tabelle", "/en/products/tables", "/contatti", "/faq", "/radioamatori", "/shop", "/en/shop", "/shop/richiesta", "/shop/richiesta-inviata"];
+const PAGES = ["/", "/en", "/prodotti", "/prodotti/guida-flessibile-twistabile", "/prodotti/curve", "/prodotti/guida-flessibile/wr-90", "/en/products/flexible-waveguide/wr-90", "/prodotti/tabelle", "/en/products/tables", "/azienda", "/qualita", "/contatti", "/faq", "/shop", "/en/shop", "/shop/richiesta", "/shop/richiesta/inviata"];
 
 const browser = await chromium.launch();
 let total = 0;

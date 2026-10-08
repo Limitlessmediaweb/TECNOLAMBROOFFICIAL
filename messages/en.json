@@ -24,10 +24,6 @@
       "title": "Quality & certifications | Tecnolambro",
       "description": "Final test on 100% of parts before shipping, finishing by long-standing, selected suppliers. Certifications and quality procedures."
     },
-    "ham": {
-      "title": "Waveguides for 10 GHz | Tecnolambro",
-      "description": "WR-90 and WR-75 flexible waveguide for the 10 GHz amateur band. Configure the part and get a quote within 24 hours."
-    },
     "contact": {
       "title": "Contact & quotes | Tecnolambro",
       "description": "Request a quote for waveguides and microwave components: reply within 24 hours. +39 375 577 1084, info@tecnolambro.it, Miradolo Terme, Italy."
@@ -531,17 +527,6 @@
     "previewAlt": "First page of Tecnolambro’s {standard} certificate",
     "scopeTitle": "Scope of certification"
   },
-  "hamPage": {
-    "title": "Waveguides for 10 GHz",
-    "intro": "WR-90 and WR-75 twistable and seamless flexible waveguide for radio amateurs working on the 10 GHz band.",
-    "bandsTitle": "Which size",
-    "band10": "10 GHz amateur band (10.0–10.5 GHz): WR-90 (8.20–12.5 GHz) or WR-75 (9.84–15.0 GHz) waveguide.",
-    "bandCustom": "Choose length, flanges and the twistable or seamless version in the configurator, with a dimensioned drawing and 3D model.",
-    "shopTitle": "Configure your part",
-    "shopBody": "WR-90 or WR-75, length and flanges: quote within 24 hours. Prices on request: every quote is tailored.",
-    "configureWr90": "Configure a WR-90",
-    "configureWr75": "Configure a WR-75"
-  },
   "contactPage": {
     "title": "Contact & quotes",
     "intro": "Write, call or send your drawing straight away. Quote within 24 hours.",
@@ -809,7 +794,7 @@
       "L": "L length"
     },
     "sheetTitle": "Datasheet",
-    "sheetFooter": "Data to be checked with the technical office. Quote within 24 hours: info@tecnolambro.it · +39 375 577 1084"
+    "sheetFooter": "Request a quote: tecnolambro.com/shop · +39 375 577 1084"
   },
   "configurator": {
     "typeTitle": "Part type",
@@ -1105,5 +1090,79 @@
     "next": "Next photo",
     "counter": "{n} of {total}",
     "alt": "{name}, photo {n}"
+  },
+  "wrPage": {
+    "title": "{wr} flexible waveguide",
+    "metaTitle": "{wr} flexible waveguide {band} GHz | Tecnolambro",
+    "metaDescription": "{wr} flexible waveguide ({iec}, {wg}) for {band} GHz, twistable and seamless: dimensions, electrical data, flanges. Quote within 24 hours.",
+    "intro": "The {wr} flexible waveguide ({iec} · {wg}) covers {band} GHz. We build it twistable and seamless, with the flanges and length you need.",
+    "category": "Flexible waveguide",
+    "configureTwistable": "Configure twistable",
+    "configureSeamless": "Configure seamless",
+    "quote": "Request a quote",
+    "specsTitle": "Size data",
+    "band": "Operating band",
+    "designations": "Designations",
+    "inner": "Inner section a × b",
+    "innerNote": "Inner section a × b: standard EIA values. The other dimensions come from the Tecnolambro dimension table.",
+    "code": "Code",
+    "outer": "Overall A × B",
+    "root": "Corrugation root C × D",
+    "pitch": "Pitch P",
+    "tol": "Tolerance",
+    "length": "Standard length",
+    "lengthRange": "{min} to {max} mm",
+    "lengthMax": "up to {max} mm",
+    "material": "Material",
+    "brass": "Brass",
+    "electricalTitle": "Electrical data",
+    "twistable": "Twistable",
+    "seamless": "Seamless",
+    "rl": "Return loss {len} mm",
+    "att": "Attenuation",
+    "cw": "CW power",
+    "peak": "Peak power",
+    "vswr600": "VSWR 600 mm",
+    "onRequest": "Electrical data on request.",
+    "tablesLink": "All technical tables",
+    "flangesTitle": "Flanges",
+    "flangesBody": "The most common IEC flanges for this size. Other types on request: add them to the notes.",
+    "ctaTitle": "Need {wr}?",
+    "ctaBody": "Send us size, length and flanges, or your drawing: the quote arrives within 24 working hours.",
+    "neighbours": "Nearby sizes",
+    "lower": "Lower frequency",
+    "higher": "Higher frequency",
+    "indexTitle": "Flexible waveguide by size",
+    "indexBody": "One page per size: band, dimensions, electrical data and flanges."
+  },
+  "applications": {
+    "title": "Where our waveguides work",
+    "body": "Flexible and rigid waveguide to connect antennas, amplifiers and receivers wherever a low-loss link is needed.",
+    "items": {
+      "radar": {
+        "title": "Radar",
+        "body": "Links between transmitter, rotary joint and antenna, including where the line must bend or absorb vibration."
+      },
+      "telecom": {
+        "title": "Telecom and radio links",
+        "body": "Runs between equipment and antennas in microwave radio links, with custom flanges and lengths."
+      },
+      "satcom": {
+        "title": "Satellite communications",
+        "body": "Links in ground stations, between amplifiers, feeds and horns."
+      },
+      "broadcast": {
+        "title": "Broadcast",
+        "body": "Transmission lines for microwave video and audio links."
+      },
+      "research": {
+        "title": "Research and laboratories",
+        "body": "One-off parts and special configurations for test benches and prototypes."
+      },
+      "industry": {
+        "title": "Industry",
+        "body": "Industrial microwave applications that need rugged, made-to-measure links."
+      }
+    }
   }
 }

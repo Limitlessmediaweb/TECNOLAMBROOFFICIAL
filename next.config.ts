@@ -28,6 +28,9 @@ const nextConfig: NextConfig = {
       ["/en/shop/order", "/en/shop/request"],
       ["/en/shop/order-sent", "/en/shop/request/sent"],
       ["/en/shop/request-sent", "/en/shop/request/sent"],
+      // la pagina radioamatori (10 GHz) non c'è più: porta alla WR-90 (8,2–12,5 GHz)
+      ["/radioamatori", "/prodotti/guida-flessibile/wr-90"],
+      ["/en/ham-radio", "/en/products/flexible-waveguide/wr-90"],
     ];
     // Vecchie schede dello shop con i prezzi: ora c'è il configuratore
     const handles = [

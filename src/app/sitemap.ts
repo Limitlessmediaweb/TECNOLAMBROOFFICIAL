@@ -2,6 +2,8 @@ import type { MetadataRoute } from "next";
 import { routing, type StaticPathname } from "@/i18n/routing";
 import { absoluteUrl } from "@/lib/seo";
 import { VISIBLE_FAMILIES } from "@/data/families";
+import { SIZES } from "@/data/waveguides";
+import { wrSlug } from "@/lib/wr-page";
 
 const STATIC: { href: StaticPathname; priority: number; changeFrequency: "monthly" | "yearly" }[] = [
   { href: "/", priority: 1, changeFrequency: "monthly" },
@@ -11,7 +13,6 @@ const STATIC: { href: StaticPathname; priority: number; changeFrequency: "monthl
   { href: "/contatti", priority: 0.8, changeFrequency: "yearly" },
   { href: "/azienda", priority: 0.7, changeFrequency: "yearly" },
   { href: "/qualita", priority: 0.6, changeFrequency: "yearly" },
-  { href: "/radioamatori", priority: 0.6, changeFrequency: "monthly" },
   { href: "/faq", priority: 0.6, changeFrequency: "monthly" },
   { href: "/shop", priority: 0.9, changeFrequency: "monthly" },
   { href: "/privacy", priority: 0.2, changeFrequency: "yearly" },
@@ -36,6 +37,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     const languages = Object.fromEntries(routing.locales.map((l) => [l, absoluteUrl(hrefFor(l), l)]));
     for (const locale of routing.locales) {
       entries.push({ url: absoluteUrl(hrefFor(locale), locale), lastModified, changeFrequency: "monthly", priority: 0.8, alternates: { languages } });
+    }
+  }
+
+  // una pagina per ogni misura WR
+  for (const size of SIZES) {
+    const href = { pathname: "/prodotti/guida-flessibile/[wr]" as const, params: { wr: wrSlug(size.wr) } };
+    const languages = Object.fromEntries(routing.locales.map((l) => [l, absoluteUrl(href, l)]));
+    for (const locale of routing.locales) {
+      entries.push({ url: absoluteUrl(href, locale), lastModified, changeFrequency: "monthly", priority: 0.7, alternates: { languages } });
     }
   }
 

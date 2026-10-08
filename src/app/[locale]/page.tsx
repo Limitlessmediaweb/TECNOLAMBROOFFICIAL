@@ -8,6 +8,7 @@ import { Hero } from "@/components/sections/Hero";
 import { WrMarquee } from "@/components/sections/WrMarquee";
 import { CompanySection } from "@/components/sections/CompanySection";
 import { ProductsSection } from "@/components/sections/ProductsSection";
+import { ApplicationsSection } from "@/components/sections/Applications";
 import {
   BandFinderSection,
   ProcessSection,
@@ -41,6 +42,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
       </Lazy>
       <Lazy>
         <ProductsSection />
+        <ApplicationsSection />
       </Lazy>
       <Lazy>
         <BandFinderSection />

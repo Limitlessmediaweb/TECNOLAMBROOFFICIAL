@@ -8,6 +8,7 @@ import { SplitReveal } from "@/components/motion/SplitReveal";
 import { ProductGrid } from "@/components/sections/ProductsSection";
 import { BandFinderSection, FinalCta } from "@/components/sections/HomeSections";
 import { WrMarquee } from "@/components/sections/WrMarquee";
+import { ApplicationsSection, SizeIndex } from "@/components/sections/Applications";
 import { LocalLink as Link } from "@/components/ui/LocalLink";
 import { ArrowRight } from "lucide-react";
 
@@ -40,6 +41,8 @@ export default async function ProductsPage({ params }: PageProps<"/[locale]/prod
           <ArrowRight aria-hidden="true" className="size-4" strokeWidth={1.75} />
         </Link>
       </section>
+      <SizeIndex />
+      <ApplicationsSection />
       <WrMarquee />
       <BandFinderSection formOnPage={false} />
       <FinalCta />
