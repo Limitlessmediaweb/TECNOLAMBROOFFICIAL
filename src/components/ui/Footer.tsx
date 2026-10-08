@@ -4,7 +4,8 @@ import { LocalLink as Link } from "@/components/ui/LocalLink";
 import type { StaticPathname } from "@/i18n/routing";
 import { COMPANY, ENV } from "@/data/site";
 import { Wordmark } from "./Header";
-import { ShopLink } from "./TrackedLink";
+import { ShopLink, localizedHref } from "./TrackedLink";
+import { IsoBadges } from "@/components/sections/Certifications";
 
 const SITE: { href: StaticPathname; key: string }[] = [
   { href: "/prodotti", key: "products" },
@@ -30,6 +31,7 @@ export async function Footer() {
         <div className="lg:col-span-4">
           <Wordmark />
           <p className="mt-5 max-w-[34ch] text-sm text-muted">{t("tagline")}</p>
+          <IsoBadges href={await localizedHref("/qualita")} className="mt-4" />
           {/* Logo originale (sfondo chiaro): presentato su una targhetta per restare leggibile in entrambi i temi */}
           <div className="mt-6 inline-block rounded-sm bg-plate p-3 ring-1 ring-line">
             <Image src="/brand/logo.png" alt={t("logoAlt")} width={541} height={197} sizes="216px" className="h-auto w-[216px]" />

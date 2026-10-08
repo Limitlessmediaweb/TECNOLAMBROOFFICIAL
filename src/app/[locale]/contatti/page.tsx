@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { TrustBar } from "@/components/ui/TrustBar";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Clock, Building2 } from "lucide-react";
 import type { Locale } from "@/i18n/routing";
@@ -30,6 +31,10 @@ export default async function ContactPage({ params }: PageProps<"/[locale]/conta
       {/* L'H1 della pagina è il titolo del blocco preventivo */}
       <div className="-mt-10 lg:-mt-16">
         <QuoteSection title={t("title")} body={t("intro")} headingLevel={1} />
+      </div>
+
+      <div className="container-site pb-4">
+        <TrustBar />
       </div>
 
       <section className="border-t border-line" aria-label={t("company")}>

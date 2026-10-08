@@ -18,6 +18,7 @@ import { MagneticButton } from "@/components/motion/MagneticButton";
 import { ExplodedPart } from "@/components/domain/ExplodedPart";
 import { ProductGrid } from "@/components/sections/ProductsSection";
 import { SpecTables } from "@/components/tables/SpecTables";
+import { FamilyGallery } from "@/components/sections/PeopleAndPhotos";
 import { AddCustomButton } from "@/components/request/AddCustomButton";
 
 type Props = PageProps<"/[locale]/prodotti/[famiglia]">;
@@ -104,6 +105,8 @@ export default async function FamilyPage({ params }: Props) {
           </QuoteLink>
         </div>
       </PageHeader>
+
+      <FamilyGallery family={family.key} familyName={name} />
 
       <ExplodedPart
         family={family.drawing}

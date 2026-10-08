@@ -18,6 +18,7 @@ import {
   FinalCta,
 } from "@/components/sections/HomeSections";
 import { QuoteSection } from "@/components/sections/QuoteSection";
+import { OwnerSection } from "@/components/sections/PeopleAndPhotos";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]">): Promise<Metadata> {
   const { locale } = await params;
@@ -47,6 +48,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
       <Lazy>
         <ProcessSection />
         <HistorySection />
+        <OwnerSection variant="short" />
       </Lazy>
       <Lazy>
         <QualitySection />

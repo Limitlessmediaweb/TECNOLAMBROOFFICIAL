@@ -7,6 +7,7 @@ import { MagneticButton } from "@/components/motion/MagneticButton";
 import { QuoteLink, ShopLink } from "@/components/ui/TrackedLink";
 import { SIZE_BY_WR, range } from "@/data/waveguides";
 import { MotionToggle } from "@/components/ui/MotionToggle";
+import { TrustBar } from "@/components/ui/TrustBar";
 
 export async function Hero() {
   const t = await getTranslations("hero");
@@ -47,6 +48,7 @@ export async function Hero() {
             {nav("shop")}
           </ShopLink>
         </div>
+        <TrustBar className="mt-8 max-w-3xl" />
       </div>
 
       {/* Legenda tecnica del campo */}

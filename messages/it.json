@@ -242,7 +242,7 @@
       },
       {
         "title": "Produzione",
-        "body": "Progettiamo, costruiamo e collaudiamo i nostri componenti: guida flessibile twistabile e seamless, curve, twist e disassati."
+        "body": "Taglio, fresatura, tornitura, assemblaggio e giunzione: guida flessibile twistabile e seamless, curve, twist e disassati di produzione propria."
       },
       {
         "title": "Trattamenti",
@@ -939,5 +939,42 @@
     ],
     "back": "Torna al configuratore",
     "missing": "Nessuna richiesta recente in questa sessione."
+  },
+  "trust": {
+    "label": "Perché Tecnolambro",
+    "since": "Dal {year}",
+    "ownProduction": "Produzione propria",
+    "tested": "Collaudo al 100%",
+    "quote24": "Preventivo in 24 ore",
+    "worldwide": "Spedizione nel mondo"
+  },
+  "owner": {
+    "title": "Chi guida Tecnolambro",
+    "name": "Marco Pasquini",
+    "role": "Titolare",
+    "body": "Marco Pasquini guida Tecnolambro, che dal 1987 progetta, costruisce e collauda guide d’onda di produzione propria. L’azienda lavora in collaborazione con le più grandi aziende di telecomunicazioni e collauda il 100% dei pezzi prima della spedizione.",
+    "bodyShort": "Dal 1987 Tecnolambro progetta, costruisce e collauda guide d’onda di produzione propria, in collaborazione con le più grandi aziende di telecomunicazioni.",
+    "photoAlt": "Marco Pasquini, titolare di Tecnolambro",
+    "more": "Scopri l’azienda"
+  },
+  "workshop": {
+    "title": "L’officina",
+    "body": "Dove progettiamo, costruiamo e collaudiamo i nostri componenti, a Miradolo Terme.",
+    "areas": {
+      "lavorazione": "Lavorazione",
+      "collaudo": "Collaudo",
+      "magazzino": "Magazzino"
+    },
+    "generic": "Officina",
+    "alt": "Officina Tecnolambro a Miradolo Terme: {what}, foto {n}"
+  },
+  "gallery": {
+    "title": "Foto: {name}",
+    "open": "Apri la foto a schermo intero",
+    "close": "Chiudi",
+    "prev": "Foto precedente",
+    "next": "Foto successiva",
+    "counter": "{n} di {total}",
+    "alt": "{name}, foto {n}"
   }
 }

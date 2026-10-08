@@ -242,7 +242,7 @@
       },
       {
         "title": "Production",
-        "body": "We design, build and test our own components: twistable and seamless flexible waveguide, bends, twists and offsets."
+        "body": "Cutting, milling, turning, assembly and joining: twistable and seamless flexible waveguide, bends, twists and offsets of our own production."
       },
       {
         "title": "Finishing",
@@ -939,5 +939,42 @@
     ],
     "back": "Back to the configurator",
     "missing": "No recent request in this session."
+  },
+  "trust": {
+    "label": "Why Tecnolambro",
+    "since": "Since {year}",
+    "ownProduction": "Own production",
+    "tested": "100% tested",
+    "quote24": "Quote in 24 hours",
+    "worldwide": "Worldwide shipping"
+  },
+  "owner": {
+    "title": "Who leads Tecnolambro",
+    "name": "Marco Pasquini",
+    "role": "Owner",
+    "body": "Marco Pasquini leads Tecnolambro, which has designed, built and tested its own waveguides since 1987. The company works with the largest telecommunications companies and tests 100% of parts before shipping.",
+    "bodyShort": "Since 1987 Tecnolambro has designed, built and tested its own waveguides, working with the largest telecommunications companies.",
+    "photoAlt": "Marco Pasquini, owner of Tecnolambro",
+    "more": "About the company"
+  },
+  "workshop": {
+    "title": "The workshop",
+    "body": "Where we design, build and test our components, in Miradolo Terme.",
+    "areas": {
+      "lavorazione": "Machining",
+      "collaudo": "Testing",
+      "magazzino": "Warehouse"
+    },
+    "generic": "Workshop",
+    "alt": "Tecnolambro workshop in Miradolo Terme: {what}, photo {n}"
+  },
+  "gallery": {
+    "title": "Photos: {name}",
+    "open": "Open the photo full screen",
+    "close": "Close",
+    "prev": "Previous photo",
+    "next": "Next photo",
+    "counter": "{n} of {total}",
+    "alt": "{name}, photo {n}"
   }
 }

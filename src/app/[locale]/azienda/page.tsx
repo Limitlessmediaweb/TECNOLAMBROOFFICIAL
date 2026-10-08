@@ -3,11 +3,11 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Factory, Paintbrush, FlaskConical, PencilRuler, MapPin } from "lucide-react";
 import type { Locale } from "@/i18n/routing";
 import { pageMetadata, breadcrumbsFor } from "@/lib/page";
-import { Breadcrumbs, PageHeader, PhotoPlaceholder } from "@/components/ui/Bits";
+import { Breadcrumbs, PageHeader } from "@/components/ui/Bits";
+import { OwnerSection, WorkshopSection } from "@/components/sections/PeopleAndPhotos";
 import { JsonLd } from "@/components/ui/JsonLd";
 import { SplitReveal } from "@/components/motion/SplitReveal";
 import { Stagger } from "@/components/motion/Stagger";
-import { ParallaxLayer } from "@/components/motion/ParallaxLayer";
 import { HistorySection, FinalCta } from "@/components/sections/HomeSections";
 import { COMPANY } from "@/data/site";
 
@@ -50,13 +50,6 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/azienda
         intro={<p>{t("intro")}</p>}
       />
 
-      <div className="container-site grid gap-4 pb-20 md:grid-cols-3">
-        <ParallaxLayer className="md:col-span-2" speed={8}>
-          <PhotoPlaceholder ratio="16/9" caption={t("photoTodo")} />
-        </ParallaxLayer>
-        <PhotoPlaceholder ratio="4/5" caption={t("photoTodo")} className="hidden md:grid" />
-      </div>
-
       <section className="section-y border-t border-line" aria-label={t("productionTitle")}>
         <Stagger className="container-site grid gap-px border border-line bg-line sm:grid-cols-2">
           {blocks.map(({ icon: Icon, title, body }, i) => (
@@ -69,7 +62,9 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/azienda
         </Stagger>
       </section>
 
+      <OwnerSection />
       <HistorySection />
+      <WorkshopSection />
 
       <section className="section-y border-t border-line" aria-labelledby="sites-title">
         <div className="container-site">
