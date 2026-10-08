@@ -153,7 +153,7 @@ export default async function WrPage({ params }: Props) {
           <div className="mt-8 grid gap-6 md:grid-cols-2">
             <div className="border border-line bg-surface p-6">
               <h3 className="text-display-s font-bold">
-                <Link href={{ pathname: "/prodotti/[famiglia]", params: { famiglia: twistable.slug[locale as Locale] } }} className="hover:text-accent">
+                <Link href={{ pathname: "/prodotti/[famiglia]", params: { famiglia: twistable.slug[locale as Locale] } }} className="tap hover:text-accent">
                   {t("twistable")}
                 </Link>
               </h3>
@@ -189,7 +189,7 @@ export default async function WrPage({ params }: Props) {
             </div>
             <div className="border border-line bg-surface p-6">
               <h3 className="text-display-s font-bold">
-                <Link href={{ pathname: "/prodotti/[famiglia]", params: { famiglia: seamlessFamily.slug[locale as Locale] } }} className="hover:text-accent">
+                <Link href={{ pathname: "/prodotti/[famiglia]", params: { famiglia: seamlessFamily.slug[locale as Locale] } }} className="tap hover:text-accent">
                   {t("seamless")}
                 </Link>
               </h3>

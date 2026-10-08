@@ -358,7 +358,7 @@ export function Configurator({ requestPath }: { requestPath: string }) {
     const collapsible = summaryLine !== undefined;
     const open = !collapsible || openStep === n;
     return (
-      <fieldset className="grid gap-4 border-t border-line pt-6" data-step={n}>
+      <fieldset className="grid min-w-0 grid-cols-[minmax(0,1fr)] gap-4 border-t border-line pt-6" data-step={n}>
         <legend className="flex items-center gap-3 text-display-s font-bold">
           <span aria-hidden="true" className="grid size-8 shrink-0 place-items-center rounded-full border border-accent font-mono text-sm text-accent">
             {n}
@@ -368,7 +368,7 @@ export function Configurator({ requestPath }: { requestPath: string }) {
         {collapsible ? (
           <button
             type="button"
-            className="flex min-h-11 w-full items-center justify-between gap-3 border border-line bg-surface px-4 text-left text-sm lg:hidden"
+            className="flex min-h-11 w-full min-w-0 max-w-full items-center justify-between gap-3 border border-line bg-surface px-4 text-left text-sm lg:hidden"
             aria-expanded={open}
             aria-controls={`${uid}-step-${n}`}
             onClick={() => setOpenStep(open ? null : n)}
@@ -378,7 +378,7 @@ export function Configurator({ requestPath }: { requestPath: string }) {
             <span className="shrink-0 font-medium text-primary-ink">{open ? t("stepClose") : t("stepEdit")}</span>
           </button>
         ) : null}
-        <div id={`${uid}-step-${n}`} className={cn("grid gap-4", !open && "max-lg:hidden")}>
+        <div id={`${uid}-step-${n}`} className={cn("grid min-w-0 grid-cols-[minmax(0,1fr)] gap-4 [&>*]:min-w-0", !open && "max-lg:hidden")}>
           {children}
           {collapsible ? (
             <button type="button" className="btn btn-ghost btn-sm justify-self-start lg:hidden" onClick={() => setOpenStep(n < 6 ? n + 1 : null)}>
@@ -406,9 +406,9 @@ export function Configurator({ requestPath }: { requestPath: string }) {
 
   return (
     <div ref={root} className="scroll-mt-24 max-lg:pb-20" data-configurator data-type={spec.type}>
-      <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,30rem)] lg:items-start">
+      <div className="grid grid-cols-[minmax(0,1fr)] gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,30rem)] lg:items-start">
         {/* ------------------------------------------------- step 1–2 (su telefono poi l'anteprima, poi gli step 3–6) */}
-        <div className="grid min-w-0 content-start gap-8 max-lg:order-1 lg:col-start-1 lg:row-start-1">
+        <div className="grid min-w-0 grid-cols-[minmax(0,1fr)] content-start gap-8 max-lg:order-1 lg:col-start-1 lg:row-start-1">
           {section(
             1,
             t("typeTitle"),
@@ -468,7 +468,7 @@ export function Configurator({ requestPath }: { requestPath: string }) {
         </div>
 
         {!isCustom ? (
-          <div className="grid min-w-0 content-start gap-8 max-lg:order-3 lg:col-start-1 lg:row-start-2">
+          <div className="grid min-w-0 grid-cols-[minmax(0,1fr)] content-start gap-8 max-lg:order-3 lg:col-start-1 lg:row-start-2">
               {section(
                 3,
                 t("geometryTitle"),
@@ -807,7 +807,7 @@ export function Configurator({ requestPath }: { requestPath: string }) {
           onAdd={add}
           disabled={!valid}
           added={added}
-          addLabel={t("add")}
+          addLabel={t("addShort")}
           addedLabel={t("addedShort")}
           previewLabel={t("miniPreview")}
           rootRef={root}

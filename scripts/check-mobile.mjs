@@ -59,9 +59,11 @@ for (const path of PATHS) {
     for (const el of document.querySelectorAll(".btn, button, a.btn")) {
       if (el.scrollWidth > el.clientWidth + 1 && el.clientWidth > 0) out.push(`"${(el.textContent || "").trim().slice(0, 40)}" ${el.scrollWidth}>${el.clientWidth}`);
     }
-    if (document.documentElement.scrollWidth > window.innerWidth + 1) out.push(`pagina larga ${document.documentElement.scrollWidth}px`);
+    if (Math.max(document.documentElement.scrollWidth, window.innerWidth) > (window.visualViewport?.width ?? window.innerWidth) + 1) out.push(`pagina larga ${document.documentElement.scrollWidth}px`);
     return out;
   });
+  const headerOverflow = await page.evaluate(() => [...document.querySelectorAll("header *")].filter((el) => el.getBoundingClientRect().right > (window.visualViewport?.width ?? window.innerWidth) + 1 && el.getBoundingClientRect().width > 0).length);
+  if (headerOverflow) overflow.push(`header: ${headerOverflow} elementi oltre il bordo destro`);
   console.log(`\n${path}`);
   console.log(`  aree toccabili sotto ${MIN}px: ${small.length}`);
   for (const s of small.slice(0, 60)) console.log(`    - ${s}`);

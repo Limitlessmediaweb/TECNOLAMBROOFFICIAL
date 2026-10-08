@@ -961,7 +961,8 @@
     "stepDone": "Fatto",
     "notesNone": "Nessuna nota",
     "addedShort": "Aggiunto",
-    "miniPreview": "Torna all’anteprima del pezzo"
+    "miniPreview": "Torna all’anteprima del pezzo",
+    "addShort": "Aggiungi"
   },
   "request": {
     "title": "La tua richiesta",
