@@ -1,0 +1,128 @@
+{
+  "generated": "2026-10-08T23:22:10.218Z",
+  "it": {
+    "sizes": [
+      "WR-22",
+      "WR-28",
+      "WR-34",
+      "WR-42",
+      "WR-51",
+      "WR-62",
+      "WR-75",
+      "WR-90",
+      "WR-112",
+      "WR-137",
+      "WR-159",
+      "WR-187",
+      "WR-229",
+      "WR-284"
+    ],
+    "families": [
+      "twistable",
+      "seamless",
+      "bends",
+      "twists",
+      "offsets"
+    ]
+  },
+  "en": {
+    "sizes": [
+      "WR-22",
+      "WR-28",
+      "WR-34",
+      "WR-42",
+      "WR-51",
+      "WR-62",
+      "WR-75",
+      "WR-90",
+      "WR-112",
+      "WR-137",
+      "WR-159",
+      "WR-187",
+      "WR-229",
+      "WR-284"
+    ],
+    "families": [
+      "twistable",
+      "seamless",
+      "bends",
+      "twists",
+      "offsets"
+    ]
+  },
+  "es": {
+    "sizes": [
+      "WR-22",
+      "WR-28",
+      "WR-34",
+      "WR-42",
+      "WR-51",
+      "WR-62",
+      "WR-75",
+      "WR-90",
+      "WR-112",
+      "WR-137",
+      "WR-159",
+      "WR-187",
+      "WR-229",
+      "WR-284"
+    ],
+    "families": [
+      "twistable",
+      "seamless",
+      "bends",
+      "twists",
+      "offsets"
+    ]
+  },
+  "zh": {
+    "sizes": [
+      "WR-22",
+      "WR-28",
+      "WR-34",
+      "WR-42",
+      "WR-51",
+      "WR-62",
+      "WR-75",
+      "WR-90",
+      "WR-112",
+      "WR-137",
+      "WR-159",
+      "WR-187",
+      "WR-229",
+      "WR-284"
+    ],
+    "families": [
+      "twistable",
+      "seamless",
+      "bends",
+      "twists",
+      "offsets"
+    ]
+  },
+  "de": {
+    "sizes": [
+      "WR-22",
+      "WR-28",
+      "WR-34",
+      "WR-42",
+      "WR-51",
+      "WR-62",
+      "WR-75",
+      "WR-90",
+      "WR-112",
+      "WR-137",
+      "WR-159",
+      "WR-187",
+      "WR-229",
+      "WR-284"
+    ],
+    "families": [
+      "twistable",
+      "seamless",
+      "bends",
+      "twists",
+      "offsets"
+    ]
+  }
+}

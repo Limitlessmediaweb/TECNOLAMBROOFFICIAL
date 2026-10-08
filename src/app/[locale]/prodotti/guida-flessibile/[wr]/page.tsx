@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, FileDown } from "lucide-react";
 import { routing, type Locale } from "@/i18n/routing";
 import { DIM_BY_WR, MATERIAL, SEAMLESS_TABLE, SIZES, SIZE_BY_WR, TWIST_TABLE, isOnRequest, num, range, standardLengths } from "@/data/waveguides";
 import { flangesFor } from "@/data/flanges";
@@ -120,6 +120,10 @@ export default async function WrPage({ params }: Props) {
             {t("quote")}
             <ArrowRight aria-hidden="true" className="size-4" strokeWidth={1.75} />
           </QuoteLink>
+          <a href={`/schede/${locale}/${wrSlug(wr)}.pdf`} download className="btn btn-ghost" data-track="datasheet_download" data-source={`wr_${wr}`}>
+            <FileDown aria-hidden="true" className="size-4" strokeWidth={1.75} />
+            {t("datasheet")}
+          </a>
         </div>
       </PageHeader>
 

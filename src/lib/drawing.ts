@@ -23,6 +23,9 @@ export type DrawingLabels = {
   ccw?: string;
   /** "R standard" */
   radiusStd?: string;
+  /** "Piano E" / "Piano H" (piano di curva e disassato) */
+  planeE?: string;
+  planeH?: string;
 };
 
 export type DrawingInput = {
@@ -180,7 +183,7 @@ export function drawingSvg(input: DrawingInput): string {
       const ang = `${v(spec.angle ?? 90, 1)}°`;
       const rad = spec.radius ? `R ${v(spec.radius, 1)}` : L.radiusStd ?? "R std";
       t(mid[0] + nm[0] * (hw + 34), mid[1] - nm[1] * (hw + 34), `${ang} · ${rad}`, { anchor: "middle", size: 15, weight: 600, color: Pl.accent });
-      t(box.x0, box.y1 + 4, `${spec.plane === "H" ? "H" : "E"}-plane`, { size: 12, color: Pl.muted });
+      t(box.x0, box.y1 + 4, (spec.plane === "H" ? L.planeH ?? "H-plane" : L.planeE ?? "E-plane"), { size: 12, color: Pl.muted });
     } else {
       const Lt = spec.length ?? 150;
       const X = spec.offset ?? 20;
@@ -191,7 +194,7 @@ export function drawingSvg(input: DrawingInput): string {
       line([b[0] + flT + 4, b[1]], [xr + 6, b[1]], Pl.muted, 0.6);
       line([a[0], a[1]], [xr + 6, a[1]], Pl.muted, 0.6, "4 3");
       dimLine([xr, a[1]], [xr, b[1]], generic ? "X" : `X = ${v(X, 1)}`, -14);
-      t(box.x0, box.y1 + 4, `${spec.plane === "H" ? "H" : "E"}-plane`, { size: 12, color: Pl.muted });
+      t(box.x0, box.y1 + 4, (spec.plane === "H" ? L.planeH ?? "H-plane" : L.planeE ?? "E-plane"), { size: 12, color: Pl.muted });
     }
   } else {
     // pezzi dritti: flessibile (corrugata o liscia, lunghezza interrotta) e twist rigido

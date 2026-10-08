@@ -6,14 +6,12 @@ import NextLink from "next/link";
 import { FileDown, Search, SlidersHorizontal } from "lucide-react";
 import { useClientLocale, useT } from "@/lib/client-i18n";
 import { DIM_TABLE, MATERIAL, SEAMLESS_TABLE, SIZE_BY_WR, TWIST_TABLE, isOnRequest, num, range, type Size } from "@/data/waveguides";
-import { track } from "@/lib/analytics";
 import { TechDrawing } from "@/components/configurator/TechDrawing";
 import { useDrawingLabels } from "@/components/configurator/Configurator";
 import { defaultSpec } from "@/data/configurator/defaults";
 
 const GENERIC_SPEC = defaultSpec("twistable");
 import { cn } from "@/lib/cn";
-import { intlLocale } from "@/i18n/locales";
 
 export type TableTab = "twist" | "seamless" | "dims";
 const TABS: TableTab[] = ["twist", "seamless", "dims"];
@@ -41,7 +39,6 @@ export function SpecTables({ defaultTab = "twist", configurePath, familyNames, h
   const labels = useDrawingLabels();
   const [tab, setTab] = useState<TableTab>(defaultTab);
   const [ghz, setGhz] = useState("");
-  const [busy, setBusy] = useState(false);
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const H = `h${headingLevel}` as "h2" | "h3";
 
@@ -69,38 +66,8 @@ export function SpecTables({ defaultTab = "twist", configurePath, familyNames, h
   const configureHref = (wr: string, family?: string) =>
     `${configurePath}?${new URLSearchParams({ tipo: family === "seamless" ? "seamless" : "twistabile", wr: wr.replace("WR-", "") })}#configura`;
 
-  const datasheet = async () => {
-    if (tab === "dims") return;
-    setBusy(true);
-    try {
-      const { datasheetPdf, downloadBytes } = await import("@/lib/pdf");
-      const family = tab === "twist" ? "twistable" : "seamless";
-      const bytes = await datasheetPdf(tab, locale, {
-        familyName: familyNames[family],
-        sheetTitle: t("sheetTitle"),
-        date: new Intl.DateTimeFormat(intlLocale(locale), { dateStyle: "long" }).format(new Date()),
-        size: t("size"),
-        freq: t("freq"),
-        rl: t("rl"),
-        att: t("att"),
-        cw: t("cw"),
-        peak: t("peak"),
-        vswr600: t("vswr600"),
-        onRequest: t("onRequest"),
-        code: t("code"),
-        tol: t("tol"),
-        vswrMax: t("vswrMax"),
-        dimsTitle: t("captionDims"),
-        material: t("material", { material: MATERIAL }),
-        notes: [...noteList(t), t("indicative")],
-        footer: t("sheetFooter"),
-      });
-      downloadBytes(bytes, `Tecnolambro_${family}_${locale}.pdf`, "application/pdf");
-      track("datasheet_download", { family });
-    } finally {
-      setBusy(false);
-    }
-  };
+  // schede tecniche PDF pregenerate in tutte le lingue (npm run datasheets -> public/schede/<lingua>/)
+  const sheetHref = `/schede/${locale}/${tab === "seamless" ? "seamless" : "twistable"}.pdf`;
 
   const configureCell = (wr: string, family?: string) => (
     <td className="text-right">
@@ -155,10 +122,10 @@ export function SpecTables({ defaultTab = "twist", configurePath, familyNames, h
         <div className="flex flex-wrap items-center justify-between gap-3">
           <H className="text-display-s font-bold">{tab === "twist" ? t("captionTwist") : tab === "seamless" ? t("captionSeamless") : t("captionDims")}</H>
           {tab !== "dims" ? (
-            <button type="button" className="btn btn-ghost btn-sm" onClick={datasheet} disabled={busy} aria-busy={busy}>
+            <a href={sheetHref} download className="btn btn-ghost btn-sm" data-track="datasheet_download" data-source={`tables_${tab}`}>
               <FileDown aria-hidden="true" className="size-4" strokeWidth={1.75} />
-              {busy ? t("downloading") : t("download")}
-            </button>
+              {t("download")}
+            </a>
           ) : null}
         </div>
 

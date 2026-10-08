@@ -1150,7 +1150,8 @@
     "higher": "Frecuencia más alta",
     "indexTitle": "Guía de ondas flexible por tamaño",
     "indexBody": "Una página por tamaño: banda, dimensiones, datos eléctricos y bridas.",
-    "indicative": "Datos orientativos: los valores definitivos figuran en el presupuesto."
+    "indicative": "Datos orientativos: los valores definitivos figuran en el presupuesto.",
+    "datasheet": "Descargar la ficha técnica (PDF)"
   },
   "applications": {
     "title": "Dónde trabajan nuestras guías de ondas",
@@ -1181,5 +1182,10 @@
         "body": "Aplicaciones industriales de microondas que requieren conexiones robustas y a medida."
       }
     }
+  },
+  "datasheet": {
+    "qrSize": "Página del tamaño",
+    "qrFamily": "Página del producto",
+    "sizesTitle": "Tamaños disponibles"
   }
 }

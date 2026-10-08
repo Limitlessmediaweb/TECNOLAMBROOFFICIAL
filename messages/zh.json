@@ -1150,7 +1150,8 @@
     "higher": "较高频率",
     "indexTitle": "按规格查看软波导",
     "indexBody": "每个规格一个页面：频段、尺寸、电气数据和法兰。",
-    "indicative": "参考数据：最终数值以报价为准。"
+    "indicative": "参考数据：最终数值以报价为准。",
+    "datasheet": "下载技术参数表（PDF）"
   },
   "applications": {
     "title": "我们的波导应用领域",
@@ -1181,5 +1182,10 @@
         "body": "需要坚固、定制连接的工业微波应用。"
       }
     }
+  },
+  "datasheet": {
+    "qrSize": "规格页面",
+    "qrFamily": "产品页面",
+    "sizesTitle": "可选规格"
   }
 }

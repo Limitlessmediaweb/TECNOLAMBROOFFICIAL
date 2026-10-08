@@ -39,6 +39,8 @@ export function useDrawingLabels(): DrawingLabels {
       cw: t("dir.cw"),
       ccw: t("dir.ccw"),
       radiusStd: t("radiusStdShort"),
+      planeE: t("plane.E"),
+      planeH: t("plane.H"),
     }),
     [t],
   );

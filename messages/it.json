@@ -1150,7 +1150,8 @@
     "higher": "Frequenza più alta",
     "indexTitle": "Guida flessibile per misura",
     "indexBody": "Una pagina per ogni misura: banda, dimensioni, dati elettrici e flange.",
-    "indicative": "Dati indicativi: i valori definitivi sono nel preventivo."
+    "indicative": "Dati indicativi: i valori definitivi sono nel preventivo.",
+    "datasheet": "Scarica la scheda tecnica (PDF)"
   },
   "applications": {
     "title": "Dove lavorano le nostre guide",
@@ -1181,5 +1182,10 @@
         "body": "Applicazioni industriali a microonde, dove servono collegamenti robusti e su misura."
       }
     }
+  },
+  "datasheet": {
+    "qrSize": "Pagina della misura",
+    "qrFamily": "Pagina del prodotto",
+    "sizesTitle": "Misure disponibili"
   }
 }

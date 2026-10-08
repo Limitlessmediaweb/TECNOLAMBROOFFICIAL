@@ -2,11 +2,12 @@
  * PDF generati nel browser con pdf-lib (caricato solo quando serve, import dinamico):
  *  - disegno del pezzo configurato: l'SVG di lib/drawing.ts rasterizzato ad alta risoluzione,
  *    più il logo vero nel cartiglio;
- *  - scheda tecnica della famiglia: tabelle vettoriali dai dati di src/data/waveguides.ts.
+ *  - riepilogo della richiesta inviata.
+ * Le schede tecniche sono PDF pregenerati (scripts/datasheets.mjs -> public/schede/).
  * Nessun servizio esterno.
  */
 import { DRAWING_SIZE, LOGO_BOX } from "./drawing";
-import { DIM_TABLE, MATERIAL, SEAMLESS_TABLE, SIZE_BY_WR, TWIST_TABLE, isOnRequest, num, range } from "@/data/waveguides";
+import { MATERIAL } from "@/data/waveguides";
 import { PRINT } from "@/data/brand";
 
 async function logoBytes(): Promise<Uint8Array | null> {
@@ -73,170 +74,6 @@ export async function drawingPdf(svg: string, meta: { code: string; title: strin
       height: ih,
     });
   }
-  return doc.save();
-}
-
-export type DatasheetTexts = {
-  familyName: string;
-  sheetTitle: string;
-  date: string;
-  /** intestazioni */
-  size: string;
-  freq: string;
-  rl: string;
-  att: string;
-  cw: string;
-  peak: string;
-  vswr600: string;
-  onRequest: string;
-  code: string;
-  tol: string;
-  vswrMax: string;
-  dimsTitle: string;
-  material: string;
-  notes: string[];
-  footer: string;
-};
-
-/** Scheda tecnica della famiglia (twistabile o seamless): tabella elettrica + dimensioni TLFX. */
-export async function datasheetPdf(kind: "twist" | "seamless", locale: string, tx: DatasheetTexts): Promise<Uint8Array> {
-  const { PDFDocument, StandardFonts, rgb } = await import("pdf-lib");
-  const doc = await PDFDocument.create();
-  doc.setTitle(`${tx.familyName} – ${tx.sheetTitle}`);
-  doc.setAuthor("Tecnolambro Microwave Components");
-  const font = await doc.embedFont(StandardFonts.Helvetica);
-  const bold = await doc.embedFont(StandardFonts.HelveticaBold);
-  const ink = hex(PRINT.ink), muted = hex(PRINT.muted), accent = hex(PRINT.accent), fill = hex(PRINT.fill), line = hex(PRINT.line);
-  const col = (c: { r: number; g: number; b: number }) => rgb(c.r, c.g, c.b);
-  const page = doc.addPage([595, 842]);
-  const M = 40;
-  let y = 842 - M;
-
-  const logo = await logoBytes();
-  if (logo) {
-    const img = await doc.embedPng(logo);
-    const w = 150;
-    const h = (img.height / img.width) * w;
-    page.drawImage(img, { x: M, y: y - h, width: w, height: h });
-  }
-  page.drawText(tx.sheetTitle.toUpperCase(), { x: 595 - M - bold.widthOfTextAtSize(tx.sheetTitle.toUpperCase(), 9), y: y - 10, size: 9, font: bold, color: col(muted) });
-  page.drawText(tx.date, { x: 595 - M - font.widthOfTextAtSize(tx.date, 9), y: y - 24, size: 9, font, color: col(muted) });
-  y -= 80;
-  page.drawText(tx.familyName, { x: M, y, size: 20, font: bold, color: col(ink) });
-  y -= 18;
-  page.drawText(tx.material, { x: M, y, size: 9.5, font, color: col(muted) });
-  y -= 24;
-
-  type Column = { head: string; w: number; align?: "left" | "right" };
-  const table = (columns: Column[], rows: string[][], highlightRows?: Set<number>) => {
-    const rowH = 17;
-    let x = M;
-    page.drawRectangle({ x: M, y: y - rowH + 4, width: 595 - 2 * M, height: rowH + 6, color: col(fill) });
-    for (const c of columns) {
-      const lines = c.head.split("\n");
-      lines.forEach((l, i) => {
-        const tw = bold.widthOfTextAtSize(l, 7.5);
-        page.drawText(l, { x: c.align === "left" ? x + 4 : x + c.w - tw - 4, y: y + 3 - i * 9, size: 7.5, font: bold, color: col(ink) });
-      });
-      x += c.w;
-    }
-    y -= rowH + 10;
-    rows.forEach((r, ri) => {
-      if (ri % 2 === 1) page.drawRectangle({ x: M, y: y - 5, width: 595 - 2 * M, height: rowH, color: col(fill), opacity: 0.45 });
-      let cx = M;
-      r.forEach((cell, ci) => {
-        const c = columns[ci];
-        const f = ci === 0 ? bold : font;
-        const tw = f.widthOfTextAtSize(cell, 8.5);
-        const color = highlightRows?.has(ri) && ci > 0 ? muted : ink;
-        page.drawText(cell, { x: c.align === "left" ? cx + 4 : cx + c.w - tw - 4, y, size: 8.5, font: f, color: col(color) });
-        cx += c.w;
-      });
-      y -= rowH;
-    });
-    page.drawLine({ start: { x: M, y: y + rowH - 6 }, end: { x: 595 - M, y: y + rowH - 6 }, thickness: 0.6, color: col(line) });
-  };
-
-  const sizeCell = (wr: string) => {
-    const s = SIZE_BY_WR.get(wr)!;
-    return `${s.wr} · ${s.iec} · ${s.wg}`;
-  };
-  const freqCell = (wr: string) => {
-    const s = SIZE_BY_WR.get(wr)!;
-    return range(s.min, s.max, locale);
-  };
-  const n = (v: number | null, d: number) => (v == null ? "—" : num(v, locale, d, d));
-
-  if (kind === "twist") {
-    table(
-      [
-        { head: tx.size, w: 118, align: "left" },
-        { head: tx.freq, w: 72 },
-        { head: `${tx.rl}\n300 mm`, w: 52 },
-        { head: "\n600 mm", w: 46 },
-        { head: "\n1000 mm", w: 50 },
-        { head: tx.att, w: 64 },
-        { head: tx.cw, w: 54 },
-        { head: tx.peak, w: 59 },
-      ],
-      TWIST_TABLE.map((r) => [sizeCell(r.wr), freqCell(r.wr), n(r.rl300, 1), n(r.rl600, 1), n(r.rl1000, 1), n(r.att, 2), n(r.cw, 0), n(r.peak, 0)]),
-    );
-  } else {
-    const onReq = new Set<number>();
-    table(
-      [
-        { head: tx.size, w: 130, align: "left" },
-        { head: tx.freq, w: 85 },
-        { head: tx.vswr600, w: 75 },
-        { head: tx.att, w: 80 },
-        { head: tx.cw, w: 70 },
-        { head: tx.peak, w: 75 },
-      ],
-      SEAMLESS_TABLE.map((r, i) => {
-        if (isOnRequest(r)) {
-          onReq.add(i);
-          return [sizeCell(r.wr), freqCell(r.wr), tx.onRequest, "", "", ""];
-        }
-        return [sizeCell(r.wr), freqCell(r.wr), n(r.vswr600, 2), n(r.att, 2), n(r.cw, 0), n(r.peak, 0)];
-      }),
-      onReq,
-    );
-  }
-
-  y -= 30;
-  page.drawText(tx.dimsTitle, { x: M, y, size: 12, font: bold, color: col(ink) });
-  y -= 22;
-  const d = (v: number | null) => (v == null ? "—" : num(v, locale, 0, 2));
-  table(
-    [
-      { head: tx.code, w: 62, align: "left" },
-      { head: "A", w: 32 },
-      { head: "B", w: 32 },
-      { head: "C", w: 32 },
-      { head: "D", w: 32 },
-      { head: "P", w: 28 },
-      { head: "r", w: 28 },
-      { head: "R", w: 28 },
-      { head: tx.tol, w: 52 },
-      { head: tx.freq, w: 62 },
-      { head: tx.att, w: 52 },
-      { head: tx.vswrMax, w: 35 },
-    ],
-    DIM_TABLE.map((r) => [
-      `${r.code}${r.notes?.code ? "*" : ""}`,
-      d(r.A), d(r.B), d(r.C), d(r.D), d(r.P), d(r.r), d(r.R),
-      `± ${num(r.tol, locale, 2, 2)}`,
-      range(r.min, r.max, locale),
-      `${num(r.att, locale, 2, 2)}${r.notes?.att ? "**" : ""}`,
-      `${num(r.vswr, locale, 2, 2)}${r.notes?.vswr ? "***" : ""}`,
-    ]),
-  );
-  y -= 14;
-  for (const note of tx.notes) {
-    page.drawText(note, { x: M, y, size: 8, font, color: col(muted) });
-    y -= 12;
-  }
-  page.drawText(tx.footer, { x: M, y: M - 10, size: 8, font, color: col(accent) });
   return doc.save();
 }
 

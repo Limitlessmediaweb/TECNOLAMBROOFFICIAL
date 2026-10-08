@@ -1150,7 +1150,8 @@
     "higher": "Höhere Frequenz",
     "indexTitle": "Flexibler Hohlleiter nach Größe",
     "indexBody": "Eine Seite pro Größe: Band, Abmessungen, elektrische Daten und Flansche.",
-    "indicative": "Richtwerte: Die endgültigen Werte stehen im Angebot."
+    "indicative": "Richtwerte: Die endgültigen Werte stehen im Angebot.",
+    "datasheet": "Datenblatt herunterladen (PDF)"
   },
   "applications": {
     "title": "Wo unsere Hohlleiter arbeiten",
@@ -1181,5 +1182,10 @@
         "body": "Industrielle Mikrowellenanwendungen, die robuste Verbindungen nach Maß erfordern."
       }
     }
+  },
+  "datasheet": {
+    "qrSize": "Seite der Größe",
+    "qrFamily": "Produktseite",
+    "sizesTitle": "Verfügbare Größen"
   }
 }

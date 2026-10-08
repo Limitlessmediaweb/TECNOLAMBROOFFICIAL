@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { ArrowRight, Check, FilePlus2 } from "lucide-react";
+import { ArrowRight, Check, FileDown, FilePlus2 } from "lucide-react";
 import { routing, type Locale } from "@/i18n/routing";
 import { VISIBLE_FAMILIES, familyBySlug, familyModel, familySlug } from "@/data/families";
 import { buildMetadata } from "@/lib/seo";
@@ -67,6 +67,7 @@ export default async function FamilyPage({ params }: Props) {
   const t = await getTranslations("products");
   const page = await getTranslations("products.page");
   const nav = await getTranslations("nav");
+  const wr = await getTranslations("wrPage");
   const name = t(`items.${family.key}.name`);
   const applications = t.raw(`items.${family.key}.applications`) as string[];
   const href = { pathname: "/prodotti/[famiglia]" as const, params: { famiglia: familySlug(family, locale) } };
@@ -126,7 +127,11 @@ export default async function FamilyPage({ params }: Props) {
             <h2 id="demo-title" className="mb-3 text-display-m font-bold">
               {page("demoTitle")}
             </h2>
-            <p className="mb-8 max-w-[60ch] text-muted">{page("demoBody")}</p>
+            <p className="mb-6 max-w-[60ch] text-muted">{page("demoBody")}</p>
+            <a href={`/schede/${locale}/${family.key}.pdf`} download className="btn btn-ghost btn-sm mb-8" data-track="datasheet_download" data-source={`family_${family.key}`}>
+              <FileDown aria-hidden="true" className="size-4" strokeWidth={1.75} />
+              {wr("datasheet")}
+            </a>
             <FamilyDemo3D type={model} shopPath={shopPath} name={name} ctaLabel={composeLabel} />
           </div>
         </section>

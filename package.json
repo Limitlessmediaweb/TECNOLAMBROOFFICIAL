@@ -19,7 +19,8 @@
     "test:configurator": "node scripts/configurator-e2e.mjs",
     "check:placeholders": "node scripts/check-placeholders.mjs",
     "screenshots:v3": "node scripts/screenshots-v3.mjs",
-    "i18n:check": "node scripts/i18n-check.mjs"
+    "i18n:check": "node scripts/i18n-check.mjs",
+    "datasheets": "node scripts/datasheets.mjs"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
@@ -46,11 +47,13 @@
     "@types/react-dom": "^19",
     "@types/three": "^0.186.0",
     "axe-core": "^4.14.0",
+    "esbuild": "^0.25.12",
     "eslint": "^9",
     "eslint-config-next": "16.4.0",
     "lighthouse": "^13.5.0",
     "pdfjs-dist": "^6.4.299",
     "playwright": "^1.63.0",
+    "qrcode": "1.5",
     "sharp": "^0.35.5",
     "tailwindcss": "^4",
     "typescript": "^5"

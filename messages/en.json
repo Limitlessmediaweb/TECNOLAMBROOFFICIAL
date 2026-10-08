@@ -1150,7 +1150,8 @@
     "higher": "Higher frequency",
     "indexTitle": "Flexible waveguide by size",
     "indexBody": "One page per size: band, dimensions, electrical data and flanges.",
-    "indicative": "Indicative data: final values are stated in the quote."
+    "indicative": "Indicative data: final values are stated in the quote.",
+    "datasheet": "Download the datasheet (PDF)"
   },
   "applications": {
     "title": "Where our waveguides work",
@@ -1181,5 +1182,10 @@
         "body": "Industrial microwave applications that need rugged, made-to-measure links."
       }
     }
+  },
+  "datasheet": {
+    "qrSize": "Size page",
+    "qrFamily": "Product page",
+    "sizesTitle": "Available sizes"
   }
 }
