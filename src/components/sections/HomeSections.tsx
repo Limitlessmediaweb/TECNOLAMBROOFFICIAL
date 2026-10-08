@@ -14,6 +14,7 @@ import { QuoteLink, ShopLink } from "@/components/ui/TrackedLink";
 import { WithTodo } from "@/components/ui/Bits";
 import { IsoBadges } from "@/components/sections/Certifications";
 import { FAQ_PREVIEW } from "@/data/faq";
+import { faqText } from "@/lib/faq-text";
 import { COMPANY } from "@/data/site";
 import { localizedHref, type Href } from "@/components/ui/TrackedLink";
 
@@ -181,9 +182,9 @@ export async function ShopSection() {
 
 export async function FaqPreviewSection() {
   const t = await getTranslations("faqSection");
-  const f = await getTranslations("faq.items");
+  const faq = await faqText();
   const c = await getTranslations("common");
-  const items = FAQ_PREVIEW.map((item) => ({ id: item.id, q: f(`${item.id}.q`), a: <WithTodo text={f(`${item.id}.a`)} /> }));
+  const items = FAQ_PREVIEW.map((item) => ({ id: item.id, q: faq(item.id).q, a: <WithTodo text={faq(item.id).a} /> }));
   return (
     <section className="section-y border-t border-line" aria-labelledby="faq-title">
       <div className="container-site grid gap-10 lg:grid-cols-12 lg:gap-8">

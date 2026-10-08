@@ -334,7 +334,7 @@
     "items": {
       "sizes": {
         "q": "Which waveguide sizes do you make?",
-        "a": "We make twistable and seamless flexible waveguide in 14 sizes, from WR-22 (33.0–50.1 GHz) to WR-284 (2.6–3.95 GHz): the data is in the technical tables. For your exact frequency use the frequency finder."
+        "a": "We make {families}. Twistable and seamless flexible waveguide comes in {count} sizes: {sizes}. Electrical data and dimensions are in the technical tables; for your exact frequency use the frequency finder."
       },
       "custom": {
         "q": "Do you build parts to customer drawings?",

@@ -334,7 +334,7 @@
     "items": {
       "sizes": {
         "q": "Quali misure di guida d’onda producete?",
-        "a": "Produciamo guida d’onda flessibile twistabile e seamless in 14 misure, da WR-22 (33,0–50,1 GHz) a WR-284 (2,6–3,95 GHz): i dati sono nelle tabelle tecniche. Per la frequenza esatta usate la ricerca per frequenza."
+        "a": "Produciamo {families}. La guida d’onda flessibile twistabile e seamless è disponibile in {count} misure: {sizes}. Dati elettrici e dimensioni sono nelle tabelle tecniche; per la frequenza esatta usate la ricerca per frequenza."
       },
       "custom": {
         "q": "Costruite componenti su disegno?",

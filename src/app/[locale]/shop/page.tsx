@@ -16,6 +16,7 @@ import { Configurator } from "@/components/configurator/Configurator";
 import { ReadyCatalog } from "@/components/configurator/ReadyCatalog";
 import { TypeTiles } from "@/components/configurator/TypeTiles";
 import { SHOP_FAQ } from "@/data/faq";
+import { faqText } from "@/lib/faq-text";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/shop">): Promise<Metadata> {
   const { locale } = await params;
@@ -33,7 +34,7 @@ export default async function ShopPage({ params }: PageProps<"/[locale]/shop">) 
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("shop");
-  const f = await getTranslations("faq.items");
+  const faq = await faqText();
   const how = t.raw("how") as string[];
   const requestPath = await localizedHref("/shop/richiesta");
   const th = thumbs();
@@ -147,7 +148,7 @@ export default async function ShopPage({ params }: PageProps<"/[locale]/shop">) 
             </Link>
           </div>
           <div className="lg:col-span-8">
-            <FaqAccordion headingLevel={3} items={SHOP_FAQ.map((id) => ({ id, q: f(`${id}.q`), a: <WithTodo text={f(`${id}.a`)} /> }))} />
+            <FaqAccordion headingLevel={3} items={SHOP_FAQ.map((id) => ({ id, q: faq(id).q, a: <WithTodo text={faq(id).a} /> }))} />
           </div>
         </div>
       </section>
