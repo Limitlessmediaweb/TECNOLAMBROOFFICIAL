@@ -91,7 +91,7 @@ export function SpecTables({ defaultTab = "twist", configurePath, familyNames, h
         vswrMax: t("vswrMax"),
         dimsTitle: t("captionDims"),
         material: t("material", { material: MATERIAL }),
-        notes: noteList(t),
+        notes: [...noteList(t), t("indicative")],
         footer: t("sheetFooter"),
       });
       downloadBytes(bytes, `Tecnolambro_${family}_${locale}.pdf`, "application/pdf");
@@ -378,6 +378,8 @@ export function SpecTables({ defaultTab = "twist", configurePath, familyNames, h
 
         <div className="grid gap-1 text-sm text-muted">
           {tab === "dims" ? noteList(t).map((n) => <p key={n}>{n}</p>) : null}
+          <p>{t("indicative")}</p>
+          {/* nota interna, solo in anteprima */}
           {ENV.demo ? (
             <p>
               <span className="todo">{t("verify")}</span>

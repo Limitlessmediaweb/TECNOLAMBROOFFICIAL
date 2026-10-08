@@ -798,7 +798,8 @@
       "L": "L length"
     },
     "sheetTitle": "Datasheet",
-    "sheetFooter": "Request a quote: tecnolambro.com/shop · +39 375 577 1084"
+    "sheetFooter": "Request a quote: tecnolambro.com/shop · +39 375 577 1084",
+    "indicative": "Indicative data: final values are stated in the quote."
   },
   "configurator": {
     "typeTitle": "Part type",
@@ -1136,7 +1137,8 @@
     "lower": "Lower frequency",
     "higher": "Higher frequency",
     "indexTitle": "Flexible waveguide by size",
-    "indexBody": "One page per size: band, dimensions, electrical data and flanges."
+    "indexBody": "One page per size: band, dimensions, electrical data and flanges.",
+    "indicative": "Indicative data: final values are stated in the quote."
   },
   "applications": {
     "title": "Where our waveguides work",

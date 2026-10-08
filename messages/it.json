@@ -798,7 +798,8 @@
       "L": "L lunghezza"
     },
     "sheetTitle": "Scheda tecnica",
-    "sheetFooter": "Richiedi un preventivo: tecnolambro.com/shop · +39 375 577 1084"
+    "sheetFooter": "Richiedi un preventivo: tecnolambro.com/shop · +39 375 577 1084",
+    "indicative": "Dati indicativi: i valori definitivi sono nel preventivo."
   },
   "configurator": {
     "typeTitle": "Tipo di pezzo",
@@ -1136,7 +1137,8 @@
     "lower": "Frequenza più bassa",
     "higher": "Frequenza più alta",
     "indexTitle": "Guida flessibile per misura",
-    "indexBody": "Una pagina per ogni misura: banda, dimensioni, dati elettrici e flange."
+    "indexBody": "Una pagina per ogni misura: banda, dimensioni, dati elettrici e flange.",
+    "indicative": "Dati indicativi: i valori definitivi sono nel preventivo."
   },
   "applications": {
     "title": "Dove lavorano le nostre guide",

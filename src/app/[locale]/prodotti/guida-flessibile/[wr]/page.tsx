@@ -212,6 +212,7 @@ export default async function WrPage({ params }: Props) {
               </ShopLink>
             </div>
           </div>
+          <p className="mt-4 text-sm text-muted">{t("indicative")}</p>
           <Link href="/prodotti/tabelle" className="mt-6 inline-flex items-center gap-2 font-medium underline decoration-accent underline-offset-4 hover:text-accent">
             {t("tablesLink")}
             <ArrowRight aria-hidden="true" className="size-4" strokeWidth={1.75} />
