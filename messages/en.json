@@ -1013,7 +1013,8 @@
       "name": "Enter your first and last name.",
       "email": "Enter a valid email, for example name@company.com.",
       "country": "Enter the country.",
-      "privacy": "We need your consent to reply."
+      "privacy": "We need your consent to reply.",
+      "itemsOrFiles": "Add at least one part or file."
     },
     "errorSummaryOne": "Check the highlighted field.",
     "errorSummaryOther": "Check the {count} highlighted fields.",

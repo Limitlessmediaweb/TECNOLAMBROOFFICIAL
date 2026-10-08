@@ -1013,7 +1013,8 @@
       "name": "Inserisci nome e cognome.",
       "email": "Inserisci un’email valida, per esempio nome@azienda.it.",
       "country": "Indica il paese.",
-      "privacy": "Serve il consenso per poterti rispondere."
+      "privacy": "Serve il consenso per poterti rispondere.",
+      "itemsOrFiles": "Aggiungi almeno un pezzo o un file."
     },
     "errorSummaryOne": "Controlla il campo segnalato.",
     "errorSummaryOther": "Controlla i {count} campi segnalati.",

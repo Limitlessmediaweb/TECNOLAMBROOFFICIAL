@@ -81,13 +81,15 @@ export function TE10Field({ className, label }: { className?: string; label: str
       const mobile = width < 768;
 
       // Geometria della guida in pixel
-      const len = mobile ? width * 1.05 : width * 0.66; // lunghezza visibile lungo z
       const b = mobile ? Math.min(height * 0.16, 90) : Math.min(height * 0.2, 150); // lato stretto
       const aDepth = b * 1.35; // lato largo, in profondità (a/b ≈ 2.25 per WR-90, accorciato dalla prospettiva)
       const ang = (-28 * Math.PI) / 180;
       const dx = Math.cos(ang) * aDepth;
       const dy = Math.sin(ang) * aDepth;
-      const z0 = mobile ? width * 0.08 : width * 0.4; // inizio a sinistra
+      // su telefono la guida sta tutta dentro i margini della pagina (16 px per lato)
+      const margin = 16;
+      const len = mobile ? width - 2 * margin - dx : width * 0.66; // lunghezza visibile lungo z
+      const z0 = mobile ? margin : width * 0.4; // inizio a sinistra
       const y0 = mobile ? height * 0.36 : height * 0.6; // spigolo inferiore frontale
 
       // Proiezione (x 0..1, y 0..1, z px) → schermo

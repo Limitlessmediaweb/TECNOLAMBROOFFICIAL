@@ -52,7 +52,7 @@ export async function Header() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-line/70 bg-scrim backdrop-blur-md">
       <div className="container-site flex h-16 items-center gap-3 sm:gap-4 lg:h-[4.5rem]">
-        <NextLink href={home} className="mr-auto rounded-sm">
+        <NextLink href={home} className="mr-auto inline-flex min-h-11 items-center rounded-sm">
           <Wordmark />
           <span className="sr-only">, {t("homeShort")}</span>
         </NextLink>
@@ -66,7 +66,7 @@ export async function Header() {
             <LanguageSwitcher />
             <ThemeToggle />
           </div>
-          <a href={COMPANY.phoneHref} aria-label={`${t("call")} ${COMPANY.phone}`} className="grid size-10 place-items-center rounded-full border border-line-strong transition-colors hover:border-accent sm:hidden" data-area="header" data-header-phone>
+          <a href={COMPANY.phoneHref} aria-label={`${t("call")} ${COMPANY.phone}`} className="grid size-11 place-items-center rounded-full border border-line-strong transition-colors hover:border-accent sm:hidden" data-area="header" data-header-phone>
             <Phone aria-hidden="true" className="size-[1.125rem]" strokeWidth={1.75} />
           </a>
           <RequestButton href={requestPath} className="max-sm:hidden" />

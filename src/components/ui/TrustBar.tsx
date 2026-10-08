@@ -20,13 +20,18 @@ export async function TrustBar({ className, vertical = false }: { className?: st
     { icon: Globe2, text: t("worldwide") },
   ];
   return (
-    <div className={cn(vertical ? "" : "-mx-4 overflow-x-auto px-4 [scrollbar-width:none] sm:mx-0 sm:px-0", className)} data-lenis-prevent={vertical ? undefined : true}>
-      <ul aria-label={t("label")} className={cn(vertical ? "grid gap-3" : "flex w-max gap-x-6 gap-y-2 lg:w-auto lg:flex-wrap lg:justify-between")}>
+    <div
+      className={cn(
+        // su telefono scorre: la sfumatura a destra fa capire che c'è dell'altro
+        vertical ? "" : "-mx-4 overflow-x-auto px-4 [mask-image:linear-gradient(to_right,#000_80%,transparent)] [scrollbar-width:none] sm:mx-0 sm:px-0 lg:[mask-image:none]",
+        className,
+      )} data-lenis-prevent={vertical ? undefined : true}>
+      <ul aria-label={t("label")} className={cn(vertical ? "grid gap-3" : "flex w-max gap-x-6 gap-y-2 pr-10 lg:w-auto lg:flex-wrap lg:justify-between lg:pr-0")}>
         {items.map(({ icon: Icon, text, href }) => (
           <li key={text} className="flex shrink-0 items-center gap-2 whitespace-nowrap text-sm font-medium">
             <Icon aria-hidden="true" className="size-4 shrink-0 text-accent" strokeWidth={1.75} />
             {href ? (
-              <a href={href} className="underline decoration-accent/50 underline-offset-4 hover:text-accent">
+              <a href={href} className="-my-3 inline-flex min-h-11 items-center underline decoration-accent/50 underline-offset-4 hover:text-accent">
                 {text}
               </a>
             ) : (

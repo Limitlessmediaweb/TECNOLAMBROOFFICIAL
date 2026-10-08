@@ -61,6 +61,15 @@ export function RequestForm({ privacyHref, sentPath, shopPath, aside }: { privac
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // barra Invia fissa in basso (telefono): il pulsante WhatsApp si nasconde
+  useEffect(() => {
+    const el = document.documentElement;
+    el.dataset.fixedBar = "request";
+    return () => {
+      if (el.dataset.fixedBar === "request") delete el.dataset.fixedBar;
+    };
+  }, []);
+
   // file dei pezzi su disegno (salvati nel browser)
   const customIds = items.filter((i) => i.kind === "custom").map((i) => i.id).join(",");
   useEffect(() => {
@@ -85,7 +94,9 @@ export function RequestForm({ privacyHref, sentPath, shopPath, aside }: { privac
 
   /* ------------------------------------------------------------ validazione */
   const errors: Partial<Record<Field | "items", string>> = {};
-  if (!items.length) errors.items = t("errors.items");
+  // si può inviare anche solo con dei file (diventano una richiesta su disegno)
+  const canSend = items.length > 0 || files.length > 0;
+  if (!canSend) errors.items = t("errors.itemsOrFiles");
   const itemErrors: Record<string, string> = {};
   for (const i of items) {
     if (!Number.isInteger(i.qty) || i.qty < 1) itemErrors[i.id] = t("errors.quantity", { code: i.code });
@@ -168,7 +179,7 @@ export function RequestForm({ privacyHref, sentPath, shopPath, aside }: { privac
       {
         source: "request",
         locale: locale === "en" ? "en" : "it",
-        items: items.map((i) => ({
+        items: (items.length ? items : [{ id: "files", kind: "custom" as const, code: tc("customRef"), qty: 1, notes: "", detail: undefined, spec: undefined }]).map((i) => ({
           kind: i.kind,
           code: i.code,
           qty: i.qty,
@@ -544,9 +555,14 @@ export function RequestForm({ privacyHref, sentPath, shopPath, aside }: { privac
               ))}
             </ul>
           ) : null}
-          <button type="submit" className="btn btn-primary w-full" disabled={busy} aria-disabled={busy} data-submit>
+          <button type="submit" className="btn btn-primary w-full" disabled={busy || !canSend} aria-disabled={busy || !canSend} aria-describedby={!canSend ? id("cant-send") : undefined} data-submit>
             {submitLabel}
           </button>
+          {!canSend ? (
+            <p id={id("cant-send")} className="text-sm text-muted" data-cant-send>
+              {t("errors.itemsOrFiles")}
+            </p>
+          ) : null}
           {sendError}
           <p className="text-sm text-muted">{t("priceNote")}</p>
           <p className="text-sm text-muted">{t("shipping")}</p>
@@ -556,8 +572,8 @@ export function RequestForm({ privacyHref, sentPath, shopPath, aside }: { privac
 
       {/* ----------------------------------------------------------- invio fisso (mobile) */}
       <div className="sticky bottom-0 z-30 -mx-4 flex items-center justify-between gap-3 border-t border-line bg-bg/95 px-4 py-3 backdrop-blur lg:hidden" data-sticky-submit>
-        <span className="text-sm tabular text-muted">{pieces === 1 ? t("summaryOne") : t("summaryCount", { count: pieces })}</span>
-        <button type="submit" className="btn btn-primary" disabled={busy} aria-disabled={busy}>
+        <span className="text-sm tabular text-muted">{!canSend ? t("errors.itemsOrFiles") : pieces === 1 ? t("summaryOne") : t("summaryCount", { count: pieces })}</span>
+        <button type="submit" className="btn btn-primary shrink-0" disabled={busy || !canSend} aria-disabled={busy || !canSend}>
           {submitLabel}
         </button>
       </div>

@@ -5,14 +5,14 @@ import { LocalLink as Link } from "@/components/ui/LocalLink";
 import { ENV } from "@/data/site";
 import { cn } from "@/lib/cn";
 
-/** Badge fisso "Versione demo", visibile finché NEXT_PUBLIC_DEMO=true. */
+/** Badge fisso "Versione demo" in alto a sinistra sotto l'header (non copre i pulsanti in basso), solo con NEXT_PUBLIC_DEMO=true. */
 export async function DemoBadge() {
   if (!ENV.demo) return null;
   const t = await getTranslations("common");
   return (
     <p
       role="note"
-      className="annot pointer-events-none fixed bottom-[max(1rem,env(safe-area-inset-bottom))] right-4 z-[60] lg:left-4 lg:right-auto rounded-sm bg-todo px-2.5 py-1 font-medium uppercase tracking-[0.12em] text-on-todo shadow-[0_6px_20px_var(--c-shadow)]"
+      className="annot pointer-events-none fixed left-4 top-[4.75rem] z-[60] lg:top-[5.25rem] rounded-sm bg-todo px-2.5 py-1 font-medium uppercase tracking-[0.12em] text-on-todo shadow-[0_6px_20px_var(--c-shadow)]"
     >
       {t("demoBadge")}
     </p>
@@ -102,7 +102,7 @@ export async function Breadcrumbs({ items }: { items: Crumb[] }) {
     <nav aria-label={t("breadcrumb")} className="annot text-muted">
       <ol className="flex flex-wrap items-center gap-1.5">
         <li>
-          <Link href="/" className="hover:text-fg">
+          <Link href="/" className="tap hover:text-fg">
             {t("home")}
           </Link>
         </li>
@@ -110,7 +110,7 @@ export async function Breadcrumbs({ items }: { items: Crumb[] }) {
           <li key={i} className="flex items-center gap-1.5">
             <ChevronRight aria-hidden="true" className="size-3" strokeWidth={1.75} />
             {item.href && i < items.length - 1 ? (
-              <Link href={item.href} className="hover:text-fg">
+              <Link href={item.href} className="tap hover:text-fg">
                 {item.label}
               </Link>
             ) : (

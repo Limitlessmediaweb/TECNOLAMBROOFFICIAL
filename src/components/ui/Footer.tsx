@@ -40,16 +40,16 @@ export async function Footer() {
 
         <nav aria-label={t("navTitle")} className="lg:col-span-2">
           <h2 className="annot uppercase tracking-[0.14em] text-muted">{t("navTitle")}</h2>
-          <ul className="mt-4 grid gap-2 text-sm">
+          <ul className="mt-4 grid gap-0 text-sm lg:gap-2">
             {SITE.map((item) => (
               <li key={item.href}>
-                <Link href={item.href} className="text-fg/90 hover:text-accent">
+                <Link href={item.href} className="tap text-fg/90 hover:text-accent">
                   {nav(item.key)}
                 </Link>
               </li>
             ))}
             <li>
-              <ShopLink source="footer" className="inline-flex items-center gap-1 text-fg/90 hover:text-accent">
+              <ShopLink source="footer" className="tap inline-flex items-center gap-1 text-fg/90 hover:text-accent">
                 {nav("shop")}
               </ShopLink>
             </li>
@@ -58,20 +58,20 @@ export async function Footer() {
 
         <div className="lg:col-span-3">
           <h2 className="annot uppercase tracking-[0.14em] text-muted">{t("contactTitle")}</h2>
-          <address className="mt-4 grid gap-3 text-sm not-italic">
-            <a href={`mailto:${COMPANY.email}`} className="text-fg hover:text-accent">
+          <address className="mt-4 grid gap-0 text-sm not-italic lg:gap-3">
+            <a href={`mailto:${COMPANY.email}`} className="tap text-fg hover:text-accent">
               {COMPANY.email}
             </a>
-            <a href={COMPANY.phoneHref} className="tabular text-fg hover:text-accent">
+            <a href={COMPANY.phoneHref} className="tap tabular text-fg hover:text-accent">
               {COMPANY.phone}
             </a>
-            <a href={COMPANY.phone2Href} className="tabular text-fg hover:text-accent">
+            <a href={COMPANY.phone2Href} className="tap tabular text-fg hover:text-accent">
               {COMPANY.phone2}
             </a>
-            <a href={whatsappHref(locale)} target="_blank" rel="noopener" className="text-fg hover:text-accent">
+            <a href={whatsappHref(locale)} target="_blank" rel="noopener" className="tap text-fg hover:text-accent">
               WhatsApp
             </a>
-            <a href={`mailto:${COMPANY.pec}`} className="text-fg hover:text-accent">
+            <a href={`mailto:${COMPANY.pec}`} className="tap text-fg hover:text-accent">
               <span className="text-muted">{t("pec")}</span> {COMPANY.pec}
             </a>
             <span className="text-muted">
@@ -89,19 +89,19 @@ export async function Footer() {
 
         <div className="lg:col-span-3">
           <h2 className="annot uppercase tracking-[0.14em] text-muted">{t("legalTitle")}</h2>
-          <ul className="mt-4 grid gap-2 text-sm">
+          <ul className="mt-4 grid gap-0 text-sm lg:gap-2">
             <li>
-              <Link href="/privacy" className="text-fg/90 hover:text-accent">
+              <Link href="/privacy" className="tap text-fg/90 hover:text-accent">
                 {t("privacy")}
               </Link>
             </li>
             <li>
-              <Link href="/termini" className="text-fg/90 hover:text-accent">
+              <Link href="/termini" className="tap text-fg/90 hover:text-accent">
                 {t("terms")}
               </Link>
             </li>
             <li>
-              <Link href="/cookie" className="text-fg/90 hover:text-accent">
+              <Link href="/cookie" className="tap text-fg/90 hover:text-accent">
                 {t("cookie")}
               </Link>
             </li>
@@ -121,7 +121,7 @@ export async function Footer() {
         <p className="max-w-[60ch] sm:text-center">{t("distinct")}</p>
         <p>
           {t("credit")}{" "}
-          <a href={ENV.limitlessUrl} target="_blank" rel="noopener" className="font-semibold text-fg hover:text-accent">
+          <a href={ENV.limitlessUrl} target="_blank" rel="noopener" className="tap font-semibold text-fg hover:text-accent">
             LIMITLESS
             <span className="sr-only"> {common("opensNewTab")}</span>
           </a>

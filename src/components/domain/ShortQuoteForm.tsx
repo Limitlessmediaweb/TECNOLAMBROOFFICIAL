@@ -295,7 +295,7 @@ export function ShortQuoteForm({ privacyHref, shopPath, sentPath }: { privacyHre
             </>
           )}
         </button>
-        <NextLink href={`${shopPath}#configura`} className="font-medium text-primary-ink underline decoration-accent underline-offset-4 hover:text-accent" data-configure-link>
+        <NextLink href={`${shopPath}#configura`} className="tap font-medium text-primary-ink underline decoration-accent underline-offset-4 hover:text-accent" data-configure-link>
           {t("haveSize")}
         </NextLink>
       </div>

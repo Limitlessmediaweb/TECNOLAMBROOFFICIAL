@@ -1,19 +1,30 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { MessageCircle } from "lucide-react";
 import { useClientLocale, useT } from "@/lib/client-i18n";
 import { whatsappHref } from "@/data/site";
 
 /**
- * WhatsApp fisso in basso a sinistra, solo su mobile (su desktop sta in footer e contatti).
- * Nascosto nella pagina "La tua richiesta", dove in basso c'è il pulsante Invia.
+ * WhatsApp fisso in basso a sinistra, solo su telefono e tablet (su desktop sta in footer e contatti).
+ * Compare dopo 600 px di scroll, così non copre l'hero e la barra di fiducia; si nasconde quando c'è
+ * una barra fissa in basso (configuratore, "La tua richiesta": html[data-fixed-bar], vedi globals.css).
  */
 export function WhatsAppFloat() {
   const t = useT("common");
   const locale = useClientLocale();
   const path = usePathname();
-  if (/\/shop\/(richiesta|request)(\/|$)/.test(path)) return null;
+  const [shown, setShown] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setShown(window.scrollY > 600);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  if (!shown || /\/shop\/(richiesta|request)(\/|$)/.test(path)) return null;
   return (
     <a
       href={whatsappHref(locale)}

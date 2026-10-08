@@ -104,7 +104,7 @@ export async function QualitySection() {
             {t("title")}
           </SplitReveal>
           <p className="mt-5 max-w-[44ch] text-lead text-muted">{t("body")}</p>
-          <Link href="/qualita" className="mt-8 inline-flex items-center gap-2 font-medium underline decoration-accent underline-offset-4 hover:text-accent">
+          <Link href="/qualita" className="mt-8 inline-flex min-h-11 items-center gap-2 font-medium underline decoration-accent underline-offset-4 hover:text-accent">
             {t("cta")}
             <ArrowRight aria-hidden="true" className="size-4" strokeWidth={1.75} />
           </Link>

@@ -20,6 +20,8 @@ export function SmoothScroll() {
 
   useEffect(() => {
     if (window.matchMedia(MQ.reduce).matches) return;
+    // Su touch niente smooth scroll: lo scroll nativo è più affidabile e non rallenta
+    if (window.matchMedia("(hover: none) and (pointer: coarse)").matches) return;
     let disposed = false;
     let cleanup: (() => void) | undefined;
 
@@ -29,6 +31,7 @@ export function SmoothScroll() {
         autoRaf: false,
         anchors: { offset: -88 },
         lerp: 0.11,
+        syncTouch: false,
         // Non intercettare lo scroll dentro elementi scrollabili (tabelle, menu).
         prevent: (node) => node.closest("[data-lenis-prevent]") !== null,
       });

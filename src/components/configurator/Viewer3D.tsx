@@ -72,7 +72,7 @@ export function Viewer3D({ spec, eager = false, label }: { spec: PartSpec; eager
     return () => window.clearTimeout(id);
   }, [spec]);
 
-  const tool = "inline-flex min-h-9 items-center gap-1.5 rounded-full border px-3 text-xs font-medium transition-colors";
+  const tool = "inline-flex min-h-11 items-center lg:min-h-9 gap-1.5 rounded-full border px-3 text-xs font-medium transition-colors";
   const on = (v: boolean) => cn(tool, v ? "border-accent bg-accent text-on-accent" : "border-line-strong bg-surface hover:border-accent");
   return (
     <div data-viewer-state={state} data-triangles={triangles}>

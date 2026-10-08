@@ -12,7 +12,7 @@ export function RequestButton({ href, className }: { href: string; className?: s
   const count = useRequestItems().length;
   const label = count === 0 ? t("open") : count === 1 ? t("openWithOne") : t("openWithCount", { count });
   return (
-    <NextLink href={href} aria-label={label} title={label} className={cn("relative grid size-10 place-items-center rounded-full border border-line-strong transition-colors hover:border-accent sm:size-11", className)} data-request-button>
+    <NextLink href={href} aria-label={label} title={label} className={cn("relative grid size-11 place-items-center rounded-full border border-line-strong transition-colors hover:border-accent", className)} data-request-button>
       <ClipboardList aria-hidden="true" className="size-5" strokeWidth={1.75} />
       {count > 0 ? (
         <span aria-hidden="true" className="absolute -right-1 -top-1 grid min-w-5 place-items-center rounded-full bg-accent px-1 text-[0.6875rem] font-semibold leading-5 text-on-accent tabular">

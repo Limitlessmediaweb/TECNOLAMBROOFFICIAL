@@ -38,7 +38,7 @@ export async function QuoteSection({
               <div>
                 <p className="text-sm text-muted">{t("email_label")}</p>
                 <p>
-                  <a href={`mailto:${COMPANY.email}`} className="text-lg hover:text-accent">
+                  <a href={`mailto:${COMPANY.email}`} className="tap text-lg hover:text-accent">
                     {COMPANY.email}
                   </a>
                 </p>
@@ -49,7 +49,7 @@ export async function QuoteSection({
               <div>
                 <p className="text-sm text-muted">{t("phone_label")}</p>
                 <p>
-                  <a href={COMPANY.phoneHref} className="tabular text-lg hover:text-accent">
+                  <a href={COMPANY.phoneHref} className="tap tabular text-lg hover:text-accent">
                     {COMPANY.phone}
                   </a>
                 </p>
@@ -60,7 +60,7 @@ export async function QuoteSection({
               <div>
                 <p className="text-sm text-muted">WhatsApp</p>
                 <p>
-                  <a href={whatsappHref(locale)} target="_blank" rel="noopener" className="text-lg hover:text-accent">
+                  <a href={whatsappHref(locale)} target="_blank" rel="noopener" className="tap text-lg hover:text-accent">
                     {t("whatsapp")}
                   </a>
                 </p>
@@ -71,7 +71,7 @@ export async function QuoteSection({
               <div>
                 <p className="text-sm text-muted">{t("phone2_label")}</p>
                 <p>
-                  <a href={COMPANY.phone2Href} className="tabular text-lg hover:text-accent">
+                  <a href={COMPANY.phone2Href} className="tap tabular text-lg hover:text-accent">
                     {COMPANY.phone2}
                   </a>
                 </p>
@@ -82,7 +82,7 @@ export async function QuoteSection({
               <div>
                 <p className="text-sm text-muted">{t("pec_label")}</p>
                 <p>
-                  <a href={`mailto:${COMPANY.pec}`} className="break-all hover:text-accent">
+                  <a href={`mailto:${COMPANY.pec}`} className="tap break-all hover:text-accent">
                     {COMPANY.pec}
                   </a>
                 </p>

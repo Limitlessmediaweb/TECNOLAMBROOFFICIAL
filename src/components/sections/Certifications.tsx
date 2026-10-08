@@ -70,7 +70,7 @@ export function IsoBadges({ href, className = "" }: { href: string; className?: 
   return (
     <span className={`inline-flex flex-wrap gap-2 ${className}`}>
       {CERTIFICATIONS.map((c) => (
-        <a key={c.id} href={href} className="annot inline-flex items-center gap-1.5 rounded-full border border-line-strong px-3 py-1 text-fg transition-colors hover:border-accent hover:text-accent">
+        <a key={c.id} href={href} className="annot inline-flex min-h-11 items-center gap-1.5 rounded-full border border-line-strong px-3 py-1 text-fg lg:min-h-0 transition-colors hover:border-accent hover:text-accent">
           <ShieldCheck aria-hidden="true" className="size-3.5 text-accent" strokeWidth={1.75} />
           {c.standard}
         </a>

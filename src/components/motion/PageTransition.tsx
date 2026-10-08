@@ -31,8 +31,11 @@ export function PageTransition({ children }: { children: ReactNode }) {
     };
   }, [pathname]);
 
+  // key = percorso: si anima solo il cambio di pagina (uscita/entrata). Gli aggiornamenti dentro la
+  // stessa pagina (es. il configuratore che riscrive i parametri dell'URL) non avviano transizioni:
+  // prima ne partivano di continuo, con "InvalidStateError: Transition was aborted".
   return (
-    <ViewTransition name="page">
+    <ViewTransition key={pathname} name="page" update="none">
       <div ref={ref}>{children}</div>
     </ViewTransition>
   );

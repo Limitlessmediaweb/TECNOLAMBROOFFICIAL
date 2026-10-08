@@ -653,3 +653,17 @@ html.lenis body {
   white-space: nowrap;
   pointer-events: none;
 }
+
+/* Con una barra fissa in basso (configuratore, "La tua richiesta") il pulsante WhatsApp non compare */
+html[data-fixed-bar] [data-whatsapp-float] {
+  display: none;
+}
+
+/* Area toccabile di almeno 44 px su telefono e tablet per i link testuali isolati (footer, contatti) */
+@media (max-width: 1023px) {
+  .tap {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+}

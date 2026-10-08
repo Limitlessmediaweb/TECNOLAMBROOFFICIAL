@@ -19,8 +19,12 @@ export function ThemeToggle() {
       }
     };
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if ("startViewTransition" in document && !reduce) document.startViewTransition(apply);
-    else apply();
+    if ("startViewTransition" in document && !reduce) {
+      // una transizione interrotta (es. doppio clic) non deve finire in console come errore
+      const vt = document.startViewTransition(apply);
+      vt.ready.catch(() => {});
+      vt.finished.catch(() => {});
+    } else apply();
   };
 
   return (
